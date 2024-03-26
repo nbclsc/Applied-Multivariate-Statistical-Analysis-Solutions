@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{graphicx}  % for including figures
+\usepackage{amsmath,amsthm,amssymb,hyperref,nicematrix, tikz}
+\usepackage{arydshln}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{tikzsymbols}
+\usepackage{float} % For using H in figure position.
+\usepackage{bm}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{gensymb}
+\usepackage{pgffor}
+\usepackage{booktabs} % Uses \toprule, midrule, etc. for tables.
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+
+\newcommand{\blue}{\color{blue}}
+
+\NiceMatrixOptions
+  {
+    custom-line = 
+     {
+       letter=I, 
+       command=hdashedline, 
+       tikz=densely dashed,
+       width=\pgflinewidth
+     },
+     cell-space-limits = 1pt
+  }
+
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\lstset{style=Matlab-editor}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bigrho}{\raisebox{-.15\baselineskip}{\Large\ensuremath{\rho}}} 
+
+% ------------------------------------------ %
+%                   START HERE               %
+% ------------------------------------------ %
+
+\begin{document}
+
+\title{Applied Multivariate Statistical Analysis Solutions}
+\author{Nathan Crouse}
+\maketitle
+
+\tableofcontents
+
+\section{Chapter 1}
+
+% \section{Chapter 2}
+% \foreach \n in {1,...,42}{
+%     \subsection{}
+%     \input{chapter-2/question-2-\n}
+% }
+% \newpage
+% \section{Chapter 3}
+% \foreach \n in {1,...,20}{
+%     \subsection{}
+%     \input{chapter-3/question-3-\n}
+% }
+% \newpage
+% \section{Chapter 4}
+% \foreach \n in {1,...,41}{
+%     \subsection{}
+%     \input{chapter-4/question-4-\n}
+% }
+
+\subsection{}
+%\input{chapter-4/question-4-1}
+% \input{chapter-4/question-4-2}
+% \input{chapter-4/question-4-3}
+% \input{chapter-4/question-4-4}
+% \input{chapter-4/question-4-5}
+% \input{chapter-4/question-4-6}
+% \input{chapter-4/question-4-7}
+\input{chapter-4/question-4-8}
+
+\end{document}
