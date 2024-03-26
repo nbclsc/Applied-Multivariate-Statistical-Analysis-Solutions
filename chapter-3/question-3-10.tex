@@ -1,0 +1,411 @@
+When the generalized variance is zero, it is the columns of the mean corrected data matrix $\textbf{X}_c = \textbf{X} - \textbf{1}\bar{\textbf{x}}^\prime$ that are linearly dependent, 
+not necessarily those of the data matrix itself Given the data
+\[
+    \textbf{X}
+    =
+    \begin{bNiceArray}{ccc}
+        3 & 1 & 0 \\
+        6 & 4 & 6 \\
+        4 & 2 & 2 \\
+        7 & 0 & 3 \\
+        5 & 3 & 4
+    \end{bNiceArray}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Obtain the mean corrected data matrix, and verify that the columns are linearly dependent.
+    Specify an $\textbf{a}^{\prime} = [a_1, a_2, a_3]$ vector that establishes the linear dependence.
+    \[
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            \bar{x}_1 \\
+            \bar{x}_2 \\
+            \bar{x}_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            25/5 \\
+            10/5 \\
+            15/5
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            5 \\
+            2 \\
+            3
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{X} - \textbf{1}_{5}{\bar{\textbf{x}}}^{\prime}
+        =
+        \begin{bNiceArray}{ccc}
+            3 & 1 & 0 \\
+            6 & 4 & 6 \\
+            4 & 2 & 2 \\
+            7 & 0 & 3 \\
+            5 & 3 & 4
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+            1 \\
+            1 \\
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+        \begin{bNiceArray}{ccc}
+            5 & 2 & 3
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{ccc}
+            3 & 1 & 0 \\
+            6 & 4 & 6 \\
+            4 & 2 & 2 \\
+            7 & 0 & 3 \\
+            5 & 3 & 4
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{ccc}
+            5 & 2 & 3 \\
+            5 & 2 & 3 \\
+            5 & 2 & 3 \\
+            5 & 2 & 3 \\
+            5 & 2 & 3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rrr}
+            -2 & -1 & -3 \\
+            1 & 2 & 3 \\
+            -1 & 0 & -1 \\
+            2 & -2 & 0 \\
+            0 & 1 & 1
+        \end{bNiceArray}
+    \]
+    For $\textbf{X}_{c}$ we have a linear dependence for column 3, whose the sum of the first two columns.
+    \[
+        \textbf{a}
+        =
+        \begin{bNiceArray}{c}
+            a_1 \\
+            a_2 \\
+            a_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            1 \\
+            -1
+        \end{bNiceArray}
+    \]
+In Exercise 3.9. both $\textbf{X}_{c}\text{a} = \textbf{0}$ and $\textbf{X}\textbf{a} = \textbf{0}$ for the same $\textbf{a}$, but that isn't the case here. Here, $r(\textbf{X}) = p = 3$ so the columns of $\textbf{X}$ are linearly independent, and the columns of $\textbf{X}_c$ are linearly dependent ($r(\textbf{X}_c) = 2 < p = 3$).
+    \[
+        \left(\textbf{X} - \textbf{1}_{5}{\bar{\textbf{x}}}^{\prime}\right){\textbf{a}}
+        =
+        \begin{bNiceArray}{rrr}
+            -2 & -1 & -3 \\
+            1 & 2 & 3 \\
+            -1 & 0 & -1 \\
+            2 & -2 & 0 \\
+            0 & 1 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            1 \\
+            1 \\
+            -1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            0 \\
+            0 \\
+            0 \\
+            0 \\
+            0
+        \end{bNiceArray}
+        =
+        \textbf{0}
+    \]
+    \item Obtain the sample covariance matrix $\textbf{S}$, and verify that the generalized variance is zero.
+    \[
+        \textbf{D}
+        =
+        (\textbf{X} - \textbf{1}_{5}\bar{\textbf{x}})
+    \]
+    \[
+        \textbf{S}
+        =
+        \left(\frac{1}{n - 1}\right){\textbf{D}}^{\prime}\textbf{D}
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{rrrrr}
+            -2 & 1 & -1 & 2 & 0 \\
+            -1 & 2 & 0 & -2 & 1 \\
+            -3 & 3 & -1 & 0 & 1 \\
+        \end{bNiceArray}
+        \begin{bNiceArray}{rrr}
+            -2 & -1 & -3 \\
+            1 & 2 & 3 \\
+            -1 & 0 & -1 \\
+            2 & -2 & 0 \\
+            0 & 1 & 1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{ccc}
+            10 & 0 & 10 \\
+            0 & 10 & 10 \\
+            10 & 10 & 20
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{ccc}
+            (5/2) & 0 & (5/2) \\
+            0 & (5/2) & (5/2) \\
+            (5/2) & (5/2) & 5
+        \end{bNiceArray}
+    \]
+    Another way, using (3-27) on page 139,
+    \[
+        \textbf{S}
+        =
+        \left(\frac{1}{n - 1}\right)
+        {\textbf{X}}^{\prime}\left(\textbf{I} - \frac{1}{n}\textbf{1}_{5}{\textbf{1}}_{5}^{\prime}\right)\textbf{X}
+        =
+        \left(\frac{1}{n - 1}\right)
+        {\textbf{X}}^{\prime}\left(\textbf{X} - \frac{1}{n}\textbf{1}_{5}{\textbf{1}}_{5}^{\prime}\textbf{X}\right)
+        =
+    \]
+    \[
+        =
+        \left(\frac{1}{n - 1}\right)
+        {\textbf{X}}^{\prime}
+        \left(\textbf{X} - \textbf{1}_{5}{\bar{\textbf{x}}}^{\prime}\right)
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{rrrrr}
+           3 & 6 & 4 & 7 & 5 \\
+           1 & 4 & 2 & 0 & 3 \\
+           0 & 6 & 2 & 3 & 4 \\
+        \end{bNiceArray}
+        \begin{bNiceArray}{rrr}
+            -2 & -1 & -3 \\
+            1 & 2 & 3 \\
+            -1 & 0 & -1 \\
+            2 & -2 & 0 \\
+            0 & 1 & 1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{ccc}
+            10 & 0 & 10 \\
+            0 & 10 & 10 \\
+            10 & 10 & 20
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{ccc}
+            (5/2) & 0 & (5/2) \\
+            0 & (5/2) & (5/2) \\
+            (5/2) & (5/2) & 5
+        \end{bNiceArray}
+    \]
+    Computing the generalized sample variance
+    \[
+        \left|\textbf{S}\right|
+        =
+        \left|
+            \begin{NiceArray}{ccc}
+            (5/2) & 0 & (5/2) \\
+            0 & (5/2) & (5/2) \\
+            (5/2) & (5/2) & 5
+            \end{NiceArray}
+        \right|
+        =
+    \]
+    \[
+        =
+        \left(\frac{5}{2}\right)
+        \left|
+            \begin{NiceArray}{cc}
+                (5/2) & (5/2) \\
+                (5/2) & 5
+            \end{NiceArray}
+        \right|
+        -
+        0
+        +
+        \left(\frac{5}{2}\right)
+        \left|
+            \begin{NiceArray}{ccc}
+                0 & (5/2) \\
+                (5/2) & (5/2)
+            \end{NiceArray}
+        \right|
+        =
+    \]
+    \[
+        =
+        \frac{5}{8}
+        (50-25)
+        +
+        \frac{5}{8}
+        (0-25)
+        =
+    \]
+    \[
+        =
+        \frac{125}{8}
+        -
+        \frac{125}{8}
+        =
+        0
+    \]
+    \item Show that the columns of the data matrix are linearly independent in this case.
+    \par
+    To show this, work $\textbf{X}$ into reduced row echelon form and count the pivot columns.
+    \[
+        \textbf{X}
+        =
+        \begin{bNiceArray}{ccc}
+            3 & 1 & 0 \\
+            6 & 4 & 6 \\
+            4 & 2 & 2 \\
+            7 & 0 & 3 \\
+            5 & 3 & 4
+        \end{bNiceArray}
+        \overset{\text{Simplify rows}}{\longrightarrow}
+        \begin{bNiceArray}{ccc}
+            3 & 1 & 0 \\
+            3 & 2 & 3 \\
+            2 & 1 & 1 \\
+            7 & 0 & 3 \\
+            5 & 3 & 4
+        \end{bNiceArray}
+        \overset{\text{Row 5} - \frac{5}{3} \text{Row 1}}{\longrightarrow}
+    \]
+    \[
+        \begin{bNiceArray}{ccc}
+            3 & 1 & 0 \\
+            3 & 2 & 3 \\
+            2 & 1 & 1 \\
+            7 & 0 & 3 \\
+            0 & (4/3) & 4
+        \end{bNiceArray}
+        \overset{\text{Row 4} - \frac{7}{3} \text{Row 1}}{\longrightarrow}
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            3 & 2 & 3 \\
+            2 & 1 & 1 \\
+            0 & -(7/3) & 3 \\
+            0 & (4/3) & 4
+        \end{bNiceArray}
+        \overset{\text{Row 3} - \frac{2}{3} \text{Row 1}}{\longrightarrow}
+    \]
+    \[
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            3 & 2 & 3 \\
+            0 & (1/3) & 1 \\
+            0 & -(7/3) & 3 \\
+            0 & (4/3) & 4
+        \end{bNiceArray}
+        \overset{\text{Row 3} - \text{Row 1}}{\longrightarrow}
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            0 & 1 & 3 \\
+            0 & (1/3) & 1 \\
+            0 & -(7/3) & 3 \\
+            0 & (4/3) & 4
+        \end{bNiceArray}
+        \overset{\text{Simplify rows}}{\longrightarrow}
+    \]
+    \[
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            0 & 1 & 3 \\
+            0 & 1 & 3 \\
+            0 & -7 & 9 \\
+            0 & 1 & 3
+        \end{bNiceArray}
+        \overset{\text{Row 5} - \text{Row 2}}{\longrightarrow}
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            0 & 1 & 3 \\
+            0 & 1 & 3 \\
+            0 & -7 & 9 \\
+            0 & 0 & 0
+        \end{bNiceArray}
+        \overset{\text{Row 4} + 7 \text{Row 2}}{\longrightarrow}
+    \]
+    \[
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            0 & 1 & 3 \\
+            0 & 1 & 3 \\
+            0 & 0 & 30 \\
+            0 & 0 & 0
+        \end{bNiceArray}
+        \overset{\text{Row 3} - \text{Row 2}}{\longrightarrow}
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            0 & 1 & 3 \\
+            0 & 0 & 0 \\
+            0 & 0 & 30 \\
+            0 & 0 & 0
+        \end{bNiceArray}
+        \overset{\text{Swap rows}}{\longrightarrow}
+    \]
+    \[
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            0 & 1 & 3 \\
+            0 & 0 & 30 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{bNiceArray}
+        \overset{\text{Simplify}}{\longrightarrow}
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            0 & 1 & 3 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{bNiceArray}
+        \overset{\text{Row 2} - 3\text{Row 3}}{\longrightarrow}
+    \]
+    \[
+        \begin{bNiceArray}{rrr}
+            3 & 1 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{bNiceArray}
+        \overset{\text{Row 1} - \text{Row 2}}{\longrightarrow}
+        \begin{bNiceArray}{rrr}
+            3 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{bNiceArray}
+        \overset{\text{Simplify}}{\longrightarrow}
+    \]
+    \[
+        \begin{bNiceArray}{rrr}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{bNiceArray}
+    \]
+    We can see that in reduced row echelon form that there are 3 pivot columns (nonzero rows),
+    so the rank of $\textbf{X}$ is 3 and is of full rank ($r(\textbf{X}) = 3 = p$).
+\end{enumerate}

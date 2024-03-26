@@ -1,0 +1,184 @@
+        % ------------------------------------------ %
+        %                      (2.9)                 %
+        % ------------------------------------------ %
+        Let $\bold{A}$ be as in Exercise 2.8.
+        \begin{enumerate}[label=(\alph*)]
+            \item Find $\bold{A}^{-1}$.
+            \par
+            Using \textbf{(2-21)}, 
+            \[
+                \bold{A}^{-1}
+                =
+                \bold{P}\bold{\Lambda}^{-1}\bold{P}^\prime
+                =
+                \begin{bmatrix}
+                    1/\sqrt{5} & 2/\sqrt{5} \\
+                    -2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    -1/3 & 0 \\
+                    0 & 1/2
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{5} & -2/\sqrt{5} \\
+                    2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \frac{1}{5}
+                \begin{bmatrix}
+                    1 & 2 \\
+                    -2 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    -1/3 & 0 \\
+                    0 & 1/2
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 & -2 \\
+                    2 & 1
+                \end{bmatrix}
+                =
+                \frac{1}{5}
+                \begin{bmatrix}
+                    1 & 2 \\
+                    -2 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    -1/3 & 2/3 \\
+                    1 & 1/2
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \frac{1}{5}
+                \begin{bmatrix}
+                    5/3 & 5/3 \\
+                    5/3 & -5/6
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1/3 & 1/3 \\
+                    1/3 & -1/6
+                \end{bmatrix}
+            \]
+            Using direct computation,
+            \[
+                \bold{A}^{-1}
+                =
+                \frac{1}{-2-4}
+                \begin{bmatrix}
+                    -2 & -2 \\
+                    -2 & 1
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1/3 & 1/3 \\
+                    1/3 & -1/6
+                \end{bmatrix}
+            \]
+            \item Compute the eigenvalues and eigenvectors of $\bold{A}^{-1}$.
+            \par
+            Also from \textbf{(2-21)} on page 66, we can see that the eigenvalues of $\bold{A}^{-1}$ are the reciprocal of the eigenvalues of $\bold{A}$, so
+            \[
+                \bold{\Lambda}^{-1}
+                =
+                \begin{bmatrix}
+                    1/\lambda_1 & 0 \\
+                    0 & 1/\lambda_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    -1/3 & 0 \\
+                    0 & 1/2
+                \end{bmatrix}
+            \]
+            and the eigenvectors for $\bold{A}^{-1}$ are the same as those for $\bold{A}$,
+            \[
+                \bold{P}
+                =
+                \begin{bmatrix}
+                    \bold{e}_1 & \bold{e}_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{5} & 2/\sqrt{5} \\
+                    -2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix}
+            \]
+            \item Write the spectral decomposition of $\bold{A}^{-1}$, and compare it with that of $\bold{A}$ from Exercise 2.8.
+            \par
+            \[
+                \bold{A}^{-1} = \sum_{k=1}^2{\frac{1}{\lambda_k}\bold{e}_k\bold{e}_k^\prime} = 
+                -\frac{1}{3}
+                \begin{bmatrix}
+                    1/\sqrt{5} \\
+                    -2/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{5} & -2/\sqrt{5}
+                \end{bmatrix}
+                +
+                \frac{1}{2}
+                \begin{bmatrix}
+                    2/\sqrt{5} \\
+                    1/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \frac{1}{5}
+                \left(
+                -\frac{1}{3}
+                \begin{bmatrix}
+                    1 & -2 \\
+                    -2 & 4
+                \end{bmatrix}
+                +
+                \frac{1}{2}
+                \begin{bmatrix}
+                    4 & 2 \\
+                    2 & 1
+                \end{bmatrix}
+                \right)
+                =
+                \frac{1}{30}
+                \left(
+                -
+                \begin{bmatrix}
+                    2 & -4 \\
+                    -4 & 8
+                \end{bmatrix}
+                +
+                \begin{bmatrix}
+                    12 & 6 \\
+                    6 & 3
+                \end{bmatrix}
+                \right)
+                =
+            \]
+            \[
+                =
+                \frac{1}{30}
+                \begin{bmatrix}
+                    10 & 10 \\
+                    10 & -5
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1/3 & 1/3 \\
+                    1/3 & -1/6
+                \end{bmatrix}
+            \]
+        \end{enumerate}
+        In the spectral decomposition of both $\bold{A}$ and $\bold{A}^{-1}$ the matrices 
+        created for all of the $\bold{e}_k\bold{e}_k^\prime$ components are the same. 
+        The difference is in the eigenvalues. The eigenvalues for $\bold{A}$ are $\lambda_k$ 
+        and the eigenvalues for $\bold{A}^{-1}$ are $1/\lambda_k$. 

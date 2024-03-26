@@ -1,0 +1,253 @@
+Calculate the generalized sample variance $\left|\textbf{S}\right|$ for (a) the data matrix $\textbf{X}$ in Exercise 3.1 and (b) the data matrix $\textbf{X}$ in Exercise 3.2.
+\begin{enumerate}[label=(\alph*)]
+    \item
+    \[
+        \textbf{X}
+        =
+        \begin{bNiceArray}{cc}
+            9 & 1 \\
+            5 & 3 \\
+            1 & 2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \textbf{y}_1 & \textbf{y}_2
+        \end{bNiceArray}
+        ,\hspace{0.2in}
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            5 \\
+            2
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{d}_1
+        =
+        \textbf{y}_1 - \bar{x}_1\textbf{1}_3
+        =
+        \begin{bNiceArray}{c}
+            9 \\
+            5 \\
+            1
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+            5 \\
+            5 \\
+            5
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            4 \\
+            0 \\
+            -4
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{d}_2
+        =
+        \textbf{y}_2 - \bar{x}_2\textbf{1}_3
+        =
+        \begin{bNiceArray}{c}
+            1 \\
+            3 \\
+            2
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+            2 \\
+            2 \\
+            2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            -1 \\
+            1 \\
+            0
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{D}
+        =
+        \begin{bNiceArray}{cc}
+            \textbf{d}_1 & \textbf{d}_2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}
+            4 & -1 \\
+            0 & 1 \\
+            -4 & 0
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{S}
+        =
+        \left(\frac{1}{n-1}\right)
+        {\textbf{D}}^{\prime}
+        \textbf{D}
+        =
+        \left(\frac{1}{3-1}\right)
+        \begin{bNiceArray}{rrr}
+            4 & 0 & -4 \\
+            -1 & 1 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            4 & -1 \\
+            0 & 1 \\
+            -4 & 0
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        \frac{1}{2}
+        \begin{bNiceArray}{rr}
+            32 & -4 \\
+            -4 & 2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}
+            16 & -2 \\
+            -2 & 1
+        \end{bNiceArray}
+    \]
+    \[
+        \left|\textbf{S}\right|
+        =
+        \left|
+        \begin{NiceArray}{rr}
+            16 & -2 \\
+            -2 & 1
+        \end{NiceArray}
+        \right|
+        =
+        16-4
+        =
+        12
+    \]
+    \item
+    \[
+        \textbf{X}
+        =
+        \begin{bNiceArray}{cr}
+            3 & 4 \\
+            6 & -2 \\
+            3 & 1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \textbf{y}_1 & \textbf{y}_2
+        \end{bNiceArray}
+        ,\hspace{0.2in}
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            4 \\
+            1
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{d}_1
+        =
+        \textbf{y}_1 - \bar{x}_1\textbf{1}_3
+        =
+        \begin{bNiceArray}{c}
+            3 \\
+            6 \\
+            3
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+            4 \\
+            4 \\
+            4
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            -1 \\
+            2 \\
+            -1
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{d}_2
+        =
+        \textbf{y}_2 - \bar{x}_2\textbf{1}_3
+        =
+        \begin{bNiceArray}{r}
+            4 \\
+            -2 \\
+            1
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            3 \\
+            -3 \\
+            0
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{D}
+        =
+        \begin{bNiceArray}{cc}
+            \textbf{d}_1 & \textbf{d}_2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}
+            -1 & 3 \\
+            2 & -3 \\
+            -1 & 0
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{S}
+        =
+        \left(\frac{1}{n-1}\right)
+        {\textbf{D}}^{\prime}
+        \textbf{D}
+        =
+        \left(\frac{1}{3-1}\right)
+        \begin{bNiceArray}{rrr}
+            -1 & 2 & -1 \\
+            3 & -3 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            -1 & 3 \\
+            2 & -3 \\
+            -1 & 0
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        \frac{1}{2}
+        \begin{bNiceArray}{rr}
+            6 & -9 \\
+            -9 & 18
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}
+            3 & -(9/2) \\
+            -(9/2) & 9
+        \end{bNiceArray}
+    \]
+    \[
+        \left|\textbf{S}\right|
+        =
+        \left|
+        \begin{NiceArray}{rr}
+            3 & -(9/2) \\
+            -(9/2) & 9
+        \end{NiceArray}
+        \right|
+        =
+        27-(81/4)
+        =
+        \frac{27}{4}
+    \]
+\end{enumerate}

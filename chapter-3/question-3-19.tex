@@ -1,0 +1,201 @@
+Using the summary statistics for the first three variables in Exercise 3.18, verify the
+relation
+\[
+    |\textbf{S}| = (s_{11}s_{22}s_{33})|\textbf{R}|
+\]
+\[
+    |\textbf{S}|
+    =
+    \left|
+    \begin{NiceArray}{ccc}
+        0.856 & 0.635 & 0.173 \\
+        0.635 & 0.568 & 0.128 \\
+        0.173 & 0.127 & 0.171 \\
+    \end{NiceArray}
+    \right|
+    =
+\]
+\[
+    =
+    0.856
+    \left|
+    \begin{NiceArray}{cc}
+        0.568 & 0.128 \\
+        0.127 & 0.171 \\
+    \end{NiceArray}
+    \right|
+    -
+    0.635
+    \left|
+    \begin{NiceArray}{cc}
+        0.635 & 0.128 \\
+        0.173 & 0.171 \\
+    \end{NiceArray}
+    \right|
+    +
+    0.173
+    \left|
+    \begin{NiceArray}{cc}
+        0.635 & 0.568 \\
+        0.173 & 0.127 \\
+    \end{NiceArray}
+    \right|
+    =
+\]
+\begin{multline*}
+    =
+    0.856
+    (0.568*0.171 - 0.128*0.127)
+    -\\
+    0.635
+    (0.635*0.171 - 0.128*0.173)
+    +\\
+    0.173
+    (0.635*0.127 - 0.568*0.173)
+    =
+\end{multline*}
+\[
+    =
+    0.01128831
+\]
+
+\[
+    \textbf{D}^{-1/2}
+    =
+    \begin{bNiceArray}{ccc}
+        1/\sqrt{s_{11}} & 0 & 0 \\
+        0 & 1/\sqrt{s_{22}} & 0 \\
+        0 & 0 & 1/\sqrt{s_{33}}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        1/\sqrt{0.856} & 0 & 0 \\
+        0 & 1/\sqrt{0.568} & 0 \\
+        0 & 0 & 1/\sqrt{0.171}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        1.0808 & 0 & 0 \\
+        0 & 1.3269 & 0 \\
+        0 & 0 & 2.4183
+    \end{bNiceArray}
+\]
+\[
+    \textbf{R}
+    =
+    \textbf{D}^{-1/2}
+    \textbf{S}
+    \textbf{D}^{-1/2}
+    =
+\]
+\[
+    =
+    \begin{bsmallmatrix}
+        1.0808 & 0 & 0 \\
+        0 & 1.3269 & 0 \\
+        0 & 0 & 2.4183
+    \end{bsmallmatrix}
+    \begin{bsmallmatrix}
+        0.856 & 0.635 & 0.173 \\
+        0.635 & 0.568 & 0.128 \\
+        0.173 & 0.127 & 0.171
+    \end{bsmallmatrix}
+    \begin{bsmallmatrix}
+        1.0808 & 0 & 0 \\
+        0 & 1.3269 & 0 \\
+        0 & 0 & 2.4183
+    \end{bsmallmatrix}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{ccc}
+    0.9252 & 0.6863 & 0.1870 \\
+    0.8426 & 0.7537 & 0.1698 \\
+    0.4184 & 0.3071 & 0.4135
+    \end{bNiceArray}
+    \begin{bNiceArray}{ccc}
+        1.0808 & 0 & 0 \\
+        0 & 1.3269 & 0 \\
+        0 & 0 & 2.4183
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        1 & 0.9107 & 0.4522 \\
+        0.9107 & 1 & 0.4107 \\
+        0.4522 & 0.4075 & 1
+    \end{bNiceArray}
+\]
+\[
+    \left|\textbf{R}\right|
+    =
+    \left|
+    \begin{NiceArray}{ccc}
+        1 & 0.9107 & 0.4522 \\
+        0.9107 & 1 & 0.4107 \\
+        0.4522 & 0.4075 & 1
+    \end{NiceArray}
+    \right|
+    =
+\]
+\[
+    =
+    1
+    \left|
+    \begin{NiceArray}{cc}
+        1 & 0.4107 \\
+        0.4075 & 1
+    \end{NiceArray}
+    \right|
+    -
+    0.9107
+    \left|
+    \begin{NiceArray}{cc}
+        0.9107 & 0.4107 \\
+        0.4522 & 1
+    \end{NiceArray}
+    \right|
+    +
+    0.4522
+    \left|
+    \begin{NiceArray}{cc}
+        0.9107 & 1 \\
+        0.4522 & 0.4075
+    \end{NiceArray}
+    \right|
+    =
+\]
+\begin{multline*}
+    =
+    1
+    (1*1 - 0.4107*0.4075)
+    -\\
+    0.9107
+    (0.9107*1 - 0.4107*0.4522)
+    +\\
+    0.4522
+    (0.9107*0.4075 - 1*0.4522)
+    =
+\end{multline*}
+\[
+    =
+    0.13577
+\]
+\[
+    (s_{11}s_{22}s_{33})|\textbf{R}|
+    =
+    (0.856*0.568*0.171)0.13577
+    0.083141568*0.13577
+    =
+    0.011288
+\]
+Okay, so we have that $|\textbf{S}| = (s_{11}s_{22}s_{33})|\textbf{R}|$.

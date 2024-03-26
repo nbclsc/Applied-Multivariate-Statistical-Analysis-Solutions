@@ -1,0 +1,237 @@
+Energy consumption in 2001, by state, from the major resources
+\begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
+        $x_1$ = petroleum & $x_2$ = natural gas \\
+        $x_3$ = hydroelectric power & $x_4$ = nuclear electric power
+    \end{tabular}
+\end{table}
+is recorded in quadrillions $(10^{15})$ of BTUs (Source: \textit{Statistical Abstract of the United States 2006})
+\newline
+The resulting mean and covariance matrix are
+\[
+    \bar{\textbf{x}}
+    =
+    \begin{bNiceArray}{c}
+        0.766 \\
+        0.508 \\
+        0.438 \\
+        0.161
+    \end{bNiceArray}
+    \hspace{0.2in}
+    \textbf{S}
+    =
+    \begin{bNiceArray}{cccc}
+        0.856 & 0.635 & 0.173 & 0.096 \\
+        0.635 & 0.568 & 0.128 & 0.067 \\
+        0.173 & 0.127 & 0.171 & 0.039 \\
+        0.096 & 0.067 & 0.039 & 0.043
+    \end{bNiceArray}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Using the summary statistics, determine the sample mean and variance of a state's total energy consumption for these major sources.
+    \[
+        \textbf{b}
+        =
+        \begin{bNiceArray}{c}
+            1 \\
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{b}^{\prime}\textbf{x}
+        =
+        X_1 + X_2 + X_3 + X_4
+    \]
+    \[
+        E[\textbf{b}^{\prime}\textbf{x}]
+        =
+        \textbf{b}^{\prime}E[\textbf{x}]
+        =
+        \textbf{b}^{\prime}\bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{cccc}
+            1 & 1 & 1 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            0.766 \\
+            0.508 \\
+            0.438 \\
+            0.161
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        0.766 + 0.508 + 0.438 + 0.161
+        =
+        1.8730
+    \]
+    \[
+        \text{Cov}(\textbf{b}^{\prime}\textbf{x})
+        =
+        \textbf{b}^{\prime}\text{Cov}(\textbf{x})\textbf{b}
+        =
+        \textbf{b}^{\prime}\textbf{S}\textbf{b}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cccc}
+            1 & 1 & 1 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{cccc}
+            0.856 & 0.635 & 0.173 & 0.096 \\
+            0.635 & 0.568 & 0.128 & 0.067 \\
+            0.173 & 0.127 & 0.171 & 0.039 \\
+            0.096 & 0.067 & 0.039 & 0.043
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            1 \\
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cccc}
+            1.76 & 1.3970 & 0.5110 & 0.2450
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            1 \\
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+        =
+        3.9130
+    \]
+    \item Determine the sample mean and variance of the excess of petroleum consumption over natural gas consumption.
+    Also find the sample covariance of this variable with the total variable in part a.
+    \[
+        \textbf{c}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            -1 \\
+            0 \\
+            0
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{c}^{\prime}\textbf{x}
+        =
+        X_1 - X_2
+    \]
+    \[
+        E[\textbf{c}^{\prime}\textbf{x}]
+        =
+        \textbf{c}^{\prime}E[\textbf{x}]
+        =
+        \textbf{c}^{\prime}\bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{crcc}
+            1 & -1 & 0 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            0.766 \\
+            0.508 \\
+            0.438 \\
+            0.161
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        0.766 - 0.508 + 0 + 0
+        =
+        0.2580
+    \]
+    \[
+        \text{Cov}(\textbf{b}^{\prime}\textbf{x})
+        =
+        \textbf{c}^{\prime}\text{Cov}(\textbf{x})\textbf{c}
+        =
+        \textbf{c}^{\prime}\textbf{S}\textbf{c}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{crcc}
+            1 & -1 & 0 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{cccc}
+            0.856 & 0.635 & 0.173 & 0.096 \\
+            0.635 & 0.568 & 0.128 & 0.067 \\
+            0.173 & 0.127 & 0.171 & 0.039 \\
+            0.096 & 0.067 & 0.039 & 0.043
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            1 \\
+            -1 \\
+            0 \\
+            0
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cccc}
+            0.2210 & 0.0670 & 0.0450 & 0.0290
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            1 \\
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+        =
+        0.1540
+    \]
+    The sample covariance between excess petroleum consumption over gas consumption with the total energy consumption is
+    \[
+        \text{Cov}(\textbf{c}^{\prime}\textbf{x}, \textbf{b}^{\prime}\textbf{x})
+        =
+        \textbf{c}^{\prime}\text{Cov}(\textbf{x})\textbf{b}
+        =
+        \textbf{c}^{\prime}\textbf{S}\textbf{b}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{crcc}
+            1 & -1 & 0 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{cccc}
+            0.856 & 0.635 & 0.173 & 0.096 \\
+            0.635 & 0.568 & 0.128 & 0.067 \\
+            0.173 & 0.127 & 0.171 & 0.039 \\
+            0.096 & 0.067 & 0.039 & 0.043
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            1 \\
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cccc}
+            0.2210 & 0.0670 & 0.0450 & 0.0290
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            1 \\
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+        =
+        0.3620
+    \]
+\end{enumerate}

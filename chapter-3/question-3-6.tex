@@ -1,0 +1,131 @@
+Consider the data matrix
+\[
+    \textbf{X}
+    =
+    \begin{bNiceArray}{rrr}
+        -1 & 3 & -2 \\
+        2 & 4 & 2 \\
+        5 & 2 & 3
+    \end{bNiceArray}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate the matrix of deviations (residuals), $\textbf{X} - \textbf{1}{\bar{\textbf{x}}}^{\prime}$.
+    Is this matrix of full rank? Explain.
+    \[
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            \bar{x}_1 \\
+            \bar{x}_2 \\
+            \bar{x}_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            2 \\
+            3 \\
+            1
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{X} - \textbf{1}{\bar{\textbf{x}}}^{\prime}
+        =
+        \begin{bNiceArray}{rrr}
+            -1 & 3 & -2 \\
+            2 & 4 & 2 \\
+            5 & 2 & 3
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+         1 \\
+         1 \\
+         1   
+        \end{bNiceArray}
+        \begin{bNiceArray}{ccc}
+            2 &
+            3 &
+            1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{rrr}
+            -1 & 3 & -2 \\
+            2 & 4 & 2 \\
+            5 & 2 & 3
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{rrr}
+            2 & 3 & 1 \\
+            2 & 3 & 1 \\
+            2 & 3 & 1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rrr}
+            -3 & 0 & -3 \\
+            0 & 1 & 1 \\
+            3 & -1 & 2
+        \end{bNiceArray}
+    \]
+    No, the residual matrix is not full rank. The third column is column one plus column two, so there's a linear dependency. To be full rank the three columns in the square matrix must be linearly independent.
+    \item Determine $\textbf{S}$ and calculate the generalized sample variance $\left|\textbf{S}\right|$.
+    Interpret the latter geometrically.
+    \[
+        \textbf{S}
+        =
+        \left(\frac{1}{n-1}\right){\textbf{D}}^{-1}\textbf{D}
+        =
+        \left(\frac{1}{2}\right)
+        \begin{bNiceArray}{rrr}
+            -3 & 0 & 3 \\
+            0 & 1 & -1 \\
+            -3 & 1 & 2
+        \end{bNiceArray}
+        \begin{bNiceArray}{rrr}
+            -3 & 0 & -3 \\
+            0 & 1 & 1 \\
+            3 & -1 & 2
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \left(\frac{1}{2}\right)
+        \begin{bNiceArray}{rrr}
+            18 & -3 & 15 \\
+            -3 & 2 & -1 \\
+            15 & -1 & 14
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rrr}
+            9 & -(3/2) & (15/2) \\
+            -(3/2) & 1 & -(1/2) \\
+            (15/2) & -(1/2) & 7
+        \end{bNiceArray}
+    \]
+    \[
+        \left|\textbf{S}\right|
+        =
+        \left|
+        \begin{NiceArray}{rrr}
+            9 & -(3/2) & (15/2) \\
+            -(3/2) & 1 & -(1/2) \\
+            (15/2) & -(1/2) & 7
+        \end{NiceArray}
+        \right|
+        =
+        0
+    \]
+    The matrix isn't full rank, so the determinant is 0. From result 3.2 on page 130, when at least one of the deviation vectors lies in the hyperplane  formed by the linear combinations from the others, the generalized variance is zero.
+    \item Using the results in (b), calculate the total sample variance. [See (3-23).]
+    \par
+    The total samle variance is the trace of $\textbf{S}$
+    \[
+        tr\left\{\textbf{S}\right\}
+        =
+        9 + 1 + 7
+        =
+        17
+    \]
+
+\end{enumerate}

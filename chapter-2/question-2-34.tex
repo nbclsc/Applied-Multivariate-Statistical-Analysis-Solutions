@@ -1,0 +1,72 @@
+        % ------------------------------------------ %
+        %                      (2.34)                %
+        % ------------------------------------------ %
+        Consider the vectors $\mathbf{b}^\prime = \begin{bmatrix}
+            2, & -1, & 4, & 0
+        \end{bmatrix}$ and $\mathbf{d}^\prime = \begin{bmatrix}
+            -1, & 3, & -2, & 1
+        \end{bmatrix}$. Verify the Cauchy-schwarz inequality ${\left(\mathbf{b}^\prime\mathbf{d}\right)}^2 \leq \left(\mathbf{b}^\prime\mathbf{b}\right)\left(\mathbf{d}^\prime\mathbf{d}\right)$.
+        \[
+            {\left(\textbf{b}^\prime\textbf{d}\right)}^2
+            =
+            {\left(
+            \begin{bNiceMatrix}[r]
+                2 & -1 & 4 & 0
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}[r]
+                -1 \\
+                3 \\
+                -2 \\
+                1
+            \end{bNiceMatrix}
+            \right)}^2
+            =
+            {\left(-13\right)}^2
+            = 169
+        \]
+        \[
+            {\left(\textbf{b}^\prime\textbf{b}\right)}
+            = 
+            {\left\|\textbf{b}\right\|}^2
+            =
+            \begin{bNiceMatrix}[r]
+                2 & -1 & 4 & 0
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}[r]
+                2 \\
+                -1 \\
+                4 \\
+                0
+            \end{bNiceMatrix}
+            =
+            21
+        \]
+        \[
+            {\left(\textbf{d}^\prime\textbf{d}\right)}
+            = 
+            {\left\|\textbf{d}\right\|}^2
+            =
+            \begin{bNiceMatrix}[r]
+                -1 & 3 & -2 & 1
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}[r]
+                -1 \\
+                3 \\
+                -2 \\
+                1
+            \end{bNiceMatrix}
+            =
+            15
+        \]
+        \[
+            {\left\|\textbf{b}\right\|}^2{\left\|\textbf{d}\right\|}^2
+            =
+            (21)(15) = 315
+        \]
+        \[
+            169 = {\left(\textbf{b}^\prime\textbf{d}\right)}^2
+            <
+            {\left\|\textbf{b}\right\|}^2 {\left\|\textbf{d}\right\|}^2
+            =
+            315
+        \]

@@ -1,0 +1,317 @@
+Given a data matrix $\textbf{X}$ and the resulting sample correlation matrix $\textbf{R}$,
+consider the standardized observations $(x_{ik} - \bar{x}_{k})/\sqrt{s_{kk}}$, $k=1,2,\dots,p$,
+$j=1,2,\dots,n$. Show that these standardized quantities have sample covariance
+matrix $\textbf{R}$.
+\newline
+\par
+Here are two solutions. One, using matrices and a second using the summations and algebra.
+\newline
+\underline{Solution 1:}
+\[
+    {[(x_{ik} - \bar{x}_{k})/\sqrt{s_{kk}}]}_{ik}
+    =
+    \left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)\textbf{D}^{-1/2}
+    =
+    \textbf{X}_{\star}
+\]
+Use the formula for $\textbf{S}$ from (3-27),
+\[
+    \textbf{S}
+    =
+    \frac{1}{n-1}
+    \textbf{X}_{\star}^{\prime}
+    {\left(
+        \textbf{I}
+        -
+        \frac{1}{n}
+        \textbf{1}_{n}
+        \textbf{1}_{n}^{\prime}
+    \right)}
+    \textbf{X}_{\star}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(
+        \left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)\textbf{D}^{-1/2}
+    \right)}^{\prime}
+    {\left(
+        \textbf{I}
+        -
+        \frac{1}{n}
+        \textbf{1}_{n}
+        \textbf{1}_{n}^{\prime}
+    \right)}
+    {\left(
+        \left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)\textbf{D}^{-1/2}
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(\textbf{D}^{-1/2}\right)}^{\prime}
+    {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+    {\left(
+        \textbf{I}
+        -
+        \frac{1}{n}
+        \textbf{1}_{n}
+        \textbf{1}_{n}^{\prime}
+    \right)}
+    {\left(
+        \left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)\textbf{D}^{-1/2}
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    \textbf{D}^{-1/2}
+    {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+    {\left(
+        \textbf{I}
+        -
+        \frac{1}{n}
+        \textbf{1}_{n}
+        \textbf{1}_{n}^{\prime}
+    \right)}
+    \left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)\textbf{D}^{-1/2}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(
+        \textbf{D}^{-1/2}
+        {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+        \left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)\textbf{D}^{-1/2}
+        -
+        \frac{1}{n}
+        \textbf{D}^{-1/2}
+        {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+        \textbf{1}_{n}
+        \textbf{1}_{n}^{\prime}
+        \left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)\textbf{D}^{-1/2}
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(
+        \textbf{D}^{-1/2}
+        ((n-1)\textbf{S})
+        \textbf{D}^{-1/2}
+        -
+        \frac{1}{n}
+        \textbf{D}^{-1/2}
+        {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+        \left(
+            \textbf{1}_{n}
+            \textbf{1}_{n}^{\prime}
+            \textbf{X}
+            - 
+            \textbf{1}_{n}
+            \textbf{1}_{n}^{\prime}
+            \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}
+        \right)
+        \textbf{D}^{-1/2}
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(
+        (n-1)
+        \textbf{D}^{-1/2}
+        \textbf{S}
+        \textbf{D}^{-1/2}
+        -
+        \frac{1}{n}
+        \textbf{D}^{-1/2}
+        {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+        \left(
+            \textbf{1}_{n}
+            \left(
+                \textbf{1}_{n}^{\prime}
+                \textbf{X}
+            \right)
+            - 
+            \textbf{1}_{n}
+            \left(
+                \textbf{1}_{n}^{\prime}
+                \textbf{1}_{n}
+            \right)
+            {\bar{\textbf{x}}}^{\prime}
+        \right)
+        \textbf{D}^{-1/2}
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(
+        (n-1)
+        \textbf{R}
+        -
+        \frac{1}{n}
+        \textbf{D}^{-1/2}
+        {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+        \left(
+            \textbf{1}_{n}
+            \left(
+                n
+                {\bar{\textbf{x}}}^{\prime}
+            \right)
+            - 
+            \textbf{1}_{n}
+            \left(
+                n
+            \right)
+            {\bar{\textbf{x}}}^{\prime}
+        \right)
+        \textbf{D}^{-1/2}
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(
+        (n-1)
+        \textbf{R}
+        -
+        \frac{1}{n}
+        \textbf{D}^{-1/2}
+        {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+        \left(
+            n
+            \textbf{1}_{n}
+            {\bar{\textbf{x}}}^{\prime}
+            - 
+            n
+            \textbf{1}_{n}
+            {\bar{\textbf{x}}}^{\prime}
+        \right)
+        \textbf{D}^{-1/2}
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(
+        (n-1)
+        \textbf{R}
+        -
+        \frac{1}{n}
+        \textbf{D}^{-1/2}
+        {\left(\textbf{X} - \textbf{1}_{n}{\bar{\textbf{x}}}^{\prime}\right)}^{\prime}
+        0
+        \textbf{D}^{-1/2}
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{1}{n-1}
+    {\left(
+        (n-1)
+        \textbf{R}
+        -
+        0
+    \right)}
+    =
+\]
+\[
+    =
+    \frac{n-1}{n-1}
+    \textbf{R}
+    =
+\]
+\[
+    =
+    \textbf{R}
+\]
+\underline{Solution 2:}
+\newline
+For an observation $j$ variable $k$, define the standardized values as
+\[
+    y_{jk} = \frac{x_{jk} - \bar{x}_{k}}{\sqrt{s_{kk}}}
+\]
+A mean value for variable $k$ from the $p$ by 1 mean vector would be
+\[
+    \bar{y}_{k}
+    =
+    \sum_{j=1}^{n}{\frac{y_{jk}}{n}}
+    =
+    \sum_{j=1}^{n}{\frac{(x_{jk} - \bar{x}_{k})}{n\sqrt{s_{kk}}}}
+\]
+An element $ik$ from the $p$ by $p$ covariance matrix would be
+\[
+    s_{ik}
+    =
+    \left(\frac{1}{n-1}\right)
+    \sum_{j=1}^{n}\left(y_{ji} - \bar{y}_{i} \right)\left(y_{jk} - \bar{y}_{k} \right)
+    =
+\]
+\[
+    =
+    \left(\frac{1}{n-1}\right)
+    \sum_{j=1}^{n}\left(\left(\frac{x_{ji} - \bar{x}_{i}}{\sqrt{s_{ii}}}\right) - \left(\sum_{\ell=1}^{n}{\frac{(x_{\ell i} - \bar{x}_{i})}{n\sqrt{s_{ii}}}}\right) \right)\left(\left(\frac{x_{jk} - \bar{x}_{k}}{\sqrt{s_{kk}}}\right) - \left(\sum_{\ell=1}^{n}{\frac{(x_{\ell k} - \bar{x}_{k})}{n\sqrt{s_{kk}}}}\right) \right)
+    =
+\]
+\[
+    =
+    \left(\frac{1}{n-1}\right)
+    \left(\frac{1}{\sqrt{s_{ii}}\sqrt{s_{kk}}}\right)
+    \sum_{j=1}^{n}
+    \left(x_{ji} - \bar{x}_{i} - \left(\sum_{\ell=1}^{n}{\frac{x_{\ell i} - \bar{x}_{i}}{n}}\right) \right)
+    \left(x_{jk} - \bar{x}_{k} - \left(\sum_{\ell=1}^{n}{\frac{x_{\ell k} - \bar{x}_{k}}{n}}\right) \right)
+    =
+\]
+\[
+    =
+    \left(\frac{1}{n-1}\right)
+    \left(\frac{1}{\sqrt{s_{ii}}\sqrt{s_{kk}}}\right)
+    \sum_{j=1}^{n}
+    \left(x_{ji} - \bar{x}_{i} - \left(\sum_{\ell=1}^{n}{\frac{x_{\ell i}}{n}}\right) + n\frac{\bar{x}_{i}}{n} \right)
+    \left(x_{jk} - \bar{x}_{k} - \left(\sum_{\ell=1}^{n}{\frac{x_{\ell k}}{n}}\right) - n\frac{\bar{x}_{k}}{n} \right)
+    =
+\]
+\[
+    =
+    \left(\frac{1}{n-1}\right)
+    \left(\frac{1}{\sqrt{s_{ii}}\sqrt{s_{kk}}}\right)
+    \sum_{j=1}^{n}
+    \left(x_{ji} - \bar{x}_{i} - \bar{x}_{i} + \bar{x}_{i} \right)
+    \left(x_{jk} - \bar{x}_{k} - \bar{x}_{k} + \bar{x}_{k} \right)
+    =
+\]
+\[
+    =
+    \left(\frac{1}{n-1}\right)
+    \left(\frac{1}{\sqrt{s_{ii}}\sqrt{s_{kk}}}\right)
+    \sum_{j=1}^{n}
+    \left(x_{ji} - \bar{x}_{i} \right)
+    \left(x_{jk} - \bar{x}_{k} \right)
+    =
+\]
+\[
+    =
+    \left(\frac{1}{n-1}\right)
+    \left(\frac{1}{\sqrt{s_{ii}}\sqrt{s_{kk}}}\right)
+    (n-1)s_{ik}
+    =
+\]
+\[
+    =
+    \frac{s_{ik}}{\sqrt{s_{ii}}\sqrt{s_{kk}}}
+    =
+    r_{ik}
+\]
+This is element $ik$ from the $p$ by $p$ sample correlation matrix.

@@ -1,0 +1,282 @@
+        % ------------------------------------------ %
+        %                      (2.31)                %
+        % ------------------------------------------ %
+        Repeat \textbf{Exercise 2.30}, but with $\mathbf{A}$ and $\mathbf{B}$ replaced by
+        \[
+            \mathbf{A}
+            =
+            \begin{bmatrix}
+                1 & -1
+            \end{bmatrix}
+            \hspace{0.2in}\text{and}\hspace{0.2in}
+            \mathbf{B}
+            =
+            \begin{bmatrix}
+                2 & -1 \\
+                0 & 1
+            \end{bmatrix}
+        \]
+        \begin{enumerate}[label=(\alph*)]
+            \item $E\left(\mathbf{X^{(1)}}\right)$
+            \[
+                E\left[\mathbf{X}^{(1)}\right]
+                = 
+                E\left[
+                    \begin{bmatrix}
+                        X_1 \\
+                        X_2
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bmatrix}
+                    E[X_1] \\
+                    E[X_2]
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    \mu_1 \\
+                    \mu_2
+                \end{bmatrix}
+                =\begin{bmatrix}
+                    4 \\
+                    3
+                \end{bmatrix}
+            \]
+            \item $E\left(\mathbf{A}\mathbf{X^{(1)}}\right)$
+            \[
+                E\left[\mathbf{A}\mathbf{X}^{(1)}\right]
+                =
+                E\left[
+                    \begin{bmatrix}
+                        1 & -1
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        X_1 \\
+                        X_2
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bmatrix}
+                    1 & -1
+                \end{bmatrix}
+                E\left[
+                    \begin{bmatrix}
+                        X_1 \\
+                        X_2
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bmatrix}
+                    1 & -1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    4 \\
+                    3
+                \end{bmatrix}
+                =
+                4 - 3 = 1
+            \]
+            \item $\text{Cov}\left(\mathbf{X^{(1)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{X^{(1)}}\right)
+                =
+                \mathbf{\Sigma}_{11}
+                =
+                \begin{bmatrix}
+                    3 & 0 \\
+                    0 & 1
+                \end{bmatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{A}\mathbf{X^{(1)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{A}\mathbf{X^{(1)}}\right)
+                =
+                \mathbf{A}\text{Cov}\left(\mathbf{X^{(1)}}\right)\mathbf{A}^\prime
+                =
+                \mathbf{A}\mathbf{\Sigma}_{11}\mathbf{A}^\prime
+                =
+                \begin{bmatrix}
+                    1 & -1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    3 & 0 \\
+                    0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 \\
+                    -1
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    3 & -1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 \\
+                    -1
+                \end{bmatrix}
+                = 4
+            \]
+            \item $E\left(\mathbf{X^{(2)}}\right)$
+            \[
+                E\left[\mathbf{X}^{(2)}\right]
+                = 
+                E\left[
+                    \begin{bmatrix}
+                        X_3 \\
+                        X_4
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bmatrix}
+                    E[X_3] \\
+                    E[X_4]
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    \mu_3 \\
+                    \mu_4
+                \end{bmatrix}
+                =\begin{bmatrix}
+                    2 \\
+                    1
+                \end{bmatrix}
+            \]
+            \item $E\left(\mathbf{B}\mathbf{X^{(2)}}\right)$
+            \[
+                E\left[\mathbf{B}\mathbf{X}^{(2)}\right]
+                =
+                E\left[
+                    \begin{bmatrix}
+                        2 & -1 \\
+                        0 & 1
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        X_3 \\
+                        X_4
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bmatrix}
+                    2 & -1 \\
+                    0 & 1
+                \end{bmatrix}
+                E\left[
+                    \begin{bmatrix}
+                        X_3 \\
+                        X_4
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bmatrix}
+                    2 & -1 \\
+                    0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 \\
+                    1
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    3 \\
+                    1
+                \end{bmatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{X^{(2)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{X^{(2)}}\right)
+                =
+                \mathbf{\Sigma}_{22}
+                =
+                \begin{bmatrix}
+                    9 & -2 \\
+                    -2 & 4
+                \end{bmatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{B}\mathbf{X^{(2)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{B}\mathbf{X^{(2)}}\right)
+                =
+                \mathbf{B}\text{Cov}\left(\mathbf{X^{(2)}}\right)\mathbf{B}^\prime
+                =
+                \mathbf{B}\mathbf{\Sigma}_{22}\mathbf{B}^\prime
+                =
+                \begin{bmatrix}
+                    2 & -1 \\
+                    0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    9 & -2 \\
+                    -2 & 4
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 & 0 \\
+                    -1 & 1
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    20 & -8 \\
+                    -2 & 4
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 & 0 \\
+                    -1 & 1
+                \end{bmatrix}
+                = 
+                \begin{bmatrix}
+                    48 & -8 \\
+                    -8 & 4
+                \end{bmatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{X^{(1)}}, \mathbf{X^{(2)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{X^{(1)}}, \mathbf{X^{(2)}}\right)
+                =
+                \mathbf{\Sigma}_{12}
+                =
+                \begin{bmatrix}
+                    2 & 2 \\
+                    1 & 0
+                \end{bmatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{A}\mathbf{X^{(1)}}, \mathbf{B}\mathbf{X^{(2)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{A}\mathbf{X^{(1)}}, \mathbf{B}\mathbf{X^{(2)}}\right)
+                =
+                \mathbf{A}\text{Cov}\left(\mathbf{X^{(1)}}, \mathbf{X^{(2)}}\right)\mathbf{B}^\prime
+                =
+                \mathbf{A}\mathbf{\Sigma}_{12}\mathbf{B}^\prime
+                =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    1 & -1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 & 2 \\
+                    1 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 & 0 \\
+                    -1 & 1
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1 & 2
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 & 0 \\
+                    -1 & 1
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 & 2
+                \end{bmatrix}
+            \]
+        \end{enumerate}

@@ -1,0 +1,115 @@
+       % ------------------------------------------ %
+        %                      (2.35)                %
+        % ------------------------------------------ %
+        Using the vector $\mathbf{b}^\prime = \begin{bmatrix}
+            -4, & 3
+        \end{bmatrix}$ and $\mathbf{d}^\prime = \begin{bmatrix}
+            1, & 1
+        \end{bmatrix}$, verify the extended Cauchy-schwarz inequality ${\left(\mathbf{b}^\prime\mathbf{d}\right)}^{2} \leq {\left(\mathbf{b}^\prime\mathbf{B}\mathbf{b}\right)}{\left(\mathbf{d}^\prime\mathbf{B}^{-1}\mathbf{d}\right)}$ if
+        \[
+            \mathbf{B}=
+            \begin{bNiceMatrix}[r]
+                2 & -2 \\
+                -2 & 5
+            \end{bNiceMatrix}
+        \]
+        \par
+        \[
+            {\left(\textbf{b}^\prime\textbf{d}\right)}^2
+            =
+            {\left(
+            \begin{bNiceMatrix}[r]
+                -4 & 3
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}[r]
+                1 \\
+                1
+            \end{bNiceMatrix}
+            \right)}^2
+            =
+            {\left(-1\right)}^2
+            = 1
+        \]
+        \[
+            {\left(\textbf{b}^\prime\textbf{B}\textbf{b}\right)}
+            =
+            \begin{bNiceMatrix}[r]
+                -4 & 3
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}[r]
+                2 & -2 \\
+                -2 & 5
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}[r]
+                -4 \\
+                3
+            \end{bNiceMatrix}
+            =
+            \begin{bNiceMatrix}[r]
+                -14 & 23
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}[r]
+                -4 \\
+                3
+            \end{bNiceMatrix}
+            =
+            125
+        \]
+        \[
+            \textbf{B}^{-1}
+            =
+            \frac{1}{6}
+            \begin{bNiceMatrix}
+                5 & 2 \\
+                2 & 5
+            \end{bNiceMatrix}
+        \]
+        \[
+            {\left(\textbf{d}^\prime\textbf{B}^{-1}\textbf{d}\right)}
+            =
+            \begin{bNiceMatrix}[r]
+                1 & 1
+            \end{bNiceMatrix}
+            \left(
+            \frac{1}{6}
+            \begin{bNiceMatrix}
+                5 & 2 \\
+                2 & 5
+            \end{bNiceMatrix}
+            \right)
+            \begin{bNiceMatrix}[r]
+                1 \\
+                1
+            \end{bNiceMatrix}
+            =
+            \left(
+            \frac{1}{6}
+            \right)
+            \begin{bNiceMatrix}
+                7 & 4 \\
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}[r]
+                1 \\
+                1
+            \end{bNiceMatrix}
+            =
+            \frac{11}{6}
+        \]
+        \[
+            {\left(\textbf{b}^\prime\textbf{B}\textbf{b}\right)}
+            {\left(\textbf{d}^\prime\textbf{B}^{-1}\textbf{d}\right)}
+            =
+            125 \times \frac{11}{6}
+            =
+            \frac{1375}{6} = 229.16\bar{6}
+        \]
+        \[
+            1
+            =
+            {\left(\textbf{b}^\prime\textbf{d}\right)}^2
+            <
+            {\left(\textbf{b}^\prime\textbf{B}\textbf{b}\right)}
+            {\left(\textbf{d}^\prime\textbf{B}^{-1}\textbf{d}\right)}
+            =
+            229.16\bar{6}
+        \]

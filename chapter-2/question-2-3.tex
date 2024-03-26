@@ -1,0 +1,215 @@
+        % ------------------------------------------ %
+        %                      (2.3)                 %
+        % ------------------------------------------ %
+        Verify the following properties of transpose when
+        \[
+            \bold{A} = \begin{bmatrix}
+                2 & 1 \\
+                1 & 3
+            \end{bmatrix}\text{,}\hspace{0.2in}
+            \bold{B} = \begin{bmatrix}
+                1 & 4 & 2 \\
+                5 & 0 & 3
+            \end{bmatrix}\text{,}\hspace{0.2in}\text{and}\hspace{0.2in}
+            \bold{C} = \begin{bmatrix}
+                1 & 4 \\
+                3 & 2
+            \end{bmatrix},
+        \]
+        \begin{enumerate}[label=(\alph*)]
+            \item ${\left(\bold{A}^\prime\right)}^\prime = \bold{A}$
+            
+
+            \[
+                {\left(\bold{A}^\prime\right)}^\prime = 
+                {\left(
+                    \begin{bmatrix}
+                        2 & 1 \\
+                        1 & 3
+                    \end{bmatrix}^\prime
+                    \right)}^\prime =
+                {\left(
+                    \begin{bmatrix}
+                        2 & 1 \\
+                        1 & 3
+                    \end{bmatrix}
+                    \right)}^\prime = 
+                    \begin{bmatrix}
+                        2 & 1 \\
+                        1 & 3
+                    \end{bmatrix} =
+                    \bold{A}
+            \]
+
+            Matrix $\bold{A}$ is symmetric since $\bold{A} = \bold{A}^\prime$.
+
+
+            \item ${\left(\bold{C}^\prime\right)}^{-1} = {\left(\bold{C}^{-1}\right)}^\prime$
+            
+
+            \[
+                {\left(\bold{C}^\prime\right)}^{-1} = 
+                {\left(
+                    {\begin{bmatrix}
+                        1 & 4 \\
+                        3 & 2
+                    \end{bmatrix}}^\prime\right)
+                }^{-1} =
+                {\begin{bmatrix}
+                        1 & 3 \\
+                        4 & 2
+                \end{bmatrix}}^{-1} =
+                \frac{1}{2-12}
+                \begin{bmatrix}
+                    2 & -3 \\
+                    -4 & 1
+                \end{bmatrix} =
+                \begin{bmatrix}
+                    -2/10 & 3/10 \\
+                    4/10 & -1/10
+                \end{bmatrix}
+            \]
+
+            \[
+                {\left(\bold{C}^{-1}\right)}^\prime =
+                {\left(
+                    {\begin{bmatrix}
+                        1 & 4 \\
+                        3 & 2
+                    \end{bmatrix}}^{-1}\right)
+                }^\prime =
+                {\frac{1}{2-12}
+                {\begin{bmatrix}
+                    2 & -4 \\
+                    -3 & 1
+                \end{bmatrix}}
+                }^\prime =
+                \begin{bmatrix}
+                    -2/10 & 3/10 \\
+                    4/10 & -1/10
+                \end{bmatrix}
+            \]
+            So ${\left(\bold{C}^\prime\right)}^{-1} = {\left(\bold{C}^{-1}\right)}^\prime$.
+
+            \item ${\left(\bold{AB}\right)}^\prime = \bold{B}^\prime \bold{A}^\prime$
+            
+            \[
+                {\left(\bold{AB}\right)}^\prime = 
+                {\left(
+                    \begin{bmatrix}
+                        2 & 1 \\
+                        1 & 3
+                    \end{bmatrix}
+                    \begin{bmatrix}
+                        1 & 4 & 2 \\
+                        5 & 0 & 3
+                    \end{bmatrix}
+                \right)}^\prime =
+                {\begin{bmatrix}
+                    7 & 8 & 7 \\
+                    16 & 4 & 11
+                \end{bmatrix}}^\prime =
+                \begin{bmatrix}
+                    7 & 16 \\
+                    8 & 4 \\
+                    7 & 11
+                \end{bmatrix}
+            \]
+
+            \[
+                \bold{B}^\prime \bold{A}^\prime =
+                {\begin{bmatrix}
+                    1 & 4 & 2 \\
+                    5 & 0 & 3
+                \end{bmatrix}}^\prime
+                {\begin{bmatrix}
+                    2 & 1 \\
+                    1 & 3
+                \end{bmatrix}}^\prime =
+                \begin{bmatrix}
+                    1 & 5 \\
+                    4 & 0 \\
+                    2 & 3
+                \end{bmatrix}
+                \begin{bmatrix}
+                    2 & 1 \\
+                    1 & 3
+                \end{bmatrix} =
+                \begin{bmatrix}
+                    7 & 16 \\
+                    8 & 4 \\
+                    7 & 11
+                \end{bmatrix}
+            \]
+
+            So ${\left(\bold{AB}\right)}^\prime = \bold{B}^\prime \bold{A}^\prime$.
+
+            \item For general $\underset{\left(m\times k\right)}{\bold{A}}$ and $\underset{\left(k\times l\right)}{\bold{B}}$, ${\left(\bold{AB}\right)}^\prime = \bold{B}^\prime\bold{A}^\prime$.
+            
+            \[
+                {\left(\bold{AB}\right)}^\prime =
+                {\left(
+                \begin{bmatrix}
+                    a_{11} & \dots & a_{1k} \\
+                    \vdots & \ddots & \vdots \\
+                    a_{m1} & \dots & a_{mk}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    b_{11} & \dots & b_{1\ell} \\
+                    \vdots & \ddots & \vdots \\
+                    b_{k1} & \dots & b_{k\ell}
+                \end{bmatrix}
+                \right)}^\prime = 
+                {\left(
+                \begin{bmatrix}
+                    \sum_{i=1}^k{a_{1i}b_{i1}} & \dots & \sum_{i=1}^k{a_{1i}b_{i\ell}} \\
+                    \vdots & \ddots & \vdots \\
+                    \sum_{i=1}^k{a_{mi}b_{i1}} & \dots & \sum_{i=1}^k{a_{mi}b_{i\ell}}
+                \end{bmatrix}
+                \right)}^\prime = 
+            \]
+            \[
+                = \begin{bmatrix}
+                    \sum_{i=1}^k{a_{1i}b_{i1}} & \dots & \sum_{i=1}^k{a_{mi}b_{i1}} \\
+                    \vdots & \ddots & \vdots \\
+                    \sum_{i=1}^k{a_{1i}b_{i\ell}} & \dots & \sum_{i=1}^k{a_{mi}b_{i\ell}}
+                \end{bmatrix}
+            \]
+
+            \[
+                \bold{B}^\prime \bold{A}^\prime = 
+                \begin{bmatrix}
+                    b_{11} & \dots & b_{1\ell} \\
+                    \vdots & \ddots & \vdots \\
+                    b_{k1} & \dots & b_{k\ell}
+                \end{bmatrix}^\prime
+                \begin{bmatrix}
+                    a_{11} & \dots & a_{1k} \\
+                    \vdots & \ddots & \vdots \\
+                    a_{m1} & \dots & a_{mk}
+                \end{bmatrix}^\prime =
+                \begin{bmatrix}
+                    b_{11} & \dots & b_{k1} \\
+                    \vdots & \ddots & \vdots \\
+                    b_{1\ell} & \dots & b_{k\ell}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    a_{11} & \dots & a_{m1} \\
+                    \vdots & \ddots & \vdots \\
+                    a_{1k} & \dots & a_{mk}
+                \end{bmatrix} =
+            \]
+
+            \[
+                = \begin{bmatrix}
+                    \sum_{i=1}^k{b_{i1}a_{1i}} & \dots & \sum_{i=1}^k{b_{i1}a_{mi}} \\
+                    \vdots & \ddots & \vdots \\
+                    \sum_{i=1}^k{b_{i\ell}a_{1i}} & \dots & \sum_{i=1}^k{b_{i\ell}a_{mi}}
+                \end{bmatrix} = \begin{bmatrix}
+                    \sum_{i=1}^k{a_{1i}b_{i1}} & \dots & \sum_{i=1}^k{a_{mi}b_{i1}} \\
+                    \vdots & \ddots & \vdots \\
+                    \sum_{i=1}^k{a_{1i}b_{i\ell}} & \dots & \sum_{i=1}^k{a_{mi}b_{i\ell}}
+                \end{bmatrix}
+            \]
+        \end{enumerate}
+        So ${\left(\bold{AB}\right)}^\prime = \bold{B}^\prime\bold{A}^\prime$.

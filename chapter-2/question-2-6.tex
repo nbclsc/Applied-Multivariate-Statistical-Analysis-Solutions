@@ -1,0 +1,26 @@
+        % ------------------------------------------ %
+        %                      (2.6)                 %
+        % ------------------------------------------ %
+        Let
+        \[
+            \bold{A} = \begin{bmatrix}
+                9 & -2 \\
+                -2 & 6
+            \end{bmatrix}
+        \]
+        \begin{enumerate}[label=(\alph*)]
+            \item Is $\bold{A}$ symmetric?
+            \par
+            Yes, $\bold{A}^{\prime} = \bold{A}$, so $\bold{A}$ is symmetric.
+            \item Show that $\bold{A}$ is positive definite.
+            
+            \[
+                0 = \left|\bold{A} - \lambda \bold{I}\right| =
+                \left|\begin{matrix}
+                    9-\lambda & -2 \\
+                    -2 & 6-\lambda
+                \end{matrix}
+                \right| = \left(9 - \lambda\right)\left(6 - \lambda\right) - 4 = \lambda^2 - 15\lambda + 54 - 4 = \left(\lambda - 5\right)\left(\lambda - 10\right)
+            \]
+        The two eigenvalues of 5 and 10 are both positive, so from what's in \textbf{2.3} on page 63, $\bold{A}$ is positive definite.
+        \end{enumerate}

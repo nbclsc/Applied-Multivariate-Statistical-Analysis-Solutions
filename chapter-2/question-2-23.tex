@@ -1,0 +1,117 @@
+        % ------------------------------------------ %
+        %                      (2.23)                %
+        % ------------------------------------------ %
+        Verify the relationships $\bold{V}^{1/2}\bm{\rho}\bold{V}^{1/2} = \bold{\Sigma}$ and $\bm{\rho} = {\left(\bold{V}^{1/2}\right)}^{-1}\bold{\Sigma}{\left(\bold{V}^{1/2}\right)}^{-1}$, where $\bold{\Sigma}$ is the
+        $p \times p$ population covariance matrix [\textbf{Equation (2-32)}], $\bm{\rho}$ is the $p \times p$ population correlation
+        matrix [\textbf{Equation (2-34)}], and $\bold{V}^{1/2}$ is the population standard deviation matrix
+        [\textbf{Equation (2-35)}].
+        \[
+            \mathbf{V}^{1/2}\bm{\rho}\mathbf{V}^{1/2}
+            =
+            \begin{bmatrix}
+                \sqrt{\sigma_{11}} & & 0 \\
+                & \ddots & \\
+                0 & & \sqrt{\sigma_{pp}}
+            \end{bmatrix}
+            \begin{bmatrix}
+                \frac{\sigma_{11}}{\sqrt{\sigma_{11}}\sqrt{\sigma_{11}}} & \cdots & \frac{\sigma_{1p}}{\sqrt{\sigma_{11}}\sqrt{\sigma_{pp}}} \\
+                \vdots & \ddots & \vdots \\
+                \frac{\sigma_{p1}}{\sqrt{\sigma_{pp}}\sqrt{\sigma_{11}}} & \cdots & \frac{\sigma_{pp}}{\sqrt{\sigma_{pp}}\sqrt{\sigma_{pp}}}
+            \end{bmatrix}
+            \begin{bmatrix}
+                \sqrt{\sigma_{11}} & & 0 \\
+                & \ddots & \\
+                0 & & \sqrt{\sigma_{pp}}
+            \end{bmatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bmatrix}
+                \frac{\sigma_{11}}{\sqrt{\sigma_{11}}} & \cdots & \frac{\sigma_{1p}}{\sqrt{\sigma_{pp}}} \\
+                \vdots & \ddots & \vdots \\
+                \frac{\sigma_{p1}}{\sqrt{\sigma_{11}}} & \cdots & \frac{\sigma_{pp}}{\sqrt{\sigma_{pp}}}
+            \end{bmatrix}
+            \begin{bmatrix}
+                \sqrt{\sigma_{11}} & & 0 \\
+                & \ddots & \\
+                0 & & \sqrt{\sigma_{pp}}
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                \sigma_{11} & \cdots & \sigma_{1p} \\
+                \vdots & \ddots & \vdots \\
+                \sigma_{p1} & \cdots & \sigma_{pp}
+            \end{bmatrix}
+            =
+            \mathbf{\Sigma}
+        \]
+        \[
+            {\left(\bold{V}^{1/2}\right)}^{-1}\bold{\Sigma}{\left(\bold{V}^{1/2}\right)}^{-1}
+            =
+        \]
+        \[
+            =
+            {\left(
+                \begin{bmatrix}
+                    \sqrt{\sigma_{11}} & & 0 \\
+                    & \ddots & \\
+                    0 & & \sqrt{\sigma_{pp}}
+                \end{bmatrix}
+            \right)}^{-1}
+            \begin{bmatrix}
+                \sigma_{11} & \cdots & \sigma_{1p} \\
+                \vdots & \ddots & \vdots \\
+                \sigma_{p1} & \cdots & \sigma_{pp}
+            \end{bmatrix}
+            {\left(
+                \begin{bmatrix}
+                    \sqrt{\sigma_{11}} & & 0 \\
+                    & \ddots & \\
+                    0 & & \sqrt{\sigma_{pp}}
+                \end{bmatrix}
+            \right)}^{-1}
+            =
+        \]
+        \[
+            =
+            \begin{bmatrix}
+                1/\sqrt{\sigma_{11}} & & 0 \\
+                & \ddots & \\
+                0 & & 1/\sqrt{\sigma_{pp}}
+            \end{bmatrix}
+            \begin{bmatrix}
+                \sigma_{11} & \cdots & \sigma_{1p} \\
+                \vdots & \ddots & \vdots \\
+                \sigma_{p1} & \cdots & \sigma_{pp}
+            \end{bmatrix}
+            \begin{bmatrix}
+                1/\sqrt{\sigma_{11}} & & 0 \\
+                & \ddots & \\
+                0 & & 1/\sqrt{\sigma_{pp}}
+            \end{bmatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bmatrix}
+                1/\sqrt{\sigma_{11}} & & 0 \\
+                & \ddots & \\
+                0 & & 1/\sqrt{\sigma_{pp}}
+            \end{bmatrix}
+            \begin{bmatrix}
+                \frac{\sigma_{11}}{\sqrt{\sigma_{11}}} & \cdots & \frac{\sigma_{1p}}{\sqrt{\sigma_{pp}}} \\
+                \vdots & \ddots & \vdots \\
+                \frac{\sigma_{p1}}{\sqrt{\sigma_{11}}} & \cdots & \frac{\sigma_{pp}}{\sqrt{\sigma_{pp}}}
+            \end{bmatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bmatrix}
+                \frac{\sigma_{11}}{\sqrt{\sigma_{11}}\sqrt{\sigma_{11}}} & \cdots & \frac{\sigma_{1p}}{\sqrt{\sigma_{11}}\sqrt{\sigma_{pp}}} \\
+                \vdots & \ddots & \vdots \\
+                \frac{\sigma_{p1}}{\sqrt{\sigma_{pp}}\sqrt{\sigma_{11}}} & \cdots & \frac{\sigma_{pp}}{\sqrt{\sigma_{pp}}\sqrt{\sigma_{pp}}}
+            \end{bmatrix}
+            = \bm{\rho}
+        \]

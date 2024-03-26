@@ -1,0 +1,19 @@
+(Example of a nonnormal bivariate distribution with normal marginals.) Let $X_1$ be $N(0,1)$ and let
+\[
+  X_2
+  =
+  \begin{cases*}
+    -X_1 & if $-1 \leq X_1 \leq 1$ \\
+    \phantom{-}X_1 & otherwise
+  \end{cases*}
+\]
+Show each of the following.
+\begin{enumerate}[label= (\alph*)]
+    \item $X_2$ also has an $N(0,1)$ distribution.
+    \item $X_1$ and $X_2$ do \textit{not} have a bivariate normal distribution.
+    \textit{Hint:}
+    \begin{enumerate}[label= (\alph*)]
+        \item Since $X_1$ is $N(0,1)$, $P[-1 < X_1 \leq x] = P[-x \leq X_1 < 1]$ for any $x$. When $-1 < x_2 < 1$, $P[X_2 \leq x_2] = P[X_2 \leq -1] + P[-1 < X_2 \leq x_2] = P[X_1 \leq -1] + P[-1 < -X_1 \leq x_2] = P[X_1 \leq -1] + P[-x_2 \leq X_1 < 1]$. But $P[-x_2 \leq X_1 < 1] = P[-1 < X_1 \leq x_2]$ from the symmetry argument in the first line of this hint. Thus $P[X_2 \leq x_2] = P[X_1 \leq -1] + P[-1 < X_1 \leq x_2] = P[X_1 \leq x_2]$, which is a standard normal probability.
+        \item Consider the linear combination $X_1 - X_2$, which equals zero with probability $P[|X_1| > 1] = 0.3174$.
+    \end{enumerate}
+\end{enumerate}

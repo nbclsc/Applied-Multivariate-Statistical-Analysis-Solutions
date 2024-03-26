@@ -1,0 +1,318 @@
+Let $\textbf{X}$ be $N_3(\bm{\mu},\bm{\Sigma})$ with $\bm{\mu} = [2, -3, 1]$ and
+\[
+    \bm{\Sigma}
+    =
+    \begin{bNiceArray}{ccc}
+        1 & 1 & 1 \\
+        1 & 3 & 2 \\
+        1 & 2 & 2
+    \end{bNiceArray}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Find the distribution of $3X_1 - 2X_2 + X_3$.
+    \[
+        \textbf{b}
+        =
+        \begin{bNiceArray}{r}
+            3 \\
+            -2 \\
+            1
+        \end{bNiceArray},
+        \hspace{0.2in}
+        \textbf{b}^{\prime}
+        \textbf{X}
+        =
+        \begin{bNiceArray}{rrr}
+            3 & -2 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            X_1 \\
+            X_2 \\
+            X_3
+        \end{bNiceArray}
+        =
+        3X_1 - 2X_2 + X_3
+    \]
+    \[
+        E[
+            \textbf{b}^{\prime}
+            \textbf{X}
+        ]
+        =
+        \textbf{b}^{\prime}
+        E[
+            \textbf{X}
+        ]
+        =
+        \textbf{b}^{\prime}
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{rrr}
+            3 & -2 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            2 \\
+            -3 \\
+            1
+        \end{bNiceArray}
+        =
+        13
+    \]
+    \[
+        \text{Cov}(
+            \textbf{b}^{\prime}
+            \textbf{X}
+        )
+        =
+        \textbf{b}^{\prime}
+        \text{Cov}
+        (
+            \textbf{X}
+        )
+        \textbf{b}
+        =
+        \textbf{b}^{\prime}
+        \bm{\Sigma}
+        \textbf{b}
+        =
+        \begin{bNiceArray}{rrr}
+            3 & -2 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{ccc}
+            1 & 1 & 1 \\
+            1 & 3 & 2 \\
+            1 & 2 & 2
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            3 \\
+            -2 \\
+            1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{rrr}
+            2 & -1 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            3 \\
+            -2 \\
+            1
+        \end{bNiceArray}
+        =
+        9
+    \]
+    Now we have that
+    \[
+        \textbf{b}^{\prime}\textbf{X}
+        \sim
+        N \left(13, 9\right)
+    \]
+    \item Relabel the variables if necessary, and find a $2 \times 1$ vector $\textbf{a}$ such that $X_2$ and $X_2 - \textbf{a}^{\prime}
+    \begin{bNiceArray}{c}
+        X_1 \\
+        X_2
+    \end{bNiceArray}$ are independent.
+    \par
+    I don't see $X_3$ in $X_2 - \textbf{a}^{\prime}
+    \begin{bNiceArray}{c}
+        X_1 \\
+        X_2
+    \end{bNiceArray}$, so if we first partition $\bm{\Sigma}$ and focus on $\bm{\Sigma}_{11}$, that way we're working with only $X_1$ and $X_2$, also defining $\textbf{X}^{\star} = \begin{bNiceArray}{c}
+        X_1 \\
+        X_2
+    \end{bNiceArray}$.
+    \[
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{ccc}[baseline=2]
+            1 & 1 & 1 \\
+            1 & 3 & 2 \\
+            1 & 2 & 2 \\
+            \CodeAfter \tikz \draw[dotted] (3-|1) -- (3-|4);
+            \CodeAfter \tikz \draw[dotted] (1-|3) -- (4-|3);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \bm{\Sigma}_{11} & \bm{\Sigma}_{12} \\
+            \bm{\Sigma}_{21} & \bm{\Sigma}_{22} \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|3);
+            \CodeAfter \tikz \draw[dotted] (1-|2) -- (3-|2);
+        \end{bNiceArray}
+    \]
+    \[
+        X_2 - \textbf{a}^{\prime}
+        \begin{bNiceArray}{c}
+            X_1 \\
+            X_2
+        \end{bNiceArray}
+        =
+        X_2 
+        - 
+        a_1 X_1
+        -
+        a_2 X_2
+        =
+        -a_1 X_1
+        +
+        (1 - a_2)
+        X_2
+        =
+        \begin{bNiceArray}{rr}
+            -a_1 & (1 - a_2)
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            X_1 \\
+            X_2
+        \end{bNiceArray}
+    \]
+    We're interested in the covariance of $X_2$ with this, so we can setup $\textbf{A}$ to be
+    \[
+        A
+        =
+        \begin{bNiceArray}{cc}
+            0 & 1 \\
+            -a_1 & (1 - a_2)
+        \end{bNiceArray}
+    \]
+    \[
+        \text{Cov}(
+            \textbf{A}
+            \textbf{X}^{\star}
+        )
+        =
+        \textbf{A}
+        \text{Cov}
+        (
+            \textbf{X}^{\star}
+        )
+        \textbf{A}^{\prime}
+        =
+        \textbf{A}
+        \bm{\Sigma}_{11}
+        \textbf{A}^{\prime}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            0 & 1 \\
+            -a_1 & (1 - a_2)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            1 & 1 \\
+            1 & 3
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            0 & -a_1 \\
+            1 & (1 - a_2)
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            1 & 3 \\
+            -a_1 & (3 - a_1 - 3 a_2)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            0 & -a_1 \\
+            1 & (1 - a_2)
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            1 & (3 - a_1 - 3 a_2) \\
+            (3 - a_1 - 3 a_2) & (a_1^2 + (1-a_2)(3 - a_1 - 3 a_2))
+        \end{bNiceArray}
+    \]
+    We want to know when $X_2$ and $X_2 - \textbf{a}^{\prime}
+    \begin{bNiceArray}{c}
+        X_1 \\
+        X_2
+    \end{bNiceArray}$ are independent. This is when the off-diagonal elements of this covariance matrix are zero, that is, when
+    \[
+        3 - a_1 - 3 a_2 = 0 \Rightarrow a_1 + 3 a_2 = 3
+    \]
+    If we pick $a_1 = 1$, then $a_2 = \frac{2}{3}$ and $
+        \textbf{a}
+        =
+        \begin{bNiceArray}{c}
+            a_1 \\
+            a_2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            1 \\
+            \frac{2}{3}
+        \end{bNiceArray}
+    $.
+    Now to check that this is correct.
+    \[
+        A
+        =
+        \begin{bNiceArray}{cc}
+            0 & 1 \\
+            -1 & \left(1 - \frac{2}{3}\right)
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            0 & 1 \\
+            -1 & \frac{1}{3}
+        \end{bNiceArray}
+    \]
+    \[
+        \text{Cov}(
+            \textbf{A}
+            \textbf{X}^{\star}
+        )
+        =
+        \textbf{A}
+        \text{Cov}
+        (
+            \textbf{X}^{\star}
+        )
+        \textbf{A}^{\prime}
+        =
+        \textbf{A}
+        \bm{\Sigma}_{11}
+        \textbf{A}^{\prime}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            0 & 1 \\
+            -1 & \frac{1}{3}
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            1 & 1 \\
+            1 & 3
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            0 & -1 \\
+            1 & \frac{1}{3}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            1 & 3 \\
+            -\frac{2}{3} & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            0 & -1 \\
+            1 & \frac{1}{3}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            3 & 0 \\
+            0 & \frac{2}{3}
+        \end{bNiceArray}
+    \]
+    The off-diagonal values are zero, so $\text{Cov}(X_2, X_2 - \textbf{a}^{\prime}\begin{bNiceArray}{c}
+        X_1 \\
+        X_2
+    \end{bNiceArray}) = 0$ and are $\independent$.
+\end{enumerate}

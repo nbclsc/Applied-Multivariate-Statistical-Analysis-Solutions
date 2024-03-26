@@ -1,0 +1,75 @@
+Perform the decomposition of $\textbf{y}_1$ into $\bar{x}_1\textbf{1}$ and $\textbf{y}_1 - \bar{x}_1\textbf{1}$ using the first column of the data
+matrix in Example 3.9.
+\[
+    X
+    =
+    \begin{bNiceArray}{ccc}
+        1 & 2 & 5 \\
+        4 & 1 & 6 \\
+        4 & 0 & 4
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{ccc}
+        \textbf{y}_1 & \textbf{y}_2 & \textbf{y}_3
+    \end{bNiceArray}
+\]
+\[
+    \bar{\textbf{x}}
+    =
+    \begin{bNiceArray}{c}
+        \bar{x}_1 \\ \bar{x}_2 \\ \bar{x}_3
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        (1+4+4)/3 \\ (2+1+0)/3 \\ (5+6+4)/3
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        3 \\ 1 \\ 5
+    \end{bNiceArray}
+\]
+\[
+    \textbf{y}_1
+    = 
+    \begin{bNiceArray}{c}
+        1 \\
+        4 \\
+        4
+    \end{bNiceArray}
+    ,\hspace{0.2in}
+    \bar{x}_1\textbf{1}_3
+    =
+    3
+    \begin{bNiceArray}{c}
+        1 \\
+        1 \\
+        1
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        3 \\
+        3 \\
+        3
+    \end{bNiceArray}
+\]
+\[
+    \textbf{y}_1 - \bar{x}_1\textbf{1}_3
+    =
+    \begin{bNiceArray}{c}
+        1 \\
+        4 \\
+        4
+    \end{bNiceArray}
+    -
+    \begin{bNiceArray}{c}
+        3 \\
+        3 \\
+        3
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{r}
+        -2 \\
+        1 \\
+        1
+    \end{bNiceArray}
+\]

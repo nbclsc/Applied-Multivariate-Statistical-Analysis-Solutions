@@ -1,0 +1,552 @@
+        % ------------------------------------------ %
+        %                      (2.21)                %
+        % ------------------------------------------ %
+        (See \textbf{Result 2A.15}) Using the matrix
+        \[
+            \bold{A} = 
+            \begin{bmatrix}
+                1 & 1 \\
+                2 & -2 \\
+                2 & 2
+            \end{bmatrix}
+        \]
+        \begin{enumerate}[label=(\alph*)]
+            \item Calculate $\bold{A}^\prime\bold{A}$ and obtain the eigenvalues and eigenvectors.
+            \par
+            \[
+                \bold{A}^\prime\bold{A}
+                =
+                \begin{bmatrix}
+                    1 & 2 & 2 \\
+                    1 & -2 & 2
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 & 1 \\
+                    2 & -2 \\
+                    2 & 2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    9 & 1 \\
+                    1 & 9
+                \end{bmatrix}
+            \]
+            
+            \[
+                0 = \left|\bold{A}^\prime\bold{A} - \lambda\bold{I}\right|
+                =
+                \left|
+                \begin{matrix}
+                    9 - \lambda & 1 \\
+                    1 & 9 - \lambda
+                \end{matrix}
+                \right|
+                =
+                {\left(9 - \lambda\right)}^2 - 1
+                =
+                \lambda^2 - 18\lambda + 81 - 1
+                = \left(\lambda - 8\right)\left(\lambda - 10\right)
+            \]
+            \[
+                \left(\lambda_1^2, \lambda_1^2\right)
+                =
+                \left(8, 10\right)
+            \]
+            \underline{$\lambda_1^2 = 8$:}
+            \[
+                \bold{A}^\prime\bold{A}\bold{x}_1=\lambda_1^2\bold{x}_1
+                \Rightarrow
+                \begin{bmatrix}
+                    9 & 1 \\
+                    1 & 9
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    8x_1 \\
+                    8x_2
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    1 & 1 \\
+                    1 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+                \overset{\text{Row 2 - Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 1 \\
+                    0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $x_1 + x_2 = 0 \Rightarrow x_1 = -x_2$. Pick,
+            \[
+                \bold{x}_1
+                =
+                \begin{bmatrix}
+                    1 \\
+                    -1
+                \end{bmatrix}
+                \Rightarrow
+                \bold{e}_1
+                =
+                \frac{\bold{x}_1}{\left\|\bold{x}_1\right\|}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{2} \\
+                    -1/\sqrt{2}
+                \end{bmatrix}
+            \]
+            \underline{$\lambda_2^2 = 10$:}
+            \[
+                \bold{A}^\prime\bold{A}\bold{x}_1=\lambda_1^2\bold{x}_1
+                \Rightarrow
+                \begin{bmatrix}
+                    9 & 1 \\
+                    1 & 9
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    10x_1 \\
+                    10x_2
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    -1 & 1 \\
+                    1 & -1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+                \overset{\text{Row 2 + Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    -1 & 1 \\
+                    0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $-x_1 + x_2 = 0 \Rightarrow x_1 = x_2$. Pick,
+            \[
+                \bold{x}_1
+                =
+                \begin{bmatrix}
+                    1 \\
+                    1
+                \end{bmatrix}
+                \Rightarrow
+                \bold{e}_2
+                =
+                \frac{\bold{x}_1}{\left\|\bold{x}_1\right\|}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{2} \\
+                    1/\sqrt{2}
+                \end{bmatrix}
+            \]
+            The eigenvectors are,
+            \[
+                \bold{V}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{2} & 1/\sqrt{2} \\
+                    -1/\sqrt{2} & 1/\sqrt{2}
+                \end{bmatrix}
+            \]
+            \item Calculate $\bold{A}\bold{A}^\prime$ and obtain the eigenvalues and eigenvectors. Check that the nonzero eigenvalues are the same as those in part a.
+            \par
+            \[
+                \bold{A}\bold{A}^\prime
+                =
+                \begin{bmatrix}
+                    1 & 1 \\
+                    2 & -2 \\
+                    2 & 2
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 & 2 & 2 \\
+                    1 & -2 & 2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    2 & 0 & 4 \\
+                    0 & 8 & 0 \\
+                    4 & 0 & 8
+                \end{bmatrix}
+            \]
+            
+            \[
+                0 = \left|\bold{A}\bold{A}^\prime - \lambda\bold{I}\right|
+                =
+                \left|
+                \begin{matrix}
+                    2 - \lambda & 0 & 4 \\
+                    0 & 8 - \lambda & 0 \\
+                    4 & 0 & 8 - \lambda
+                \end{matrix}
+                \right|
+                =
+                \left(2 - \lambda\right){\left(8 - \lambda\right)}^2 - 4\left(4\left(8 - \lambda\right)\right)
+                =
+            \]
+            \[
+                =
+                \left(8 - \lambda\right)
+                \left[\left(2 - \lambda\right){\left(8 - \lambda\right)} - 16\right]
+                =
+                \left(8 - \lambda\right)
+                \left(\lambda^2 - 10\lambda\right)
+                =
+                \lambda\left(8 - \lambda\right)\left(\lambda - 10\right)
+            \]
+            \[
+                \left(\lambda_1^2, \lambda_2^2, \lambda_2^2\right)
+                =
+                \left(0, 8, 10\right)
+            \]
+            Yes, these nonzero eigenvales are the same as those in part a.
+            \newline
+            \underline{$\lambda_1^2 = 0$:}
+            \[
+                \bold{A}\bold{A}^\prime\bold{x}_1=\lambda_1^2\bold{x}_1
+                \Rightarrow
+            \]
+            \[
+                \begin{bmatrix}
+                    2 & 0 & 4 \\
+                    0 & 8 & 0 \\
+                    4 & 0 & 8
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+                \overset{\text{Row 3 - 2Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    2 & 0 & 4 \\
+                    0 & 8 & 0 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $2x_1 + 4x_3 = 0 \Rightarrow x_1 = -2x_3$ and $8x_2 = 0 \Rightarrow x_2 = 0$. Pick,
+            \[
+                \bold{x}_1
+                =
+                \begin{bmatrix}
+                    -2 \\
+                    0 \\
+                    1
+                \end{bmatrix}
+                \Rightarrow
+                \bold{e}_1
+                =
+                \frac{\bold{x}_1}{\left\|\bold{x}_1\right\|}
+                =
+                \begin{bmatrix}
+                    -2/\sqrt{5} \\
+                    0 \\
+                    1/\sqrt{5}
+                \end{bmatrix}
+            \]
+            \underline{$\lambda_2^2 = 8$:}
+            \[
+                \bold{A}\bold{A}^\prime\bold{x}_2=\lambda_2^2\bold{x}_2
+                \Rightarrow
+            \]
+            \[
+                \begin{bmatrix}
+                    2 & 0 & 4 \\
+                    0 & 8 & 0 \\
+                    4 & 0 & 8
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    8x_1 \\
+                    8x_2 \\
+                    8x_3
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    -6 & 0 & 4 \\
+                    0 & 0 & 0 \\
+                    4 & 0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $-6x_1 + 4x_3 = 0 \Rightarrow x_1 = 2/3x_3$ and $4x_1 = 0 \Rightarrow x_1 = 0$. Pick,
+            \[
+                \bold{x}_2
+                =
+                \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+                \Rightarrow
+                \bold{e}_1
+                =
+                \frac{\bold{x}_2}{\left\|\bold{x}_2\right\|}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+            \]
+            \underline{$\lambda_3^2 = 10$:}
+            \[
+                \bold{A}\bold{A}^\prime\bold{x}_2=\lambda_2^2\bold{x}_2
+                \Rightarrow
+            \]
+            \[
+                \begin{bmatrix}
+                    2 & 0 & 4 \\
+                    0 & 8 & 0 \\
+                    4 & 0 & 8
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    10x_1 \\
+                    10x_2 \\
+                    10x_3
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    -8 & 0 & 4 \\
+                    0 & -2 & 0 \\
+                    4 & 0 & -2
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+                \overset{\text{Row 3 + 1/2 Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    -8 & 0 & 4 \\
+                    0 & -2 & 0 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $-8x_1 + 4x_3 = 0 \Rightarrow x_3 = 2x_1$ and $-2x_2 = 0 \Rightarrow x_3 = 0$. Pick,
+            \[
+                \bold{x}_3
+                =
+                \begin{bmatrix}
+                    1 \\
+                    0 \\
+                    2
+                \end{bmatrix}
+                \Rightarrow
+                \bold{e}_1
+                =
+                \frac{\bold{x}_3}{\left\|\bold{x}_3\right\|}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{5} \\
+                    0 \\
+                    2/\sqrt{5}
+                \end{bmatrix}
+            \]
+            The eigenvectors are,
+            \[
+                \bold{U}
+                =
+                \begin{bmatrix}
+                    0 & 1/\sqrt{5} \\
+                    1 & 0 \\
+                    0 & 2/\sqrt{5}
+                \end{bmatrix}
+            \]
+            \item Obtain the sigular-value decomposition of $\bold{A}$.
+            \par
+            \[
+                \bold{A} = \bold{U}\bold{\Lambda}\bold{V}^\prime
+                =
+                \begin{bmatrix}
+                    0 & 1/\sqrt{5} \\
+                    1 & 0 \\
+                    0 & 2/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \sqrt{8} & 0 \\
+                    0 & \sqrt{10}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{2} & -1/\sqrt{2} \\
+                    1/\sqrt{2} & 1/\sqrt{2}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1 & 1 \\
+                    2 & -2 \\
+                    2 & 2
+                \end{bmatrix}
+                =
+                \bold{A}
+            \]
+            \[
+                \bold{A}
+                =
+                \sum_{k=1}^2{\lambda_k\bold{e}_k\bold{e}_k^\prime}
+                =
+                \sqrt{8}
+                \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{2} & -1/\sqrt{2}
+                \end{bmatrix}
+                +
+                \sqrt{10}
+                \begin{bmatrix}
+                    1/\sqrt{5} \\
+                    0 \\
+                    2/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{2} & 1/\sqrt{2}
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \sqrt{8}
+                \begin{bmatrix}
+                    0 & 0 \\
+                    1/\sqrt{2} & -1/\sqrt{2} \\
+                    0 & 0
+                \end{bmatrix}
+                +
+                \sqrt{10}
+                \begin{bmatrix}
+                    1/\sqrt{10} & 1/\sqrt{10} \\
+                    0 & 0 \\
+                    2/\sqrt{10} & 2/\sqrt{10}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 & 0 \\
+                    2 & -2 \\
+                    0 & 0
+                \end{bmatrix}
+                +
+                \begin{bmatrix}
+                    1 & 1 \\
+                    0 & 0 \\
+                    2 & 2
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    1 & 1 \\
+                    2 & -2 \\
+                    2 & 2
+                \end{bmatrix}
+                =
+                \bold{A}
+            \]
+        \end{enumerate}

@@ -1,0 +1,59 @@
+        % ------------------------------------------ %
+        %                      (2.36)                %
+        % ------------------------------------------ %
+        Find the maximum and minimum values of the quadratic form $4x_1^2 + 4x_2^2 + 6x_1x_2$ for all points $\mathbf{x}^\prime = \begin{bmatrix}
+            x_1, & x_2
+        \end{bmatrix}$ such that $\mathbf{x}^\prime\mathbf{x}^\prime = 1$.
+        \newline
+        \par
+        Convert into matrix form
+        \[
+            4x_1^2 + 4x_2^2 + 6x_1x_2
+            =
+            \begin{bmatrix}
+                x_1 & x_2
+            \end{bmatrix}
+            \begin{bmatrix}
+                4 & 3 \\
+                3 & 4
+            \end{bmatrix}
+            \begin{bmatrix}
+                x_1 \\
+                x_2
+            \end{bmatrix}
+            =
+            \textbf{x}^\prime\textbf{A}\textbf{x}
+        \]
+        so we have that
+        \[
+            \textbf{A}
+            =
+            \begin{bmatrix}
+                4 & 3 \\
+                3 & 4
+            \end{bmatrix}
+        \]
+        Find the eigenvalues of $\textbf{A}$,
+        \[
+            0 = \left|\textbf{A} - \lambda\textbf{I}\right|
+            =
+            \left|
+            \begin{matrix}
+                4-\lambda & 3 \\
+                3 & 4-\lambda
+            \end{matrix}
+            \right|
+            =
+            {\left(4-\lambda\right)}^2 - 9
+            =
+            \lambda^2 - 8\lambda + 16 - 9
+            =
+        \]
+        \[
+            =
+            \lambda^2 - 8\lambda + 7
+            =
+            \left(\lambda - 7\right)\left(\lambda - 1\right)
+        \]
+        The eigenvalues are $(\lambda_1, \lambda_2) = (7, 1)$. The matrix $\textbf{A}$ is positive definite, since $\lambda_1 > \lambda_2 > 0$.
+        By \textbf{(2-51)} on page 80, $\lambda_1 = 7$ is the maximum and $\lambda_2 = 1$ is the minimum.

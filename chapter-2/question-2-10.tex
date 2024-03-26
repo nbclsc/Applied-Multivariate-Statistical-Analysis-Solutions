@@ -1,0 +1,94 @@
+        % ------------------------------------------ %
+        %                      (2.10)                %
+        % ------------------------------------------ %
+        Consider the matrices
+        \[
+            \bold{A} = \begin{bmatrix}
+                4 & 4.001 \\
+                4.001 & 4.002
+            \end{bmatrix}\hspace{0.2in}\text{and}\hspace{0.2in}
+            \bold{B} = \begin{bmatrix}
+                4 & 4.001 \\
+                4.001 & 4.002001
+            \end{bmatrix}
+        \]
+        These matrices are identical except for a small difference in the (2, 2) position. Moreover, the columns of $\bold{A}$ (and $\bold{B}$) are nearly dependent. Show that $\bold{A}^{-1} \doteq (-3) \bold{B}^{-1}$. Consequently, small changes~\textemdash~perhaps caused by rounding~\textemdash~can give substantially different inverses.
+        \par\
+        \[
+            \bold{A}^{-1}
+            =
+            \frac{1}{16.008-16.008001}
+            \begin{bmatrix}
+                4.002 & -4.001 \\
+                -4.001 & 4
+            \end{bmatrix}
+            =
+            \frac{1}{-0.000001}
+            \begin{bmatrix}
+                4.002 & -4.001 \\
+                -4.001 & 4
+            \end{bmatrix}
+            =
+        \]
+        \[
+            =
+            -1000000
+            \begin{bmatrix}
+                4.002 & -4.001 \\
+                -4.001 & 4
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                -4002000 & 4001000 \\
+                4001000 & -4000000
+            \end{bmatrix}
+        \]
+        \[
+            \bold{B}^{-1}
+            =
+            \frac{1}{16.008004-16.008001}
+            \begin{bmatrix}
+                4.002001 & -4.001 \\
+                -4.001 & 4
+            \end{bmatrix}
+            =
+            \frac{1}{0.000003}
+            \begin{bmatrix}
+                4.002001 & -4.001 \\
+                -4.001 & 4
+            \end{bmatrix}
+            =
+            \]
+            \[
+            =
+            333333.\bar{3}
+            \begin{bmatrix}
+                4.002001 & -4.001 \\
+                -4.001 & 4
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                1334000.3333331999333 & -1333666.6666665333 \\
+                -1333666.6666665333 & 1333333.3333332
+            \end{bmatrix}
+        \]
+        \[
+            (-3) \bold{B}^{-1}
+            =
+            -3
+            \begin{bmatrix}
+                1334000.3333331999333 & -1333666.6666665333 \\
+                -1333666.6666665333 & 1333333.3333332
+            \end{bmatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bmatrix}
+                -4002000.9999995997999 & 4000999.9999995999 \\
+                4000999.9999995999 & -3999999.9999996
+            \end{bmatrix}
+            \doteq
+            \bold{A}^{-1}
+        \]
+        Used $\frac{1}{\left|B\right|}=\frac{1}{0.000003}=333333.3333333$ for computation.

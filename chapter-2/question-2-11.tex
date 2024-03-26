@@ -1,0 +1,32 @@
+        % ------------------------------------------ %
+        %                      (2.11)                %
+        % ------------------------------------------ %
+        Show that the determinant of the $p \times p$ diagonal matrix $\bold{A}= {a_{ij}}$ with $a_{ij} = 0$, $i \ne j$,
+        is given by the product of the diagonal elements; thus, $\left|\bold{A}\right| = a_{11} a_{22}, \dots a_{pp}$.
+        \newline
+        \textit{Hint:} By \textbf{Definition 2A.24}, $\left|\bold{A}\right| = a_{11} \bold{A}_{11} + 0 + \dots + 0$. Repeat for the submatrix
+        $\bold{A}_{11}$ obtained by deleting the first row and first column of $\bold{A}$.
+        \[
+            \left|\bold{A}\right| = \sum_{j=1}^p{a_{1j}\left|A_{1j}\right|{\left(-1\right)}^{1+j}} =
+        \]
+        \[
+            = a_{11}\left|\bold{A}_{11}\right| + 0 + \dots + 0 =
+        \]
+        \[
+            = a_{11}\left(\sum_{j=2}^p{a_{2j}\left|A_{2j}\right|{\left(-1\right)}^{2+j}}\right) =
+        \]
+        \[
+            = a_{11}\left(a_{22}\left|\bold{A}_{22}\right| + 0 + \dots + 0\right) =
+        \]
+        \[
+            \vdots
+        \]
+        \[
+            = a_{11}a_{22}\dots a_{p-2, p-2}\left|\bold{A}_{p-2, p-2}\right|
+        \]
+        \[
+            = a_{11}a_{22}\dots a_{p-2, p-2}\left(a_{p-1, p-1}a_{pp} - 0\right)
+        \]
+        \[
+            = a_{11}a_{22}\dots a_{p-2, p-2}a_{p-1, p-1}a_{pp} = \prod_{i=1}^p{a_{ii}}
+        \]

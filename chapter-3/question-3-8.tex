@@ -1,0 +1,127 @@
+Given
+\[
+    \textbf{S}
+    =
+    \begin{bNiceArray}{ccc}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        0 & 0 & 1
+    \end{bNiceArray}
+    \hspace{0.2in}\text{and}\hspace{0.2in}
+    \textbf{S}
+    =
+    \begin{bNiceArray}{rrr}
+        1 & -\frac{1}{2} & -\frac{1}{2} \\
+        -\frac{1}{2} & 1 & -\frac{1}{2} \\
+        -\frac{1}{2} & -\frac{1}{2} & 1
+    \end{bNiceArray}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate the total sample variance for each $\textbf{S}$. Compare the results.
+    \[
+        tr\{\textbf{S}\}
+        =
+        tr\left\{
+            \begin{bNiceArray}{ccc}
+                1 & 0 & 0 \\
+                0 & 1 & 0 \\
+                0 & 0 & 1 \\
+            \end{bNiceArray}
+        \right\}
+        =
+        3
+    \]
+    \[
+        tr\{\textbf{S}\}
+        =
+        tr\left\{
+            \begin{bNiceArray}{rrr}
+                1 & -\frac{1}{2} & -\frac{1}{2} \\
+                -\frac{1}{2} & 1 & -\frac{1}{2} \\
+                -\frac{1}{2} & -\frac{1}{2} & 1
+            \end{bNiceArray}
+        \right\}
+        =
+        3
+    \]
+    Both sample covariance matrices have the same total sample variance values, since both have the same sample variance values of 1 on the diagonal. The total sample variance metric doesn't account for any the covariance structure for $i \ne j$ (off-diagonal values).
+    \item Calculate the generalized sample variance for each $\textbf{S}$, and compare the results.
+    Comment on the discrepancies, if any, found between Parts a and b.
+    \[
+        \left|\textbf{S}\right|
+        =
+        \left|
+            \begin{NiceArray}{ccc}
+                1 & 0 & 0 \\
+                0 & 1 & 0 \\
+                0 & 0 & 1
+            \end{NiceArray}
+        \right|
+        =
+        1
+        \left|
+            \begin{NiceArray}{cc}
+                1 & 0 \\
+                0 & 1
+            \end{NiceArray}
+        \right|
+        - 0 + 0
+        =
+        1(1-0)
+        =
+        1
+    \]
+    \[
+        \left|\textbf{S}\right|
+        =
+        \left|
+            \begin{NiceArray}{rrr}
+                1 & -\frac{1}{2} & -\frac{1}{2} \\
+                -\frac{1}{2} & 1 & -\frac{1}{2} \\
+                -\frac{1}{2} & -\frac{1}{2} & 1
+            \end{NiceArray}
+        \right|
+        =
+        1
+        \left|
+            \begin{NiceArray}{rr}
+                1 & -\frac{1}{2} \\
+                -\frac{1}{2} & 1 \\
+            \end{NiceArray}
+        \right|
+        +
+        \frac{1}{2}
+        \left|
+            \begin{NiceArray}{rr}
+                -\frac{1}{2} & -\frac{1}{2} \\
+                -\frac{1}{2} & 1 \\
+            \end{NiceArray}
+        \right|
+        -
+        \frac{1}{2}
+        \left|
+            \begin{NiceArray}{rr}
+                -\frac{1}{2} & 1 \\
+                -\frac{1}{2} & -\frac{1}{2} \\
+            \end{NiceArray}
+        \right|
+        =
+    \]
+    \[
+        =
+        1\left(1-\frac{1}{4}\right)
+        +
+        \frac{1}{2}\left(-\frac{1}{2}-\frac{1}{4}\right)
+        -
+        \frac{1}{2}\left(\frac{1}{4}+\frac{1}{2}\right)
+        =
+        \frac{3}{4}
+        -
+        \frac{3}{8}
+        -
+        \frac{3}{8}
+        =
+        0
+    \]
+    The generalized sample variance of the diagonal matrix is 1. The sample covariance matrix form the standard basis for $\R^3$, so each element is one unit from zero and form a cube of length 1 on all sides. The volumn of this cube determined by the determinant for the generalized sample variance is of course 1. The second covariance matrix has $\text{Cov}(x_i,x_j) = -1/2$ $\forall$ $i \ne j$. For this sample covariance matrix there is a linear dependence where the third column is -1 times the first column plus -1 times the second column. By result 3.2 on page 130, if at least one deviation vector lies in the (hyper) plane formed by all linear combos of the others then we have a linear dependence. If there's a linear dependence the parallelepiped will have volumn 0 (using (2) on page 133). The generalized sample variance (GSV) accounts for the off-diagonal covariance values, not simply the diagonal (variance) values, like the total sample variance does, so its result is more representative of the data when we have nonzero covariance. If the vectors are closely related the GSV is small, or zero if some vectors lie in the same (hyper) plane. If vectors are far from each other the GSV will be large.
+\end{enumerate}

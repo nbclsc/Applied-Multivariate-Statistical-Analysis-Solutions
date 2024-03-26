@@ -1,0 +1,164 @@
+        % ------------------------------------------ %
+        %                      (2.28)                %
+        % ------------------------------------------ %
+        Show that
+        \[
+            \text{Cov}\left(c_{11}X_1 + c_{12}X_2 + \cdots + c_{1p}X_p, c_{21}X_1 + c_{22}X_2 + \cdots + c_{2p}X_p\right) = \bold{c}_1^\prime \bold{\Sigma}_\bold{X}\bold{c}_2
+        \]
+        where $\bold{c}_1^\prime = \begin{bmatrix}
+            c_{11}, c_{12}, \dots, c_{1p}
+        \end{bmatrix}$ and $\bold{c}_2^\prime = \begin{bmatrix}
+            c_{21}, c_{22}, \dots, c_{2p}
+        \end{bmatrix}$. This verifies the off-diagonal elements $\bold{C}\bold{\Sigma}_\bold{X}\bold{C}^\prime$ in (2-45) or diagonal elements if $\bold{c}_1 = \bold{c}_2$.
+        \newline
+        \textit{Hint:} By \textbf{(2-45)}, $Z_1 - E\left(Z_1\right) = c_{11}\left(X_1 - \mu_1\right) + \cdots + c_{1p}\left(X_p - \mu_p\right)$ and $Z_2 - E\left(Z_2\right) = c_{21}\left(X_1 - \mu_1\right) + \cdots + c_{2p}\left(X_p - \mu_p\right)$. So $\text{Cov}\left(Z_1,Z_2\right) = E[(Z_1 - E\left(Z_1\right))(Z_2 - E\left(Z_2\right))] = E[(c_{11}\left(X_1 - \mu_1\right) + \cdots \allowbreak + c_{1p}\left(X_p - \mu_p\right))(c_{21}\left(X_1 - \mu_1\right) + \cdots + c_{2p}\left(X_p - \mu_p\right))]$.
+        The product
+        \[
+                \left(c_{11}\left(X_1 - \mu_1\right) + \cdots \\
+                + c_{1p}\left(X_p - \mu_p\right)\right)\left(c_{21}\left(X_1 - \mu_1\right) + \cdots + c_{2p}\left(X_p - \mu_p\right)\right)
+                =
+        \]
+        \[
+         =
+         \left(\sum_{\ell = 1}^p{c_{1\ell}\left(X_\ell - \mu_\ell\right)}\bigr)\bigl(\sum_{m = 1}^p{c_{2m}\left(X_m - \mu_m\right)}\right)
+        \]
+        \[
+            =
+            \sum_{\ell = 1}^p{\sum_{\ell = 1}^p{c_{1\ell}c_{2m}\left(X_\ell - \mu_\ell\right)\left(X_m - \mu_m\right)}}
+        \]
+        has expected value
+        \[
+            =
+            \sum_{\ell = 1}^p{\sum_{\ell = 1}^p{c_{1\ell}c_{2m}\sigma_{\ell m}}}
+            =
+            \left[c_{11}, \dots, c_{1p}\right]\bold{\Sigma}\left[c_{21}, \dots, c_{2p}\right]^\prime.
+        \]
+        Verify the last step by the definition of matrix multiplication. The same steps should hold for all elements.
+        \newline
+        \par
+        Ignoring the hint, using the definition,
+        \[
+            Z_1 = \mathbf{c}_1^\prime\mathbf{X} = \sum_{i=1}^p{c_{1i}X_i}
+        \]
+        \[
+            Z_2 = \mathbf{c}_2^\prime\mathbf{X} = \sum_{i=1}^p{c_{2i}X_i}
+        \]
+        \[
+            \text{Cov}\left(Z_1, Z_2\right)
+            =
+        \]
+        \[
+            =
+            E\left[\left(Z_1 - E\left[Z_1\right]\right){\left(Z_2 - E\left[Z_2\right]\right)}^\prime\right]
+            =
+        \]
+        \[
+            =
+            E\left[\left(\mathbf{c}_1^\prime\mathbf{X} - E\left[\mathbf{c}_1^\prime\mathbf{X}\right]\right){\left(\mathbf{c}_2^\prime\mathbf{X} - E\left[\mathbf{c}_2^\prime\mathbf{X}\right]\right)}^\prime\right]
+            =
+        \]
+        \[
+            =
+            E\left[\mathbf{c}_1^\prime\left(\mathbf{X} - E\left[\mathbf{X}\right]\right){\left(\mathbf{c}_2^\prime\left(\mathbf{X} - E\left[\mathbf{X}\right]\right)\right)}^\prime\right]
+            =
+        \]
+        \[
+            =
+            E\left[\mathbf{c}_1^\prime\left(\mathbf{X} - E\left[\mathbf{X}\right]\right){\left(\mathbf{X} - E\left[\mathbf{X}\right]\right)}^\prime\left(\mathbf{c}_2^\prime\right)^\prime\right]
+            =
+        \]
+        \[
+            =
+            E\left[\mathbf{c}_1^\prime\left(\mathbf{X} - E\left[\mathbf{X}\right]\right){\left(\mathbf{X} - E\left[\mathbf{X}\right]\right)}^\prime\mathbf{c}_2\right]
+            =
+        \]
+        \[
+            =
+            \mathbf{c}_1^\prime E\left[\left(\mathbf{X} - E\left[\mathbf{X}\right]\right){\left(\mathbf{X} - E\left[\mathbf{X}\right]\right)}^\prime\right]\mathbf{c}_2
+            =
+        \]
+        \[
+            =
+            \mathbf{c}_1^\prime \text{Cov}\left(\mathbf{X}\right)\mathbf{c}_2
+            =
+        \]
+        \[
+            =
+            \mathbf{c}_1^\prime \mathbf{\Sigma}\mathbf{c}_2
+        \]
+        Another way, using the hint and multiplying everything out,
+        \[
+            \text{Cov}\left(Z_1, Z_2\right)
+            =
+            E\left[\left(Z_1 - E[Z_2]\right){\left(Z_1 - E[Z_2]\right)}^\prime\right]
+            =
+        \]
+        \[
+            E\left[\left\{\sum_{\ell=1}^{p}c_{1\ell}\left(X_\ell=\mu_\ell\right)\right\}\left\{\sum_{m=1}^{p}c_{2m}\left(X_m=\mu_m\right)\right\}\right]
+            =
+        \]
+        \begin{multline*}
+            =
+            E[c_{11}c_{21}(X_1 - \mu_1)(X_1 - \mu_1) + c_{11}c_{22}(X_1 - \mu_1)(X_2 - \mu_2) +
+            \cdots + c_{11}c_{2p}(X_1 - \mu_1)(X_p - \mu_p) + \\
+            +c_{12}c_{21}(X_2 - \mu_2)(X_1 - \mu_1) + c_{12}c_{22}(X_2 - \mu_2)(X_2 - \mu_2) +
+            \cdots + c_{12}c_{2p}(X_2 - \mu_2)(X_p - \mu_p) + \\
+            \dots \\
+            +c_{1p}c_{21}(X_p - \mu_p)(X_1 - \mu_1) + c_{1p}c_{22}(X_p - \mu_p)(X_2 - \mu_2) +
+            \cdots + c_{1p}c_{2p}(X_p - \mu_p)(X_p - \mu_p)
+            ] =
+        \end{multline*}
+        \[
+            E\left[\sum_{\ell=1}^{p}{\sum_{m=1}^{p}{c_{1\ell}c_{2m}\left(X_{\ell} - \mu_{\ell}\right)\left(X_{m} - \mu_{m}\right)}}\right]
+            =
+            \sum_{\ell=1}^{p}{\sum_{m=1}^{p}{c_{1\ell}c_{2m}E\left[\left(X_{\ell} - \mu_{\ell}\right)\left(X_{m} - \mu_{m}\right)\right]}}
+            =
+        \]
+        \[
+            =
+            \sum_{\ell=1}^{p}{\sum_{m=1}^{p}{c_{1\ell}c_{2m}\sigma_{\ell m}}}
+        \]
+        \[
+            \mathbf{c}^\prime\mathbf{\Sigma}\mathbf{c}
+            =
+            \begin{bmatrix}
+                c_{11}, & \cdots, & c_{1p}
+            \end{bmatrix}
+            \begin{bmatrix}
+                \sigma_{11} & \cdots & \sigma_{1p} \\
+                \vdots & \ddots & \vdots \\
+                \sigma_{p1} & \cdots & \sigma_{pp}
+            \end{bmatrix}
+            \begin{bmatrix}
+                c_{21} \\
+                \vdots \\
+                c_{2p}
+            \end{bmatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bmatrix}
+                \sum_{\ell=1}^{p}{c_{1\ell}\sigma_{\ell 1}}, & \cdots, & \sum_{\ell=1}^{p}{c_{1\ell}\sigma_{\ell p}}
+            \end{bmatrix}
+            \begin{bmatrix}
+                c_{21} \\
+                \vdots \\
+                c_{2p}
+            \end{bmatrix}
+            =
+        \]
+        \[
+            =
+            c_{21}\sum_{\ell=1}^{p}{c_{1\ell}\sigma_{\ell 1}} + \cdots + c_{2p}\sum_{\ell=1}^{p}{c_{1\ell}\sigma_{\ell p}}
+            =
+            \sum_{\ell=1}^{p}{\sum_{m=1}^{p}{c_{1\ell}c_{2m}\sigma_{\ell m}}}
+        \]
+        Now we finally have,
+        \[
+            \text{Cov}\left(Z_1, Z_2\right)
+            =
+            \sum_{\ell=1}^{p}{\sum_{m=1}^{p}{c_{1\ell}c_{2m}\sigma_{\ell m}}}
+            =
+            \mathbf{c}^\prime\mathbf{\Sigma}\mathbf{c}
+        \]

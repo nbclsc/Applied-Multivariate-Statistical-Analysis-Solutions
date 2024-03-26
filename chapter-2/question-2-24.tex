@@ -1,0 +1,409 @@
+        % ------------------------------------------ %
+        %                      (2.24)                %
+        % ------------------------------------------ %
+        Let $\bold{X}$ have covariance matrix
+        \[
+            \bold{\Sigma}
+            =
+            \begin{bmatrix}
+                4 & 0 & 0\\
+                0 & 9 & 0\\
+                0 & 0 & 1
+            \end{bmatrix}
+        \]
+        Find
+        \begin{enumerate}[label=(\alph*)]
+            \item $\bold{\Sigma}^{-1}$
+            \par
+            Using what's on page 59, the inverse of a diagonal matrix is the reciprocal of the elements.
+            \[
+                \mathbf{\Sigma}^{-1}
+                =
+                \begin{bmatrix}
+                    1/4 & 0 & 0 \\
+                    0 & 1/9 & 0 \\
+                    0 & 0 & 1
+                \end{bmatrix}
+            \]
+            \item The eigenvalues and eigenvectors of $\bold{\Sigma}$.
+            \[
+                 0 = \left|\mathbf{\Sigma} - \lambda\mathbf{I}\right|
+                 =
+                 \begin{bmatrix}
+                    4-\lambda & 0 & 0 \\
+                    0 & 9-\lambda & 0 \\
+                    0 & 0 & 1-\lambda
+                 \end{bmatrix}
+                 =
+                 \left(4-\lambda\right)\left(9-\lambda\right)\left(1-\lambda\right)
+            \]
+            The eigenvalues are simply the diagonal elements of $\mathbf{\Sigma}$, $\left(\lambda_1, \lambda_2, \lambda_3\right) = \left(1,4,9\right)$.
+            \newline
+            \underline{$\lambda_1 = 1$:}
+            \[
+                \mathbf{\Sigma}\mathbf{x}_1 = \lambda_1\mathbf{x}_1
+                \Rightarrow
+                \begin{bmatrix}
+                    4 & 0 & 0\\
+                    0 & 9 & 0\\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    3 & 0 & 0\\
+                    0 & 8 & 0\\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $x_1 = x_2 = 0$ and $x_3$ is free.
+            \[
+                \mathbf{x}_1
+                =
+                \mathbf{e}_1
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    1
+                \end{bmatrix}
+            \]
+            \underline{$\lambda_2 = 4$:}
+            \[
+                \mathbf{\Sigma}\mathbf{x}_2 = \lambda_2\mathbf{x}_2
+                \Rightarrow
+                \begin{bmatrix}
+                    4 & 0 & 0\\
+                    0 & 9 & 0\\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    4x_1 \\
+                    4x_2 \\
+                    4x_3
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    0 & 0 & 0\\
+                    0 & 5 & 0\\
+                    0 & 0 & -3
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $x_2 = x_3 = 0$ and $x_1$ is free.
+            \[
+                \mathbf{x}_2
+                =
+                \mathbf{e}_2
+                =
+                \begin{bmatrix}
+                    1 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            \underline{$\lambda_3 = 9$:}
+            \[
+                \mathbf{\Sigma}\mathbf{x}_3 = \lambda_3\mathbf{x}_3
+                \Rightarrow
+                \begin{bmatrix}
+                    4 & 0 & 0\\
+                    0 & 9 & 0\\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    9x_1 \\
+                    9x_2 \\
+                    9x_3
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    -5 & 0 & 0\\
+                    0 & 0 & 0\\
+                    0 & 0 & -8
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $x_1 = x_3 = 0$ and $x_2$ is free.
+            \[
+                \mathbf{x}_3
+                =
+                \mathbf{e}_3
+                =
+                \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+            \]
+            Putting it all together,
+            \[
+                \mathbf{\Lambda}
+                =
+                \begin{bmatrix}
+                    1 & 0 & 0 \\
+                    0 & 4 & 0 \\
+                    0 & 0 & 9
+                \end{bmatrix}
+                \hspace{0.2in}\text{and}\hspace{0.2in}
+                \mathbf{P}
+                =
+                \begin{bmatrix}
+                    0 & 1 & 0 \\
+                    0 & 0 & 1 \\
+                    1 & 0 & 0
+                \end{bmatrix}
+            \]
+            \par
+            The eigenvalues are the elements in the diagonal matrix and the eigenvectors are the identity matrix.
+            \item The eigenvalues and eigenvectors of $\bold{\Sigma}^{-1}$.
+            \[
+                 0 = \left|\mathbf{\Sigma} - \lambda\mathbf{I}\right|
+                 =
+                 \begin{bmatrix}
+                    1/4-\lambda & 0 & 0 \\
+                    0 & 1/9-\lambda & 0 \\
+                    0 & 0 & 1-\lambda
+                 \end{bmatrix}
+                 =
+                 \left(1/4-\lambda\right)\left(1/9-\lambda\right)\left(1/9-\lambda\right)
+            \]
+            The eigenvalues are simply the diagonal elements of $\mathbf{\Sigma}$, $\left(\lambda_1, \lambda_2, \lambda_3\right) = \left(1/9,1/4,1\right)$.
+            \newline
+            \newline
+            \underline{$\lambda_1 = 1/9$:}
+            \[
+                \mathbf{\Sigma}\mathbf{x}_1 = \lambda_1\mathbf{x}_1
+                \Rightarrow
+                \begin{bmatrix}
+                    1/4 & 0 & 0\\
+                    0 & 1/9 & 0\\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    (1/9)x_1 \\
+                    (1/9)x_2 \\
+                    (1/9)x_3
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    5/36 & 0 & 0\\
+                    0 & 0 & 0\\
+                    0 & 0 & 8/9
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $x_1 = x_3 = 0$ and $x_2$ is free.
+            \[
+                \mathbf{x}_1
+                =
+                \mathbf{e}_1
+                =
+                \begin{bmatrix}
+                    0 \\
+                    1 \\
+                    0
+                \end{bmatrix}
+            \]
+            \underline{$\lambda_2 = 1/4$:}
+            \[
+                \mathbf{\Sigma}\mathbf{x}_2 = \lambda_1\mathbf{x}_2
+                \Rightarrow
+                \begin{bmatrix}
+                    1/4 & 0 & 0\\
+                    0 & 1/9 & 0\\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    (1/4)x_1 \\
+                    (1/4)x_2 \\
+                    (1/4)x_3
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    0 & 0 & 0\\
+                    0 & -5/36 & 0\\
+                    0 & 0 & 3/4
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $x_2 = x_3 = 0$ and $x_1$ is free.
+            \[
+                \mathbf{x}_2
+                =
+                \mathbf{e}_2
+                =
+                \begin{bmatrix}
+                    1 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            \underline{$\lambda_3 = 1$:}
+            \[
+                \mathbf{\Sigma}\mathbf{x}_3 = \lambda_3\mathbf{x}_3
+                \Rightarrow
+                \begin{bmatrix}
+                    1/4 & 0 & 0\\
+                    0 & 1/9 & 0\\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+            \]
+            \[
+                \Rightarrow
+                \begin{bmatrix}
+                    -3/4 & 0 & 0\\
+                    0 & -8/9 & 0\\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $x_1 = x_2 = 0$ and $x_3$ is free.
+            \[
+                \mathbf{x}_3
+                =
+                \mathbf{e}_3
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    1
+                \end{bmatrix}
+            \]
+            Putting it all together,
+            \[
+                \mathbf{\Lambda}
+                =
+                \begin{bmatrix}
+                    1/9 & 0 & 0 \\
+                    0 & 1/4 & 0 \\
+                    0 & 0 & 1
+                \end{bmatrix}
+                \hspace{0.2in}\text{and}\hspace{0.2in}
+                \mathbf{P}
+                =
+                \begin{bmatrix}
+                    0 & 1 & 0 \\
+                    1 & 0 & 0 \\
+                    0 & 0 & 1
+                \end{bmatrix}
+            \]
+            \par
+            The eigenvalues are the elements in the diagonal matrix and the eigenvectors are the identity matrix.
+        \end{enumerate}

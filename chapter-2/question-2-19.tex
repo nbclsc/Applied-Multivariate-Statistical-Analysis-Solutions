@@ -1,0 +1,172 @@
+        % ------------------------------------------ %
+        %                      (2.19)                %
+        % ------------------------------------------ %
+        Let $\underset{\left(m \times m\right)}{\bold{A}^{1/2}} = \sum_{i=1}^m{\sqrt{\lambda_i} \bold{e}_i \bold{e}_i^\prime} = \bold{P}\bold{\Lambda}^{1/2}\bold{P}^\prime$, where $\bold{P}\bold{P}^\prime = \bold{P}^\prime\bold{P} = \bold{I}$. (The $\lambda_i$'s and the $\bold{e}$'s are the eigenvalues and associated normalized eigenvectors of the matrix $\bold{A}$.) Show Properties \textbf{(1)-(4)} of the square-root matrix in \textbf{(2-22)}.
+        \begin{enumerate}
+            \item[\textbf{(1)}]{${\left(\bold{A}^{1/2}\right)}^\prime = \bold{A}^{1/2}$ (that is, $\bold{A}$ is symmetric).}
+            
+            \[
+                {\left(\bold{A}^{1/2}\right)}^\prime
+                =
+                {\left(\bold{P}\bold{\Lambda}^{1/2}\bold{P}^\prime\right)}^\prime
+                \overset{\text{Exercise 2.3(c)}}{=}
+                {\left(\bold{P}^\prime\right)}^\prime {\left(\bold{\Lambda}^{1/2}\right)}^\prime {\left(\bold{P}\right)}^\prime
+                =
+            \]
+            \[
+                =
+                \bold{P} \bold{\Lambda}^{1/2} \bold{P}^\prime
+                =
+                \bold{A}^{1/2}
+            \]
+
+            \item[\textbf{(2)}]{$\bold{A}^{1/2}\bold{A}^{1/2} = \bold{A}$.}
+            
+            \[
+                \bold{A}^{1/2}\bold{A}^{1/2} = 
+                \left(\bold{P}\bold{\Lambda}^{1/2}\bold{P}^\prime\right)\left(\bold{P}\bold{\Lambda}^{1/2}\bold{P}^\prime\right)
+                =
+                \bold{P}\bold{\Lambda}^{1/2}\left(\bold{P}^\prime\bold{P}\right)\bold{\Lambda}^{1/2}\bold{P}^\prime
+                =
+            \]
+            \[
+                =
+                \bold{P}\bold{\Lambda}^{1/2}\bold{I}\bold{\Lambda}^{1/2}\bold{P}^\prime
+                =
+                \bold{P}\bold{\Lambda}^{1/2}\bold{\Lambda}^{1/2}\bold{P}^\prime
+                =
+            \]
+            \[
+                =
+                \bold{P}
+                \begin{bmatrix}
+                    \sqrt{\lambda_1} & 0 & \cdots & 0 \\
+                    0 & \sqrt{\lambda_2} & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & \sqrt{\lambda_m}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \sqrt{\lambda_1} & 0 & \cdots & 0 \\
+                    0 & \sqrt{\lambda_2} & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & \sqrt{\lambda_m}
+                \end{bmatrix}
+                \bold{P}^\prime
+                =
+            \]
+            \[
+                \bold{P}
+                \begin{bmatrix}
+                    \lambda_1 & 0 & \cdots & 0 \\
+                    0 & \lambda_2 & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & \lambda_m
+                \end{bmatrix}
+                \bold{P}^\prime
+                =
+                \bold{P}
+                \bold{\Lambda}
+                \bold{P}^\prime
+                =
+                \bold{A}
+            \]
+
+            \item[\textbf{(3)}]{${\left(\bold{A}^{1/2}\right)}^{-1} = \sum_{i=1}^k{\frac{1}{\sqrt{\lambda_i}}\bold{e}_i\bold{e}_i^\prime} = \bold{P}\bold{\Lambda}^{-1/2}\bold{P}^\prime$, where $\bold{\Lambda}^{-1/2}$ is a diagonal matrix with $1/\sqrt{\lambda_i}$ as the ith diagonal element.}
+            \newline
+            \par
+            First off, something useful,            
+            \[
+                \bold{\Lambda}^{-1/2}\bold{\Lambda}^{1/2}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{\lambda_1} & 0 & \cdots & 0 \\
+                    0 & 1/\sqrt{\lambda_2} & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & 1/\sqrt{\lambda_m}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \sqrt{\lambda_1} & 0 & \cdots & 0 \\
+                    0 & \sqrt{\lambda_2} & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & \sqrt{\lambda_m}
+                \end{bmatrix}
+                =
+                \bold{I}
+            \]
+
+            \[
+                \bold{\Lambda}^{1/2}\bold{\Lambda}^{-1/2}
+                =
+                \begin{bmatrix}
+                    \sqrt{\lambda_1} & 0 & \cdots & 0 \\
+                    0 & \sqrt{\lambda_2} & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & \sqrt{\lambda_m}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{\lambda_1} & 0 & \cdots & 0 \\
+                    0 & 1/\sqrt{\lambda_2} & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & 1/\sqrt{\lambda_m}
+                \end{bmatrix}
+                =
+                \bold{I}
+            \]
+
+            We have $\bold{\Lambda}^{-1/2}\bold{\Lambda}^{1/2} = \bold{\Lambda}^{1/2}\bold{\Lambda}^{-1/2} = \bold{I}$, so $\bold{\Lambda}^{-1/2} = {\left(\bold{\Lambda}^{1/2}\right)}^{-1}$ is the inverse of $\bold{\Lambda}^{1/2}$ by \textbf{Definition 2A.27}.
+
+            \[
+                {\left(\bold{A}^{1/2}\right)}^{-1}
+                =
+                {\left(\bold{P}\bold{\Lambda}^{1/2}\bold{P}^\prime\right)}^{-1}
+                \overset{Exercise 2.4(b)}{=}
+                {\left(\bold{P}^\prime\right)}^{-1}{\left(\bold{\Lambda}^{1/2}\right)}^{-1}\bold{P}^{-1} 
+                =
+            \]
+            \[
+                \overset{\bold{P}^\prime = \bold{P}^{-1}}{=}
+                {\left(\bold{P}^\prime\right)}^\prime{\left(\bold{\Lambda}^{1/2}\right)}^{-1}\bold{P}^\prime
+                =
+                \bold{P}{\left(\bold{\Lambda}^{1/2}\right)}^{-1}\bold{P}^\prime
+            \]
+
+            \[
+                =
+                \bold{P}\bold{\Lambda}^{-1/2}\bold{P}^\prime
+                =
+                \sum_{i=1}^m{\frac{1}{\sqrt{\lambda_i}}\bold{e}_i\bold{e}_i^\prime}
+            \]
+
+            \item[\textbf{(4)}]{$\bold{A}^{1/2}\bold{A}^{-1/2} = \bold{A}^{-1/2}\bold{A}^{1/2} = \bold{I}$, and $\bold{A}^{-1/2}\bold{A}^{-1/2} = \bold{A}^{-1}$, where $\bold{A}^{-1/2} = {\left(\bold{A}^{1/2}\right)}^{-1}$.}
+            \par
+            Above in \textbf{(3)} it was shown that $\bold{A}^{1/2}\bold{A}^{-1/2} = \bold{A}^{-1/2}\bold{A}^{1/2} = \bold{I}$, so $\bold{A}^{-1/2} = {\left(\bold{A}^{1/2}\right)}^{-1}$.
+            \[
+                \bold{A}^{-1/2}\bold{A}^{-1/2} 
+                = 
+                \begin{bmatrix}
+                    1/\sqrt{\lambda_1} & 0 & \cdots & 0 \\
+                    0 & 1/\sqrt{\lambda_2} & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & 1/\sqrt{\lambda_m}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{\lambda_1} & 0 & \cdots & 0 \\
+                    0 & 1/\sqrt{\lambda_2} & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & 1/\sqrt{\lambda_m}
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    1/\lambda_1 & 0 & \cdots & 0 \\
+                    0 & 1/\lambda_2 & \cdots & 0 \\
+                    \vdots & \vdots & \ddots & \vdots \\
+                    0 & 0 & \cdots & 1/\lambda_m
+                \end{bmatrix}
+                =
+                \bold{A}^{-1}
+            \]
+
+        \end{enumerate}

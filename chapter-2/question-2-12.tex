@@ -1,0 +1,32 @@
+        % ------------------------------------------ %
+        %                      (2.12)                %
+        % ------------------------------------------ %
+        Show that the determinant of a square symmetric $p \times p$ matrix $\bold{A}$ can be expressed as
+        the product of its eigenvalues $\lambda_1 , \lambda_2, \dots , \lambda_p$; that is, $\left|\bold{A}\right| = \prod_{i=1}^p{\lambda_i}$.
+        \newline
+        \textit{Hint:} From \textbf{(2-16)} and \textbf{(2-20)}, $\bold{A} =\bold{P}\bold{A}\bold{P}^\prime$ with $\bold{P}^\prime\bold{P} =\bold{I}$. From \textbf{Result 2A.ll(e)},
+        $\left|A\right| = \left|\bold{P}\bold{\Lambda}\bold{P}^\prime\right| = \left|\bold{P}\right| \left|\bold{\Lambda}\bold{P}^\prime\right| = \left|\bold{P}\right| \left|\bold{\Lambda}\right| \left|\bold{P}^\prime\right| = \left|\bold{\Lambda}\right| \left|\bold{I}\right|$,since $\left|\bold{I}\right| = \left|\bold{P}^\prime\bold{P}\right| = \left|\bold{P}^\prime\right| \left|\bold{P}\right|$. Apply
+        \textbf{Exercise 2.11}.
+        \[
+            \left|\bold{A}\right|
+            = 
+            \left|\bold{P}\bold{\Lambda}\bold{P}^\prime\right|
+            \overset{\text{2A.11(e)}}{=} 
+            \left|\bold{P}\right|\left|\bold{\Lambda}\bold{P}^\prime\right| \overset{\text{2A.11(e)}}{=} 
+            \left|\bold{P}\right|\left|\bold{\Lambda}\right|\left|\bold{P}^\prime\right| 
+            = 
+            \left|\bold{\Lambda}\right|\left|\bold{P}\right|\left|\bold{P}^\prime\right| 
+            =
+        \]
+        \[
+            =
+            \left|\bold{\Lambda}\right|\left|\bold{P}\bold{P}^\prime\right|
+            =
+            \left|\bold{\Lambda}\right|\left|\bold{I}\right|
+            =
+            \left|\bold{\Lambda}\right|(1)
+            =
+            \left|\bold{\Lambda}\right|
+            \overset{\text{Exercise 2.11}}{=}
+            \prod_{i=1}^p{\lambda_i}
+        \]

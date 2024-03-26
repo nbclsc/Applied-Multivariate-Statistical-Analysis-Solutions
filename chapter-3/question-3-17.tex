@@ -1,0 +1,31 @@
+Show that if $\underset{(p \times 1)}{\textbf{X}}$ and $\underset{(q \times 1)}{\textbf{Z}}$ are independent, then each component of $\textbf{X}$ is independent of each component of $\textbf{Z}$.
+\newline
+\textit{Hint:} \begin{multline*} P [ X_1 \leq x_1, X_2 \leq x_2, \dots, X_p \leq x_p\text{ and }Z_1 \leq z_1, Z_2 \leq z_2, \dots, Z_q \leq z_q ] 
+    \\
+    P [ X_1 \leq x_1, X_2 \leq x_2, \dots, X_p \leq x_p] \cdot P [ Z_1 \leq z_1, Z_2 \leq z_2, \dots, Z_q \leq z_q ]
+\end{multline*}
+by independence. Let $x_2, \dots, x_p$ and $z_2, \dots, z_q$ tend to infinity, to obtain
+\[
+    P [ X_1 \leq x_1\text{ and }Z_1 \leq Z_1] = P [ X_1 \leq x_1] \cdot P [Z_1 \leq Z_1]
+\]
+for all $x_1, z_1$. So $X_1$ and $Z_1$ are independent. Repeat for all other pairs.
+\newline
+\par
+We know $\textbf{X}$ and $\textbf{Z}$ are independent, so first we can break the joint multivariate CDF's into two. If we're looking at some pair of components $i$ and $j$, where $i$ is in $\textbf{X}$ and $j$ is in $\textbf{Z}$, and taking the limit to $\infty$ for everything other than the $i,j$ pair the limit will go to 1 for the non $i,j$ components and we're left with the marginal CDF.
+\[
+    \lim_{\substack{i^{\prime} \to \infty\\i^{\prime} \ne i}}
+    \lim_{\substack{j^{\prime} \to \infty\\j^{\prime} \ne j}}
+    P [ X_1 \leq x_1, X_2 \leq x_2, \dots, X_p \leq x_p\text{ and }Z_1 \leq z_1, Z_2 \leq z_2, \dots, Z_q \leq z_q ]
+    =
+\]
+\[
+    =
+    \lim_{\substack{i^{\prime} \to \infty\\i^{\prime} \ne i}} P [ X_1 \leq x_1, X_2 \leq x_2, \dots, X_p \leq x_p] \cdot \lim_{\substack{j^{\prime} \to \infty\\j^{\prime} \ne j}} P [ Z_1 \leq z_1, Z_2 \leq z_2, \dots, Z_q \leq z_q ]
+    =
+\]
+\[
+    =
+    P [ X_i \leq x_i\text{ and }Z_j \leq z_j ]
+    =
+    P [ X_i \leq x_i] \cdot P [ Z_j \leq z_j ]
+\]

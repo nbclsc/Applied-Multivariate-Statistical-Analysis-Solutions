@@ -1,0 +1,433 @@
+Specify the following.
+\begin{enumerate}[label= (\alph*)]
+    \item The conditional distribution of $X_1$, given that $X_2 = x_2$ for the joint distribution in Exercise 4.2.
+    \[
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{c}
+            \mu_1 \\
+            \mu_2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            0 \\
+            2
+        \end{bNiceArray}
+    \]
+    \[
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{cc}
+            \sigma_{11} & \sigma_{12} \\
+            \sigma_{21} & \sigma_{22}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \sigma_{11} & \rho_{12}\sqrt{\sigma_{11}}\sqrt{\sigma_{22}} \\
+            \rho_{12}\sqrt{\sigma_{11}}\sqrt{\sigma_{22}} & \sigma_{22}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            2 & \sqrt{2}/2 \\
+            \sqrt{2}/2 & 1
+        \end{bNiceArray}
+    \]
+    Using \textbf{Result 4.6} on page 160, the conditional distribution is normally distributed with
+    \[
+        \text{Mean}
+        =
+        \mu_1
+        +
+        \sigma_{12}\sigma_{22}^{-1}(x_2 - \mu_2)
+        =
+        0
+        +
+        \left(\frac{\sqrt{2}}{2}\right)\left(\frac{1}{1}\right)(x_2 - 2)
+        =
+        \frac{\sqrt{2}}{2}(x_2 - 2)
+    \]
+    \[
+        \text{Covariance}
+        =
+        \sigma_{11}
+        -
+        \sigma_{12}\sigma_{22}^{-1}\sigma_{21}
+        =
+        2
+        -
+        \left(\frac{\sqrt{2}}{2}\right)
+        \left(\frac{1}{1}\right)
+        \left(\frac{\sqrt{2}}{2}\right)
+        =
+        2
+        -
+        \frac{2}{4}
+        =
+        \frac{3}{2}
+    \]
+    \[
+        X_1 \bigg{|}
+        X_2 = x_2
+        \sim
+        N \left(\frac{\sqrt{2}}{2}(x_2 - 2),\frac{3}{2}\right)
+    \]
+    \item The conditional distribution of $X_2$, given that $X_1 = x_1$ and $X_3 = x_3$ for the joint distribution in Exercise 4.3.
+    \[
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{c}
+            \mu_1 \\
+            \mu_2 \\
+            \mu_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            -3 \\
+            1 \\
+            4
+        \end{bNiceArray}
+        ,\hspace{0.2in}
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{rrr}
+            1 & -2 & 0 \\
+            -2 & 5 & 0 \\
+            0 & 0 & 2
+        \end{bNiceArray}
+    \]
+    This time we need to rearrange the rows and columns so that $X_2$ is the first row and the first column. Then, from \textbf{Result 4.4} on page 158, the subsets of a normal are also normal, and again, using \textbf{Result 4.6} to find the mean and variance of the normal for the conditional distribution.
+    \[
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{c}
+            \mu_2 \\
+            \mu_1 \\
+            \mu_3 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2|-2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            -3 \\
+            4 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2|-2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \bm{\mu}_1 \\
+            \bm{\mu}_2 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2|-2);
+        \end{bNiceArray}
+    \]
+    \[
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{rrr}
+            1 & -2 & 0 \\
+            -2 & 5 & 0 \\
+            0 & 0 & 2
+        \end{bNiceArray}
+        \xrightarrow{
+            \begin{subarray}{c}
+                \text{Swap row 1 and row 2} \\
+                \text{Swap column 1 and column 2}
+            \end{subarray}
+        }
+        \begin{bNiceArray}{rrr}
+            5 & -2 & 0 \\
+            -2 & 1 & 0 \\
+            0 & 0 & 2 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|4);
+            \tikz \draw[dotted] (1-|2) -- (4-|2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}
+            \bm{\Sigma}_{11} & \bm{\Sigma}_{12} \\
+            \bm{\Sigma}_{21} & \bm{\Sigma}_{22} \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|3);
+            \tikz \draw[dotted] (1-|2) -- (3-|2);
+        \end{bNiceArray}
+    \]
+    The conditional distribution is normally distributed with
+    \[
+        \text{Mean}
+        =
+        \bm{\mu}_1
+        + 
+        \bm{\Sigma}_{12}
+        \bm{\Sigma}_{22}^{-1}
+        (\textbf{x}_2 - \bm{\mu}_2)
+        =
+        1
+        +
+        \begin{bNiceArray}{rr}
+            -2 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            1 & 0 \\
+            0 & \frac{1}{2}
+        \end{bNiceArray}
+        \left(
+            \begin{bNiceArray}{c}
+                x_1 \\
+                x_3
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                1 \\
+                4
+            \end{bNiceArray}
+        \right)
+        =
+    \]
+    \[
+        =
+        1
+        +
+        \begin{bNiceArray}{rr}
+            -2 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            \left(x_1 - 1\right) \\
+            \left(x_3 - 4\right)
+        \end{bNiceArray}
+        =
+        1
+        -
+        2
+        \left(x_1 - 1\right)
+        =
+        3 - 2 x_1
+    \]
+    \[
+        \text{Covariance}
+        =
+        \bm{\Sigma}_{11}
+        -
+        \bm{\Sigma}_{12}
+        \bm{\Sigma}_{22}^{-1}
+        \bm{\Sigma}_{21}
+        =
+        5
+        -
+        \begin{bNiceArray}{rr}
+            -2 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            1 & 0 \\
+            0 & \frac{1}{2}
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            -2 \\
+            0
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        5-
+        \begin{bNiceArray}{rr}
+            -2 & 0
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            -2 \\
+            0
+        \end{bNiceArray}
+        =
+        5
+        -
+        4
+        =
+        1
+    \]
+    \[
+        X_2 \bigg{|}
+        X_1 = x_1, X_3 = x_3
+        \sim
+        N\bigg{(}( 3 -2 x_1 ),1\bigg{)}
+    \]
+    \item The conditional distribution of $X_3$, given that $X_1 = x_1$ and $X_2 = x_2$ for the joint distribution in Exercise 4.4.
+    \[
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{c}
+            \mu_1 \\
+            \mu_2 \\
+            \mu_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            2 \\
+            -3 \\
+            1
+        \end{bNiceArray}
+        ,\hspace{0.2in}
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{rrr}
+            1 & 1 & 1 \\
+            1 & 3 & 2 \\
+            1 & 2 & 2
+        \end{bNiceArray}
+    \]
+    This time, again, we need to rearrange the rows and columns of $\bm{\mu}$ and $\bm{\Sigma}$. For this conditional distribution we need to partition so that $X_3$ is the first row and the first column. From \textbf{Result 4.4}, the subsets of the normal are also normal, and using \textbf{Result 4.6} to get the conditional distribution.
+    \[
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{c}
+            \mu_3 \\
+            \mu_1 \\
+            \mu_2 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2|-2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            2 \\
+            -3 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2|-2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \bm{\mu}_1 \\
+            \bm{\mu}_2 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2|-2);
+        \end{bNiceArray}
+    \]
+    \[
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{rrr}
+            \sigma_{11} & \sigma_{12} & \sigma_{13} \\
+            \sigma_{21} & \sigma_{22} & \sigma_{23} \\
+            \sigma_{31} & \sigma_{32} & \sigma_{33} \\
+        \end{bNiceArray}
+        \xrightarrow{
+            \begin{subarray}{c}
+                \text{Move row 3 and row 1} \\
+                \text{Move column 3 to column 1}
+            \end{subarray}
+        }
+        \begin{bNiceArray}{rrr}
+            \sigma_{33} & \sigma_{31} & \sigma_{32} \\
+            \sigma_{13} & \sigma_{11} & \sigma_{12} \\
+            \sigma_{23} & \sigma_{21} & \sigma_{22} \\
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{rrr}
+            2 & 1 & 2 \\
+            1 & 1 & 1 \\
+            2 & 1 & 3 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|4);
+            \tikz \draw[dotted] (1-|2) -- (4-|2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}
+            \bm{\Sigma}_{11} & \bm{\Sigma}_{12} \\
+            \bm{\Sigma}_{21} & \bm{\Sigma}_{22} \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|3);
+            \tikz \draw[dotted] (1-|2) -- (3-|2);
+        \end{bNiceArray}
+    \]
+    The conditional distribution is normally distributed with
+    \[
+        \text{Mean}
+        =
+        \bm{\mu}_1
+        + 
+        \bm{\Sigma}_{12}
+        \bm{\Sigma}_{22}^{-1}
+        (\textbf{x}_2 - \bm{\mu}_2)
+        =
+        1
+        +
+        \begin{bNiceArray}{rr}
+            1 & 2
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            3/2 & -1/2 \\
+            -1/2 & 1/2
+        \end{bNiceArray}
+        \left(
+            \begin{bNiceArray}{c}
+                x_1 \\
+                x_2
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{r}
+                2 \\
+                -3
+            \end{bNiceArray}
+        \right)
+        =
+    \]
+    \[
+        =
+        1
+        +
+        \begin{bNiceArray}{rr}
+            1/2 & 1/2
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            \left(x_1 - 2\right) \\
+            \left(x_2 + 3\right)
+        \end{bNiceArray}
+        =
+        \frac{1}{2} x_1
+        +
+        \frac{1}{2} x_2
+        +
+        \frac{3}{2}
+    \]
+    \[
+        \text{Covariance}
+        =
+        \bm{\Sigma}_{11}
+        -
+        \bm{\Sigma}_{12}
+        \bm{\Sigma}_{22}^{-1}
+        \bm{\Sigma}_{21}
+        =
+        2
+        -
+        \begin{bNiceArray}{rr}
+            1 & 2
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            3/2 & -1/2 \\
+            -1/2 & 1/2
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            1 \\
+            2
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        2
+        -
+        \begin{bNiceArray}{rr}
+            1/2 & 1/2
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            1 \\
+            2
+        \end{bNiceArray}
+        =
+        2
+        -
+        \frac{3}{2}
+        =
+        \frac{1}{2}
+    \]
+    \[
+        X_3 \bigg{|}
+        X_1 = x_1, X_2 = x_2
+        \sim
+        N \left( \frac{1}{2}(x_1 + x_2 + 3), \frac{1}{2} \right)
+    \]
+\end{enumerate}

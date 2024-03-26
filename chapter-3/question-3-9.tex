@@ -1,0 +1,428 @@
+The following data matrix contains data on test scores, with $x_1 = \text{score on first test}$,
+$x_2 = \text{score on second test}$, and $x_3 = \text{total score on the two tests}$:
+\[
+    \textbf{X}
+    =
+    \begin{bNiceArray}{ccc}
+        12 & 17 & 29 \\
+        18 & 20 & 38 \\
+        14 & 16 & 30 \\
+        20 & 18 & 38 \\
+        16 & 19 & 35
+    \end{bNiceArray}
+\]
+\begin{enumerate}[label=(\alph*)]
+    \item Obtain the mean corrected data matrix, and verify that the columns are linearly dependent.
+    Specify an $\textbf{a}^{\prime} = [a_1, a_2, a_3]$ vector that establishes the linear dependence.
+    \[
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            \bar{x}_1 \\
+            \bar{x}_2 \\
+            \bar{x}_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            80/5 \\
+            90/5 \\
+            170/5
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            16 \\
+            18 \\
+            34
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{X} - \textbf{1}_{5}{\bar{\textbf{x}}}^{\prime}
+        =
+        \begin{bNiceArray}{ccc}
+            12 & 17 & 29 \\
+            18 & 20 & 38 \\
+            14 & 16 & 30 \\
+            20 & 18 & 38 \\
+            16 & 19 & 35
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+            1 \\
+            1 \\
+            1 \\
+            1 \\
+            1
+        \end{bNiceArray}
+        \begin{bNiceArray}{ccc}
+            16 & 18 & 34
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{ccc}
+            12 & 17 & 29 \\
+            18 & 20 & 38 \\
+            14 & 16 & 30 \\
+            20 & 18 & 38 \\
+            16 & 19 & 35
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{ccc}
+            16 & 18 & 34 \\
+            16 & 18 & 34 \\
+            16 & 18 & 34 \\
+            16 & 18 & 34 \\
+            16 & 18 & 34
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rrr}
+            -4 & -1 & -5 \\
+            2 & 2 & 4 \\
+            -2 & -2 & -4 \\
+            4 & 0 & 4 \\
+            0 & 1 & 1
+        \end{bNiceArray}
+    \]
+    We have a linear dependence for column 3, whose the sum of the first two columns.
+    \[
+        \textbf{a}
+        =
+        \begin{bNiceArray}{c}
+            a_1 \\
+            a_2 \\
+            a_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            1 \\
+            -1
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{X}{\textbf{a}}
+        =
+        \begin{bNiceArray}{ccc}
+            12 & 17 & 29 \\
+            18 & 20 & 38 \\
+            14 & 16 & 30 \\
+            20 & 18 & 38 \\
+            16 & 19 & 35
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            1 \\
+            1 \\
+            -1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            0 \\
+            0 \\
+            0 \\
+            0 \\
+            0
+        \end{bNiceArray}
+        =
+        \textbf{0}
+    \]
+    or
+    \[
+        \left(\textbf{X} - \textbf{1}_{5}{\bar{\textbf{x}}}^{\prime}\right){\textbf{a}}
+        =
+        \begin{bNiceArray}{rrr}
+            -4 & -1 & -5 \\
+            2 & 2 & 4 \\
+            -2 & -2 & -4 \\
+            4 & 0 & 4 \\
+            0 & 1 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            1 \\
+            1 \\
+            -1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            0 \\
+            0 \\
+            0 \\
+            0 \\
+            0
+        \end{bNiceArray}
+        =
+        \textbf{0}
+    \]
+    \item Obtain the sample covariance matrix $\textbf{S}$, and verify that the generalized variance is zero.
+    Also, show that $\textbf{S}\textbf{a} = \textbf{0}$, so a can be rescaled to be an eigenvector corresponding to eigenvalue zero.
+    \[
+        \textbf{D}
+        =
+        (\textbf{X} - \textbf{1}_{5}\bar{\textbf{x}})
+    \]
+    \[
+        \textbf{S}
+        =
+        \left(\frac{1}{n - 1}\right){\textbf{D}}^{\prime}\textbf{D}
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{rrrrr}
+            -4 & 2 & -2 & 4 & 0 \\
+            -1 & 2 & -2 & 0 & 1 \\
+            -5 & 4 & -4 & 4 & 1
+        \end{bNiceArray}
+        \begin{bNiceArray}{rrr}
+            -4 & -1 & -5 \\
+            2 & 2 & 4 \\
+            -2 & -2 & -4 \\
+            4 & 0 & 4 \\
+            0 & 1 & 1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{ccc}
+            40 & 12 & 52 \\
+            12 & 10 & 22 \\
+            52 & 22 & 74
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{ccc}
+            10 & 3 & 13 \\
+            3 & (5/2) & (11/2) \\
+            13 & (11/2) & (37/2)
+        \end{bNiceArray}
+    \]
+    Another way, using (3-27) on page 139,
+    \[
+        \textbf{S}
+        =
+        \left(\frac{1}{n - 1}\right)
+        {\textbf{X}}^{\prime}\left(\textbf{I} - \frac{1}{n}\textbf{1}_{5}{\textbf{1}}_{5}^{\prime}\right)\textbf{X}
+        =
+        \left(\frac{1}{n - 1}\right)
+        {\textbf{X}}^{\prime}\left(\textbf{X} - \frac{1}{n}\textbf{1}_{5}{\textbf{1}}_{5}^{\prime}\textbf{X}\right)
+        =
+    \]
+    \[
+        =
+        \left(\frac{1}{n - 1}\right)
+        {\textbf{X}}^{\prime}
+        \left(\textbf{X} - \textbf{1}_{5}{\bar{\textbf{x}}}^{\prime}\right)
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{rrrrr}
+            12 & 18 & 14 & 20 & 16 \\
+            17 & 20 & 16 & 18 & 19 \\
+            29 & 38 & 30 & 38 & 35
+        \end{bNiceArray}
+        \begin{bNiceArray}{rrr}
+            -4 & -1 & -5 \\
+            2 & 2 & 4 \\
+            -2 & -2 & -4 \\
+            4 & 0 & 4 \\
+            0 & 1 & 1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{ccc}
+            40 & 12 & 52 \\
+            12 & 10 & 22 \\
+            52 & 22 & 74
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{ccc}
+            10 & 3 & 13 \\
+            3 & (5/2) & (11/2) \\
+            13 & (11/2) & (37/2)
+        \end{bNiceArray}
+    \]
+    Computing the generalized sample variance
+    \[
+        \left|\textbf{S}\right|
+        =
+        \left|
+            \begin{NiceArray}{ccc}
+                10 & 3 & 13 \\
+                3 & (5/2) & (11/2) \\
+                13 & (11/2) & (37/2)
+            \end{NiceArray}
+        \right|
+        =
+    \]
+    \[
+        =
+        10
+        \left|
+            \begin{NiceArray}{cc}
+                (5/2) & (11/2) \\
+                (11/2) & (37/2)
+            \end{NiceArray}
+        \right|
+        -
+        3
+        \left|
+            \begin{NiceArray}{cc}
+                3 & (11/2) \\
+                13 & (37/2)
+            \end{NiceArray}
+        \right|
+        +
+        13
+        \left|
+            \begin{NiceArray}{ccc}
+                3 & (5/2) \\
+                13 & (11/2)
+            \end{NiceArray}
+        \right|
+        =
+    \]
+    \[
+        =
+        \frac{10}{4}
+        (185-121)
+        -
+        \frac{3}{2}
+        (111-143)
+        +
+        \frac{13}{2}
+        (33-65)
+        =
+    \]
+    \[
+        =
+        \frac{640}{4}
+        +
+        \frac{96}{2}
+        -
+        \frac{416}{2}
+        =
+    \]
+    \[
+        =
+        \frac{416}{2}
+        -
+        \frac{416}{2}
+        =
+        0
+    \]
+    In part (a) we could see that the third column is the sum of the first two, so we defined a vector $\textbf{a}$ as
+    \[
+        \textbf{a}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            1 \\
+            -1
+        \end{bNiceArray}
+    \]
+    and using that same vector to compute $\textbf{S}\textbf{a}$,
+    \[
+        \textbf{S}\textbf{a}
+        =
+        \begin{bNiceArray}{ccc}
+            10 & 3 & 13 \\
+            3 & (5/2) & (11/2) \\
+            13 & (11/2) & (37/2)
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            1 \\
+            1 \\
+            -1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            13 - 13 \\
+            11/2 - 11/2 \\
+            37/2 - 37/2
+        \end{bNiceArray}
+        =
+        \textbf{0}
+    \]
+    \item Verify that the third column of the data matrix is the sum of the first two columns.
+    That is, show that there is linear dependence, with $a_1 = 1$, $a_2 = 1$, and $a_3 = -1$.
+    \par
+    In part (a) this was shown for the computation of $\textbf{X}\textbf{a} = \textbf{0}$. Here's another way using column vectors in $\textbf{X}$
+    \[
+        \textbf{X}\textbf{a}
+        =
+        \begin{bNiceArray}{ccc}
+            \textbf{x}_1 & \textbf{x}_2 & \textbf{x}_3
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            a_1 \\
+            a_2 \\
+            a_3
+        \end{bNiceArray}
+        =
+        a_1 \textbf{x}_1
+        +
+        a_2 \textbf{x}_2
+        +
+        a_3 \textbf{x}_3
+        =
+        \textbf{x}_1
+        +
+        \textbf{x}_2
+        -
+        \textbf{x}_3
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{c}
+            12 \\
+            18 \\
+            14 \\
+            20 \\
+            16 \\
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            17 \\
+            20 \\
+            16 \\
+            18 \\
+            19 \\
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+            29 \\
+            38 \\
+            30 \\
+            38 \\
+            35 \\
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            29 \\
+            38 \\
+            30 \\
+            38 \\
+            35 \\
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{c}
+            29 \\
+            38 \\
+            30 \\
+            38 \\
+            35 \\
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            0 \\
+            0 \\
+            0 \\
+            0 \\
+            0 \\
+        \end{bNiceArray}
+        =
+        \textbf{0}
+    \]
+\end{enumerate}

@@ -1,0 +1,55 @@
+        % ------------------------------------------ %
+        %                      (2.15)                %
+        % ------------------------------------------ %
+        A quadratic form $\bold{x}^\prime \bold{A} \bold{x}$ is said to be positive definite if the matrix $\bold{A}$ is positive definite.
+        Is the quadratic form $3x_1^2 + 3x_2^2 - 2x_1x_2$ positive definite?
+        \par
+        Converting $3x_1^2 + 3x_2^2 - 2x_1x_2$ to a matrix, we'd have,
+        \[
+            \bold{x}^\prime \bold{A} \bold{x} 
+            =
+            \begin{bmatrix}
+                x_1 & x_2
+            \end{bmatrix}
+            \begin{bmatrix}
+                3 & -1 \\
+                -1 & 3
+            \end{bmatrix}
+            \begin{bmatrix}
+                x_1 \\
+                x_2
+            \end{bmatrix}
+            =
+            x_1\left(3x_1 - x_2\right) + x_2\left(-x_1+3x_2\right)
+            =
+            3x_1^2 + 3x_2^2 - 2x_1x_2
+        \]
+        So now,
+        \[
+            \bold{A}
+            =
+            \begin{bmatrix}
+                3 & -1 \\
+                -1 & 3
+            \end{bmatrix}
+        \]
+        Now check if $\bold{A}$ has positive eigenvalues,
+        \[
+            0
+            =
+            \left|\bold{A} - \lambda \bold{I}\right|
+            =
+            \left|
+            \begin{matrix}
+                3 - \lambda & -1 \\
+                -1 & 3 - \lambda
+            \end{matrix}
+            \right|
+            =
+            \left(3 - \lambda\right)^2 - 1
+            =
+            \lambda^2 - 6\lambda + 9 - 1
+            =
+            \left(\lambda - 2\right)\left(\lambda - 4\right)
+        \]
+        The eigenvalues are $\left\{\lambda_1,\lambda_2\right\} = \left\{2,4\right\}$, so since $\lambda_i > 0$, i.e., the eigenvalues are all positive, the matrix $\bold{A}$ is positive definite.

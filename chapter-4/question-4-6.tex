@@ -1,0 +1,150 @@
+Let $\textbf{X}$ be distributed as $N_{3} (\bm{\mu}, \bm{\Sigma})$, where $\bm{\mu}^{\prime} = [1, -1, 2]$ and
+\[
+    \bm{\Sigma}
+    =
+    \begin{bNiceArray}{rrr}
+        4 & 0 & -1 \\
+        0 & 5 & 0 \\
+        -1 & 0 & 2
+    \end{bNiceArray}
+\]
+Which of the following random variables are independent? Explain.
+\begin{enumerate}[label= (\alph*)]
+    \item $X_1$ and $X_2$
+    \par
+    Picking out the value of $\text{Cov}(X_1, X_2) = \sigma_{12} = \sigma_{21}$ from $\bm{\Sigma}$, we can see that $\text{Cov}(X_1, X_2) = 0$, so by part \textbf{(a)} of \textbf{Result 4.5} on page 159 $X_1$ and $X_2$ are $\independent$.
+    \item $X_1$ and $X_3$
+    \par
+    Picking out the value of $\text{Cov}(X_1, X_3) = \sigma_{13} = \sigma_{31}$ from $\bm{\Sigma}$, we can see that $\text{Cov}(X_1, X_3) = -1$, so by part \textbf{(a)} of \textbf{Result 4.5} on page 159 $X_1$ and $X_3$ are not $\independent$.
+    \item $X_2$ and $X_3$
+    \par
+    Picking out the value of $\text{Cov}(X_2, X_3) = \sigma_{23} = \sigma_{32}$ from $\bm{\Sigma}$, we can see that $\text{Cov}(X_2, X_3) = 0$, so by part \textbf{(a)} of \textbf{Result 4.5} on page 159 $X_2$ and $X_3$ are $\independent$.
+    \item $(X_1, X_3)$ and $X_2$
+    \par
+    This time partition $\bm{\mu}$ and $\bm{\Sigma}$ so that $X_2$ is the last row of $\bm{\mu}$ and the last row/column of $\bm{\Sigma}$
+    \[
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{r}
+            \mu_1 \\
+            \mu_2 \\
+            \mu_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            \mu_1 \\
+            \mu_3 \\
+            \mu_2 \\
+            \CodeAfter \tikz \draw[dotted] (3-|1) -- (3-|2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            2 \\
+            -1 \\
+            \CodeAfter \tikz \draw[dotted] (3-|1) -- (3-|2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            \bm{\mu}_1 \\
+            \bm{\mu}_2 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|2);
+        \end{bNiceArray}
+    \]
+    \[
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{ccc}
+            \sigma_{11} & \sigma_{12} & \sigma_{13} \\
+            \sigma_{21} & \sigma_{22} & \sigma_{23} \\
+            \sigma_{31} & \sigma_{32} & \sigma_{33}
+        \end{bNiceArray}
+        \xrightarrow{
+            \begin{subarray}{c}
+                \text{Swap column 2 and column 3} \\
+                \text{Swap row 2 and row 3}
+            \end{subarray}
+        }
+        \begin{bNiceArray}{ccc}
+            \sigma_{11} & \sigma_{13} & \sigma_{12} \\
+            \sigma_{31} & \sigma_{33} & \sigma_{32} \\
+            \sigma_{21} & \sigma_{23} & \sigma_{22} \\
+            \CodeAfter \tikz \draw[dotted] (3-|1) -- (3-|4);
+            \tikz \draw[dotted] (1-|3) -- (4-|3);
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{rrr}
+            4 & -1 & 0 \\
+            -1 & 2 & 0 \\
+            0 & 0 & 5 \\
+            \CodeAfter \tikz \draw[dotted] (3-|1) -- (3-|4);
+            \tikz \draw[dotted] (1-|3) -- (4-|3);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \bm{\Sigma_{11}} & \bm{\Sigma_{12}} \\
+            \bm{\Sigma_{21}} & \bm{\Sigma_{22}} \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|3);
+            \tikz \draw[dotted] (1-|2) -- (3-|2);
+        \end{bNiceArray}
+    \]
+    Here, $\textbf{X}_1 = \begin{bNiceArray}{c} X_1 \\ X_3 \end{bNiceArray}$ and $\textbf{X}_2 = \begin{bNiceArray}{c} X_2 \end{bNiceArray}$. Picking out the value of $\text{Cov}(\textbf{X}_1, \textbf{X}_2) = \bm{\Sigma}_{12} = \begin{bNiceArray}{c} 0 \\ 0 \end{bNiceArray} = \textbf{0}$ from the partitioned $\bm{\Sigma}$, we can see that $\bm{\Sigma}_{12} = \textbf{0}$, so by part \textbf{(b)} of \textbf{Result 4.5} on page 159 $(X_1, X_3)$ and $X_2$ are $\independent$.
+
+    \item $X_1$ and $X_1 + 3X_2 - 2X_3$
+    \par
+    For this, we have $q = 2$ linear combinations, so
+    \[
+        \textbf{A}
+        =
+        \begin{bNiceArray}{c}
+            \textbf{a}_{1}^{\prime} \\
+            \textbf{a}_{2}^{\prime}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rrr}
+            1 & 0 & 0 \\
+            1 & 3 & -2
+        \end{bNiceArray}
+    \]
+    From \textbf{Result 4.3} on page 157, this would be distributed as $N_{q} (,(\textbf{A}\bm{\mu}, \textbf{A}\bm{\Sigma}\textbf{A}^{\prime})$. Computing $\textbf{A}\bm{\Sigma}\textbf{A}^{\prime}$ we have
+    \[
+        \textbf{A}\bm{\Sigma}\textbf{A}^{\prime}
+        =
+        \begin{bNiceArray}{rrr}
+            1 & 0 & 0 \\
+            1 & 3 & -2
+        \end{bNiceArray}
+        \begin{bNiceArray}{rrr}
+            4 & 0 & -1 \\
+            0 & 5 & 0 \\
+            -1 & 0 & 2
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            1 & 1 \\
+            0 & 3 \\
+            0 & -2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rrr}
+            4 & 0 & -1 \\
+            6 & 15 & -5
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            1 & 1 \\
+            0 & 3 \\
+            0 & -2
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{rr}
+            4 & 6 \\
+            6 & 61
+        \end{bNiceArray}
+    \]
+    This is the variance-covariance matrix of $X_1$ and $X_1 + 3X_2 - 2X_3$. Picking out the off-diagonal term, $\text{Cov}(X_1, X_1 + 3X_2 - 2X_3) = 6$. This value is not zero, so by \textbf{Result 4.5} part \textbf{(a)}, $X_1$ and $X_1 + 3X_2 - 2X_3$ are not $\independent$.
+\end{enumerate}

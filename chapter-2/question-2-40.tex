@@ -1,0 +1,149 @@
+        % ------------------------------------------ %
+        %                      (2.40)                %
+        % ------------------------------------------ %
+        Verify \textbf{(2-24)}: $E\left(\textbf{X} + \textbf{Y}\right) = E(\textbf{X}) + E(\textbf{Y})$ and $E\left(\textbf{A}\textbf{X}\textbf{B}\right) = \textbf{A}E(\textbf{X})\textbf{B}$.
+        \newline
+        \textit{Hint:} $\textbf{X} + \textbf{Y}$ has $X_{ij} + Y_{ij}$ as its $\left(i,j\right)$th element. Now, $E\left(X_{ij} + Y_{ij}\right) = E(X_{ij}) + E(Y_{ij})$ by the univariate property of expectation, and this last quantity is the $\left(i,j\right)$th element of $E(\textbf{X}) + E(\textbf{Y})$. Next (see Exercise 2.39), $\textbf{A}\textbf{X}\textbf{B}$ has $\left(i,j\right)$th entry $\sum_{\ell}{\sum_{k}{a_{i\ell}X_{\ell k}b_{kj}}}$, and by the additive property of expectation,
+        \[
+            E\left(\sum_{\ell}{\sum_{k}{a_{i\ell}X_{\ell k}b_{kj}}}\right)
+            =
+            \sum_{\ell}{\sum_{k}{a_{i\ell}E(X_{\ell k})b_{kj}}}
+        \]
+        which is the $\left(i,j\right)$th element of $\textbf{A}E(\textbf{X})\textbf{B}$.
+        \par
+        Let both $\textbf{X}$ and $\textbf{Y}$ be $n \times p$ matrices, so
+        \[
+            E\left[\textbf{X} + \textbf{Y}\right]
+            =
+            E
+            \left[
+                \begin{bNiceMatrix}
+                    X_{11} & \cdots & X_{1p} \\
+                    \vdots & \ddots & \vdots \\
+                    X_{n1} & \cdots & X_{np}
+                \end{bNiceMatrix}
+                +
+                \begin{bNiceMatrix}
+                    Y_{11} & \cdots & Y_{1p} \\
+                    \vdots & \ddots & \vdots \\
+                    Y_{n1} & \cdots & Y_{np}
+                \end{bNiceMatrix}
+            \right]
+            =
+        \]
+        \[
+            =
+            E
+            \left[
+                \begin{bNiceMatrix}
+                    X_{11} + Y_{11} & \cdots & X_{1p} + Y_{1p} \\
+                    \vdots & \ddots & \vdots \\
+                    Y_{n1} + X_{n1} & \cdots & X_{np} + Y_{np}
+                \end{bNiceMatrix}
+            \right]
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                E\left[X_{11} + Y_{11}\right] & \cdots & E\left[X_{1p} + Y_{1p} \right] \\
+                \vdots & \ddots & \vdots \\
+                E\left[X_{n1} + Y_{n1}\right] & \cdots & E\left[X_{np} + Y_{np}\right]
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                E\left[X_{11}\right] + E\left[Y_{11}\right] & \cdots & E\left[X_{1p}\right] + E\left[Y_{1p}\right] \\
+                \vdots & \ddots & \vdots \\
+                E\left[X_{n1}\right] + E\left[Y_{n1}\right] & \cdots & E\left[X_{np}\right] + E\left[Y_{np}\right]
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                E\left[X_{11}\right] & \cdots & E\left[X_{1p}\right] \\
+                \vdots & \ddots & \vdots \\
+                E\left[X_{n1}\right] & \cdots & E\left[X_{np}\right]
+            \end{bNiceMatrix}
+            +
+            \begin{bNiceMatrix}
+                E\left[Y_{11}\right] & \cdots & E\left[Y_{1p}\right] \\
+                \vdots & \ddots & \vdots \\
+                E\left[Y_{n1}\right] & \cdots & E\left[Y_{np}\right]
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            E\left[
+            \begin{bNiceMatrix}
+                X_{11} & \cdots & X_{1p} \\
+                \vdots & \ddots & \vdots \\
+                X_{n1} & \cdots & X_{np}
+            \end{bNiceMatrix}
+            \right]
+            +
+            E\left[
+            \begin{bNiceMatrix}
+                Y_{11} & \cdots & Y_{1p} \\
+                \vdots & \ddots & \vdots \\
+                Y_{n1} & \cdots & Y_{np}
+            \end{bNiceMatrix}
+            \right]
+            =
+        \]
+        \[
+            =
+            E\left[\textbf{X}\right] + E\left[\textbf{Y}\right]
+        \]
+        Using Exercise 2.39
+        \[
+            E\left(\textbf{A}\textbf{X}\textbf{B}\right)
+            =
+        \]
+        \[
+            =
+            E
+            \left[
+                \begin{bNiceMatrix}
+                    \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{1\ell}X_{\ell k}c_{k1}}} & \cdots & \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{1\ell}X_{\ell k}c_{kv}}} \\
+                    \vdots & \ddots & \vdots \\
+                    \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{r\ell}X_{\ell k}c_{k1}}} & \cdots & \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{r\ell}X_{\ell k}c_{kv}}}
+                \end{bNiceMatrix}
+            \right]
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                E\left[\sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{1\ell}X_{\ell k}c_{k1}}}\right] & \cdots & E\left[\sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{1\ell}X_{\ell k}c_{kv}}}\right] \\
+                \vdots & \ddots & \vdots \\
+                E\left[\sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{r\ell}X_{\ell k}c_{k1}}}\right] & \cdots & E\left[\sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{r\ell}X_{\ell k}c_{kv}}}\right]
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{E\left[a_{1\ell}X_{\ell k}c_{k1}\right]}} & \cdots & \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{E\left[a_{1\ell}X_{\ell k}c_{kv}\right]}} \\
+                \vdots & \ddots & \vdots \\
+                \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{E\left[a_{r\ell}X_{\ell k}c_{k1}\right]}} & \cdots & \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{E\left[a_{r\ell}X_{\ell k}c_{kv}\right]}}
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{1\ell}E\left[X_{\ell k}\right]c_{k1}}} & \cdots & \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{1\ell}E\left[X_{\ell k}\right]c_{kv}}} \\
+                \vdots & \ddots & \vdots \\
+                \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{r\ell}E\left[X_{\ell k}\right]c_{k1}}} & \cdots & \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{r\ell}E\left[X_{\ell k}\right]c_{kv}}}
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            \textbf{A}E(\textbf{X})\textbf{B}
+        \]

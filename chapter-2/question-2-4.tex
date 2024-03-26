@@ -1,0 +1,27 @@
+        % ------------------------------------------ %
+        %                      (2.4)                 %
+        % ------------------------------------------ %
+        When $\bold{A}^{-1}$ and $\bold{B}^{-1}$ exist, prove each of the following.
+        \begin{enumerate}[label=(\alph*)]
+            \item ${\left(\bold{A}^\prime\right)}^{-1} = {\left(\bold{A}^{-1}\right)}^\prime$
+            
+            \[
+                {\left(\bold{A}^{-1}\right)}^\prime = {\left(\bold{A}^{-1}\right)}^\prime \bold{I} = {\left(\bold{A}^{-1}\right)}^\prime\bold{A}^\prime{\left(\bold{A}^\prime\right)}^{-1} =
+                {\left(\bold{A}\bold{A}^{-1}\right)}^\prime{\left(\bold{A}^\prime\right)}^{-1} = \bold{I}{\left(\bold{A}^\prime\right)}^{-1} = {\left(\bold{A}^\prime\right)}^{-1}
+            \]
+
+            \item ${\left(\bold{A}\bold{B}\right)}^{-1} = \bold{B}^{-1} \bold{A}^{-1}$
+            
+            If we define $\bold{C} = \bold{A}\bold{B}$ and $\bold{D} = \bold{B}^{-1}\bold{A}^{-1}$, and if \textbf{Def 2A.27} is satisifed ($\bold{C}\bold{D} = \bold{D}\bold{C} = \bold{I}$), then $\bold{D}$ is the inverse of $\bold{C}$.
+            \[
+                \bold{C}\bold{D} = \left(\bold{A}\bold{B}\right)\left({\bold{B}}^{-1}{\bold{A}}^{-1}\right) = \bold{A}\left(\bold{B}{\bold{B}}^{-1}\right){\bold{A}}^{-1} = \bold{A}\bold{I}{\bold{A}}^{-1} = \bold{A}{\bold{A}}^{-1} = \bold{I}
+            \]
+
+            \[
+                \bold{D}\bold{C} = \left({\bold{B}}^{-1}{\bold{A}}^{-1}\right)\left(\bold{A}\bold{B}\right) = \bold{B}\left(\bold{A}{\bold{A}}^{-1}\right){\bold{B}}^{-1} = \bold{B}\bold{I}{\bold{B}}^{-1} = \bold{B}{\bold{B}}^{-1} = \bold{I}
+            \]
+            Now, \textbf{Def 2A.27} is satisifed ($\bold{C}\bold{D} = \bold{D}\bold{C} = \bold{I}$), so the inverse of $\bold{A}\bold{B}$ is $\bold{B}^{-1}\bold{A}^{-1}$. That is, ${\left(\bold{A}\bold{B}\right)}^{-1} = \bold{B}^{-1} \bold{A}^{-1}$.
+            \newline
+            \newline
+            Hint: Part a can be proven noting that $\bold{A}\bold{A}^{-1} = \bold{I}$, $\bold{I} = \bold{I}^\prime$, and ${\left(\bold{A}\bold{A}^{-1}\right)}^\prime = {\left(\bold{A}^{-1}\right)}^\prime \bold{A}^\prime$. Part b follows from $\left(\bold{B}^{-1}\bold{A}^{-1}\right) \bold{AB} = \bold{B}^{-1}\left(\bold{A}^{-1}\bold{A}\right)\bold{B} = \bold{B}^{-1}\bold{B} = \bold{I}$.
+        \end{enumerate}

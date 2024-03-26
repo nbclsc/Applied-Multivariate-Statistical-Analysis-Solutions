@@ -1,0 +1,81 @@
+        % ------------------------------------------ %
+        %                      (2.39)                %
+        % ------------------------------------------ %
+        Show that
+        \[
+            \underset{(r \times s)}{\mathbf{A}} \underset{(s \times t))}{\mathbf{B}} \underset{(t \times v)}{C}
+            \text{ has }(i,j)\text{th entry }
+            \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{i\ell}b_{\ell k} c_{kj}}}
+        \]
+        \textit{Hint:} $\mathbf{B}\mathbf{C}$ has $\left(\ell, j\right)$th entry $\sum_{k=1}^{t}{b_{\ell k}c_{kj}} = d_{\ell j}$. So $\mathbf{A}\left(\mathbf{B}\mathbf{C}\right)$ has $\left(i,j\right)$th element
+        \[
+            a_{i1}d_{1j} + a_{i2}d_{2j} + \cdots + a_{is}d_{sj} = \sum_{\ell=1}^{s}{a_{i\ell}\left(\sum_{k=1}^{t}{b_{\ell k}c_{kj}}\right)} = \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{i\ell}b_{\ell k}c_{kj}}}
+        \]
+        \par
+        \[
+            \textbf{A}\textbf{B}\textbf{C}
+            =
+            \textbf{A}\left(\textbf{B}\textbf{C}\right)
+            =
+            \textbf{A}
+            \left(
+                \begin{bNiceMatrix}
+                    b_{11} & \cdots & b_{1t} \\
+                    \vdots & \ddots & \vdots \\
+                    b_{s1} & \cdots & b_{st}
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}
+                    c_{11} & \cdots & c_{1v} \\
+                    \vdots & \ddots & \vdots \\
+                    c_{t1} & \cdots & c_{tv}
+                \end{bNiceMatrix}
+            \right)
+            =
+        \]
+        \[
+            =
+            \textbf{A}
+            \begin{bNiceMatrix}
+                \sum_{k=1}^{t}{b_{1k}c_{k1}} & \cdots & \sum_{k=1}^{t}{b_{1k}c_{kv}} \\
+                \vdots & \ddots & \vdots \\
+                \sum_{k=1}^{t}{b_{sk}c_{k1}} & \cdots & \sum_{k=1}^{t}{b_{sk}c_{kv}}
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                a_{11} & \cdots & a_{1s} \\
+                \vdots & \ddots & \vdots \\
+                a_{r1} & \cdots & a_{rs}
+            \end{bNiceMatrix}
+            \begin{bNiceMatrix}
+                \sum_{k=1}^{t}{b_{1k}c_{k1}} & \cdots & \sum_{k=1}^{t}{b_{1k}c_{kv}} \\
+                \vdots & \ddots & \vdots \\
+                \sum_{k=1}^{t}{b_{sk}c_{k1}} & \cdots & \sum_{k=1}^{t}{b_{sk}c_{kv}}
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                \sum_{\ell=1}^{s}{a_{1\ell}\left(\sum_{k=1}^{t}{b_{\ell k}c_{k1}}\right)} & \cdots & \sum_{\ell=1}^{s}{a_{1\ell}\left(\sum_{k=1}^{t}{b_{\ell k}c_{kv}}\right)} \\
+                \vdots & \ddots & \vdots \\
+                \sum_{\ell=1}^{s}{a_{r\ell}\left(\sum_{k=1}^{t}{b_{\ell k}c_{k1}}\right)} & \cdots & \sum_{\ell=1}^{s}{a_{r\ell}\left(\sum_{k=1}^{t}{b_{\ell k}c_{kv}}\right)}
+            \end{bNiceMatrix}
+            =
+        \]
+        \[
+            =
+            \begin{bNiceMatrix}
+                \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{1\ell}b_{\ell k}c_{k1}}} & \cdots & \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{1\ell}b_{\ell k}c_{kv}}} \\
+                \vdots & \ddots & \vdots \\
+                \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{r\ell}b_{\ell k}c_{k1}}} & \cdots & \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{r\ell}b_{\ell k}c_{kv}}}
+            \end{bNiceMatrix}
+        \]
+        \par
+        The output of $\textbf{A}\textbf{B}\textbf{C}$ is a $r \times v$ matrix, whose elements are
+        \[
+            \sum_{\ell=1}^{s}{\sum_{k=1}^{t}{a_{i\ell}b_{\ell k}c_{kj}}}
+        \]
+        where $i = 1, \dots, r$ and $j = 1, \dots, v$.

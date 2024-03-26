@@ -1,0 +1,249 @@
+Refer to Exercise 4.6 and specify each of the following.
+\begin{enumerate}[label= (\alph*)]
+    \item The conditional distribution of $X_1$, given that $X_3 = x_3$.
+    \par
+    We only care about $X_1$ and $X_3$, so to remove $X_2$ we could first apply the linear combinations
+    \[
+        \textbf{A}
+        =
+        \begin{bNiceArray}{ccc}
+            1 & 0 & 0 \\
+            0 & 0 & 1
+        \end{bNiceArray}
+    \]
+    so by \textbf{Result 4.3}, this would be distributed as $N_{2}(\textbf{A}\bm{\mu}, \textbf{A}\bm{\Sigma}\textbf{A}^{\prime})$, where
+    \[
+        \textbf{A}\bm{\mu}
+        =
+        \begin{bNiceArray}{c}
+            1 \\
+            2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \mu_1 \\
+            \mu_3
+        \end{bNiceArray}
+        \hspace{0.2in}\text{and}\hspace{0.2in}
+        \textbf{A}\bm{\Sigma}\textbf{A}^{\prime}
+        =
+        \begin{bNiceArray}{rr}
+            4 & -1 \\
+            -1 & 2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \sigma_{11} & \sigma_{13} \\
+            \sigma_{31} & \sigma_{33}
+        \end{bNiceArray}
+    \]
+    From here we can use \textbf{Result 4.6} to get the conditional distribution
+    \[
+        \text{Mean}
+        =
+        \mu_1
+        +
+        \sigma_{13}
+        \sigma_{33}^{-1}
+        (x_3 - \mu_3)
+        =
+        1
+        +
+        (-1)
+        (1/2)
+        (x_3 - 2)
+        =
+        2
+        -
+        \frac{1}{2}
+        x_3
+    \]
+    \[
+        \text{Covariance}
+        =
+        \sigma_{11}
+        +
+        \sigma_{13}
+        \sigma_{33}^{-1}
+        \sigma_{31}
+        =
+        4
+        -
+        {(-1)}^2
+        (1/2)
+        -
+        4
+        -
+        1/2
+        =
+        \frac{7}{2}
+    \]
+    and putting it together we have
+    \[
+        X_1 \bigg{|} X_3 = x_3
+        \sim
+        N \left(
+            2 - \frac{1}{2} x_3,
+            \frac{7}{2}
+        \right)
+    \]
+    \item The conditional distribution of $X_1$, given that $X_2 = x_2$ and $X_3 = x_3$.
+    \par
+    This time partition things so that one group contains $X_1$ and another group contains $X_2$ and $X_3$.
+    \[
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            -1 \\
+            2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            1 \\
+            -1 \\
+            2 \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2|-2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \bm{\mu}_{1} \\
+            \bm{\mu}_{2} \\
+            \CodeAfter \tikz \draw[dotted] (2-|1) -- (2|-2);
+        \end{bNiceArray}
+    \]
+    \[
+        \bm{\mu}
+        =
+        \begin{bNiceArray}{rrr}
+            4 & 0 & -1 \\
+            0 & 5 & 0 \\
+            -1 & 0 & 2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rrr}
+            4 & 0 & -1 \\
+            0 & 5 & 0 \\
+            -1 & 0 & 2 \\
+            \CodeAfter \tikz \draw[dotted] (2|-1) -- (2|-4);
+            \tikz \draw[dotted] (1|-2) -- (4|-2);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rrr}
+            \bm{\Sigma}_{11} & \bm{\Sigma}_{12} \\
+            \bm{\Sigma}_{21} & \bm{\Sigma}_{22} \\
+            \CodeAfter \tikz \draw[dotted] (2|-1) -- (2|-3);
+            \tikz \draw[dotted] (1|-2) -- (3|-2);
+        \end{bNiceArray}
+    \]
+    Again, apply \textbf{Result 4.6},
+    \[
+        \text{Mean}
+        =
+        \bm{\mu}_1
+        +
+        \bm{\Sigma}_{12}
+        \bm{\Sigma}_{22}^{-1}
+        \left(\textbf{x}_2 - \bm{\mu}_2\right)
+        =
+        1
+        +
+        \begin{bNiceArray}{rr}
+            0 & -1
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            2/10 & 0 \\
+            0 & 5/10
+        \end{bNiceArray}
+        \left(
+            \begin{bNiceArray}{c}
+                x_2 \\
+                x_3
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{r}
+                -1 \\
+                2
+            \end{bNiceArray}
+        \right)
+        =
+    \]
+    \[
+        =
+        1
+        +
+        \begin{bNiceArray}{rr}
+            0 & -1/2
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            x_2 + 1 \\
+            x_3 - 2
+        \end{bNiceArray}
+        =
+        1
+        -
+        \frac{1}{2}
+        \left(
+            x_3 - 2
+        \right)
+        =
+        2
+        -
+        \frac{1}{2}
+        x_3
+    \]
+    \[
+        \text{Covariance}
+        =
+        \bm{\Sigma}_{11}
+        -
+        \bm{\Sigma}_{12}
+        \bm{\Sigma}_{11}^{-1}
+        \bm{\Sigma}_{21}
+        =
+        4
+        -
+        \begin{bNiceArray}{rr}
+            0 & -1
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            2/10 & 0 \\
+            0 & 5/10
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            0 \\
+            -1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        4
+        -
+        \begin{bNiceArray}{rr}
+            0 & -1/2
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            0 \\
+            -1
+        \end{bNiceArray}
+        =
+        4
+        -
+        \frac{1}{2}
+        =
+        \frac{7}{2}
+    \]
+    Putting this together we have
+    \[
+        X_1 \bigg{|} X_2, X_3
+        \sim
+        \left(
+            2
+            -
+            \frac{1}{2}
+            x_3,
+            \frac{7}{2}
+        \right)
+    \]
+\end{enumerate}

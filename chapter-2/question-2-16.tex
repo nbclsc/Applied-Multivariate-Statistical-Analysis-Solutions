@@ -1,0 +1,36 @@
+        % ------------------------------------------ %
+        %                      (2.16)                %
+        % ------------------------------------------ %
+Consider an arbitrary $n \times p$ matrix $\bold{A}$. Then $\bold{A}^\prime \bold{A}$ is a symmetric $p \times p$ matrix. Show
+        that $\bold{A}^\prime \bold{A}$ is necessarily nonnegative definite.
+        \newline
+        \textit{Hint:} Set $\bold{y} = \bold{A}\bold{x}$ so that $\bold{y}^\prime\bold{y} = \bold{x}^\prime\bold{A}^\prime\bold{A}\bold{x}$.
+        \newline
+        \par
+        Ignoring the hint, could use the Singular-Value Decomposition from \textbf{Result 2A.15} for nonsquare matrices,
+        \[
+            \bold{A}^\prime\bold{A} 
+            = 
+            {\left(\bold{U}\bold{\Lambda}\bold{V}^\prime\right)}^\prime\left(\bold{U}\bold{\Lambda}\bold{V}^\prime\right)
+            =
+            \bold{V}\bold{\Lambda}\bold{U}^\prime\bold{U}\bold{\Lambda}\bold{V}^\prime
+            =
+            \bold{V}\bold{\Lambda}\bold{I}\bold{\Lambda}\bold{V}^\prime
+            =
+            \bold{V}\bold{\Lambda}\bold{\Lambda}\bold{V}^\prime
+            =
+            \bold{V}\bold{\Lambda}^2\bold{V}^\prime
+        \]
+        The eigenvalues in $\bold{\Lambda}^2$ are all squared values of the eigenvalues of $\bold{\Lambda}$, so they are either zero or a positive value. Thus, $\bold{A}^\prime\bold{A}$ is nonnegative definite.
+        \par
+        Using the hint, $\bold{y} = \bold{A}\bold{x}$, 
+        \[
+            \bold{y}^\prime\bold{y} 
+            = 
+            {\left(\bold{A}\bold{x}\right)}^\prime\left(\bold{A}\bold{x}\right)
+            =
+            \bold{x}^\prime\bold{A}^\prime\bold{A}\bold{x}
+            =
+            \bold{x}^\prime\bold{B}\bold{x}
+        \]
+        As explained on page 62 \textbf{(2-17)}, this is in quadratic form. The matrix, $\bold{B} = \bold{A}^\prime\bold{A}$, is $p \times p$ and is nonnegative definite. This could also be explained as, $\bold{y}^\prime\bold{y} = y_1^2 + \dots + y_p^2 = \left\|\bold{y}\right\|^2$, the sum of squared values, and so the sum cannot be negative, so must be at least zero (nonnegative definite).

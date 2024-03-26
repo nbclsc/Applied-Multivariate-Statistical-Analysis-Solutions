@@ -1,0 +1,250 @@
+Let $\textbf{X}$ be $N_3(\bm{\mu},\bm{\Sigma})$ with $\bm{\mu}^{\prime} = [-3,1,4]$ and
+\[
+    \bm{\Sigma}
+    =
+    \begin{bNiceArray}{rrr}
+        1 & -2 & 0 \\
+        -2 & 5 & 0 \\
+        0 & 0 & 2
+    \end{bNiceArray}
+\]
+Which of the following random variables are independent? Explain.
+\begin{enumerate}[label=(\alph*)]
+    \item $X_1$ and $X_2$
+    \newline
+    \par
+    $\text{Cov}(X_1, X_2) = -2 \ne 0$, so no, $X_1$ and $X_2$ are not $\independent$.
+    \item $X_2$ and $X_3$
+    \newline
+    \par
+    $\text{Cov}(X_2, X_3) = 0$, so yes, $X_2$ and $X_3$ are $\independent$.
+    \item $(X_1, X_2)$ and $X_3$
+    \newline
+    \par
+    If we partition the matrix so that column 3 with rows 1 and 2 make up $\bm{\Sigma}_{12}$,
+    \[
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{rrr}
+            1 & -2 & 0 \\
+            -2 & 5 & 0 \\
+            0 & 0 & 2 \\
+            \CodeAfter \tikz \draw[dotted] (1-|3) -- (4-|3);
+            \tikz \draw[dotted] (3-|1) -- (3-|4);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \bm{\Sigma}_{11} & \bm{\Sigma}_{12} \\
+            \bm{\Sigma}_{21} & \bm{\Sigma}_{22}
+        \end{bNiceArray}
+    \]
+    \[
+        \bm{\Sigma}_{12}
+        =
+        \begin{bNiceArray}{c}
+            0 \\
+            0
+        \end{bNiceArray}
+    \]
+    Because $\bm{\Sigma}_{12} = \text{Cov}((X_1, X_2), X_2) = \textbf{0}$, yes, $(X_1, X_2)$ and $X_2$ are $\independent$.
+    \item $\frac{X_1 + X_2}{2}$ and $X_3$
+    \par
+    If we define $Y_1 = \frac{X_1 + X_2}{2}$ and $Y_2 = X_3$ we could then setup $\textbf{A}$ to be
+    \[
+        \textbf{A}
+        =
+        \begin{bNiceArray}{rrr}
+            \frac{1}{2} & \frac{1}{2} & 0 \\
+            0 & 0 & 1 \\
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{A}\textbf{X}
+        =
+        \begin{bNiceArray}{rrr}
+            \frac{1}{2} & \frac{1}{2} & 0 \\
+            0 & 0 & 1 \\
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            X_1 \\
+            X_2 \\
+            X_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \frac{X_1 + X_2}{2} \\
+            X_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            Y_1 \\
+            Y_2
+        \end{bNiceArray}
+    \]
+    \[
+        \text{Cov}(\textbf{A}\textbf{X})
+        =
+        \textbf{A}\text{Cov}(\textbf{X})\textbf{A}^{\prime}
+        =
+        \begin{bNiceArray}{rrr}
+            \frac{1}{2} & \frac{1}{2} & 0 \\
+            0 & 0 & 1 \\
+        \end{bNiceArray}
+        \begin{bNiceArray}{rrr}
+            1 & -2 & 0 \\
+            -2 & 5 & 0 \\
+            0 & 0 & 2
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            \frac{1}{2} & 0 \\
+            \frac{1}{2} & 0 \\
+            0 & 1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{rrr}
+            -\frac{1}{2} & \frac{3}{2} & -2 \\
+            0 & 0 & 2 \\
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            \frac{1}{2} & 0 \\
+            \frac{1}{2} & 0 \\
+            0 & 1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \frac{1}{2} & 0 \\
+            0 & 2
+        \end{bNiceArray}
+    \]
+    Because $\text{Cov}(Y_1,Y_2) = 0$, yes, $\frac{X_1 + X_2}{2}$ and $X_3$ are $\independent$.
+    Another way would be to partition the matrix, like in chapter 3
+    \[
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{rrr}
+            1 & -2 & 0 \\
+            -2 & 5 & 0 \\
+            0 & 0 & 2 \\
+            \CodeAfter \tikz \draw[dotted] (1-|3) -- (4-|3);
+            \tikz \draw[dotted] (3-|1) -- (3-|4);
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \bm{\Sigma}_{11} & \bm{\Sigma}_{12} \\
+            \bm{\Sigma}_{21} & \bm{\Sigma}_{22}
+        \end{bNiceArray}
+    \]
+    Then apply a linear combination to $X_1$ and $X_2$, $Y = \textbf{b}^{\prime}\textbf{X}^{\star} = \frac{X_1 + X_2}{2}$, where $\textbf{X}^{\star} = {[X_1, X_2]}^{\prime}$ then
+    \[
+        \bm{\Sigma}_{11}
+        =
+        \begin{bNiceArray}{rr}
+            1 & -2 \\
+            -2 & 5
+        \end{bNiceArray},
+        \hspace{0.2in}
+        \textbf{b}
+        =
+        \begin{bNiceArray}{c}
+            1/2 \\
+            1/2
+        \end{bNiceArray}
+    \]
+    \[
+        \text{Cov}(Y,X_3)
+        =
+        \text{Cov}(\textbf{b}^{\prime}\textbf{X}^{\star},X_3)
+        =
+        \textbf{b}^{\prime}\text{Cov}(\textbf{X}^{\star},X_3)
+        =
+        \textbf{b}^{\prime}\bm{\Sigma}_{12}
+        =
+        \begin{bNiceArray}{cc}
+            \frac{1}{2} & \frac{1}{2}
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            0 \\
+            0
+        \end{bNiceArray}
+        =
+        0
+    \]
+    Because $\text{Cov}(Y,X_3) = 0$, yes, $Y = \frac{X_1 + X_2}{2}$ and $X_3$ are $\independent$.
+    \item $X_2$ and $X_2 - \frac{5}{2}X_1 - X_3$
+    \newline
+    \par
+    If we define $Y_1 = X_2 - \frac{5}{2}X_1 - X_3$ and $Y_2 = X_2$ we could then setup $\textbf{A}$ to be
+    \[
+        \textbf{A}
+        =
+        \begin{bNiceArray}{rrr}
+            -\frac{5}{2} & 1 & -1 \\
+            0 & 1 & 0 \\
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{A}\textbf{X}
+        =
+        \begin{bNiceArray}{rrr}
+            -\frac{5}{2} & 1 & -1 \\
+            0 & 1 & 0 \\
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            X_1 \\
+            X_2 \\
+            X_3
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            X_2 - \frac{5}{2}X_1 - X_3 \\
+            X_2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            Y_1 \\
+            Y_2
+        \end{bNiceArray}
+    \]
+    \[
+        \text{Cov}(\textbf{A}\textbf{X})
+        =
+        \textbf{A}\text{Cov}(\textbf{X})\textbf{A}^{\prime}
+        =
+        \begin{bNiceArray}{rrr}
+            -\frac{5}{2} & 1 & -1 \\
+            0 & 1 & 0 \\
+        \end{bNiceArray}
+        \begin{bNiceArray}{rrr}
+            1 & -2 & 0 \\
+            -2 & 5 & 0 \\
+            0 & 0 & 2
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            -\frac{5}{2} & 0 \\
+            1 & 1 \\
+            -1 & 0
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{rrr}
+            -\frac{9}{2} & 10 & -2 \\
+            -2 & 5 & 0 \\
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            -\frac{5}{2} & 0 \\
+            1 & 1 \\
+            -1 & 0
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            93/4 & 10 \\
+            10 & 5
+        \end{bNiceArray}
+    \]
+    Because $\text{Cov}(Y_1,Y_2) = 10$, no, $X_2$ and $X_2 - \frac{5}{2}X_1 - X_3$ are not $\independent$.
+\end{enumerate}

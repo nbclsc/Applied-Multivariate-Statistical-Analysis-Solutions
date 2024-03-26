@@ -1,0 +1,84 @@
+        % ------------------------------------------ %
+        %                      (2.38)                %
+        % ------------------------------------------ %
+        Find the maximum and minimum values of the ratio $\mathbf{x}^\prime\mathbf{A}\mathbf{x}/\mathbf{x}^\prime\mathbf{x}$ for any nonzero vector $\mathbf{x}^\prime = \begin{bmatrix}
+            x_1, & x_2, & x_3
+        \end{bmatrix}$ if
+        \[
+            \textbf{A}
+            =
+            \begin{bNiceMatrix}[r]
+                13 & -4 & 2 \\
+                -4 & 13 & -2 \\
+                2 & -2 & 10
+            \end{bNiceMatrix}
+        \]
+        \par
+        Finding the eigenvalues of $\textbf{A}$,
+        \[
+            0 = \left|\textbf{A} - \lambda\textbf{I}\right|
+            =
+            \left|
+            \begin{NiceMatrix}[r]
+                13 & -4 & 2 \\
+                -4 & 13 & -2 \\
+                2 & -2 & 10
+            \end{NiceMatrix}
+            \right|
+            =
+        \]
+        \[
+            =
+            {\left(13-\lambda\right)}
+            \left[\left(13-\lambda\right)\left(10-\lambda\right) - 4\right]
+            + 4\left[-4\left(10-\lambda\right)+ 4\right]
+            + 2\left[8 - 2\left(13-\lambda\right)\right]
+            =
+        \]
+        \[
+            =
+            {\left(13-\lambda\right)}^2{\left(10-\lambda\right)}
+            -4{\left(13-\lambda\right)}
+            -16{\left(10-\lambda\right)}
+            +16+16
+            -4{\left(13-\lambda\right)}
+        \]
+        \[
+            =
+            \left(\lambda^2 - 26\lambda + 169\right)\left(10-\lambda\right)
+            -52 + 4\lambda - 160 + 16\lambda + 32 - 52 + 4\lambda
+            =
+        \]
+        \[
+            =
+            \left(10\lambda^2 - 260\lambda + 1690\right)
+            +\left(-\lambda^3 + 26\lambda^2 - 169\lambda\right)
+            24\lambda - 232
+            =
+        \]
+        \[
+            =
+            1458 - 405\lambda + 36\lambda^2 - \lambda^3
+            =
+        \]
+        \[
+            =
+            -\left(\lambda^3 - 36\lambda^2 + 405\lambda - 1458\right)
+            =
+        \]
+        \[
+            =
+            -\left(\lambda^2\left(\lambda-9\right) - 27\lambda\left(\lambda-9\right) + 162\left(\lambda-9\right)\right)
+            =
+        \]
+        \[
+            =
+            -\left(\lambda-9\right)\left(\lambda^2 - 27\lambda + 162\right)
+            =
+        \]
+        \[
+            =
+            -\left(\lambda-9\right)\left(\lambda - 18\right)\left(\lambda - 9\right)
+        \]
+        The eigenvalues are $(\lambda_1, \lambda_2, \lambda_3) = (18, 9, 9)$. The matrix $\textbf{A}$ is positive definite, since $\lambda_1 > \lambda_2 > \lambda_3 > 0$.
+        By \textbf{(2-51)} on page 80, $\lambda_1 = 18$ is the maximum and $\lambda_2 = \lambda_3 = 9$ is the minimum.

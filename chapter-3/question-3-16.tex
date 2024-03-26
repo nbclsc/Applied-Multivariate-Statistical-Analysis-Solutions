@@ -1,0 +1,112 @@
+Let $\textbf{V}$ be a vector random variable with mean vector $E(\textbf{V}) = \bm{\mu}_{\textbf{V}}$ and covariance matrix $E(\textbf{V}-\bm{\mu}_{\textbf{V}}){(\textbf{V}-\bm{\mu}_{\textbf{V}})}^{\prime} = \bm{\Sigma}_{\textbf{V}}$. Show that $E(\textbf{V}{\textbf{V}}^{\prime}) = \bm{\Sigma}_{\textbf{V}} + \bm{\mu}_{\textbf{V}}{\bm{\mu}_{\textbf{V}}}^{\prime}$.
+\[
+    \bm{\Sigma}_{\textbf{V}}
+    =
+    E(\textbf{V}-\bm{\mu}_{\textbf{V}}){(\textbf{V}-\bm{\mu}_{\textbf{V}})}^{\prime}
+    =
+    E(\textbf{V}-\bm{\mu}_{\textbf{V}})(\textbf{V}^{\prime}-\bm{\mu}_{\textbf{V}}^{\prime})
+    =
+\]
+\[
+    =
+    E
+    \left[
+        \textbf{V}
+        \textbf{V}^{\prime}
+        -
+        \textbf{V}
+        \bm{\mu}_{\textbf{V}}^{\prime}
+        -
+        \bm{\mu}_{\textbf{V}}
+        \textbf{V}^{\prime}
+        +
+        \bm{\mu}_{\textbf{V}}
+        \bm{\mu}_{\textbf{V}}^{\prime}
+    \right]
+    =
+\]
+\[
+    =
+    E \left[
+        \textbf{V}
+        \textbf{V}^{\prime}
+    \right]
+    -
+    E \left[
+        \textbf{V}
+        \bm{\mu}_{\textbf{V}}^{\prime}
+    \right]
+    -
+    E \left[
+        \bm{\mu}_{\textbf{V}}
+        \textbf{V}^{\prime}
+    \right]
+    +
+    E \left[
+        \bm{\mu}_{\textbf{V}}
+        \bm{\mu}_{\textbf{V}}^{\prime}
+    \right]
+    =
+\]
+\[
+    =
+    E \left[
+        \textbf{V}
+        \textbf{V}^{\prime}
+    \right]
+    -
+    E \left[
+        \textbf{V}
+    \right]
+    \bm{\mu}_{\textbf{V}}^{\prime}
+    -
+    \bm{\mu}_{\textbf{V}}
+    E \left[
+        \textbf{V}^{\prime}
+    \right]
+    +
+    \bm{\mu}_{\textbf{V}}
+    \bm{\mu}_{\textbf{V}}^{\prime}
+    =
+\]
+\[
+    =
+    E \left[
+        \textbf{V}
+        \textbf{V}^{\prime}
+    \right]
+    -
+    \bm{\mu}_{\textbf{V}}
+    \bm{\mu}_{\textbf{V}}^{\prime}
+    -
+    \bm{\mu}_{\textbf{V}}
+    \bm{\mu}_{\textbf{V}}^{\prime}
+    +
+    \bm{\mu}_{\textbf{V}}
+    \bm{\mu}_{\textbf{V}}^{\prime}
+    =
+\]
+\[
+    =
+    E \left[
+        \textbf{V}
+        \textbf{V}^{\prime}
+    \right]
+    -
+    \bm{\mu}_{\textbf{V}}
+    \bm{\mu}_{\textbf{V}}^{\prime}
+    =
+    \bm{\Sigma}_{\textbf{V}}
+\]
+\[
+    \Rightarrow
+    E \left[
+        \textbf{V}
+        \textbf{V}^{\prime}
+    \right]
+    =
+    \bm{\Sigma}_{\textbf{V}}
+    +
+    \bm{\mu}_{\textbf{V}}
+    \bm{\mu}_{\textbf{V}}^{\prime}
+\]

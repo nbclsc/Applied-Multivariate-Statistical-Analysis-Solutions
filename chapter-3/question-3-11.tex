@@ -1,0 +1,101 @@
+Use the sample covariance obtained in Example 3.7 to verify (3-29) and (3-30), which state that $\textbf{R} = {\textbf{D}}^{-1/2}\textbf{S}{\textbf{D}}^{-1/2}$ and ${\textbf{D}}^{1/2}\textbf{R}{\textbf{D}}^{1/2} = \textbf{S}$.
+\[
+    \textbf{S}
+    =
+    \begin{bNiceArray}{rr}
+        252.04 & -68.43 \\
+        -68.43 & 123.67
+    \end{bNiceArray}
+\]
+From (3-28) on Page 139
+\[
+    \textbf{D}^{1/2}
+    =
+    \begin{bNiceArray}{cc}
+        \sqrt{s_{11}} & 0 \\
+        0 & \sqrt{s_{22}}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \sqrt{252.04} & 0 \\
+        0 & \sqrt{123.67}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        15.87577 & 0 \\
+        0 & 11.1207
+    \end{bNiceArray}
+\]
+\[
+    \textbf{D}^{-1/2}
+    =
+    \begin{bNiceArray}{cc}
+        \frac{1}{\sqrt{s_{11}}} & 0 \\
+        0 & \frac{1}{\sqrt{s_{22}}}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \frac{1}{\sqrt{252.04}} & 0 \\
+        0 & \frac{1}{\sqrt{123.67}}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        0.06298908 & 0 \\
+        0 & 0.08992239
+    \end{bNiceArray}
+\]
+\[
+    \textbf{R}
+    =
+    {\textbf{D}}^{-1/2}\textbf{S}{\textbf{D}}^{-1/2}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        0.06298908 & 0 \\
+        0 & 0.08992239
+    \end{bNiceArray}
+    \begin{bNiceArray}{rr}
+        252.04 & -68.43 \\
+        -68.43 & 123.67
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        0.06298908 & 0 \\
+        0 & 0.08992239
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{rr}
+        1 & -0.3876 \\
+        -0.3876 & 1
+    \end{bNiceArray}
+\]
+\[
+    {\textbf{D}}^{1/2}\textbf{R}{\textbf{D}}^{1/2}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        15.87577 & 0 \\
+        0 & 11.1207
+    \end{bNiceArray}
+    \begin{bNiceArray}{rr}
+        1 & -0.3876 \\
+        -0.3876 & 1
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        15.87577 & 0 \\
+        0 & 11.1207
+    \end{bNiceArray}
+    =
+\]
+\[
+    \begin{bNiceArray}{rr}
+        252.04 & -68.43 \\
+        -68.43 & 123.67
+    \end{bNiceArray}
+\]

@@ -1,0 +1,343 @@
+        % ------------------------------------------ %
+        %                      (2.33)                %
+        % ------------------------------------------ %
+        Repeat Exercise 2.32, but with $\mathbf{X}$ partitioned as
+        \[
+            \mathbf{X}
+            =
+            \begin{bNiceMatrix}[margin]
+                X_1 \\
+                X_2 \\
+                X_3 \\
+                X_4 \\
+                X_5
+                \CodeAfter \tikz \draw[dotted] (4-|1) -- (4-|last);
+            \end{bNiceMatrix}
+            =
+            \begin{bNiceMatrix}[margin]
+                \mathbf{X}^{(1)} \\
+                \mathbf{X}^{(2)}
+                \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+            \end{bNiceMatrix}
+        \]
+        and with $\mathbf{A}$ and $\mathbf{B}$ replaced by
+        \[
+            \mathbf{A}
+            =
+            \begin{bNiceMatrix}[r]
+                2 & -1 & 0 \\
+                1 & 1 & 3
+            \end{bNiceMatrix}
+            \hspace{0.2in}\text{and}\hspace{0.2in}
+            \mathbf{B}
+            =
+            \begin{bNiceMatrix}[r]
+                1 & 2 \\
+                1 & -1
+            \end{bNiceMatrix}
+        \]
+        \begin{enumerate}[label=(\alph*)]
+            \item $E\left(\mathbf{X^{(1)}}\right)$
+            \[
+                E\left[\mathbf{X}^{(1)}\right]
+                = 
+                E\left[
+                    \begin{bmatrix}
+                        X_1 \\
+                        X_2 \\
+                        X_3
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bmatrix}
+                    E[X_1] \\
+                    E[X_2] \\
+                    E[X_3]
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    \mu_1 \\
+                    \mu_2 \\
+                    \mu_3
+                \end{bmatrix}
+                =
+                \begin{bNiceMatrix}[r]
+                    2 \\
+                    4 \\
+                    -1
+                \end{bNiceMatrix}
+            \]
+            \item $E\left(\mathbf{A}\mathbf{X^{(1)}}\right)$
+            \[
+                E\left[\mathbf{A}\mathbf{X}^{(1)}\right]
+                =
+                E\left[
+                    \begin{bNiceMatrix}[r]
+                        2 & -1 & 0 \\
+                        1 & 1 & 3
+                    \end{bNiceMatrix}
+                    \begin{bmatrix}
+                        X_1 \\
+                        X_2 \\
+                        X_3
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bNiceMatrix}[r]
+                    2 & -1 & 0 \\
+                    1 & 1 & 3
+                \end{bNiceMatrix}
+                E\left[
+                    \begin{bmatrix}
+                        X_1 \\
+                        X_2 \\
+                        X_3
+                    \end{bmatrix}
+                \right]
+                =
+            \]
+            \[
+                =
+                \begin{bNiceMatrix}[r]
+                    2 & -1 & 0 \\
+                    1 & 1 & 3
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    2 \\
+                    4 \\
+                    -1
+                \end{bNiceMatrix}
+                =
+                \begin{bNiceMatrix}[r]
+                    0 \\
+                    3
+                \end{bNiceMatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{X^{(1)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{X^{(1)}}\right)
+                =
+                \mathbf{\Sigma}_{11}
+                =
+                \begin{bNiceMatrix}[r]
+                    4 & -1 & \frac{1}{2} \\
+                    -1 & 3 & 1 \\
+                    \frac{1}{2} & 1 & 6
+                \end{bNiceMatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{A}\mathbf{X^{(1)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{A}\mathbf{X^{(1)}}\right)
+                =
+                \mathbf{A}\text{Cov}\left(\mathbf{X^{(1)}}\right)\mathbf{A}^\prime
+                =
+                \mathbf{A}\mathbf{\Sigma}_{11}\mathbf{A}^\prime
+                =
+            \]
+            \[
+                =
+                \begin{bNiceMatrix}[r]
+                    2 & -1 & 0 \\
+                    1 & 1 & 3
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    4 & -1 & \frac{1}{2} \\
+                    -1 & 3 & 1 \\
+                    \frac{1}{2} & 1 & 6
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    2 & 1 \\
+                    -1 & 1 \\
+                    0 & 3
+                \end{bNiceMatrix}
+                =
+                \begin{bNiceMatrix}[r]
+                    9 & -5 & 0 \\
+                    \frac{9}{2} & 5 & \frac{39}{2}
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    2 & 1 \\
+                    -1 & 1 \\
+                    0 & 3
+                \end{bNiceMatrix}
+                = 
+                \begin{bNiceMatrix}[r]
+                    23 & 4 \\
+                    4 & 68
+                \end{bNiceMatrix}
+            \]
+            \item $E\left(\mathbf{X^{(2)}}\right)$
+            \[
+                E\left[\mathbf{X}^{(2)}\right]
+                = 
+                E\left[
+                    \begin{bmatrix}
+                        X_4 \\
+                        X_5
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bmatrix}
+                    E[X_4] \\
+                    E[X_5]
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    \mu_4 \\
+                    \mu_5
+                \end{bmatrix}
+                =\begin{bNiceMatrix}[r]
+                    3 \\
+                    0
+                \end{bNiceMatrix}
+            \]
+            \item $E\left(\mathbf{B}\mathbf{X^{(2)}}\right)$
+            \[
+                E\left[\mathbf{B}\mathbf{X}^{(2)}\right]
+                =
+                E\left[
+                    \begin{bNiceMatrix}[r]
+                        1 & 2 \\
+                        1 & -1
+                    \end{bNiceMatrix}
+                    \begin{bmatrix}
+                        X_4 \\
+                        X_5
+                    \end{bmatrix}
+                \right]
+                =
+                \begin{bNiceMatrix}[r]
+                    1 & 2 \\
+                    1 & -1
+                \end{bNiceMatrix}
+                E\left[
+                    \begin{bmatrix}
+                        X_4 \\
+                        X_5
+                    \end{bmatrix}
+                \right]
+                =
+            \]
+            \[
+                =
+                \begin{bNiceMatrix}[r]
+                    1 & 2 \\
+                    1 & -1
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    3 \\
+                    0
+                \end{bNiceMatrix}
+                =
+                \begin{bNiceMatrix}[r]
+                    3 \\
+                    3
+                \end{bNiceMatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{X^{(2)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{X^{(2)}}\right)
+                =
+                \mathbf{\Sigma}_{22}
+                =
+                \begin{bNiceMatrix}[r]
+                    4 & 0 \\
+                    0 & 2
+                \end{bNiceMatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{B}\mathbf{X^{(2)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{B}\mathbf{X^{(2)}}\right)
+                =
+                \mathbf{B}\text{Cov}\left(\mathbf{X^{(2)}}\right)\mathbf{B}^\prime
+                =
+                \mathbf{B}\mathbf{\Sigma}_{22}\mathbf{B}^\prime
+                =
+            \]
+            \[
+                =
+                \begin{bNiceMatrix}[r]
+                    1 & 2 \\
+                    1 & -1
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    4 & 0 \\
+                    0 & 2
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    1 & 1 \\
+                    2 & -1
+                \end{bNiceMatrix}
+                =
+                \begin{bNiceMatrix}[r]
+                    4 & 4 \\
+                    4 & -2
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    1 & 1 \\
+                    2 & -1
+                \end{bNiceMatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bNiceMatrix}[r]
+                    12 & 0 \\
+                    0 & 6
+                \end{bNiceMatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{X^{(1)}}, \mathbf{X^{(2)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{X^{(1)}}, \mathbf{X^{(2)}}\right)
+                =
+                \mathbf{\Sigma}_{12}
+                =
+                \begin{bNiceMatrix}[r]
+                    -\frac{1}{2} & 0 \\
+                    -1 & 0 \\
+                    1 & -1
+                \end{bNiceMatrix}
+            \]
+            \item $\text{Cov}\left(\mathbf{A}\mathbf{X^{(1)}}, \mathbf{B}\mathbf{X^{(2)}}\right)$
+            \[
+                \text{Cov}\left(\mathbf{A}\mathbf{X^{(1)}}, \mathbf{B}\mathbf{X^{(2)}}\right)
+                =
+                \mathbf{A}\text{Cov}\left(\mathbf{X^{(1)}}, \mathbf{X^{(2)}}\right)\mathbf{B}^\prime
+                =
+                \mathbf{A}\mathbf{\Sigma}_{12}\mathbf{B}^\prime
+                =
+            \]
+            \[
+                =
+                \begin{bNiceMatrix}[r]
+                    2 & -1 & 0 \\
+                    1 & 1 & 3
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    -\frac{1}{2} & 0 \\
+                    -1 & 0 \\
+                    1 & -1
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    1 & 1 \\
+                    2 & -1
+                \end{bNiceMatrix}
+                =
+                \begin{bNiceMatrix}[r]
+                    0 & 0 \\
+                    \frac{3}{2} & -3
+                \end{bNiceMatrix}
+                \begin{bNiceMatrix}[r]
+                    1 & 1 \\
+                    2 & -1
+                \end{bNiceMatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bNiceMatrix}[r]
+                    0 & 0 \\
+                    -\frac{9}{2} & \frac{9}{2}
+                \end{bNiceMatrix}
+            \]
+        \end{enumerate}

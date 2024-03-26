@@ -1,0 +1,246 @@
+        % ------------------------------------------ %
+        %                      (2.7)                 %
+        % ------------------------------------------ %
+        Let $\bold{A}$ be as given in Exercise 2.6.
+        \begin{enumerate}[label=(\alph*)]
+            \item Determine the eigenvalues and eigenvectors of $\bold{A}$.
+            \par
+            From problem 2.7, the eigenvalues are 5 and 10.To get the eigenvectors,
+            \newline
+            $\underline{\lambda_1 = 5}$:
+            \[
+                \bold{A}\bold{x}_1 = \lambda_1 \bold{x}_1
+                \begin{bmatrix}
+                    9 & -2 \\
+                    -2 & 6
+                \end{bmatrix} \Rightarrow
+                \begin{bmatrix}
+                    9 & -2 \\
+                    -2 & 6
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix} = 
+                5\begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+            \]
+            \[
+                9x_1 - 2x_2 = 5x_1 \Rightarrow 4x_1 = 2x_2 \Rightarrow 2x_1 = x_2
+            \]
+            and
+            \[
+                -2x_1 + 6x_2 = 5x_1 \Rightarrow x_2 = 2x_1
+            \]
+            So $\bold{x}_2 = \begin{bmatrix}
+                1 \\
+                2
+            \end{bmatrix}$ and normalizing, $\bold{e}_1 = \begin{bmatrix}
+                1/\sqrt{5} \\
+                2/\sqrt{5}
+            \end{bmatrix}$.
+            \newline
+            $\underline{\lambda_2 = 10}$:
+            \[
+                \bold{A}\bold{x}_2 = \lambda_2 \bold{x}_2
+                \begin{bmatrix}
+                    9 & -2 \\
+                    -2 & 6
+                \end{bmatrix} \Rightarrow
+                \begin{bmatrix}
+                    9 & -2 \\
+                    -2 & 6
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix} = 
+                10\begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+            \]
+            \[
+                9x_1 - 2x_2 = 10x_1 \Rightarrow x_1 = -2x_2
+            \]
+            and
+            \[
+                -2x_1 + 6x_2 = 10x_1 \Rightarrow 12x_1 = -6x_2 \Rightarrow x_1 = -2x_2
+            \]
+            So $\bold{x}_2 = \begin{bmatrix}
+                -2 \\
+                1
+            \end{bmatrix}$ and normalizing, $\bold{e}_2 = \begin{bmatrix}
+                -2/\sqrt{5} \\
+                1/\sqrt{5}
+            \end{bmatrix}$.
+            \item Write the spectral decomposition of $\bold{A}$.
+            \par
+            The spectral decomposition would be,
+            \[
+                \bold{A} = \sum_{k=1}^2{\lambda_k\bold{e}_k\bold{e}_k^\prime} = 
+                5 \begin{bmatrix}
+                    1/\sqrt{5} \\
+                    2/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{5} \\
+                    2/\sqrt{5}
+                \end{bmatrix}^\prime + 
+                10 \begin{bmatrix}
+                    -2/\sqrt{5} \\
+                    1/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    -2/\sqrt{5} \\
+                    1/\sqrt{5}
+                \end{bmatrix}^\prime = 
+            \]
+            \[
+                =
+                5 \begin{bmatrix}
+                    1/5 & 2/5 \\
+                    2/5 & 4/5
+                \end{bmatrix} + 
+                10 \begin{bmatrix}
+                    4/5 & -2/5 \\
+                    -2/5 & 1/5
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1 & 2 \\
+                    2 & 4
+                \end{bmatrix} + 
+                \begin{bmatrix}
+                    8 & -4 \\
+                    -4 & 2
+                \end{bmatrix} =
+                \begin{bmatrix}
+                    9 & -2 \\
+                    -2 & 6
+                \end{bmatrix}
+            \]
+            \item Find $\bold{A}^{-1}$.
+            \par
+            Using the spectral decomposition for the inverse in \textbf{(2-21)} on page 66,
+            \[
+                \bold{A}^{-1} = 
+                {\left(\bold{P}
+                \bold{\Lambda}
+                \bold{P}^\prime\right)}^{-1} = 
+                {\left(\begin{bmatrix}
+                    \bold{e}_1 & \bold{e}_2
+                \end{bmatrix}
+                \bold{\Lambda}
+                \begin{bmatrix}
+                    \bold{e}_1 & \bold{e}_2
+                \end{bmatrix}^\prime\right)}^{-1} = 
+                \begin{bmatrix}
+                    \bold{e}_1 & \bold{e}_2
+                \end{bmatrix}
+                {\bold{\Lambda}}^{-1}
+                \begin{bmatrix}
+                    \bold{e}_1 & \bold{e}_2
+                \end{bmatrix}^\prime =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    1/\sqrt{5} & -2/\sqrt{5} \\
+                    2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/5 & 0 \\
+                    0 & 1/10
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1/\sqrt{5} & 2/\sqrt{5} \\
+                    -2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix} =
+                \frac{1}{5}
+                \begin{bmatrix}
+                    1/5 & -2/10 \\
+                    2/5 & 1/10
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 & 2 \\
+                    -2 & 1
+                \end{bmatrix} =
+            \]
+            \[
+                =
+                \frac{1}{5}
+                \begin{bmatrix}
+                    30/50 & 10/50 \\
+                    10/50 & 45/50
+                \end{bmatrix}
+                =
+                \frac{1}{50}
+                \begin{bmatrix}
+                    6 & 2 \\
+                    2 & 9
+                \end{bmatrix}
+            \]
+
+            By direct computation,
+            \[
+                \bold{A}^{-1} = 
+                \begin{bmatrix}
+                    9 & -2 \\
+                    -2 & 6
+                \end{bmatrix}^{-1} = 
+                \frac{1}{54-4}
+                \begin{bmatrix}
+                    6 & 2 \\
+                    2 & 9
+                \end{bmatrix} =
+                \frac{1}{50}
+                \begin{bmatrix}
+                    6 & 2 \\
+                    2 & 9
+                \end{bmatrix}
+            \]
+            \item Find the eigenvalues and eigenvectors of $\bold{A}^{-1}$.
+            \par
+            Using \textbf{2-21} on page 66 again, the eigenvalues of $\bold{A}^{-1}$ are the reciprocal of the eigenvalues of $\bold{A}$ and the eigenvectors are the same as those for $\bold{A}$.
+            \[
+                \bold{\Lambda}^{-1}
+                =
+                \begin{bmatrix}
+                    1/5 & 0 \\
+                    0 & 1/10
+                \end{bmatrix}
+            \]
+            \[
+                \bold{P} =
+                \begin{bmatrix}
+                    \bold{e}_1 & \bold{e}_2
+                \end{bmatrix} =
+                \begin{bmatrix}
+                    1/\sqrt{5} & -2/\sqrt{5} \\
+                    2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix}
+            \]
+            If we did it by-hand, setting $\bold{B} = \bold{A}^{-1}$,
+            \[
+                0 = \left|\bold{B} - \lambda\bold{I}\right|
+                =
+                \frac{1}{50}
+                \left|
+                \begin{matrix}
+                    6 - \lambda & 2 \\
+                    2 & 9 - \lambda
+                \end{matrix}
+                \right| = 
+                \frac{1}{50} \left[\left(6 - \lambda\right)\left(9 - \lambda\right) - 54 + 4\right] =
+                \frac{1}{50} \left[\left(6 - \lambda\right)\left(9 - \lambda\right) - 50\right] =
+            \]
+            \[
+                \frac{1}{50} \left(\lambda^2 - 15\lambda + 50\right) =
+                \left(\lambda - \frac{5}{50}\right)\left(\lambda - \frac{10}{50}\right) =
+                \left(\lambda - \frac{1}{10}\right)\left(\lambda - \frac{1}{5}\right)
+            \]
+            These eigenvalues are the same as the reciprocal of the eigenvalues for $\bold{A}$.
+        \end{enumerate}

@@ -1,0 +1,80 @@
+        % ------------------------------------------ %
+        %                      (2.25)                %
+        % ------------------------------------------ %
+        Let $\bold{X}$ have covariance matrix
+        \[
+            \bold{\Sigma}
+            =
+            \begin{bmatrix}
+                25 & -2 & 4 \\
+                -2 & 4 & 1 \\
+                4 & 1 & 9
+            \end{bmatrix}
+        \]
+        \begin{enumerate}[label=(\alph*)]
+            \item Determine $\bm{\rho}$ and $\bold{V}^{1/2}$.
+            \[
+                \bm{\rho}
+                =
+                \begin{bmatrix}
+                    \frac{\sigma_{11}}{\sqrt{\sigma_{11}}\sqrt{\sigma_{11}}} & \frac{\sigma_{12}}{\sqrt{\sigma_{11}}\sqrt{\sigma_{22}}} & \frac{\sigma_{13}}{\sqrt{\sigma_{11}}\sqrt{\sigma_{33}}} \\
+                    \frac{\sigma_{21}}{\sqrt{\sigma_{22}}\sqrt{\sigma_{11}}} & \frac{\sigma_{22}}{\sqrt{\sigma_{22}}\sqrt{\sigma_{22}}} & \frac{\sigma_{23}}{\sqrt{\sigma_{22}}\sqrt{\sigma_{33}}} \\
+                    \frac{\sigma_{31}}{\sqrt{\sigma_{33}}\sqrt{\sigma_{11}}} & \frac{\sigma_{32}}{\sqrt{\sigma_{33}}\sqrt{\sigma_{22}}} & \frac{\sigma_{33}}{\sqrt{\sigma_{33}}\sqrt{\sigma_{33}}}
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    \frac{25}{\sqrt{25}\sqrt{25}} & \frac{-2}{\sqrt{25}\sqrt{4}} & \frac{4}{\sqrt{25}\sqrt{9}} \\
+                    \frac{-2}{\sqrt{4}\sqrt{25}} & \frac{4}{\sqrt{4}\sqrt{4}} & \frac{1}{\sqrt{4}\sqrt{9}} \\
+                    \frac{4}{\sqrt{9}\sqrt{25}} & \frac{1}{\sqrt{9}\sqrt{4}} & \frac{9}{\sqrt{9}\sqrt{9}}
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1 & -1/5 & 4/15 \\
+                    -1/5 & 1 & 1/6 \\
+                    4/15 & 1/6 & 1
+                \end{bmatrix}
+            \]
+            \item Multiply your matrices to check the relation $\bold{V}^{1/2}\bm{\rho}\bold{V}^{1/2} = \bold{\Sigma}$.
+            \[
+                \bold{V}^{1/2}\bm{\rho}\bold{V}^{1/2} 
+                = 
+                \begin{bmatrix}
+                5 & 0 & 0 \\
+                0 & 2 & 0 \\
+                0 & 0 & 3   
+                \end{bmatrix}
+                \begin{bmatrix}
+                    1 & -1/5 & 4/15 \\
+                    -1/5 & 1 & 1/6 \\
+                    4/15 & 1/6 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    5 & 0 & 0 \\
+                    0 & 2 & 0 \\
+                    0 & 0 & 3   
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    5 & -1 & 4/3 \\
+                    -2/5 & 2 & 1/3 \\
+                    4/5 & 1/2 & 3
+                \end{bmatrix}
+                \begin{bmatrix}
+                    5 & 0 & 0 \\
+                    0 & 2 & 0 \\
+                    0 & 0 & 3   
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    25 & -2 & 4 \\
+                    -2 & 4 & 1 \\
+                    4 & 1 & 9
+                \end{bmatrix}
+            \]
+        \end{enumerate}

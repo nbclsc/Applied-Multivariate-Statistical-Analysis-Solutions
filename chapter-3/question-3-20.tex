@@ -1,0 +1,164 @@
+In northern climates, roads must be cleared of snow quickly following a storm. One measure of storm severity is $x_1$ = its duration in hours, while the effectiveness of snow removal can be quantified by $x_2$ = the number of hours crews, men, and machine, spend to clear snow. 
+Here are the results for 25 incidents in Wisconsin.
+\begin{table}[H]
+    \centering
+    \begin{NiceTabular}{|cccccc|}
+        \toprule
+        \Block[C]{1-4}{\textbf{Table 3.2} Snow Data} & & \\
+        $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_5$ & $x_6$ \\
+        \midrule
+        12.5 & 13.7 & 9.0  & 24.4 & 3.5  & 26.1 \\
+        14.5 & 16.5 & 6.5  & 18.2 & 8.0  & 14.5 \\
+        8.0  & 17.4 & 10.5 & 22.0 & 17.5 & 42.3 \\
+        9.0  & 11.0 & 10.0 & 32.5 & 10.5 & 17.5 \\
+        19.5 & 23.6 & 4.5  & 18.7 & 12.0 & 21.8 \\
+        8.0  & 13.2 & 7.0  & 15.8 & 6.0  & 10.4 \\
+        9.0  & 32.1 & 8.5  & 15.6 & 13.0 & 25.6 \\
+        7.0  & 12.3 & 6.5  & 12.0 &      &      \\
+        7.0  & 11.8 & 8.0  & 12.8 &      &      \\
+        \bottomrule
+        \CodeAfter \tikz \draw[solid] (2-|3) -- (last-|3);
+        \tikz \draw[solid] (2-|5) -- (last-|5);
+        \tikz \draw[solid] (2-|1) -- (2-|last);
+    \end{NiceTabular}
+\end{table}
+\begin{enumerate}[label=(\alph*)]
+    \item Find the sample mean and variance of the difference $x_2 - x_1$ by first obtaining the summary statistics.
+    \[
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            \bar{x}_1 \\
+            \bar{x}_2
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            9.42 \\
+            19.272
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{S}
+        =
+        \begin{bNiceArray}{cc}
+            14.139167 & 13.472667 \\
+            13.472667 & 62.238767
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{b}
+        =
+        \begin{bNiceArray}{c}
+            1 \\
+            -1
+        \end{bNiceArray}
+    \]
+    \[
+        \textbf{b}^{\prime}\textbf{X}
+        =
+        X_1 - X_2
+    \]
+    \[
+        E[\textbf{b}^{\prime}\textbf{X}]
+        =
+        \textbf{b}^{\prime}E[\textbf{X}]
+        =
+        \textbf{b}^{\prime}
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{cc}
+            1 & -1
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            9.42 \\
+            19.272
+        \end{bNiceArray}
+        =
+        -9.852
+    \]
+    \[
+        \text{Cov}(\textbf{b}^{\prime}\textbf{X})
+        =
+        \textbf{b}^{\prime}\text{Cov}(\textbf{X})\textbf{b}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            1 & -1
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            14.139167 & 13.472667 \\
+            13.472667 & 62.238767
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            1 \\
+            -1
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            0.6665 & -84.7661
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            1 \\
+            -1
+        \end{bNiceArray}
+        =
+        49.43260
+    \]
+    \item Obtain the mean and variance by first obtaining the individual values $x_{j2} - x_{j1}$
+    for $j=1,2,\dots,25$ and then calculating the mean and variance. Compare these values with those obtained in part a.
+    \[
+        \textbf{Y}
+        =
+        \textbf{X}\textbf{b}
+        =
+        \begin{bNiceArray}{cc}
+            12.5 & 13.7 \\
+            \vdots & \vdots \\
+            13.0 & 25.6
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            1 \\
+            -1
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            -1.2 \\
+            \vdots \\
+            -12.6 
+        \end{bNiceArray}
+    \]
+    \[
+        E[\textbf{Y}]
+        =
+        \frac{-1.2 + \dots -12.6}{25}
+        =
+        -9.852
+    \]
+    \[
+        \text{Cov}(\textbf{Y})
+        =
+        V[\textbf{Y}]
+        =
+        \frac{
+            {\left(
+            -1.2 + 9.852
+            \right)}^{2}
+            +
+            \dots
+            +
+            {\left(
+                -12.6 + 9.852
+            \right)}^{2}
+        }{
+            25 - 1
+        }
+        =
+        49.43260
+    \]
+    These values are the same as those computed in part (a).
+\end{enumerate}

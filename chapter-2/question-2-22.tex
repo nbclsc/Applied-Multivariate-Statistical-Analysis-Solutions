@@ -1,0 +1,601 @@
+        % ------------------------------------------ %
+        %                      (2.22)                %
+        % ------------------------------------------ %
+        (See \textbf{Result 2A.15}) Using the matrix
+        \[
+            \bold{A}
+            =
+            \begin{bmatrix}
+                4 & 8 & 8 \\
+                3 & 6 & -9
+            \end{bmatrix}
+        \]
+        \begin{enumerate}[label=(\alph*)]
+            \item Calculate $\bold{A}\bold{A}^\prime$ and obtain its eigenvalues and eigenvectors.
+            \[
+                \mathbf{A}\mathbf{A}^\prime
+                =
+                \begin{bmatrix}
+                    4 & 8 & 8\\
+                    3 & 6 & -9
+                \end{bmatrix}
+                \begin{bmatrix}
+                    4 & 3 \\
+                    8 & 6 \\
+                    8 & -9
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    144 & -12 \\
+                    -12 & 126
+                \end{bmatrix}
+                =
+                6 \times
+                \begin{bmatrix}
+                    24 & -2 \\
+                    -2 & 21
+                \end{bmatrix}
+            \]
+            \[
+                0 = \left|\mathbf{A}\mathbf{A}^\prime - \lambda^2\mathbf{I}\right| = \left|\mathbf{A}\mathbf{A}^\prime - \gamma\mathbf{I}\right|
+                =
+                \left|
+                \begin{matrix}
+                    24 - \gamma & -2 \\
+                    -2 & 21 - \gamma
+                \end{matrix}
+                \right|
+                =
+            \]
+            \[
+                =
+                (24-\gamma)(21-\gamma) - 4
+                =
+                504-45\gamma+\gamma^2-4
+                =
+                \gamma^2 - 45\gamma +500
+                =
+                (\gamma - 25)(\gamma - 20)
+            \]
+            The two eigenvalues are:
+            \newline
+            $\gamma_1=(1/6)\lambda_1^2= 20 \Rightarrow \lambda_1 = \sqrt{6 \times 20} = \sqrt{120}$
+            \newline
+            $\gamma_2=(1/6)\lambda_2^2= 25 \Rightarrow \lambda_2 = \sqrt{6 \times 25} = \sqrt{150}$
+            \newline
+            \newline
+            \underline{For $\gamma_1 = 20$:}
+            \[
+                \mathbf{A}\mathbf{A}^\prime\mathbf{x}_1 = \gamma_1\mathbf{x}
+                \Rightarrow
+                \begin{bmatrix}
+                    24 & -2 \\
+                    -2 & 21
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    20 x_1\\
+                    20 x_2
+                \end{bmatrix}
+                \Rightarrow
+                \begin{bmatrix}
+                    4 & -2 \\
+                    -2 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            \[
+                \begin{bmatrix}
+                    4 & -2 \\
+                    -2 & 1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+                \overset{\text{Row 2 + (1/2) Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    4 & -2 \\
+                    0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $4x_1 - 2x_2 = 0 \Rightarrow x_2 = 2x_1$
+            \[
+                \mathbf{x}_1
+                =
+                \begin{bmatrix}
+                    1 \\
+                    2
+                \end{bmatrix}
+                \Rightarrow
+                \mathbf{u}_1
+                =
+                \frac{\mathbf{x}_1}{\left\|\mathbf{x}_1\right\|}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{5} \\
+                    2/\sqrt{5}
+                \end{bmatrix}
+            \]
+            \underline{For $\gamma_1 = 25$:}
+            \[
+                \mathbf{A}\mathbf{A}^\prime\mathbf{x}_2 = \gamma_2\mathbf{x}
+                \Rightarrow
+                \begin{bmatrix}
+                    24 & -2 \\
+                    -2 & 21
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    25 x_1\\
+                    25 x_2
+                \end{bmatrix}
+                \Rightarrow
+                \begin{bmatrix}
+                    -1 & -2 \\
+                    -2 & -4
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            \[
+                \begin{bmatrix}
+                    -1 & -2 \\
+                    -2 & -4
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+                \overset{\text{Row 2 - 2 Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    -1 & -2 \\
+                    0 & 0
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            So $-x_1 - 2x_2 = 0 \Rightarrow x_1 = -2x_2$
+            \[
+                \mathbf{x}_1
+                =
+                \begin{bmatrix}
+                    -2 \\
+                    1
+                \end{bmatrix}
+                \Rightarrow
+                \mathbf{u}_1
+                =
+                \frac{\mathbf{x}_1}{\left\|\mathbf{x}_1\right\|}
+                =
+                \begin{bmatrix}
+                    -2/\sqrt{5} \\
+                    1/\sqrt{5}
+                \end{bmatrix}
+            \]
+            \[
+                \Lambda
+                =
+                \begin{bmatrix}
+                    \sqrt{120} & 0 \\
+                    0 & \sqrt{150}
+                \end{bmatrix}
+                \hspace{0.2in}\text{and}\hspace{0.2in}
+                \mathbf{U}
+                =
+                \begin{bmatrix}
+                    \mathbf{u}_1 & \mathbf{u}_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{5} & -2/\sqrt{5} \\
+                    2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix}
+            \]
+            \item Calculate $\bold{A}^\prime\bold{A}$ and obtain its eigenvalues and eigenvectors. Check that the nonzero eigenvalues are the same as those in part a.
+            \[
+                \mathbf{A}^\prime\mathbf{A}
+                =
+                \begin{bmatrix}
+                    4 & 3 \\
+                    8 & 6 \\
+                    8 & -9
+                \end{bmatrix}
+                \begin{bmatrix}
+                    4 & 8 & 8\\
+                    3 & 6 & -9
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    25 & 50 & 5 \\
+                    50 & 100 & 10 \\
+                    5 & 10 & 145
+                \end{bmatrix}
+                =
+                5 \times
+                \begin{bmatrix}
+                    5 & 10 & 1 \\
+                    10 & 20 & 2 \\
+                    1 & 2 & 29
+                \end{bmatrix}
+            \]
+            \[
+                0 = \left|\mathbf{A}^\prime\mathbf{A} - \lambda^2\mathbf{I}\right| = \left|\mathbf{A}^\prime\mathbf{A} - \gamma\mathbf{I}\right|
+                =
+                \left|
+                \begin{matrix}
+                    5-\gamma & 10 & 1 \\
+                    10 & 20-\gamma & 2 \\
+                    1 & 2 & 29-\gamma
+                \end{matrix}
+                \right|
+                =
+            \]
+            \[
+                =
+                (5-\gamma)[(20-\gamma)(29-\gamma) - 4] - 10[10(29-\gamma) - 2] + [20 - (20-\gamma)]
+                =
+            \]
+            \[
+                =
+                (29\gamma^2 - 725\gamma + 2900)+(-\gamma^3 + 25\gamma^2 - 100\gamma) - 40 + 5\gamma - 2900 + 100\gamma + 40
+                =
+            \]
+            \[
+                =
+                -\gamma(\gamma - 24)(\gamma - 30)
+            \]
+            The two nonzero eigenvalues are:
+            \newline
+            $\gamma_1=(1/5)\lambda_1^2= 24 \Rightarrow \lambda_1 = \sqrt{5 \times 24} = \sqrt{120}$
+            \newline
+            $\gamma_2=(1/5)\lambda_2^2= 30 \Rightarrow \lambda_2 = \sqrt{5 \times 30} = \sqrt{150}$
+            \newline
+            These are the same two eigenvalues as in part (a).
+            \newline
+            \newline
+            \underline{For $\gamma_1 = 24$:}
+            \[
+                \mathbf{A}^\prime\mathbf{A}\mathbf{x}_1 = \gamma_1\mathbf{x}
+                \Rightarrow
+                \begin{bmatrix}
+                    5 & 10 & 1 \\
+                    10 & 20 & 2 \\
+                    1 & 2 & 29
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    24 x_1\\
+                    24 x_2 \\
+                    24 x_3
+                \end{bmatrix}
+                \Rightarrow
+                \begin{bmatrix}
+                    -19 & 10 & 1 \\
+                    10 & -4 & 2 \\
+                    1 & 2 & 5
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            \[
+                \begin{bmatrix}
+                    -19 & 10 & 1 \\
+                    10 & -4 & 2 \\
+                    1 & 2 & 5
+                \end{bmatrix}
+                \overset{\text{Swap Row 1 with Row 3}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 2 & 5 \\
+                    10 & -4 & 2 \\
+                    -19 & 10 & 1
+                \end{bmatrix}
+                \overset{\text{Row 3 + 19 Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 2 & 5 \\
+                    10 & -4 & 2 \\
+                    0 & 48 & 96
+                \end{bmatrix}
+            \]
+            \[
+                \overset{\text{Row 2 - 10 Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 2 & 5 \\
+                    0 & -24 & -48 \\
+                    0 & 48 & 96
+                \end{bmatrix}
+                \overset{\text{Simplify rows}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 2 & 5 \\
+                    0 & 1 & 2 \\
+                    0 & 1 & 2
+                \end{bmatrix}
+                \overset{\text{Row 3 - Row 2}}{\longrightarrow}
+            \]
+            \[
+                \begin{bmatrix}
+                    1 & 2 & 5 \\
+                    0 & 1 & 2 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \overset{\text{Row 1 - 2 Row 2}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 0 & 1 \\
+                    0 & 1 & 2 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+            \]
+            So $x_1 + x_3 = 0 \Rightarrow x_1 = -x_3$
+            and $x_2 + 2x_3 = 0 \Rightarrow x_2 = -2x_3$.
+
+            \[
+                \mathbf{x}_1
+                =
+                \begin{bmatrix}
+                    -1 \\
+                    -2 \\
+                    1
+                \end{bmatrix}
+                \Rightarrow
+                \mathbf{v}_1
+                =
+                \frac{\mathbf{x}_1}{\left\|\mathbf{x}_1\right\|}
+                =
+                \begin{bmatrix}
+                    -1/\sqrt{6} \\
+                    -2/\sqrt{6} \\
+                    1/\sqrt{6}
+                \end{bmatrix}
+            \]
+            \underline{For $\gamma_2 = 30$:}
+            \[
+                \mathbf{A}^\prime\mathbf{A}\mathbf{x}_1 = \gamma_1\mathbf{x}
+                \Rightarrow
+                \begin{bmatrix}
+                    5 & 10 & 1 \\
+                    10 & 20 & 2 \\
+                    1 & 2 & 29
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    30 x_1\\
+                    30 x_2 \\
+                    30 x_3
+                \end{bmatrix}
+                \Rightarrow
+                \begin{bmatrix}
+                    -25 & 10 & 1 \\
+                    10 & -10 & 2 \\
+                    1 & 2 & -1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    x_1 \\
+                    x_2 \\
+                    x_3
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    0 \\
+                    0 \\
+                    0
+                \end{bmatrix}
+            \]
+            \[
+                \begin{bmatrix}
+                    -25 & 10 & 1 \\
+                    10 & -10 & 2 \\
+                    1 & 2 & -1
+                \end{bmatrix}
+                \overset{\text{Swap Row 1 with Row 3}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 2 & -1 \\
+                    10 & -10 & 2 \\
+                    -25 & 10 & 1
+                \end{bmatrix}
+                \overset{\text{Row 3 + 25 Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 2 & -1 \\
+                    10 & -10 & 2 \\
+                    0 & 60 & -24
+                \end{bmatrix}
+            \]
+            \[
+                \overset{\text{Row 2 - 10 Row 1}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 2 & -1 \\
+                    0 & -30 & 12 \\
+                    0 & 48 & 96
+                \end{bmatrix}
+                \overset{\text{Simplify rows}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 2 & -1 \\
+                    0 & -5 & 2 \\
+                    0 & 5 & -2
+                \end{bmatrix}
+                \overset{\text{Row 3 + Row 2}}{\longrightarrow}
+            \]
+            \[
+                \begin{bmatrix}
+                    1 & 2 & -1 \\
+                    0 & -5 & 2 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+                \overset{\text{Row 1 - (2/5) Row 2}}{\longrightarrow}
+                \begin{bmatrix}
+                    1 & 0 & -1/5 \\
+                    0 & -5 & 2 \\
+                    0 & 0 & 0
+                \end{bmatrix}
+            \]
+            So $x_1 - (1/5)x_3 = 0 \Rightarrow x_3 = 5x_1$
+            and $-5x_2 + 2x_3 = 0 \Rightarrow x_2 = (2/5)x_3$.
+
+            \[
+                \mathbf{x}_2
+                =
+                \begin{bmatrix}
+                    1 \\
+                    2 \\
+                    5
+                \end{bmatrix}
+                \Rightarrow
+                \mathbf{v}_2
+                =
+                \frac{\mathbf{x}_2}{\left\|\mathbf{x}_2\right\|}
+                =
+                \begin{bmatrix}
+                    1/\sqrt{30} \\
+                    2/\sqrt{30} \\
+                    5/\sqrt{30}
+                \end{bmatrix}
+            \]
+            \[
+                \Lambda
+                =
+                \begin{bmatrix}
+                    \sqrt{120} & 0 \\
+                    0 & \sqrt{150}
+                \end{bmatrix}
+                \hspace{0.2in}\text{and}\hspace{0.2in}
+                \mathbf{V}
+                =
+                \begin{bmatrix}
+                    \mathbf{v}_1 & \mathbf{v}_2
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    -1/\sqrt{6} & 1/\sqrt{30} \\
+                    -2/\sqrt{6} & 2/\sqrt{30} \\
+                    2/\sqrt{6} & 5/\sqrt{30}
+                \end{bmatrix}
+            \]
+            \item Obtain the Singular value decomposition of $\bold{A}$.
+            \newline
+            \par
+            Need to multiply SVD by -1, so we get the right result. Back when computing the eigenvalues notice the negative in front.
+            \[
+                \mathbf{A}
+                =
+                \mathbf{U}\mathbf{\Lambda}\mathbf{\mathbf{V}}^\prime
+                =
+                (-1)
+                \begin{bmatrix}
+                    1/\sqrt{5} & -2/\sqrt{5} \\
+                    2/\sqrt{5} & 1/\sqrt{5}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    \sqrt{120} & 0 \\
+                    0 & \sqrt{150}
+                \end{bmatrix}
+                \begin{bmatrix}
+                    -1/\sqrt{6} & -2/\sqrt{6} & 2/\sqrt{6} \\
+                    1/\sqrt{30} & 2/\sqrt{30} & 5/\sqrt{30}
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \left(\frac{1}{\sqrt{5}}\right)
+                \begin{bmatrix}
+                    -1 & 2 \\
+                    -2 & -1
+                \end{bmatrix}
+                \left(\sqrt{5}\sqrt{6}\right)
+                \begin{bmatrix}
+                    \sqrt{4} & 0 \\
+                    0 & \sqrt{5}
+                \end{bmatrix}
+                \left(\frac{1}{\sqrt{6}}\right)
+                \begin{bmatrix}
+                    -1 & -2 & 1 \\
+                    1/\sqrt{5} & 2/\sqrt{5} & 5/\sqrt{5}
+                \end{bmatrix}
+                =
+            \]
+            \[
+                =
+                \begin{bmatrix}
+                    -1 & 2 \\
+                    -2 & -1
+                \end{bmatrix}
+                \begin{bmatrix}
+                    -2 & -4 & 2 \\
+                    1 & 2 & 5
+                \end{bmatrix}
+                =
+                \begin{bmatrix}
+                    4 & 8 & 8 \\
+                    3 & 6 & -9
+                \end{bmatrix}
+                =
+                \mathbf{A}
+            \]
+        \end{enumerate}
