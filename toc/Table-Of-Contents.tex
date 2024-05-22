@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{blindtext}
+\usepackage{titlesec}
+\newcommand*{\solfolder}{C:/Users/nbclsc/Desktop/applied-multivariate-statistics/solutions/chapter-2/}
+
+
+
+
+%\documentclass{article}
+\usepackage{amsmath,amsthm,amssymb,hyperref,nicematrix, tikz}
+\usepackage{arydshln}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{tikzsymbols}
+\usepackage{float}
+\usepackage{bm}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{gensymb}
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+
+\newcommand{\blue}{\color{blue}}
+
+\NiceMatrixOptions
+  {
+    custom-line = 
+     {
+       letter=I, 
+       command=hdashedline, 
+       tikz=densely dashed,
+       width=\pgflinewidth
+     }
+  }
+
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\lstset{style=Matlab-editor}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bigrho}{\raisebox{-.15\baselineskip}{\Large\ensuremath{\rho}}}
+\title{Chapter 2 Solutions}
+\author{Nathan Crouse}
+\begin{document}
+
+    % ------------------------------------------ %
+    %                   START HERE               %
+    % ------------------------------------------ %
+    \maketitle
+
+
+
+% \title{Sections and Chapters}
+% \author{Gubert Farnsworth}
+% \date{ }
+% \begin{document}
+
+% \maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+This is the first section.
+
+\blindtext
+
+\addcontentsline{toc}{section}{Unnumbered Section}
+\section*{Unnumbered Section}
+
+\include{\solfolder Chapter-2-Solutions.tex}
+
+\blindtext
+
+\section{Second Section}
+
+\blindtext
+\end{document}

@@ -1,0 +1,132 @@
+Refer to Exercise 4.8, but modify the construction by replacing the break point 1 by $c$ so that
+\[
+    X_2
+    =
+    \begin{cases*}
+        -X_1 & if $-c \leq X_1 \leq c$ \\
+        \phantom{-}X_1 & elsewhere
+    \end{cases*}
+\]
+Show that $c$ can be chosen so that $\text{Cov}(X_1,X_2) = 0$, but that the two random variables are not independent.
+\newline
+\textit{Hint:}
+\newline
+For $c = 0$, evaluate $\text{Cov}(X_1,X_2) = E[X_1(X_1)]$
+\newline
+For $c$ very large, evaluate $\text{Cov}(X_1,X_2) \doteq E[X_1(-X_1)]$
+\newline
+\par
+We already know $X_1$ and $X_2$ are not $\independent$, since $X_2$ is a function of $X_1$, so we just need to show it's possible for $c$ to be chosen so the covariance of $X_1$ and $X_2$ will be zero. Conveniently, the hint suggests trying out both $c = 0$ and $c$ very big, these are two extreme values that $c$ could take on. If the covariance for the two extreme $c$ values form an interval that contains 0 we can use the interemediate value theorem to say the covariance of $X_1$ and $X_2$ will pass through zero for some $c$.
+\newline
+First off, the covariance is
+\[
+    \text{Cov}(X_1, X_2)
+    =
+    E\left[
+        \left(X_1 - E[X_1]\right)
+        \left(X_2 - E[X_2]\right)
+    \right]
+    =
+\]
+\[
+    =
+    E\left[
+        X_1 X_2
+        -
+        X_1 E[X_2]
+        -
+        E[X_1] X_2
+        +
+        E[X_1] E[X_2]
+    \right]
+    =
+\]
+\[
+    =
+    E[X_1 X_2]
+    -
+    E[X_1] E[X_2]
+    -
+    E[X_1] E[X_2]
+    +
+    E[X_1] E[X_2]
+    =
+\]
+\[
+    =
+    E[X_1 X_2]
+    -
+    E[X_1] E[X_2]
+\]
+When $c = 0$, the probability that $X_2 = -X_1$ is
+\[
+    P(-c \leq X_1 \leq c)
+    =
+    P(0 \leq X_1 \leq 0)
+    =
+    \Phi (0) - \Phi(0)
+    =
+    0
+\]
+
+and so from the definition of $X_2$, the probability of $X_2 = -X_1$ is zero, and the probability of $X_2 = X_1$ is 1. Now to compute the covariance for $c = 0$,
+\[
+    \text{Cov}(X_1, X_2)
+    =
+    E[X_1 X_2]
+    -
+    E[X_1] E[X_2]
+    =
+    E[X_1 (X_1)]
+    -
+    E[X_1] E[-X_1]
+    =
+\]
+\[
+    =
+    E[X_1^2]
+    -
+    {(E[X_1])}^{2}
+    =
+    \text{Var}[X_1] = 1
+\]
+When $c$ is very big, say $\infty$, the probability that $X_2 = -X_1$ is
+\[
+    P(-c \leq X_1 \leq c)
+    =
+    P(-\infty \leq X_1 \leq \infty)
+    =
+    \Phi (\infty) - \Phi(-\infty)
+    =
+    1 - 0
+    =
+    1
+\]
+and so from the definition of $X_2$, the probability of $X_2 = -X_1$ is 1, and the probability of $X_2 = X_1$ is 0. This is opposite what we got when $c$ was 0. Computing the covariance,
+\[
+    \text{Cov}(X_1, X_2)
+    =
+    E[X_1 X_2]
+    -
+    E[X_1] E[X_2]
+    =
+    E[X_1 (-X_1)]
+    -
+    E[X_1] E[-X_1]
+    =
+\]
+\[
+    =
+    -
+    \left(
+    E[X_1^2]
+    -
+    {(E[X_1])}^{2}
+    \right)
+    =
+    -
+    \text{Var}[X_1]
+    =
+    -1
+\]
+We now have that the covariance for extreme values of $c$, 1 for $c = 0$ and -1 for $c$ at $\infty$. Since the covariance is a smooth function of $c$, then by the intermediate value theorem, $\text{Cov}(X_1, X_2) = 0$ for some value of $c$. We're done, we showed that there exists some value of $c$ that causes the covariance to be zero when $X_1$ and $X_2$ are not independent.

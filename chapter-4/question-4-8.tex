@@ -10,7 +10,140 @@
 Show each of the following.
 \begin{enumerate}[label= (\alph*)]
     \item $X_2$ also has an $N(0,1)$ distribution.
+    \par
+    The hint is basically the answer. Using symmetry we can start with
+    \[
+      P (-1 < X_1 \leq x)
+      =
+      P(-x \leq X_1 < 1)
+    \]
+    Using the definition of the CDF for $X_2$
+    \begin{align*}
+      F_{X_2}(x_2)
+      =
+      \\
+      =
+      P (X_2 \leq x_2)
+      =
+      \\
+      =
+      P (X_2 \leq -1)
+      +
+      P (-1 < X_2 \leq x_2)
+      = 
+      \\
+      =
+      P (X_1 \leq -1)
+      +
+      P (-1 < -X_1 \leq x_2)
+      = \tag*{Using the definition of $X_2$.}
+      \\
+      =
+      P (X_1 \leq -1)
+      +
+      P (-x_2 \leq X_1 < 1)
+      =
+      \\
+      =
+      P (X_1 \leq -1)
+      +
+      P (-1 < -X_1 \leq x_2)
+      = \tag*{Using symmetry argument.}
+      \\
+      P (X_1 \leq x_2) \tag*{CDF definition for $X_1$.}
+      =
+      \\
+      F_{X_1}(x_2)
+    \end{align*}
+    The CDF for $X_1$ and $X_2$ are the same, so since $X_1 \sim N(0,1)$, then $X_2$ is also distributed as $N(0,1)$.
+    
     \item $X_1$ and $X_2$ do \textit{not} have a bivariate normal distribution.
+    \[
+      \textbf{a}
+      =
+      \begin{bNiceArray}{r}
+        1 \\
+        -1
+      \end{bNiceArray}
+      ,\hspace{0.2in}
+      \textbf{X}
+      =
+      \begin{bNiceArray}{r}
+        X_1 \\
+        X_2
+      \end{bNiceArray}
+      ,\hspace{0.2in}
+      Y
+      =
+      \textbf{a}^{\prime}
+      \textbf{X}
+      =
+      X_1 - X_2
+    \]
+    \[
+        \textbf{a}^{\prime}
+        \textbf{X}
+      =
+        X_1 - X_2
+      =
+      \begin{cases*}
+        X_1 - (-X_1) & if $-1 \leq X_1 \leq 1$ \\
+        X_1 - X_1 & otherwise
+      \end{cases*}
+      =
+    \]
+    \[
+      =
+      \begin{cases*}
+        2X_1 & if $-1 \leq X_1 \leq 1$ \\
+        0 & otherwise
+      \end{cases*}
+    \]
+    If $X_1$ is in the interval $-1 \leq X_1 \leq 1$ then it's distribution as $ Y = (X_1 - X_2) \sim N(0,4)$, since $E[\textbf{a}^{\prime}\textbf{X}] = E[2X_1] = 2E[X_1]=2\mu_1=2*0 = 0$ and $V[\textbf{a}^{\prime}\textbf{X}] = V[2X_1] = 4V[X_1] = 4\sigma_1^2 = 4*1 = 4$.
+    But if $X_1$ is not in the interval $-1 \leq X_1 \leq 1$, then $X_1 - X_2 = 0$. This happens with point probability
+
+    \[
+      P(
+        \textbf{a}^{\prime}
+        \textbf{X}
+      )
+      =
+      P(X_1 - X_2)
+      =
+      P(0)
+      =
+      P(X_1 < -1 \text{ and } X_1 > 1)
+      =
+    \]
+    \[
+      =
+      P(X_1 < -1) + P(X_1 > 1)
+      =
+      2P(X_1 > 1)
+      =
+      P(|X_1| > 1)
+      =
+      0.3173105
+    \]
+    So since $P(0) \ne 0$, $X_1$ and $X_2$ don't have a bivariate normal. Basically, a Normal distribution is either entirely continuous or entirely discrete, so here we have a discrete point mass at 0 that doesn't have a probability of zero and a continuous $N(0,4)$ distribution from -2 to 2, so this is not consistent with a normal distribution.
+    \par The R code for this probability calculation is \texttt{2*pnorm(1, lower.tail=FALSE)}. Could have also done the probability calculation as
+    \[
+      P(|X_1| > 1)
+      =
+      1 - P(|X_1| \leq 1)
+      =
+      1 - P(-1 \leq X_1 \leq 1)
+      =
+    \]
+    \[
+      =
+      1 - \left( \Phi (1) - \Phi (-1) \right)
+      =
+      1 - 0.6826895
+      =0.3173105
+    \]
+    Where $\Phi$ is the CDF of a standard normal distribution. The R code is \texttt{1 - (pnorm(1)- pnorm(-1))}.
+    \newline
     \textit{Hint:}
     \begin{enumerate}[label= (\alph*)]
         \item Since $X_1$ is $N(0,1)$, $P[-1 < X_1 \leq x] = P[-x \leq X_1 < 1]$ for any $x$. When $-1 < x_2 < 1$, $P[X_2 \leq x_2] = P[X_2 \leq -1] + P[-1 < X_2 \leq x_2] = P[X_1 \leq -1] + P[-1 < -X_1 \leq x_2] = P[X_1 \leq -1] + P[-x_2 \leq X_1 < 1]$. But $P[-x_2 \leq X_1 < 1] = P[-1 < X_1 \leq x_2]$ from the symmetry argument in the first line of this hint. Thus $P[X_2 \leq x_2] = P[X_1 \leq -1] + P[-1 < X_1 \leq x_2] = P[X_1 \leq x_2]$, which is a standard normal probability.

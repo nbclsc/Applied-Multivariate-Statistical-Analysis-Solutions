@@ -1,0 +1,242 @@
+Show the following
+\begin{enumerate}[label= (\alph*)]
+    \item
+        \[
+            \left|
+            \begin{NiceArray}{cc}
+                \textbf{A} & \textbf{0} \\
+                \textbf{0}^{\prime} & \textbf{B}
+            \end{NiceArray}
+            \right|
+            =
+            \left|\textbf{A}\right|\left|\textbf{B}\right|
+        \]
+        \[
+            \left|
+                \begin{NiceArray}{cc}
+                    \textbf{A} & \textbf{0} \\
+                    \textbf{0}^{\prime} & \textbf{B}
+                \end{NiceArray}
+            \right|
+            = 
+            \left|
+            \begin{bNiceArray}{cc}
+                \textbf{A} & \textbf{0} \\
+                \textbf{0}^{\prime} & \textbf{I}
+            \end{bNiceArray}
+            \begin{bNiceArray}{cc}
+                \textbf{I} & \textbf{0} \\
+                \textbf{0}^{\prime} & \textbf{B}
+            \end{bNiceArray}
+        \right|
+            =
+            \left|
+                \begin{NiceArray}{cc}
+                    \textbf{A} & \textbf{0} \\
+                    \textbf{0}^{\prime} & \textbf{I}
+                \end{NiceArray}
+            \right|
+            \left|
+                \begin{NiceArray}{cc}
+                    \textbf{I} & \textbf{0} \\
+                    \textbf{0}^{\prime} & \textbf{B}
+                \end{NiceArray}
+            \right|
+            =
+        \]
+        \[
+            =
+            \left|
+                \textbf{A}\textbf{I}
+                -
+                {\textbf{0}\textbf{0}}^{\prime}
+            \right|
+            \left|
+                \textbf{I}\textbf{B}
+                -
+                \textbf{0}{\textbf{0}}^{\prime}
+            \right|
+            =
+            \left|
+                \textbf{A}\textbf{I}
+            \right|
+            \left|
+                \textbf{I}\textbf{B}
+            \right|
+            =
+            \left|
+                \textbf{A}
+            \right|
+            \left|
+                \textbf{B}
+            \right|
+        \]
+    \item 
+        \[
+            \left|
+                \begin{NiceArray}{cc}
+                    \textbf{A} & \textbf{C} \\
+                    \textbf{0}^{\prime} & \textbf{B}
+                \end{NiceArray}
+            \right|
+            =
+            \left|\textbf{A}\right|\left|\textbf{B}\right|
+            \mbox{~~for~~}
+            \left|\textbf{A}\right| \ne 0
+        \]
+        \[
+            \left|
+                \begin{NiceArray}{cc}
+                    \textbf{A} & \textbf{C} \\
+                    \textbf{0}^{\prime} & \textbf{B}
+                \end{NiceArray}
+            \right|
+            =
+            \left|
+                \begin{bNiceArray}{cc}
+                    \textbf{A} & \textbf{0} \\
+                    \textbf{0}^{\prime} & \textbf{B}
+                \end{bNiceArray}
+                \begin{bNiceArray}{cc}
+                    \textbf{I} & {\textbf{A}}^{-1}\textbf{C} \\
+                    \textbf{0}^{\prime} & \textbf{I}
+                \end{bNiceArray}
+            \right|
+            =
+            \left|
+                \begin{NiceArray}{cc}
+                    \textbf{A} & \textbf{0} \\
+                    \textbf{0}^{\prime} & \textbf{B}
+                \end{NiceArray}
+            \right|
+            \left|
+                \begin{NiceArray}{cc}
+                    \textbf{I} & {\textbf{A}}^{-1}\textbf{C} \\
+                    \textbf{0}^{\prime} & \textbf{I}
+                \end{NiceArray}
+            \right|
+            =
+        \]
+        \[
+            =
+            \left|
+                \textbf{A}
+            \right|
+            \left|
+                \textbf{B}
+            \right|
+            \left|
+                \textbf{I}\textbf{I}
+                -
+                {\textbf{A}}^{-1}\textbf{C}{\textbf{0}}^{\prime}
+            \right|
+            =
+            \left|
+                \textbf{A}
+            \right|
+            \left|
+                \textbf{B}
+            \right|
+            \left|
+                \textbf{I}
+            \right|
+            =
+            \left|
+                \textbf{A}
+            \right|
+            \left|
+                \textbf{B}
+            \right|
+        \]
+\end{enumerate}
+\textit{Hint:}
+\newline
+(a) $
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{A} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{B}
+    \end{NiceArray}
+\right| = 
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{A} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{NiceArray}
+\right|
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{B}
+    \end{NiceArray}
+\right|
+$. Expanding the determinant
+$
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{B}
+    \end{NiceArray}
+\right|
+$ 
+by the first row (see definition 2A.24) gives 1 times a determinant of the same form, with the order of \textbf{I} reduced by one. This procedure is repeated until $1 \times \left|\textbf{B}\right|$ is obtained. Similarly, expanding the determinant
+$
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{A} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{NiceArray}
+\right|
+$ 
+by the last row gives 
+$
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{A} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{B}
+    \end{NiceArray}
+\right| 
+= 
+\left|\textbf{A}\right|
+$.
+\newline
+(b) $
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{A} & \textbf{C} \\
+        \textbf{0}^{\prime} & \textbf{B}
+    \end{NiceArray}
+\right| = 
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{A} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{B}
+    \end{NiceArray}
+\right|
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{I} & \textbf{A}^{-1}\textbf{C} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{NiceArray}
+\right|
+$. Expanding the determinant
+$
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{I} & \textbf{A}^{-1}\textbf{C} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{NiceArray}
+\right|
+$ 
+by the last row gives 
+$
+\left|
+    \begin{NiceArray}{cc}
+        \textbf{I} & \textbf{A}^{-1}\textbf{C} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{NiceArray}
+\right|
+=
+1
+$.
+ Now use the results in Part a.

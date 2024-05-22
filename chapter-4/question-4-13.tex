@@ -1,0 +1,61 @@
+Show the following if $\textbf{X}$ is $N_p(\bm{\mu}, \bm{\Sigma})$ with $\left|\bm{\Sigma}\right| \ne 0$.
+\begin{enumerate}[label=(\alph*)]
+    \item Check that $\left|\bm{\Sigma}\right| = \left|\bm{\Sigma}_{22}\right|\left|\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21}\right|$. (Note that $\left|\bm{\Sigma}\right|$ can be factored into the product of contributions from the marginal and conditional distributions.)
+    \item Check that
+    \begin{equation*}
+        \begin{aligned}
+            {\left(\textbf{x} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\textbf{x} - \bm{\mu}\right)
+            & =
+            {[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})]}^{\prime} \\
+            & \phantom{=}\times {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1}[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma_{12}}\bm{\Sigma}_{22}^{-1}(\textbf{x}_2 - \bm{\mu}_{2})]\\
+            & \phantom{=}+{(\textbf{x}_{2} - \bm{\mu}_{2})}^{\prime}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})
+        \end{aligned} 
+    \end{equation*}
+    (Thus the joint density exponent can be written as the sum of two terms corresponding to contributions from the conditional and marginal distributions.)
+    \item Given the results in Parts a and b, identify the marginal distribution of $\textbf{X}_{2}$ and the conditional distribution of $\textbf{X}_{1} \big| \textbf{X}_{2} = \textbf{x}_{2}$.
+\end{enumerate}
+\textit{Hint:}
+\newline
+(a) Apply Exercise 4.11
+\newline
+(b) Note from Exercise 4.12 that we can write ${\left(\textbf{x} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\textbf{x} - \bm{\mu}\right)$ as
+\begin{multline*}
+    {\begin{bNiceArray}{c}
+        \textbf{x}_{1} - \bm{\mu}_{1} \\
+        \textbf{x}_{2} - \bm{\mu}_{2}
+    \end{bNiceArray}}^{\prime}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        \bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+    \end{bNiceArray} \\
+    \times
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        \textbf{x}_{1} - \bm{\mu}_{1} \\
+        \textbf{x}_{2} - \bm{\mu}_{2}
+    \end{bNiceArray}
+\end{multline*}
+If we group the product so that
+\[
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        \textbf{x}_{1} - \bm{\mu}_{1} \\
+        \textbf{x}_{2} - \bm{\mu}_{2}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        \textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2}) \\
+        \textbf{x}_{2} - \bm{\mu}_{2}
+    \end{bNiceArray}
+\]
+the result follows.

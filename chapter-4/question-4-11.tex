@@ -1,0 +1,79 @@
+Show that, if \textbf{A} is square,
+\begin{equation*}
+    \begin{aligned}
+        \left|
+            \textbf{A}
+        \right|
+        & =
+        \left|
+            \textbf{A}_{22}
+        \right|
+        \left|
+            \textbf{A}_{11}
+            -
+            \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21}
+        \right|
+        \mbox{~~for~~}
+        \left|
+            \textbf{A}_{22}
+        \right|
+        \ne
+        0 \\
+        & = 
+        \left|
+            \textbf{A}_{11}
+        \right|
+        \left|
+            \textbf{A}_{22}
+            -
+            \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+        \right|
+        \mbox{~~for~~}
+        \left|
+            \textbf{A}_{11}
+        \right|
+        \ne
+        0
+    \end{aligned}
+\end{equation*}
+\newline
+\textit{Hint:} Partition \textbf{A} and verify that
+\[
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{A}_{22}
+    \end{bNiceArray}
+\]
+Take the determinants on both sides of this inequality. Use Exercise 4.10 for the first and third determinants on the left and for the determinant on the right. The second inequality for $\left|\textbf{A}\right|$ follows by considering
+\[
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{21}\textbf{A}_{11}^{-1} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{11}^{-1}\textbf{A}_{12} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \end{bNiceArray}
+\]
