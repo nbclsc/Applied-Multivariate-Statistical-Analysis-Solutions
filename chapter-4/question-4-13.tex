@@ -1,6 +1,25 @@
 Show the following if $\textbf{X}$ is $N_p(\bm{\mu}, \bm{\Sigma})$ with $\left|\bm{\Sigma}\right| \ne 0$.
 \begin{enumerate}[label=(\alph*)]
     \item Check that $\left|\bm{\Sigma}\right| = \left|\bm{\Sigma}_{22}\right|\left|\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21}\right|$. (Note that $\left|\bm{\Sigma}\right|$ can be factored into the product of contributions from the marginal and conditional distributions.)
+    \newline
+    \newline
+    This follows directly fom Exercise 4.11 since $\bm{\Sigma}$ is square.
+    \[
+        \bm{\Sigma}
+        =
+        \begin{bNiceArray}{cc}
+            \bm{\Sigma}_{11} & \bm{\Sigma}_{12} \\
+            \bm{\Sigma}_{21} & \bm{\Sigma}_{22}
+            \CodeAfter
+            \tikz \draw [dotted] (2-|1) -| (2-|3);
+            \tikz \draw [dotted] (1-|2) -| (3-|2);
+        \end{bNiceArray}
+    \]
+    \[
+        \left|\bm{\Sigma}\right|
+        =
+        \left|\bm{\Sigma}_{22}\right|\left|\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21}\right|
+    \]
     \item Check that
     \begin{equation*}
         \begin{aligned}
@@ -12,8 +31,135 @@ Show the following if $\textbf{X}$ is $N_p(\bm{\mu}, \bm{\Sigma})$ with $\left|\
         \end{aligned} 
     \end{equation*}
     (Thus the joint density exponent can be written as the sum of two terms corresponding to contributions from the conditional and marginal distributions.)
+    \begin{multline*}
+        {\left(\textbf{x} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\textbf{x} - \bm{\mu}\right)
+        = \\
+        {\begin{bNiceArray}{c}
+            \textbf{x}_{1} - \bm{\mu}_{1} \\
+            \textbf{x}_{2} - \bm{\mu}_{2}
+        \end{bNiceArray}}^{\prime}
+        \begin{bNiceArray}{cc}
+            \textbf{I} & \textbf{0} \\
+            \bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21} & \textbf{I}
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1} & \textbf{0} \\
+            \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+        \end{bNiceArray} \\
+        \times
+        \begin{bNiceArray}{cc}
+            \textbf{I} & -\bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1} \\
+            \textbf{0}^{\prime} & \textbf{I}
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            \textbf{x}_{1} - \bm{\mu}_{1} \\
+            \textbf{x}_{2} - \bm{\mu}_{2}
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{cc}
+            {(\textbf{x}_{1} - \bm{\mu}_{1})}^{\prime} - {(\textbf{x}_{2} - \bm{\mu}_{2})}^{\prime}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21}, &
+            {(\textbf{x}_{2} - \bm{\mu}_{2})}^{\prime}
+        \end{bNiceArray} \\
+        \times \begin{bNiceArray}{cc}
+            {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1} & \textbf{0} \\
+            \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+        \end{bNiceArray} \\
+        \times \begin{bNiceArray}{c}
+            \textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2}) \\
+            \textbf{x}_{2} - \bm{\mu}_{2}
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{cc}
+            {\left[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})\right]}^{\prime}, &
+            {(\textbf{x}_{2} - \bm{\mu}_{2})}^{\prime}
+        \end{bNiceArray} \\
+        \times \begin{bNiceArray}{cc}
+            {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1} & \textbf{0} \\
+            \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+        \end{bNiceArray} \\
+        \times \begin{bNiceArray}{c}
+            \textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2}) \\
+            \textbf{x}_{2} - \bm{\mu}_{2}
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{cc}
+            {\left[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})\right]}^{\prime}, &
+            {(\textbf{x}_{2} - \bm{\mu}_{2})}^{\prime}
+        \end{bNiceArray} \\
+        \times \begin{bNiceArray}{c}
+            {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1} \left[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})\right] \\
+            \bm{\Sigma}_{22}^{-1} (\textbf{x}_{2} - \bm{\mu}_{2})
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \begin{multline*}
+        =
+        {\left[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})\right]}^{\prime} \\
+        \times {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1} \\
+        \times \left[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})\right] \\
+            + {(\textbf{x}_{2} - \bm{\mu}_{2})}^{\prime}\bm{\Sigma}_{22}^{-1} (\textbf{x}_{2} - \bm{\mu}_{2})
+    \end{multline*}
     \item Given the results in Parts a and b, identify the marginal distribution of $\textbf{X}_{2}$ and the conditional distribution of $\textbf{X}_{1} \big| \textbf{X}_{2} = \textbf{x}_{2}$.
+    \newline
+    \newline
+    From part (a)
+    \[
+        \left|\bm{\Sigma}\right|
+        =
+        \left|\bm{\Sigma}_{22}\right|
+        \left|\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21}\right|
+        % \label{eq:margx2_413}
+    \]
+    The value $\bm{\Sigma}_{22}$ is the covariance of the marginal (normal) distribution of $\textbf{X}_2$. The determinant, $\left|\bm{\Sigma}_{22}\right|$, is the scaling factor found in the first part of the normal density equation for the normal marginal distribution of $\textbf{X}_2$.
+    \newline
+    \newline
+    The value of $\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21}$ is the covariance of the normal conditional distribution of 
+    $\textbf{X}_1 \big| \textbf{X}_2 = \textbf{x}_2$. The determinant, $\left|\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21}\right|$, is the scaling factor found in the first part of the normal density equation for the normal conditional distribution of $\textbf{X}_1 \big| \textbf{X}_2 = \textbf{x}_2$.
+    % \begin{tikzpicture}[remember picture, overlay]
+    %     \node (source) at (2.5,-0.5) [text width=5cm]{Marginal $\textbf{X}_2$ covariance};
+    %     \path[->,thick] (source) edge ([shift={(4.5,0.3)}]pic cs:eq:margx2_413);
+
+    %     \node (source) at (7.5,-0.5) [text width=5cm]{Conditional $\textbf{X}_2 \big| \textbf{X}_2$ covariance (on page 161)};
+    %     \path[->,thick] (source) edge ([shift={(6.5,0.3)}]pic cs:eq:condx1x2_413);
+    % \end{tikzpicture}
+    % \vspace{2in}
+    From part (b)
+    \begin{equation*}
+        \begin{aligned}
+            {\left(\textbf{x} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\textbf{x} - \bm{\mu}\right)
+            & =
+            {[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})]}^{\prime} \\
+            & \phantom{=}\times {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1}[\textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma_{12}}\bm{\Sigma}_{22}^{-1}(\textbf{x}_2 - \bm{\mu}_{2})]\\
+            & \phantom{=}+{(\textbf{x}_{2} - \bm{\mu}_{2})}^{\prime}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})
+        \end{aligned} 
+    \end{equation*}
+    The left and right parts of the first half of the equation can be written as
+    \[
+        \textbf{x}_{1} - \bm{\mu}_{1} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})
+        =
+        \textbf{x}_{1} - \left( \bm{\mu}_{1} + \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2}) \right).
+    \]
+    From there, we can see that, 
+    \begin{multline*}
+        {[\textbf{x}_{1} - (\bm{\mu}_{1} + \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2}))]}^{\prime}
+    {(\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21})}^{-1} \\
+    \times
+    [\textbf{x}_{1} - (\bm{\mu}_{1} + \bm{\Sigma_{12}}\bm{\Sigma}_{22}^{-1}(\textbf{x}_2 - \bm{\mu}_{2}))]
+    \end{multline*}
+    , is the exponent for the normal conditional distribution of $\textbf{X}_1 \big| \textbf{X}_2 = x_2$, where $\bm{\mu}_{1} + \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})$ is the mean from page 160 and $\bm{\Sigma}_{11} - \bm{\Sigma}_{12}\bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{21}$ is the covariance from page 161.
+    \newline
+    The second part of the addition, ${(\textbf{x}_{2} - \bm{\mu}_{2})}^{\prime}\bm{\Sigma}_{22}^{-1}(\textbf{x}_{2} - \bm{\mu}_{2})$, is the exponent of the normal marginal for $\textbf{X}_2$, where the mean is $\bm{\mu}_2$ and the covariance is $\bm{\Sigma}_{22}$.
 \end{enumerate}
+
 \textit{Hint:}
 \newline
 (a) Apply Exercise 4.11

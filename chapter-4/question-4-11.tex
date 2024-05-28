@@ -36,6 +36,415 @@ Show that, if \textbf{A} is square,
         0
     \end{aligned}
 \end{equation*}
+First, using the hint
+\[
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+        \textbf{A}_{12} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{22} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+        \textbf{A}_{12} - \textbf{A}_{12} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+        \textbf{0} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+        \textbf{0} \\
+        \textbf{A}_{21} - \textbf{A}_{22}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+        \textbf{A}_{22}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+        \textbf{0} \\
+        \textbf{A}_{21} - \textbf{A}_{21} &
+        \textbf{A}_{22}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+        \textbf{0} \\
+        \textbf{0}^{\prime} &
+        \textbf{A}_{22}
+    \end{bNiceArray}
+    =
+\]
+Now, for the determinant
+\[{\scriptstyle
+    \left|
+        \begin{bNiceArray}{cc}
+            \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+            \textbf{0}^{\prime} & \textbf{I}
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            \textbf{A}_{11} & \textbf{A}_{12} \\
+            \textbf{A}_{21} & \textbf{A}_{22}
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            \textbf{I} & \textbf{0} \\
+            -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+        \end{bNiceArray}
+    \right|
+    =
+    \left|
+        \begin{bNiceArray}{cc}
+            \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+            \textbf{0} \\
+            \textbf{0}^{\prime} &
+            \textbf{A}_{22}
+        \end{bNiceArray}
+    \right|}
+\]
+\[
+    \Rightarrow
+    \left|
+        \begin{NiceArray}{cc}
+            \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+            \textbf{0}^{\prime} & \textbf{I}
+        \end{NiceArray}
+    \right|
+    \left|
+        \begin{NiceArray}{cc}
+            \textbf{A}_{11} & \textbf{A}_{12} \\
+            \textbf{A}_{21} & \textbf{A}_{22}
+        \end{NiceArray}
+    \right|
+    \left|
+        \begin{NiceArray}{cc}
+            \textbf{I} & \textbf{0} \\
+            -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+        \end{NiceArray}
+    \right|
+    =
+    \left|
+        \begin{NiceArray}{cc}
+            \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} &
+            \textbf{0} \\
+            \textbf{0}^{\prime} &
+            \textbf{A}_{22}
+        \end{NiceArray}
+    \right|
+\]
+\[
+    \Rightarrow
+    \left|
+        \textbf{I}\textbf{I} - -\textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{0}^{\prime}
+    \right|
+    \left|
+        \textbf{A}
+    \right|
+    \left|
+        \textbf{I}\textbf{I} - -\textbf{0}\textbf{A}_{22}^{-1}\textbf{A}_{21}
+    \right|
+    =
+    \left|
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21}
+    \right|
+    \left|
+        \textbf{A}_{22}
+    \right|
+\]
+\[
+    \Rightarrow
+    (1)
+    \left|
+        \textbf{A}
+    \right|
+    (1)
+    =
+    \left|
+        \textbf{A}_{22}
+    \right|
+    \left|
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21}
+    \right|
+\]
+\[
+    \Rightarrow
+    \left|
+        \textbf{A}
+    \right|
+    =
+    \left|
+        \textbf{A}_{22}
+    \right|
+    \left|
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21}
+    \right|
+\]
+Verifying the second part of the hint
+\[
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{21}\textbf{A}_{11}^{-1} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{11}^{-1}\textbf{A}_{12} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{A}_{21} -\textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{11} &
+        \textbf{A}_{22} -\textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{11}^{-1}\textbf{A}_{12} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{A}_{21} -\textbf{A}_{21} &
+        \textbf{A}_{22} -\textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{11}^{-1}\textbf{A}_{12} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{0}^{\prime} &
+        \textbf{A}_{22} -\textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{11}^{-1}\textbf{A}_{12} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12}  - \textbf{A}_{11}\textbf{A}_{11}^{-1}\textbf{A}_{12} \\
+        \textbf{0}^{\prime} &
+        \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12}  - \textbf{A}_{12} \\
+        \textbf{0}^{\prime} &
+        \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{0} \\
+        \textbf{0}^{\prime} &
+        \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \end{bNiceArray}
+    =
+\]
+\[\scriptstyle{
+    \left|
+        \begin{bNiceArray}{cc}
+            \textbf{I} & \textbf{0} \\
+            -\textbf{A}_{21}\textbf{A}_{11}^{-1} & \textbf{I}
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            \textbf{A}_{11} & \textbf{A}_{12} \\
+            \textbf{A}_{21} & \textbf{A}_{22}
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            \textbf{I} & -\textbf{A}_{11}^{-1}\textbf{A}_{12} \\
+            \textbf{0}^{\prime} & \textbf{I}
+        \end{bNiceArray}
+    \right|
+    =
+    \left|
+        \begin{bNiceArray}{cc}
+            \textbf{A}_{11} & \textbf{0} \\
+            \textbf{0}^{\prime} &
+            \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+        \end{bNiceArray}
+    \right|}
+\]
+\[
+    \Rightarrow
+    \left|
+        \begin{NiceArray}{cc}
+            \textbf{I} & \textbf{0} \\
+            -\textbf{A}_{21}\textbf{A}_{11}^{-1} & \textbf{I}
+        \end{NiceArray}
+    \right|
+    \left|
+        \begin{NiceArray}{cc}
+            \textbf{A}_{11} & \textbf{A}_{12} \\
+            \textbf{A}_{21} & \textbf{A}_{22}
+        \end{NiceArray}
+    \right|
+    \left|
+        \begin{NiceArray}{cc}
+            \textbf{I} & -\textbf{A}_{11}^{-1}\textbf{A}_{12} \\
+            \textbf{0}^{\prime} & \textbf{I}
+        \end{NiceArray}
+    \right|
+    =
+    \left|
+        \begin{bNiceArray}{cc}
+            \textbf{A}_{11} &
+            \textbf{0} \\
+            \textbf{0}^{\prime} &
+            \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+        \end{bNiceArray}
+    \right|
+\]
+\[
+    \Rightarrow
+    \left|
+        \textbf{I}\textbf{I} - -\textbf{0}\textbf{A}_{21}\textbf{A}_{11}^{-1}
+    \right|
+    \left|
+        \textbf{A}
+    \right|
+    \left|
+        \textbf{I}\textbf{I} - -\textbf{A}_{11}^{-1}\textbf{A}_{12}\textbf{0}^{\prime}
+    \right|
+    =
+    \left|
+        \textbf{A}_{11}
+    \right|
+    \left|
+        \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \right|
+\]
+\[
+    \Rightarrow
+    (1)
+    \left|
+        \textbf{A}
+    \right|
+    (1)
+    =
+    \left|
+        \textbf{A}_{11}
+    \right|
+    \left|
+        \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \right|
+\]
+\[
+    \Rightarrow
+    \left|
+        \textbf{A}
+    \right|
+    =
+    \left|
+        \textbf{A}_{11}
+    \right|
+    \left|
+        \textbf{A}_{22} - \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+    \right|
+\]
+Finally, we have what we want, that
+\begin{equation*}
+    \begin{aligned}
+        \left|
+            \textbf{A}
+        \right|
+        & =
+        \left|
+            \textbf{A}_{22}
+        \right|
+        \left|
+            \textbf{A}_{11}
+            -
+            \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21}
+        \right|
+        \mbox{~~for~~}
+        \left|
+            \textbf{A}_{22}
+        \right|
+        \ne
+        0 \\
+        & = 
+        \left|
+            \textbf{A}_{11}
+        \right|
+        \left|
+            \textbf{A}_{22}
+            -
+            \textbf{A}_{21}\textbf{A}_{11}^{-1}\textbf{A}_{12}
+        \right|
+        \mbox{~~for~~}
+        \left|
+            \textbf{A}_{11}
+        \right|
+        \ne
+        0
+    \end{aligned}
+\end{equation*}
 \newline
 \textit{Hint:} Partition \textbf{A} and verify that
 \[

@@ -17,6 +17,137 @@ Show that, for \textbf{A} symmetric,
 \]
 Thus, ${\left(\textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21}\right)}^{-1}$ is the upper left-hand block of $\textbf{A}^{-1}$.
 \newline
+From Exercise 4.11 we know
+\[
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{A}_{22}
+    \end{bNiceArray}
+\]
+\begin{multline*}
+    \Rightarrow
+    {\begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}}^{-1}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} & \textbf{A}_{12} \\
+        \textbf{A}_{21} & \textbf{A}_{22}
+    \end{bNiceArray} \\
+    \times
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+    {\begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}}^{-1}
+    = \\
+    {\begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}}^{-1}
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{A}_{22}
+    \end{bNiceArray}
+    {\begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}}^{-1}
+\end{multline*}
+\[
+    \Rightarrow
+    \textbf{A}
+    =
+    {\begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}}^{-1}
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{A}_{22}
+    \end{bNiceArray}
+    {\begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}}^{-1}
+\]
+\[{\Rightarrow
+    \textbf{A}^{-1}
+    =
+    {\left(
+    {\begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}}^{-1}
+    \begin{bNiceArray}{cc}\scriptstyle
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{A}_{22}
+    \end{bNiceArray}
+    {\begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}}^{-1}
+    \right)}^{-1}
+}
+\]
+\[{\Rightarrow
+    \textbf{A}^{-1}
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    {\left(
+    \begin{bNiceArray}{cc}
+        \textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{A}_{22}
+    \end{bNiceArray}
+    \right)}^{-1}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+}
+\]
+\[{\Rightarrow
+    \textbf{A}^{-1}
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{I} & -\textbf{A}_{12}\textbf{A}_{22}^{-1} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        {\left(\textbf{A}_{11} - \textbf{A}_{12}\textbf{A}_{22}^{-1}\textbf{A}_{21}\right)}^{-1} &
+        \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{A}_{22}^{-1}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        -\textbf{A}_{22}^{-1}\textbf{A}_{21} & \textbf{I}
+    \end{bNiceArray}
+}
+\]
+\newline
 \textit{Hint:} Premultiply the expression in the hint to Exercise 4.11 by
 $
 \begin{bNiceArray}{cc}
