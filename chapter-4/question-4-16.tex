@@ -1,0 +1,392 @@
+Let $\textbf{X}_{1},\textbf{X}_{2},\textbf{X}_{3}$, and $\textbf{X}_{4}$ be independent $N_{p}(\bm{\mu},\bm{\Sigma})$ random vectors.
+\begin{enumerate}[label= (\alph*)]
+    \item Find the marginal distributions for each of the random vectors
+    \[
+        \textbf{V}_{1}
+        =
+        \frac{1}{4}
+        \textbf{X}_{1}
+        -
+        \frac{1}{4}
+        \textbf{X}_{2}
+        +
+        \frac{1}{4}
+        \textbf{X}_{3}
+        -
+        \frac{1}{4}
+        \textbf{X}_{4}
+    \]
+    and
+    \[
+        \textbf{V}_{2}
+        =
+        \frac{1}{4}
+        \textbf{X}_{1}
+        +
+        \frac{1}{4}
+        \textbf{X}_{2}
+        -
+        \frac{1}{4}
+        \textbf{X}_{3}
+        -
+        \frac{1}{4}
+        \textbf{X}_{4}
+    \]
+    First, note that we have $n=4$ random vectors. We're looking at the linear combination of random vectors, not a linear combination of the components of a random vector, so we use Result 4.8 on page 158, $\textbf{V}_{1} = c_{1}\textbf{X}_{1} + c_{2}\textbf{X}_{2} + \cdots + c_{n}\textbf{X}_{n}$ is distributed as $N_{p}\left(\sum_{j=1}^{n}{c_{j}\bm{\mu}_{j}}, \left(\sum_{j=1}^{n}{c_{j}^{2}}\right)\bm{\Sigma}\right)$.
+    \newline
+    For $\textbf{V}_{1}$ we have
+    \[
+        \textbf{c}
+        =
+        \begin{bNiceArray}{c}
+            c_{1} \\
+            c_{2} \\
+            c_{3} \\
+            c_{4}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            \frac{1}{4} \\
+            -\frac{1}{4} \\
+            \frac{1}{4} \\
+            -\frac{1}{4}
+        \end{bNiceArray}
+    \]
+    \[
+        \text{mean}
+        =
+        \sum_{j=1}^{n}{c_{j}\underset{(p \times 1)}{\bm{\mu}_{j}}}
+        =
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}_{1}}
+        -
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}_{2}}
+        +
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}_{3}}
+        -
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}_{4}}
+        =
+    \]
+    \[
+        =
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}}
+        -
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}}
+        +
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}}
+        -
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}}
+        =
+        (\frac{1}{4}-\frac{1}{4}+\frac{1}{4}-\frac{1}{4})
+        \underset{(p \times 1)}{\bm{\mu}}
+        =
+        \underset{(p \times 1)}{\textbf{0}}
+    \]
+    \[
+        \text{Covariance}
+        =
+        \left(\sum_{j=1}^{n}{c_{j}^{2}}\right)\bm{\Sigma}
+        =
+        \left({\left(\frac{1}{4}\right)}^{2}+{\left(-\frac{1}{4}\right)}^{2}+{\left(\frac{1}{4}\right)}^{2}+{\left(-\frac{1}{4}\right)}^{2}\right)
+        \bm{\Sigma}
+        =
+    \]
+    \[
+        =
+        \left(
+            \frac{1}{16}
+            +
+            \frac{1}{16}
+            +
+            \frac{1}{16}
+            +
+            \frac{1}{16}
+        \right)
+        \bm{\Sigma}
+        =
+        \frac{4}{16}
+        \bm{\Sigma}
+        =
+        \frac{1}{4}
+        \bm{\Sigma}
+    \]
+    so that $\textbf{V}_{1} \sim N_{p}\left(\underset{(p \times 1)}{\textbf{0}}, \underset{(p \times p)}{\left(\frac{1}{4}\right)\bm{\Sigma}}\right)$.
+    \newline
+    For $\textbf{V}_{2}$ we have
+    \[
+        \textbf{d}
+        =
+        \begin{bNiceArray}{c}
+            d_{1} \\
+            d_{2} \\
+            d_{3} \\
+            d_{4}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{r}
+            \frac{1}{4} \\
+            \frac{1}{4} \\
+            -\frac{1}{4} \\
+            -\frac{1}{4}
+        \end{bNiceArray}
+    \]
+    \[
+        \text{mean}
+        =
+        \sum_{j=1}^{n}{d_{j}\underset{(p \times 1)}{\bm{\mu}_{j}}}
+        =
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}_{1}}
+        +
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}_{2}}
+        -
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}_{3}}
+        -
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}_{4}}
+        =
+    \]
+    \[
+        =
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}}
+        +
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}}
+        -
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}}
+        -
+        \frac{1}{4}
+        \underset{(p \times 1)}{\bm{\mu}}
+        =
+        (\frac{1}{4}+\frac{1}{4}-\frac{1}{4}-\frac{1}{4})
+        \underset{(p \times 1)}{\bm{\mu}}
+        =
+        \underset{(p \times 1)}{\textbf{0}}
+    \]
+    \[
+        \text{Covariance}
+        =
+        \left(\sum_{j=1}^{n}{d_{j}^{2}}\right)\bm{\Sigma}
+        =
+        \left({\left(\frac{1}{4}\right)}^{2}+{\left(\frac{1}{4}\right)}^{2}+{\left(-\frac{1}{4}\right)}^{2}+{\left(-\frac{1}{4}\right)}^{2}\right)
+        \bm{\Sigma}
+        =
+    \]
+    \[
+        =
+        \left(
+            \frac{1}{16}
+            +
+            \frac{1}{16}
+            +
+            \frac{1}{16}
+            +
+            \frac{1}{16}
+        \right)
+        \bm{\Sigma}
+        =
+        \frac{4}{16}
+        \bm{\Sigma}
+        =
+        \frac{1}{4}
+        \bm{\Sigma}
+    \]
+    so that $\textbf{V}_{2} \sim N_{p}\left(\underset{(p \times 1)}{\textbf{0}}, \underset{(p \times p)}{\left(\frac{1}{4}\right)\bm{\Sigma}}\right)$.
+
+    \item Find the joint density of the random vectors $\textbf{V}_{1}$ and $\textbf{V}_{2}$ defined in (a).
+    \newline
+    \newline
+    Again, from Result 4.8 on page 165, the joint distribution of $\textbf{V}_{1}$ and $\textbf{V}_{2}$ is multivariate normal. To compute the mean vector using what's on page 166, we know $n=4$, but $p$ can be anything, for $\underset{(p \times p)}{\textbf{I}}$,
+    \[
+        \underset{(2p \times np)}{\textbf{A}}
+        =
+        \begin{bNiceArray}{cccc}
+            c_{1}\textbf{I} & c_{2}\textbf{I} & c_{3}\textbf{I} & c_{4}\textbf{I} \\
+            d_{1}\textbf{I} & d_{2}\textbf{I} & d_{3}\textbf{I} & d_{4}\textbf{I}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cccc}
+            \frac{1}{4}\textbf{I} & -\frac{1}{4}\textbf{I} & \frac{1}{4}\textbf{I} & -\frac{1}{4}\textbf{I} \\
+            \frac{1}{4}\textbf{I} & \frac{1}{4}\textbf{I} & -\frac{1}{4}\textbf{I} & -\frac{1}{4}\textbf{I}
+        \end{bNiceArray}
+    \]
+    \[
+        \text{Vec}(\textbf{X}_{1},\textbf{X}_{2},\textbf{X}_{3},\textbf{X}_{4})
+        =
+        \begin{bNiceArray}{c}
+            \textbf{X}_{1} \\
+            \textbf{X}_{2} \\
+            \textbf{X}_{3} \\
+            \textbf{X}_{4}
+        \end{bNiceArray}
+        =\underset{(np \times 1)}{
+        \begin{bNiceArray}{c}
+            X_{11} \\
+            \vdots \\
+            X_{1p} \\
+            X_{21} \\
+            \vdots \\
+            X_{2p} \\
+            X_{31} \\
+            \vdots \\
+            X_{3p} \\
+            X_{41} \\
+            \vdots \\
+            X_{4p}
+        \end{bNiceArray}
+        }
+    \]
+    \[
+        \textbf{A}
+        \text{Vec}(\textbf{X}_{1},\textbf{X}_{2},\textbf{X}_{3},\textbf{X}_{4})
+        =
+        \begin{bNiceArray}{cccc}
+            c_{1}\textbf{I} & c_{2}\textbf{I} & c_{3}\textbf{I} & c_{4}\textbf{I} \\
+            d_{1}\textbf{I} & d_{2}\textbf{I} & d_{3}\textbf{I} & d_{4}\textbf{I}
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            X_{11} \\
+            \vdots \\
+            X_{1p} \\
+            X_{21} \\
+            \vdots \\
+            X_{2p} \\
+            X_{31} \\
+            \vdots \\
+            X_{3p} \\
+            X_{41} \\
+            \vdots \\
+            X_{4p}
+        \end{bNiceArray}
+        =
+    \]
+    \[
+        \begin{bNiceArray}{c}
+            c_{1}X_{11} + c_{2}X_{21} + c_{3}X_{31} + c_{4}X_{41} \\
+            c_{1}X_{12} + c_{2}X_{22} + c_{3}X_{32} + c_{4}X_{42} \\
+            \vdots \\
+            c_{1}X_{1p} + c_{2}X_{2p} + c_{3}X_{3p} + c_{4}X_{4p} \\
+            d_{1}X_{11} + d_{2}X_{21} + d_{3}X_{31} + d_{4}X_{41} \\
+            d_{1}X_{12} + d_{2}X_{22} + d_{3}X_{32} + d_{4}X_{42} \\
+            \vdots \\
+            d_{1}X_{1p} + d_{2}X_{2p} + d_{3}X_{3p} + d_{4}X_{4p}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \sum_{j=1}^{4}{c_{j}X_{j1}} \\
+            \sum_{j=1}^{4}{c_{j}X_{j2}} \\
+            \vdots \\
+            \sum_{j=1}^{4}{c_{j}X_{jp}} \\
+            \sum_{j=1}^{4}{d_{j}X_{j1}} \\
+            \sum_{j=1}^{4}{d_{j}X_{j2}} \\
+            \vdots \\
+            \sum_{j=1}^{4}{d_{j}X_{jp}}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \sum_{j=1}^{4}{c_{j}\textbf{X}_{j}} \\
+            \sum_{j=1}^{4}{d_{j}\textbf{X}_{j}}
+        \end{bNiceArray}
+    \]
+    The expected value of this is (using part (a))
+    \[
+        \text{E}
+        \left\{
+            \begin{bNiceArray}{c}
+                \sum_{j=1}^{4}{c_{j}\textbf{X}_{j}} \\
+                \sum_{j=1}^{4}{d_{j}\textbf{X}_{j}}
+            \end{bNiceArray}
+        \right\}
+        =
+        \begin{bNiceArray}{c}
+            \sum_{j=1}^{4}{c_{j}\text{E}\left[\textbf{X}_{j}\right]} \\
+            \sum_{j=1}^{4}{d_{j}\text{E}\left[\textbf{X}_{j}\right]}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \sum_{j=1}^{4}{c_{j}\bm{\mu}_{j}} \\
+            \sum_{j=1}^{4}{d_{j}\bm{\mu}_{j}}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{c}
+            \underset{p \times 1}{\textbf{0}} \\
+            \underset{p \times 1}{\textbf{0}}
+        \end{bNiceArray}
+        =
+        \underset{2p \times 1}{\textbf{0}}
+    \]
+    The covariance matrix from Result 4.8 is on page 165,
+    \[
+        \textbf{d}^{\prime}\textbf{c}
+        =
+        \begin{bNiceArray}{cccc}
+            \frac{1}{4} & \frac{1}{4} & -\frac{1}{4} & -\frac{1}{4}
+        \end{bNiceArray}
+        \begin{bNiceArray}{r}
+            \frac{1}{4} \\
+            -\frac{1}{4} \\
+            \frac{1}{4} \\
+            -\frac{1}{4}
+        \end{bNiceArray}
+        =
+        \frac{1}{16}
+        -
+        \frac{1}{16}
+        -
+        \frac{1}{16}
+        +
+        \frac{1}{16}
+        =
+        0
+    \]
+    
+    \[
+        \begin{bNiceArray}{cc}
+            \left(\sum_{i=1}^{n}{c_{j}^{2}}\right)\bm{\Sigma}
+            &
+            \left(\textbf{d}^{\prime}\textbf{c}\right)\bm{\Sigma}
+            \\
+            \left(\textbf{d}^{\prime}\textbf{c}\right)\bm{\Sigma}
+            &
+            \left(\sum_{i=1}^{n}{d_{j}^{2}}\right)\bm{\Sigma}
+
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            \left(\frac{1}{4}\right)\bm{\Sigma} &
+            \textbf{0} \\
+            \textbf{0} &
+            \left(\frac{1}{4}\right)\bm{\Sigma}
+        \end{bNiceArray}
+        =
+        \left(\frac{1}{4}\right)
+        \begin{bNiceArray}{cc}
+            \bm{\Sigma} &
+            \textbf{0} \\
+            \textbf{0} &
+            \bm{\Sigma}
+        \end{bNiceArray}
+    \]
+    and mean vector 
+    \[
+        \text{Vec}(\textbf{V}_{1}, \textbf{V}_{2}) =
+        \begin{bNiceArray}{c}
+            \underset{p \times 1}{\textbf{0}} \\
+            \underset{p \times 1}{\textbf{0}}
+        \end{bNiceArray}
+        =
+        \underset{2p \times 1}{\textbf{0}}
+    \]
+    Also, $\textbf{V}_{1}$ and $\textbf{V}_{2}$ are independent, since $\textbf{d}^{\prime}\textbf{c} = 0$.
+\end{enumerate}

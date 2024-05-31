@@ -1,0 +1,517 @@
+Show that $\sum_{j=1}^{n}{(\textbf{x}_{j} - \bar{\textbf{x}}){(\bar{\textbf{x}} - \bm{\mu})}^{\prime}}$ and $\sum_{j=1}^{n}{(\bar{\textbf{x}} - \bm{\mu}){(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}}$ are both $p \times p$ matrices of zeros. Here $\textbf{x}_{j}^{\prime} = [x_{j1}, x_{j2}, \dots, x_{jp}]$, $j=1,2,\dots,n$ and
+\[
+    \bar{\textbf{x}}
+    =
+    \frac{1}{n}
+    \sum_{j=1}^{n}{\textbf{x}_{j}}
+\]
+Here are both a short answer (using distribution and vector-vector multiplication) and long ugly answer (multiply matrix out).
+\newline
+\underline{Short answer:}
+\[
+    \sum_{j=1}^{n}{
+        (\textbf{x}_{j} - \bar{\textbf{x}})
+        {(\bar{\textbf{x}} - \bm{\mu})}^{\prime}
+    }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        (\textbf{x}_{j} - \bar{\textbf{x}})
+        {(\bar{\textbf{x}}^{\prime} - \bm{\mu}^{\prime})}
+    }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \underset{(p \times 1)}{\textbf{x}_{j}}
+            \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+            -
+            \underset{(p \times 1)}{\bar{\textbf{x}}}
+            \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+            -
+            \underset{(p \times 1)}{\textbf{x}_{j}}
+            \underset{(1 \times p)}{\bm{\mu}^{\prime}}
+            +
+            \underset{(p \times 1)}{\bar{\textbf{x}}}
+            \underset{(1 \times p)}{\bm{\mu}^{\prime}}
+        \right)
+    }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \underset{(p \times 1)}{\textbf{x}_{j}}
+            \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+        \right)
+    }
+    -
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    -
+    \sum_{j=1}^{n}{
+        \left(
+            \underset{(p \times 1)}{\textbf{x}_{j}}
+            \underset{(1 \times p)}{\bm{\mu}^{\prime}}
+        \right)
+    }
+    +
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bm{\mu}^{\prime}}
+    =
+\]
+\[
+    =
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    -
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    -
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bm{\mu}^{\prime}}
+    +
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bm{\mu}^{\prime}}
+    =
+\]
+\[
+    =
+    \underset{p \times p}{\textbf{0}}
+\]
+and
+\[
+    \sum_{j=1}^{n}{
+        (\bar{\textbf{x}} - \bm{\mu})
+        {(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}
+        }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        (\bar{\textbf{x}} - \bm{\mu})
+        {(\textbf{x}_{j}^{\prime} - \bar{\textbf{x}}^{\prime})}
+        }
+    =
+\]
+\[
+    =
+    \sum_{i=1}^{n}{
+        \left(
+            \underset{(p \times 1)}{\bar{\textbf{x}}}
+            \underset{(1 \times p)}{\textbf{x}_{j}^{\prime}}
+            -
+            \underset{(p \times 1)}{\bm{\mu}}
+            \underset{(1 \times p)}{\textbf{x}_{j}^{\prime}}
+            -
+            \underset{(p \times 1)}{\bar{\textbf{x}}}
+            \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+            +
+            \underset{(p \times 1)}{\bm{\mu}}
+            \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+        \right)
+    }
+    =
+\]
+\[
+    =
+    \sum_{i=1}^{n}{
+        \left(
+            \underset{(p \times 1)}{\bar{\textbf{x}}}
+            \underset{(1 \times p)}{\textbf{x}_{j}^{\prime}}
+        \right)
+    }
+    -
+    \sum_{i=1}^{n}{
+        \left(
+            \underset{(p \times 1)}{\bm{\mu}}
+            \underset{(1 \times p)}{\textbf{x}_{j}^{\prime}}
+        \right)
+    }
+    -
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    +
+    n
+    \underset{(p \times 1)}{\bm{\mu}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    =
+\]
+\[
+    =
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    -
+    n
+    \underset{(p \times 1)}{\bm{\mu}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    -
+    n
+    \underset{(p \times 1)}{\bar{\textbf{x}}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    +
+    n
+    \underset{(p \times 1)}{\bm{\mu}}
+    \underset{(1 \times p)}{\bar{\textbf{x}}^{\prime}}
+    =
+\]
+\[
+    =
+    \underset{p \times p}{\textbf{0}}
+\]
+\underline{Long answer:}
+\[
+    \sum_{j=1}^{n}{
+        (\textbf{x}_{j} - \bar{\textbf{x}})
+        {(\bar{\textbf{x}} - \bm{\mu})}^{\prime}
+    }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \begin{bNiceArray}{c}
+                x_{j1} \\
+                \vdots \\
+                x_{jp}
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                \bar{x}_{1} \\
+                \vdots \\
+                \bar{x}_{p}
+            \end{bNiceArray}
+        \right)
+        {\left(
+            \begin{bNiceArray}{c}
+                \bar{x}_{1} \\
+                \vdots \\
+                \bar{x}_{p}
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                \mu_{1} \\
+                \vdots \\
+                \mu_{p}
+            \end{bNiceArray}
+        \right)}^{\prime}
+    }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \begin{bNiceArray}{c}
+                x_{j1} - \bar{x}_{1} \\
+                \vdots \\
+                x_{jp} - \bar{x}_{p}
+            \end{bNiceArray}
+        \right)
+        {\left(
+            \begin{bNiceArray}{c}
+                \bar{x}_{1} - \mu_{1} \\
+                \vdots \\
+                \bar{x}_{p} - \mu_{p}
+            \end{bNiceArray}
+        \right)}^{\prime}
+    }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \begin{bNiceArray}{ccc}
+                (x_{j1} - \bar{x}_{1}){(\bar{x}_{1} - \mu_{1})} &
+                \cdots &
+                (x_{j1} - \bar{x}_{1}){(\bar{x}_{p} - \mu_{p})} \\
+                \vdots &
+                \ddots &
+                \vdots \\
+                (x_{jp} - \bar{x}_{p}){(\bar{x}_{1} - \mu_{1})} &
+                \cdots &
+                (x_{jp} - \bar{x}_{p}){(\bar{x}_{p} - \mu_{p})}
+            \end{bNiceArray}
+        \right)
+    }
+    =
+\]
+{\small
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \begin{bNiceArray}{ccc}
+                (x_{j1}\bar{x}_{1} - \bar{x}_{1}\bar{x}_{1} - x_{j1}\mu_{1} + \bar{x}_{1}\mu_{1}) &
+                \cdots &
+                (x_{j1}\bar{x}_{p} - \bar{x}_{1}\bar{x}_{p}
+                - x_{j1}\mu_{p} + \bar{x}_{1}\mu_{p}) \\
+                \vdots &
+                \ddots &
+                \vdots \\
+                (x_{jp}\bar{x}_{1} - \bar{x}_{p}\bar{x}_{1}
+                - x_{jp}\mu_{1} + \bar{x}_{p}\mu_{1}) &
+                \cdots &
+                (x_{jp}\bar{x}_{p} - \bar{x}_{p}\bar{x}_{p}
+                - x_{jp}\mu_{p} + \bar{x}_{p}\mu_{p})
+            \end{bNiceArray}
+        \right)
+    }
+    =
+\]}
+{\footnotesize
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        \sum_{j=1}^{n}{(x_{j1}\bar{x}_{1} - \bar{x}_{1}\bar{x}_{1} - x_{j1}\mu_{1} + \bar{x}_{1}\mu_{1})} &
+        \cdots &
+        \sum_{j=1}^{n}{(x_{j1}\bar{x}_{p} - \bar{x}_{1}\bar{x}_{p}
+        - x_{j1}\mu_{p} + \bar{x}_{1}\mu_{p})} \\
+        \vdots &
+        \ddots &
+        \vdots \\
+        \sum_{j=1}^{n}{(x_{jp}\bar{x}_{1} - \bar{x}_{p}\bar{x}_{1}
+        - x_{jp}\mu_{1} + \bar{x}_{p}\mu_{1})} &
+        \cdots &
+        \sum_{j=1}^{n}{(x_{jp}\bar{x}_{p} - \bar{x}_{p}\bar{x}_{p}
+        - x_{jp}\mu_{p} + \bar{x}_{p}\mu_{p})}
+    \end{bNiceArray}
+    =
+\]}
+{\tiny
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        \sum_{j=1}^{n}{(x_{j1}\bar{x}_{1})} - n\bar{x}_{1}\bar{x}_{1} - \sum_{j=1}^{n}{(x_{j1}\mu_{1})} + n\bar{x}_{1}\mu_{1} &
+        \cdots &
+        \sum_{j=1}^{n}{(x_{j1}\bar{x}_{p})} - n\bar{x}_{1}\bar{x}_{p}
+        - \sum_{j=1}^{n}{(x_{j1}\mu_{p})} + n\bar{x}_{1}\mu_{p} \\
+        \vdots &
+        \ddots &
+        \vdots \\
+        \sum_{j=1}^{n}{(x_{jp}\bar{x}_{1})} - n\bar{x}_{p}\bar{x}_{1}
+        - \sum_{j=1}^{n}{(x_{jp}\mu_{1})} + n\bar{x}_{p}\mu_{1} &
+        \cdots &
+        \sum_{j=1}^{n}{(x_{jp}\bar{x}_{p})} - n\bar{x}_{p}\bar{x}_{p}
+        - \sum_{j=1}^{n}{(x_{jp}\mu_{p})} + n\bar{x}_{p}\mu_{p}
+    \end{bNiceArray}
+    =
+\]}
+{\scriptsize
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        n\bar{x}_{1}\bar{x}_{1} - n\bar{x}_{1}\bar{x}_{1} - n\bar{x}_{1}\mu_{1} + n\bar{x}_{1}\mu_{1} &
+        \cdots &
+        n\bar{x}_{1}\bar{x}_{p} - n\bar{x}_{1}\bar{x}_{p}
+        - n\bar{x}_{1}\mu_{p} + n\bar{x}_{1}\mu_{p} \\
+        \vdots &
+        \ddots &
+        \vdots \\
+        n\bar{x}_{p}\bar{x}_{1} - n\bar{x}_{p}\bar{x}_{1}
+        - n\bar{x}_{p}\mu_{1} + n\bar{x}_{p}\mu_{1} &
+        \cdots &
+        n\bar{x}_{p}\bar{x}_{p} - n\bar{x}_{p}\bar{x}_{p}
+        - n\bar{x}_{p}\mu_{p} + n\bar{x}_{p}\mu_{p}
+    \end{bNiceArray}
+    =
+\]}
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        0 & \cdots & 0 \\
+        \vdots & \ddots & \vdots \\
+        0 & \cdots & 0
+    \end{bNiceArray}
+    =
+    \underset{(p \times p)}{\textbf{0}}
+\]
+and
+\[
+    \sum_{j=1}^{n}{
+        (\bar{\textbf{x}} - \bm{\mu})
+        {(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}
+        }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \begin{bNiceArray}{c}
+                \bar{x}_{1} \\
+                \vdots \\
+                \bar{x}_{p}
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                \mu_{1} \\
+                \vdots \\
+                \mu_{p}
+            \end{bNiceArray}
+        \right)
+        {\left(
+            \begin{bNiceArray}{c}
+                x_{j1} \\
+                \vdots \\
+                x_{jp}
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                \bar{x}_{1} \\
+                \vdots \\
+                \bar{x}_{p}
+            \end{bNiceArray}
+        \right)}^{\prime}
+    }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \begin{bNiceArray}{c}
+                \bar{x}_{1} - \mu_{1} \\
+                \vdots \\
+                \bar{x}_{p} - \mu_{p}
+            \end{bNiceArray}
+        \right)
+        {\left(
+            \begin{bNiceArray}{c}
+                x_{j1} - \bar{x}_{1} \\
+                \vdots \\
+                x_{jp} - \bar{x}_{p}
+            \end{bNiceArray}
+        \right)}^{\prime}
+    }
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \begin{bNiceArray}{ccc}
+                (\bar{x}_{1} - \mu_{1})(x_{j1} - \bar{x}_{1}) &
+                \cdots &
+                (\bar{x}_{1} - \mu_{1})(x_{jp} - \bar{x}_{p}) \\
+                \vdots &
+                \ddots &
+                \vdots \\
+                (\bar{x}_{p} - \mu_{p})(x_{j1} - \bar{x}_{1}) &
+                \cdots &
+                (\bar{x}_{p} - \mu_{p})(x_{jp} - \bar{x}_{p})
+            \end{bNiceArray}
+        \right)
+    }
+    =
+\]
+{\small
+\[
+    =
+    \sum_{j=1}^{n}{
+        \left(
+            \begin{bNiceArray}{ccc}
+                (\bar{x}_{1}x_{j1} - \mu_{1}x_{j1}
+                - \bar{x}_{1}\bar{x}_{1} + \mu_{1}\bar{x}_{1}) &
+                \cdots &
+                (\bar{x}_{1}x_{jp} - \mu_{1}x_{jp}
+                - \bar{x}_{1}\bar{x}_{p} + \mu_{1}\bar{x}_{p}) \\
+                \vdots &
+                \ddots &
+                \vdots \\
+                (\bar{x}_{p}x_{j1} - \mu_{p}x_{j1}
+                - \bar{x}_{p}\bar{x}_{1} - \mu_{p}\bar{x}_{1}) &
+                \cdots &
+                (\bar{x}_{p}x_{jp} - \mu_{p}x_{jp}
+                - \bar{x}_{p}\bar{x}_{p} + \mu_{p}\bar{x}_{p})
+            \end{bNiceArray}
+        \right)
+    }
+    =
+\]}
+{\scriptsize
+\[
+    =
+            \begin{bNiceArray}{ccc}
+                \sum_{j=1}^{n}{(\bar{x}_{1}x_{j1} - \mu_{1}x_{j1}
+                - \bar{x}_{1}\bar{x}_{1} + \mu_{1}\bar{x}_{1})} &
+                \cdots &
+                \sum_{j=1}^{n}{(\bar{x}_{1}x_{jp} - \mu_{1}x_{jp}
+                - \bar{x}_{1}\bar{x}_{p} + \mu_{1}\bar{x}_{p})} \\
+                \vdots &
+                \ddots &
+                \vdots \\
+                \sum_{j=1}^{n}{(\bar{x}_{p}x_{j1} - \mu_{p}x_{j1}
+                - \bar{x}_{p}\bar{x}_{1} - \mu_{p}\bar{x}_{1})} &
+                \cdots &
+                \sum_{j=1}^{n}{(\bar{x}_{p}x_{jp} - \mu_{p}x_{jp}
+                - \bar{x}_{p}\bar{x}_{p} + \mu_{p}\bar{x}_{p})}
+            \end{bNiceArray}
+    =
+\]}
+{\tiny
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        \sum_{j=1}^{n}{(\bar{x}_{1}x_{j1})} - \sum_{j=1}^{n}{(\mu_{1}x_{j1})}
+        - n\bar{x}_{1}\bar{x}_{1} + n\mu_{1}\bar{x}_{1} &
+        \cdots &
+        \sum_{j=1}^{n}{(\bar{x}_{1}x_{jp})} - \sum_{j=1}^{n}{(\mu_{1}x_{jp})}
+        - n\bar{x}_{1}\bar{x}_{p} + n\mu_{1}\bar{x}_{p} \\
+        \vdots &
+        \ddots &
+        \vdots \\
+        \sum_{j=1}^{n}{(\bar{x}_{p}x_{j1})} - \sum_{j=1}^{n}{(\mu_{p}x_{j1})}
+        - n\bar{x}_{p}\bar{x}_{1} + n\mu_{p}\bar{x}_{1} &
+        \cdots &
+        \sum_{j=1}^{n}{(\bar{x}_{p}x_{jp})} - \sum_{j=1}^{n}{(\mu_{p}x_{jp})}
+        - n\bar{x}_{p}\bar{x}_{p} + n\mu_{p}\bar{x}_{p}
+    \end{bNiceArray}
+    =
+\]}
+{\scriptsize
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        n\bar{x}_{1}\bar{x}_{1} - n\mu_{1}\bar{x}_{1}
+        - n\bar{x}_{1}\bar{x}_{1} + n\mu_{1}\bar{x}_{1} &
+        \cdots &
+        n\bar{x}_{1}\bar{x}_{p} - n\mu_{1}\bar{x}_{p}
+        - n\bar{x}_{1}\bar{x}_{p} + n\mu_{1}\bar{x}_{p} \\
+        \vdots &
+        \ddots &
+        \vdots \\
+        n\bar{x}_{p}\bar{x}_{1} - n\mu_{p}\bar{x}_{1}
+        - n\bar{x}_{p}\bar{x}_{1} + n\mu_{p}\bar{x}_{1} &
+        \cdots &
+        n\bar{x}_{p}\bar{x}_{p} - n\mu_{p}\bar{x}_{p}
+        - n\bar{x}_{p}\bar{x}_{p} + n\mu_{p}\bar{x}_{p}
+    \end{bNiceArray}
+    =
+\]}
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        0 & \cdots & 0 \\
+        \vdots & \ddots & \vdots \\
+        0 & \cdots & 0
+    \end{bNiceArray}
+    =
+    \underset{(p \times p)}{\textbf{0}}
+\]

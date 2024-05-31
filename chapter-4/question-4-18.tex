@@ -1,0 +1,226 @@
+Find the maximum likelihood estimates of the $2 \times 1$ mean vector $\bm{\mu}$ and the $2 \times 2$ covariance matrix $\bm{\Sigma}$ based on the random sample
+\[
+    \begin{bNiceArray}{cc}
+        3 & 6 \\
+        4 & 4 \\
+        5 & 7 \\
+        4 & 7
+    \end{bNiceArray}
+\]
+from a bivariate normal population.
+\newline
+\newline
+Using Result 4.11 on page 171
+\[
+    \hat{\bm{\mu}}
+    =
+    \bar{\textbf{X}}
+    =
+    \begin{bNiceArray}{c}
+        \bar{\textbf{x}}_{1} \\
+        \bar{\textbf{x}}_{2}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        \frac{(3+4+5+4)}{4} \\
+        \frac{(6+4+7+7)}{4}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        \frac{16}{4} \\
+        \frac{24}{4}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        4 \\
+        6
+    \end{bNiceArray}
+\]
+\[
+    \hat{\Sigma}
+    =
+    \left(\frac{(n-1)}{n}\right)\textbf{S}
+    =
+    \left(\frac{1}{4}\right)
+    \sum_{j=1}^{4}{\left(\textbf{X}_{j} - \bar{\textbf{X}}\right){\left(\textbf{X}_{j} - \bar{\textbf{X}}\right)}^{\prime}}
+    =
+\]
+\begin{multline*}
+    =
+    \left(\frac{1}{4}\right)
+    \bigg\{
+        \left(
+            \begin{bNiceArray}{c}
+                3 \\
+                6
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                4 \\
+                6
+            \end{bNiceArray}
+        \right)
+        {\left(
+            \begin{bNiceArray}{c}
+                3 \\
+                6
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                4 \\
+                6
+            \end{bNiceArray}
+        \right)}^{\prime}
+        +
+        \left(
+            \begin{bNiceArray}{c}
+                4 \\
+                4
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                4 \\
+                6
+            \end{bNiceArray}
+        \right)
+        {\left(
+            \begin{bNiceArray}{c}
+                4 \\
+                4
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                4 \\
+                6
+            \end{bNiceArray}
+        \right)}^{\prime}
+        + \\
+        \left(
+            \begin{bNiceArray}{c}
+                5 \\
+                7
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                4 \\
+                6
+            \end{bNiceArray}
+        \right)
+        {\left(
+            \begin{bNiceArray}{c}
+                5 \\
+                7
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                4 \\
+                6
+            \end{bNiceArray}
+        \right)}^{\prime}
+        +
+        \left(
+            \begin{bNiceArray}{c}
+                4 \\
+                7
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                4 \\
+                6
+            \end{bNiceArray}
+        \right)
+        {\left(
+            \begin{bNiceArray}{c}
+                4 \\
+                7
+            \end{bNiceArray}
+            -
+            \begin{bNiceArray}{c}
+                4 \\
+                6
+            \end{bNiceArray}
+        \right)}^{\prime}
+    \bigg\}
+    =
+\end{multline*}
+\[
+    =
+    \left(\frac{1}{4}\right)
+    \bigg\{
+        \begin{bNiceArray}{r}
+            -1 \\
+            0
+        \end{bNiceArray}
+        {\begin{bNiceArray}{r}
+            -1 \\
+            0
+        \end{bNiceArray}}^{\prime}
+        +
+        \begin{bNiceArray}{r}
+            0 \\
+            -2
+        \end{bNiceArray}
+        {\begin{bNiceArray}{r}
+            0 \\
+            -2
+        \end{bNiceArray}}^{\prime}
+        +
+        \begin{bNiceArray}{r}
+            1 \\
+            -1
+        \end{bNiceArray}
+        {\begin{bNiceArray}{r}
+            1 \\
+            -1
+        \end{bNiceArray}}^{\prime}
+        +
+        \begin{bNiceArray}{r}
+            0 \\
+            1
+        \end{bNiceArray}
+        {\begin{bNiceArray}{r}
+            0 \\
+            1
+        \end{bNiceArray}}^{\prime}
+    \bigg\}
+    =
+\]
+\[
+    =
+    \left(\frac{1}{4}\right)
+    \bigg\{
+        \begin{bNiceArray}{cc}
+            1 & 0 \\
+            0 & 0
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            0 & 0 \\
+            0 & 4
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{rr}
+            1 & -1 \\
+            -1 & 1
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            0 & 0 \\
+            0 & 1
+        \end{bNiceArray}
+    \bigg\}
+    =
+\]
+\[
+    =
+    \left(\frac{1}{4}\right)
+    \begin{bNiceArray}{rr}
+        2 & -1 \\
+        -1 & 6
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        (1/2) & -(1/4) \\
+        -(1/4) & (6/4)
+    \end{bNiceArray}
+\]

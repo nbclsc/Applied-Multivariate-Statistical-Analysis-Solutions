@@ -1,0 +1,350 @@
+Let $\textbf{X}_{1},\textbf{X}_{2},\textbf{X}_{3}$, and $\textbf{X}_{4}$ be independent and identically distributed random vectors with mean vector $\bm{\mu}$ and covariance matrix $\bm{\Sigma}$. Find the mean vector and covariance matrices for each of the two linear combinations of random vectors
+\[
+    \frac{1}{5}
+    \textbf{X}_{1}
+    +
+    \frac{1}{5}
+    \textbf{X}_{2}
+    +
+    \frac{1}{5}
+    \textbf{X}_{3}
+    +
+    \frac{1}{5}
+    \textbf{X}_{4}
+    +
+    \frac{1}{5}
+    \textbf{X}_{5}
+\]
+and
+\[
+    \textbf{X}_{1}
+    -
+    \textbf{X}_{2}
+    +
+    \textbf{X}_{3}
+    -
+    \textbf{X}_{4}
+    +
+    \textbf{X}_{5}
+\]
+in terms of $\bm{\mu}$ and $\bm{\Sigma}$. Also, obtain the covariance betweeen the two linear combinations of random vectors.
+\newline
+\newline
+First some detail for my own education. The vector $\textbf{c} = {[1/5,1/5,1/5,1/5,1/5]}^{\prime}$ is $(5 \times 1)$, but the vector $\textbf{X} = {[\textbf{X}_{1},\textbf{X}_{2},\textbf{X}_{3},\textbf{X}_{4},\textbf{X}_{5}]}^{\prime}$ is $(np \times 1)$, so computing $\textbf{c}^{\prime}\textbf{X}$ is not conformable (can't multiply $(1 \times p)$ by a $(np \times 1)$). We can get the job done by multiplying $\textbf{c}^{\prime}$ by the kronecker product of the identity matrix, $\textbf{c}^{\prime} \otimes \textbf{I}_{p}$ first. Each of the $\textbf{X}_{j}$ is $p \times 1$ and $\textbf{I}_{p}$ is $p \times p$.
+\[
+    \left( \textbf{c}^{\prime} \otimes \textbf{I}_{p} \right) \textbf{X}
+    =
+    \left(
+        \begin{bNiceArray}{ccccc}
+            c_{1} &
+            c_{2} &
+            c_{3} &
+            c_{4} &
+            c_{5}
+        \end{bNiceArray}
+        \otimes
+        \textbf{I}_{p}
+    \right)
+    \begin{bNiceArray}{c}
+        \textbf{X}_1 \\
+        \textbf{X}_2 \\
+        \textbf{X}_3 \\
+        \textbf{X}_4 \\
+        \textbf{X}_5
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{ccccc}
+        c_{1}\textbf{I}_{p} &
+        c_{2}\textbf{I}_{p} &
+        c_{3}\textbf{I}_{p} &
+        c_{4}\textbf{I}_{p} &
+        c_{5}\textbf{I}_{p}
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        \textbf{X}_1 \\
+        \textbf{X}_2 \\
+        \textbf{X}_3 \\
+        \textbf{X}_4 \\
+        \textbf{X}_5
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    c_{1}\textbf{I}_{p}\textbf{X}_{1}
+    +
+    c_{2}\textbf{I}_{p}\textbf{X}_{2}
+    +
+    c_{3}\textbf{I}_{p}\textbf{X}_{3}
+    +
+    c_{4}\textbf{I}_{p}\textbf{X}_{4}
+    +
+    c_{5}\textbf{I}_{p}\textbf{X}_{5}
+    =
+\]
+\[
+    =
+    c_{1}\textbf{X}_{1}
+    +
+    c_{2}\textbf{X}_{2}
+    +
+    c_{3}\textbf{X}_{3}
+    +
+    c_{4}\textbf{X}_{4}
+    +
+    c_{5}\textbf{X}_{5}
+    =
+\]
+\[
+    =
+    \frac{1}{5}
+    \textbf{X}_{1}
+    +
+    \frac{1}{5}
+    \textbf{X}_{2}
+    +
+    \frac{1}{5}
+    \textbf{X}_{3}
+    +
+    \frac{1}{5}
+    \textbf{X}_{4}
+    +
+    \frac{1}{5}
+    \textbf{X}_{5}
+\]
+\underline{Mean:}
+\[
+    \text{E}
+    \left[
+    \left( \textbf{c}^{\prime} \otimes \textbf{I}_{p} \right) \textbf{X}
+    \right]
+    =
+\]
+\[
+    =
+    \text{E}
+    \left[
+        \frac{1}{5}\textbf{X}_{1}
+        +
+        \frac{1}{5}\textbf{X}_{2}
+        +
+        \frac{1}{5}\textbf{X}_{3}
+        +
+        \frac{1}{5}\textbf{X}_{4}
+        +
+        \frac{1}{5}\textbf{X}_{5}
+    \right]
+    =
+\]
+\[
+    =
+    \text{E}\left[\frac{1}{5}\textbf{X}_{1}\right]
+    +
+    \text{E}\left[\frac{1}{5}\textbf{X}_{2}\right]
+    +
+    \text{E}\left[\frac{1}{5}\textbf{X}_{3}\right]
+    +
+    \text{E}\left[\frac{1}{5}\textbf{X}_{4}\right]
+    +
+    \text{E}\left[\frac{1}{5}\textbf{X}_{5}\right]
+    =
+\]
+\[
+    =
+    \frac{1}{5}\text{E}\left[\textbf{X}_{1}\right]
+    +
+    \frac{1}{5}\text{E}\left[\textbf{X}_{2}\right]
+    +
+    \frac{1}{5}\text{E}\left[\textbf{X}_{3}\right]
+    +
+    \frac{1}{5}\text{E}\left[\textbf{X}_{4}\right]
+    +
+    \frac{1}{5}\text{E}\left[\textbf{X}_{5}\right]
+    =
+\]
+\[
+    =
+    \frac{1}{5}\bm{\mu}
+    +
+    \frac{1}{5}\bm{\mu}
+    +
+    \frac{1}{5}\bm{\mu}
+    +
+    \frac{1}{5}\bm{\mu}
+    +
+    \frac{1}{5}\bm{\mu}
+\]
+\[
+    =
+    \left(\frac{1}{5}+\frac{1}{5}+\frac{1}{5}+\frac{1}{5}+\frac{1}{5}\right)\bm{\mu}
+    =
+    \bm{\mu}
+\]
+\underline{Covariance:}
+
+\[
+    \text{Covar}
+    \left[
+    \left( \textbf{c}^{\prime} \otimes \textbf{I}_{p} \right) \textbf{X}
+    \right]
+    =
+\]
+\[
+    =
+    \text{Covar}
+    \left[
+        \frac{1}{5}\textbf{X}_{1}
+        +
+        \frac{1}{5}\textbf{X}_{2}
+        +
+        \frac{1}{5}\textbf{X}_{3}
+        +
+        \frac{1}{5}\textbf{X}_{4}
+        +
+        \frac{1}{5}\textbf{X}_{5}
+    \right]
+    =
+\]
+\[
+    =
+    \text{Covar}\left[\frac{1}{5}\textbf{X}_{1}\right]
+    +
+    \text{Covar}\left[\frac{1}{5}\textbf{X}_{2}\right]
+    +
+    \text{Covar}\left[\frac{1}{5}\textbf{X}_{3}\right]
+    +
+    \text{Covar}\left[\frac{1}{5}\textbf{X}_{4}\right]
+    +
+    \text{Covar}\left[\frac{1}{5}\textbf{X}_{5}\right]
+    =
+\]
+{\scriptsize
+\[
+    =
+    {\left(\frac{1}{5}\right)}^{2}\text{Covar}\left[\textbf{X}_{1}\right]
+    +
+    {\left(\frac{1}{5}\right)}^{2}\text{Covar}\left[\textbf{X}_{2}\right]
+    +
+    {\left(\frac{1}{5}\right)}^{2}\text{Covar}\left[\textbf{X}_{3}\right]
+    +
+    {\left(\frac{1}{5}\right)}^{2}\text{Covar}\left[\textbf{X}_{4}\right]
+    +
+    {\left(\frac{1}{5}\right)}^{2}\text{Covar}\left[\textbf{X}_{5}\right]
+    =
+\]}
+\[
+    =
+    {\left(\frac{1}{5}\right)}^{2}\bm{\Sigma}
+    +
+    {\left(\frac{1}{5}\right)}^{2}\bm{\Sigma}
+    +
+    {\left(\frac{1}{5}\right)}^{2}\bm{\Sigma}
+    +
+    {\left(\frac{1}{5}\right)}^{2}\bm{\Sigma}
+    +
+    {\left(\frac{1}{5}\right)}^{2}\bm{\Sigma}
+    =
+\]
+
+\[
+    =
+    5{\left(\frac{1}{5}\right)}^{2}\bm{\Sigma}
+    =
+    \frac{1}{5}
+    \bm{\Sigma}
+\]
+and for
+\[
+    \textbf{X}_{1}
+    -
+    \textbf{X}_{2}
+    +
+    \textbf{X}_{3}
+    -
+    \textbf{X}_{4}
+    +
+    \textbf{X}_{5}
+\]
+\[
+    \mbox{Here, we have~~~}
+    \textbf{d}
+    =
+    \begin{bNiceArray}{c}
+        d_{1} \\
+        d_{2} \\
+        d_{3} \\
+        d_{4} \\
+        d_{5}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{r}
+        1 \\
+        -1 \\
+        1 \\
+        -1 \\
+        1
+    \end{bNiceArray}
+\]
+\underbar{Mean:}
+\[
+    \text{E}
+    \left[
+    \left( \textbf{d}^{\prime} \otimes \textbf{I}_{p} \right) \textbf{X}
+    \right]
+    =
+    \sum_{j=1}^{5}{d_{j}\bm{\mu}_{j}}
+    =
+    \sum_{j=1}^{5}{d_{j}\bm{\mu}}
+    =
+    \left(1-1+1-1+1\right)\bm{\mu}
+    =
+    \bm{\mu}
+\]
+\underline{Covariance:}
+
+\[
+    \text{Covar}
+    \left[
+    \left( \textbf{d}^{\prime} \otimes \textbf{I}_{p} \right) \textbf{X}
+    \right]
+    =
+    \left(\sum_{j=1}^{5}{d_{j}^{2}}\right)\bm{\Sigma}
+    =
+    \left(1^{2}-1^{2}+1^{2}-1^{2}+1^{2}\right)\bm{\Sigma}
+    =
+    5\bm{\Sigma}
+\]
+Before finding the covariance betweeen the two linear combinations we need to compute
+\[
+    \textbf{d}^{\prime}\textbf{c}
+    =
+    \begin{bNiceArray}{rrrrr}
+        1 & -1 & -1 & -1 & 1
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        \frac{1}{5} \\
+        \frac{1}{5} \\
+        \frac{1}{5} \\
+        \frac{1}{5} \\
+        \frac{1}{5}
+    \end{bNiceArray}
+    =
+    \frac{1}{5}
+\]
+Now, the covariance betweeen the two linear combinations is
+\[
+    \begin{bNiceArray}{cc}
+        \left(\sum_{j=1}^{5}{c_{j}^{2}}\right)\bm{\Sigma} &
+        \left(\textbf{d}^{\prime}\textbf{c}\right)\bm{\Sigma} \\
+        \left(\textbf{d}^{\prime}\textbf{c}\right)\bm{\Sigma} &
+        \left(\sum_{j=1}^{5}{d_{j}^{2}}\right)\bm{\Sigma}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \frac{1}{5}\bm{\Sigma} & \frac{1}{5}\bm{\Sigma} \\
+        \frac{1}{5}\bm{\Sigma} & 5\bm{\Sigma}
+    \end{bNiceArray}
+\]

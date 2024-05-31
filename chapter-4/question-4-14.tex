@@ -1,0 +1,274 @@
+If \textbf{X} is distributed as $N_p(\bm{\mu}, \bm{\Sigma})$ with $\left|\bm{\Sigma}\right| \ne 0$, show that the joint density can be written as the product of marginal densities for
+\[
+    \underset{(q \times 1)}{\textbf{X}_1}\mbox{~~~~and~~~~}\underset{((p - q) \times 1)}{\textbf{X}_2}\mbox{~~~~if~~~~}\bm{\Sigma}_{12} = \underset{(q \times (p - q))}{\textbf{0}}
+\]
+First, parition $\textbf{X}$ and $\bm{\Sigma}$,
+\[
+    \underset{p \times 1}{\textbf{X}}
+    =
+    \begin{bNiceArray}{c}
+        \underset{(q \times 1)}{\textbf{X}_{1}} \\
+        \underset{((p - q) \times 1)}{\textbf{X}_{2}}
+        \CodeAfter
+        \tikz \draw [dotted] (2-|1) -| (2-|2);
+    \end{bNiceArray}
+\]
+\[
+    \underset{p \times 1}{\bm{\mu}}
+    =
+    \begin{bNiceArray}{c}
+        \underset{(q \times 1)}{\bm{\mu}_{1}} \\
+        \underset{((p - q) \times 1)}{\bm{\mu}_{2}}
+        \CodeAfter
+        \tikz \draw [dotted] (2-|1) -| (2-|2);
+    \end{bNiceArray}
+\]
+\[
+    \underset{p \times p}{\bm{\Sigma}}
+    =
+    \begin{bNiceArray}{cc}
+        \underset{(q \times q)}{\bm{\Sigma}_{11}} & \underset{(q \times (p - q))}{\bm{\Sigma}_{12}} \\
+        \underset{((p-q) \times q)}{\bm{\Sigma}_{21}} & \underset{((p-q) \times (p-q))}{\bm{\Sigma}_{22}}
+        \CodeAfter
+        \tikz \draw [dotted] (2-|1) -| (2-|3);
+        \tikz \draw [dotted] (1-|2) -| (3-|2);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \underset{(q \times q)}{\bm{\Sigma}_{11}} & \underset{(q \times (p - q))}{\textbf{0}} \\
+        \underset{((p-q) \times q)}{\textbf{0}^{\prime}} & \underset{((p-q) \times (p-q))}{\bm{\Sigma}_{22}}
+        \CodeAfter
+        \tikz \draw [dotted] (2-|1) -| (2-|3);
+        \tikz \draw [dotted] (1-|2) -| (3-|2);
+    \end{bNiceArray}
+\]
+We can pick $\bm{\Sigma}^{-1}$ and use the definition of an inverse on page 58 to show it is the inverse of $\bm{\Sigma}$, 
+(if $\textbf{A}\textbf{B} = \textbf{B}\textbf{A} = \textbf{I}$, then \textbf{B} is an inverse of \textbf{A}.)
+So using the hint to pick $\bm{\Sigma}^{-1}$
+\[
+    \bm{\Sigma}^{-1}
+    =
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11}^{-1} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+    \end{bNiceArray}
+\]
+\[
+    \bm{\Sigma}^{-1}\bm{\Sigma}
+    =
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11}^{-1} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11}^{-1}\bm{\Sigma}_{11} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}\bm{\Sigma}_{22}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    =
+    \textbf{I}
+\]
+\[
+    \bm{\Sigma}\bm{\Sigma}^{-1}
+    =
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11}^{-1} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11}\bm{\Sigma}_{11}^{-1} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}\bm{\Sigma}_{22}^{-1}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        \textbf{I} & \textbf{0} \\
+        \textbf{0}^{\prime} & \textbf{I}
+    \end{bNiceArray}
+    =
+    \textbf{I}
+\]
+Because $\bm{\Sigma}^{-1}\bm{\Sigma} = \bm{\Sigma}\bm{\Sigma}^{-1} = \textbf{I}$, our pick of $\bm{\Sigma}^{-1}$ is the inverse of $\bm{\Sigma}$.
+\newline
+Using the second part of the hint
+\begin{equation*}
+    \begin{aligned}
+        {(\textbf{x} - \bm{\mu})}^{\prime}
+        \bm{\Sigma}^{-1}
+        (\textbf{x} - \bm{\mu}) &
+        =
+        [
+        {(\textbf{x}_1 - \bm{\mu}_1)}^{\prime},
+        {(\textbf{x}_2 - \bm{\mu}_2)}^{\prime}
+        ]
+        \begin{bNiceArray}{cc}
+            \bm{\Sigma}_{11}^{-1} & \textbf{0} \\
+            \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            \textbf{x}_1 - \bm{\mu}_1 \\
+            \textbf{x}_2 - \bm{\mu}_2
+        \end{bNiceArray} \\
+        & =
+        {(\textbf{x}_1 - \bm{\mu}_1)}^{\prime}
+        \bm{\Sigma}_{11}^{-1}
+        (\textbf{x}_1 - \bm{\mu}_1)
+        +
+        {(\textbf{x}_2 - \bm{\mu}_2)}^{\prime}
+        \bm{\Sigma}_{22}^{-1}
+        (\textbf{x}_2 - \bm{\mu}_2)
+    \end{aligned}
+\end{equation*}
+\newline
+Using the third part of the hint
+\[
+    \left|\bm{\Sigma}\right|
+    =
+    \left|
+        \begin{NiceArray}{cc}
+            \bm{\Sigma}_{11} & \textbf{0} \\
+            \textbf{0}^{\prime} & \bm{\Sigma}_{22}
+        \end{NiceArray}
+    \right|
+    =
+    \left|
+        \bm{\Sigma}_{11}
+    \right|
+    \left|
+        \bm{\Sigma}_{22}
+    \right|
+    \mbox{\text{ (from Exercise 4.10 (a))}}
+\]
+Now, using the formula for the normal density (4--4)
+\begin{equation*}
+    \begin{aligned}
+        f(\textbf{x}|\bm{\mu},\bm{\Sigma})
+        & =
+        \frac{1}{{(1/2)}^{p/2}{\left|\bm{\Sigma}\right|}^{1/2}}
+        \text{exp}\left\{-\frac{1}{2}{(\textbf{x} - \bm{\mu})}^{\prime}\bm{\Sigma}^{-1}(\textbf{x} - \bm{\mu})\right\} \\
+        & = 
+        \frac{1}{
+            {(1/2)}^{q/2}
+            {(1/2)}^{(p-q)/2}
+            {(
+                \left|
+                    \bm{\Sigma}_{11}
+                \right|
+                \left|
+                    \bm{\Sigma}_{22}
+                \right|
+            )}^{1/2}
+        } \\
+        & \times
+        \text{exp}
+        \left\{
+            -\frac{1}{2}
+            {(\textbf{x}_1 - \bm{\mu}_1)}^{\prime}
+            \bm{\Sigma}_{11}^{-1}
+            (\textbf{x}_1 - \bm{\mu}_1)
+            +
+            {(\textbf{x}_2 - \bm{\mu}_2)}^{\prime}
+            \bm{\Sigma}_{22}^{-1}
+            (\textbf{x}_2 - \bm{\mu}_2)
+        \right\} \\
+        & =
+        \left(
+            \frac{1}{
+                {(1/2)}^{q/2}
+                {\left|
+                    \bm{\Sigma}_{11}
+                \right|}^{1/2}
+            }
+            \text{exp}
+            \left\{
+                -\frac{1}{2}
+                {(\textbf{x}_1 - \bm{\mu}_1)}^{\prime}
+                \bm{\Sigma}_{11}^{-1}
+                (\textbf{x}_1 - \bm{\mu}_1)
+            \right\}
+        \right) \\
+        & \times
+        \left(
+            \frac{1}{
+                {(1/2)}^{(p-q)/2}
+                {\left|
+                    \bm{\Sigma}_{22}
+                \right|}^{1/2}
+            }
+            \text{exp}
+            \left\{
+                -\frac{1}{2}
+                {(\textbf{x}_2 - \bm{\mu}_2)}^{\prime}
+                \bm{\Sigma}_{22}^{-1}
+                (\textbf{x}_2 - \bm{\mu}_2)
+            \right\}
+        \right) \\
+        & =
+        f(\textbf{x}_{1}|\bm{\mu}_{1},\bm{\Sigma}_{1})
+        f(\textbf{x}_{2}|\bm{\mu}_{2},\bm{\Sigma}_{2})
+    \end{aligned}
+\end{equation*}
+so we've shown that the joint density can be written as the product of marginal densities
+\[
+    f(\textbf{x}|\bm{\mu},\bm{\Sigma})
+    =
+    f(\textbf{x}_{1}|\bm{\mu}_{1},\bm{\Sigma}_{1})
+    f(\textbf{x}_{2}|\bm{\mu}_{2},\bm{\Sigma}_{2})
+\]
+\textit{Hint:} Show by block multiplication that
+\[
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11}^{-1} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+    \end{bNiceArray}
+    \text{ is the inverse of }
+    \bm{\Sigma}
+    =
+    \begin{bNiceArray}{cc}
+        \bm{\Sigma}_{11} & \textbf{0} \\
+        \textbf{0}^{\prime} & \bm{\Sigma}_{22}
+    \end{bNiceArray}
+\]
+Then write
+\begin{equation*}
+    \begin{aligned}
+        {(\textbf{x} - \bm{\mu})}^{\prime}
+        \bm{\Sigma}^{-1}
+        (\textbf{x} - \bm{\mu}) &
+        =
+        [
+        {(\textbf{x}_1 - \bm{\mu}_1)}^{\prime},
+        {(\textbf{x}_2 - \bm{\mu}_2)}^{\prime}
+        ]
+        \begin{bNiceArray}{cc}
+            \bm{\Sigma}_{11}^{-1} & \textbf{0} \\
+            \textbf{0}^{\prime} & \bm{\Sigma}_{22}^{-1}
+        \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            \textbf{x}_1 - \bm{\mu}_1 \\
+            \textbf{x}_2 - \bm{\mu}_2
+        \end{bNiceArray} \\
+        & =
+        {(\textbf{x}_1 - \bm{\mu}_1)}^{\prime}
+        \bm{\Sigma}_{11}^{-1}
+        (\textbf{x}_1 - \bm{\mu}_1)
+        +
+        {(\textbf{x}_2 - \bm{\mu}_2)}^{\prime}
+        \bm{\Sigma}_{22}^{-1}
+        (\textbf{x}_2 - \bm{\mu}_2)
+    \end{aligned}
+\end{equation*}
+Note that $\left|\bm{\Sigma}\right| = \left|\bm{\Sigma}_{11}\right|\left|\bm{\Sigma}_{22}\right|$ from Exercise 4.10(a). Now factor the joint density.
