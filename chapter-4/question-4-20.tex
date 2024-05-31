@@ -1,0 +1,172 @@
+For the random variables $\textbf{X}_{1},\textbf{X}_{2},\dots,\textbf{X}_{20}$ in Exercise 4.19, specify the distribution of $\textbf{B}(19\textbf{S})\textbf{B}^{\prime}$ in each case
+\begin{enumerate}[label= (\alph*)]
+    \item $\textbf{B}
+    =
+    \begin{bNiceArray}{rrrrrr}
+        1 & -\frac{1}{2} & -\frac{1}{2} & 0 & 0 & 0 \\
+        0 & 0 & 0 & -\frac{1}{2} & -\frac{1}{2} & 1
+    \end{bNiceArray}$
+    \newline
+    \newline
+    Use the properties of the Wishart distribution from page 174 along with (4--23)
+    \[
+        \textbf{B}(19\textbf{S})\textbf{B}^{\prime}
+        \sim
+        W_{19}\left(\textbf{B}(19\textbf{S})\textbf{B}^{\prime} \big| \textbf{B}(19\bm{\Sigma})\textbf{B}^{\prime}\right)
+    \]
+    where
+    \begin{multline*}
+        \textbf{B}(19\textbf{S})\textbf{B}^{\prime}
+        =
+        \begin{bNiceArray}{rrrrrr}
+            1 & -\frac{1}{2} & -\frac{1}{2} & 0 & 0 & 0 \\
+            0 & 0 & 0 & -\frac{1}{2} & -\frac{1}{2} & 1
+        \end{bNiceArray} \\
+        \times
+        \begin{bNiceArray}{cccccc}
+            s_{11} & s_{12} & s_{13} & s_{14} & s_{15} & s_{16} \\
+            s_{21} & s_{22} & s_{23} & s_{24} & s_{25} & s_{26} \\
+            s_{31} & s_{32} & s_{33} & s_{34} & s_{35} & s_{36} \\
+            s_{41} & s_{42} & s_{43} & s_{44} & s_{45} & s_{46} \\
+            s_{51} & s_{52} & s_{53} & s_{54} & s_{55} & s_{56} \\
+            s_{61} & s_{62} & s_{63} & s_{64} & s_{65} & s_{66}
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            1 & 0 \\
+            -\frac{1}{2} & 0 \\
+            -\frac{1}{2} & 0 \\
+            0 & -\frac{1}{2} \\
+            0 & -\frac{1}{2} \\
+            0 &  1
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    {\small
+    \begin{multline*}
+        \begin{bNiceArray}{cccc}
+            (s_{11} -\frac{1}{2}s_{21} -\frac{1}{2}s_{31}) &
+            (s_{12} -\frac{1}{2}s_{22} -\frac{1}{2}s_{32}) &
+            \cdots &
+            (s_{16} -\frac{1}{2}s_{26} -\frac{1}{2}s_{36}) \\
+            (-\frac{1}{2}s_{41} -\frac{1}{2}s_{51}+s_{61}) &
+            (-\frac{1}{2}s_{42} -\frac{1}{2}s_{52}+s_{62}) &
+            \cdots &
+            (-\frac{1}{2}s_{46} -\frac{1}{2}s_{56}+s_{66})
+        \end{bNiceArray}
+        \\
+        \times
+        \begin{bNiceArray}{rr}
+            1 & 0 \\
+            -\frac{1}{2} & 0 \\
+            -\frac{1}{2} & 0 \\
+            0 & -\frac{1}{2} \\
+            0 & -\frac{1}{2} \\
+            0 &  1
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    }
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            \text{element}_{11} & \text{element}_{12} \\
+            \text{element}_{21} & \text{element}_{22}
+        \end{bNiceArray}
+    \]
+    where
+    \newline
+    $\text{element}_{11} = (s_{11} -\frac{1}{2}s_{21} -\frac{1}{2}s_{31})-\frac{1}{2}(s_{12} -\frac{1}{2}s_{22} -\frac{1}{2}s_{32})-\frac{1}{2}(s_{13} -\frac{1}{2}s_{23} -\frac{1}{2}s_{33})$
+    \newline
+    $\text{element}_{12} = -\frac{1}{2}(s_{14} -\frac{1}{2}s_{24} -\frac{1}{2}s_{34})-\frac{1}{2}(s_{15} -\frac{1}{2}s_{25} -\frac{1}{2}s_{35})+(s_{16} -\frac{1}{2}s_{26} -\frac{1}{2}s_{36})$
+    \newline
+    $\text{element}_{21} = (-\frac{1}{2}s_{41} -\frac{1}{2}s_{51}+s_{61}) -\frac{1}{2}(-\frac{1}{2}s_{42} -\frac{1}{2}s_{52}+s_{62}) -\frac{1}{2}(-\frac{1}{2}s_{43} -\frac{1}{2}s_{53}+s_{63})$
+    \newline
+    $\text{element}_{22} = -\frac{1}{2}(-\frac{1}{2}s_{44} -\frac{1}{2}s_{54}+s_{64}) -\frac{1}{2}(-\frac{1}{2}s_{45} -\frac{1}{2}s_{55}+s_{65}) +(-\frac{1}{2}s_{46} -\frac{1}{2}s_{56}+s_{66})$
+    and
+    \[
+        \textbf{B}(19\bm{\Sigma})\textbf{B}^{\prime}
+        =
+        \begin{bNiceArray}{cc}
+            \text{element}_{11} & \text{element}_{12} \\
+            \text{element}_{21} & \text{element}_{22}
+        \end{bNiceArray}
+    \]
+    where
+    \newline
+    $\text{element}_{11} = (\sigma_{11} -\frac{1}{2}\sigma_{21} -\frac{1}{2}\sigma_{31})-\frac{1}{2}(\sigma_{12} -\frac{1}{2}\sigma_{22} -\frac{1}{2}\sigma_{32})-\frac{1}{2}(\sigma_{13} -\frac{1}{2}\sigma_{23} -\frac{1}{2}\sigma_{33})$
+    \newline
+    $\text{element}_{12} = -\frac{1}{2}(\sigma_{14} -\frac{1}{2}\sigma_{24} -\frac{1}{2}\sigma_{34})-\frac{1}{2}(\sigma_{15} -\frac{1}{2}\sigma_{25} -\frac{1}{2}\sigma_{35})+(\sigma_{16} -\frac{1}{2}\sigma_{26} -\frac{1}{2}\sigma_{36})$
+    \newline
+    $\text{element}_{21} = (-\frac{1}{2}\sigma_{41} -\frac{1}{2}\sigma_{51}+\sigma_{61}) -\frac{1}{2}(-\frac{1}{2}\sigma_{42} -\frac{1}{2}\sigma_{52}+\sigma_{62}) -\frac{1}{2}(-\frac{1}{2}\sigma_{43} -\frac{1}{2}\sigma_{53}+\sigma_{63})$
+    \newline
+    $\text{element}_{22} = -\frac{1}{2}(-\frac{1}{2}\sigma_{44} -\frac{1}{2}\sigma_{54}+\sigma_{64}) -\frac{1}{2}(-\frac{1}{2}\sigma_{45} -\frac{1}{2}\sigma_{55}+\sigma_{65}) +(-\frac{1}{2}\sigma_{46} -\frac{1}{2}\sigma_{56}+\sigma_{66})$
+    \item $\textbf{B}
+    =
+    \begin{bNiceArray}{rrrrrr}
+        1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0
+    \end{bNiceArray}$
+    \newline
+    \newline
+    Again, use the properties of the Wishart distribution from page 174 along with (4--23)
+    \[
+        \textbf{B}(19\textbf{S})\textbf{B}^{\prime}
+        \sim
+        W_{19}\left(\textbf{B}(19\textbf{S})\textbf{B}^{\prime} \big| \textbf{B}(19\bm{\Sigma})\textbf{B}^{\prime}\right)
+    \]
+    where
+    \begin{multline*}
+        \textbf{B}(19\textbf{S})\textbf{B}^{\prime}
+        =
+        \begin{bNiceArray}{rrrrrr}
+            1 & 0 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 & 0 & 0
+        \end{bNiceArray} \\
+        \times
+        \begin{bNiceArray}{cccccc}
+            s_{11} & s_{12} & s_{13} & s_{14} & s_{15} & s_{16} \\
+            s_{21} & s_{22} & s_{23} & s_{24} & s_{25} & s_{26} \\
+            s_{31} & s_{32} & s_{33} & s_{34} & s_{35} & s_{36} \\
+            s_{41} & s_{42} & s_{43} & s_{44} & s_{45} & s_{46} \\
+            s_{51} & s_{52} & s_{53} & s_{54} & s_{55} & s_{56} \\
+            s_{61} & s_{62} & s_{63} & s_{64} & s_{65} & s_{66}
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            1 & 0 \\
+            0 & 0 \\
+            0 & 1 \\
+            0 & 0 \\
+            0 & 0 \\
+            0 & 0
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \[
+        \begin{bNiceArray}{cccccc}
+            s_{11} & s_{12} & s_{13} & s_{14} & s_{15} & s_{16} \\
+            s_{31} & s_{32} & s_{33} & s_{34} & s_{35} & s_{36}
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            1 & 0 \\
+            0 & 0 \\
+            0 & 1 \\
+            0 & 0 \\
+            0 & 0 \\
+            0 & 0
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            s_{11} & s_{13} \\
+            s_{31} & s_{33}
+        \end{bNiceArray}
+    \]
+    and
+    \[
+        \textbf{B}(19\bm{\Sigma})\textbf{B}^{\prime}
+        =
+        \begin{bNiceArray}{cc}
+            \sigma_{11} & \sigma_{13} \\
+            \sigma_{31} & \sigma_{33}
+        \end{bNiceArray}
+    \]
+\end{enumerate}
