@@ -1,0 +1,152 @@
+Let $\textbf{X}_{1},\textbf{X}_{2},\dots,\textbf{X}_{20}$ be a random sample of size $n = 20$ from a $N_{6}(\bm{\mu},\bm{\Sigma})$ population. Specify each of the following completely.
+\begin{enumerate}[label= (\alph*)]
+    \item The distribution of ${(\textbf{X}_1 - \bm{\mu})}^{\prime}\bm{\Sigma}^{-1}(\textbf{X}_1 - \bm{\mu})$
+    \newline
+    Can use Result 4.7 (a) on page 163 for this
+    \[
+        {(\textbf{X}_1 - \bm{\mu})}^{\prime}\bm{\Sigma}^{-1}(\textbf{X}_1 - \bm{\mu})
+        \sim
+        \mathlarger{\chi_{6}^{2}}
+    \]
+    \item The distribution of $\bar{\textbf{X}}$ and $\sqrt{n}(\bar{\textbf{X}} - \bm{\mu})$
+    \[
+        \textbf{Y}_{1}
+        =
+        \bar{\textbf{X}}
+        =
+        \begin{bNiceArray}{c}
+            \bar{\textbf{x}}_{1} \\
+            \vdots \\
+            \bar{\textbf{x}}_{6}
+        \end{bNiceArray}
+        =
+        \left(
+            \textbf{X}_{1} +
+            \cdots +
+            \textbf{X}_{20}
+        \right) / 20
+        =
+        \frac{\sum_{j=1}^{20}\textbf{X}_{j}}{20}
+    \]
+    \[
+        \text{E}
+        \left[
+            \textbf{Y}_{1}
+        \right]
+        =
+        \text{E}
+        \left[
+            \frac{\sum_{j=1}^{20}\textbf{X}_{j}}{20}
+        \right]
+        =
+        \frac{\sum_{j=1}^{20}\text{E}\left[\textbf{X}_{j}\right]}{20}
+        =
+        \frac{\sum_{j=1}^{20}\bm{\mu}}{20}
+        =
+        \frac{20\bm{\mu}}{20}
+        =
+        \bm{\mu}
+    \]
+    \[
+        \text{Covar}
+        \left[
+            \textbf{Y}_{1}
+        \right]
+        =
+        \text{Covar}
+        \left[
+            \frac{\sum_{j=1}^{20}\textbf{X}_{j}}{20}
+        \right]
+        =
+        {\left(\frac{1}{{20}}\right)}^{2}\sum_{j=1}^{20}{\text{Covar}\left[\textbf{X}_{j}\right]}
+        =
+    \]
+    \[
+        {\left(\frac{1}{{20}}\right)}^{2}\left(\sum_{j=1}^{20}{\bm{\Sigma}}\right)
+        =
+        {\left(\frac{1}{{20}}\right)}^{2}\left(20\bm{\Sigma}\right)
+        =
+        \frac{1}{20}\bm{\Sigma}
+    \]
+    \[
+        \textbf{Y}_{1}
+        =
+        \bar{\textbf{X}}
+        \sim
+        N_{6}\left(\bm{\mu}, \frac{1}{20}\bm{\Sigma}\right)
+    \]
+    This is the same as (4--23) in section 4.4 on page 174.
+    \newline
+    If $\textbf{Y}_{2} = \sqrt{n}(\bar{\textbf{X}} - \bm{\mu})$, then
+    \[
+        \text{E}
+        \left[
+            \textbf{Y}
+        \right]
+        =
+        \text{E}
+        \left[
+            \sqrt{n}(\bar{\textbf{X}} - \bm{\mu})
+        \right]
+        =
+        \text{E}\left[\sqrt{n}\bar{\textbf{X}}\right]
+        -
+        \text{E}\left[\sqrt{n}\bm{\mu}\right]
+        =
+        \text{E}\left[\sqrt{n}\bar{\textbf{X}}\right]
+        -
+        \text{E}\left[\sqrt{n}\bm{\mu}\right]
+        =
+    \]
+    \[
+        =
+        \sqrt{n}\text{E}\left[\bar{\textbf{X}}\right]
+        -
+        \sqrt{n}\bm{\mu}
+        =
+        \sqrt{n}\bm{\mu}
+        -
+        \sqrt{n}\bm{\mu}
+        =
+        \textbf{0}
+    \]
+    \[
+        \text{Covar}
+        \left[
+            \textbf{Y}_{2}
+        \right]
+        =
+        \text{Covar}
+        \left[
+            \sqrt{n}(\bar{\textbf{X}} - \bm{\mu})
+        \right]
+        =
+        \text{Covar}\left[\sqrt{n}\bar{\textbf{X}}\right] - \text{Covar}\left[\sqrt{n}\bm{\mu}\right]
+        =
+    \]
+    \[
+        =
+        {\left(\sqrt{n}\right)}^{2}\text{Covar}\left[\bar{\textbf{X}}\right] - \textbf{0}
+        =
+        n\left(\frac{1}{n}\bm{\Sigma}\right)
+        =
+        \bm{\Sigma}
+    \]
+    \[
+        \textbf{Y}_{2}
+        =
+        \sqrt{n}(\bar{\textbf{X}} - \bm{\mu})
+        \sim
+        N_{6}\left(\textbf{0},\bm{\Sigma}\right)
+    \]
+    This is the same as the approximation in (4--28) in section 4.5 on page 176.
+    \item The distribution of (n-1)\textbf{S}
+    \newline
+    \newline
+    Answers in (4--23) on page 174.
+    \[
+        (n-1)\textbf{S}
+        \sim
+        W_{m=20-1}\left((n-1)\textbf{S} \bigg| \bm{\Sigma}\right)
+    \]
+\end{enumerate}
