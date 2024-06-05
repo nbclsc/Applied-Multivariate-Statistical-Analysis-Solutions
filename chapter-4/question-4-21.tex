@@ -1,0 +1,246 @@
+Let $\textbf{X}_{1}, \dots, \textbf{X}_{60}$ be a random sample of size 60 from a four-variate normal distribution
+having mean $\bm{\mu}$ and covariance $\bm{\Sigma}$. Specify each of the following completely.
+\begin{enumerate}[label= (\alph*)]
+    \item The distribution of $\bar{\textbf{X}}$
+    \newline
+    \newline
+    Using 1.~from (4--23) on page 174
+    \[
+        \bar{\textbf{X}}
+        \sim
+        N_{4}\left(\underset{(4 \times 1)}{\textbf{0}}, \frac{1}{60}\underset{(4 \times 4)}{\bm{\Sigma}}\right)
+    \]
+
+    \item The distribution of ${\left(\textbf{X}_{1} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\textbf{X}_{1} - \bm{\mu}\right)$
+    \newline
+    \newline
+    Using Result 4.7 (a) in section 4.2 on page 163.
+    \[
+        {\left(\textbf{X}_{1} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\textbf{X}_{1} - \bm{\mu}\right)
+        \sim
+        \mathlarger{\chi}_{4}^{2}
+    \]
+    \item The distribution of $n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)$
+    \newline
+    \newline
+    Similar to part (b), but I'll do the work.
+    \[
+        n
+        {\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}
+        \bm{\Sigma}^{-1}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        =
+    \]
+    \[
+        =
+        \sqrt{n}
+        \sqrt{n}
+        {\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}
+        \bm{\Sigma}^{-1/2}
+        \bm{\Sigma}^{-1/2}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        =
+    \]
+    \[
+        =
+        \left[
+            {\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}
+            \bm{\Sigma}^{-1/2}
+            \sqrt{n}
+        \right]
+        \left[
+            \sqrt{n}
+            \bm{\Sigma}^{-1/2}
+            \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        =
+    \]
+    \[
+        =
+        {\left[
+            \sqrt{n}
+            \bm{\Sigma}^{-1/2}
+            \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]}^{\prime}
+        \left[
+            \sqrt{n}
+            \bm{\Sigma}^{-1/2}
+            \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        =
+    \]
+    \[
+        =
+        \textbf{Z}^{\prime}
+        \textbf{Z}
+    \]
+    \[
+        \text{E}
+        \left[
+            \textbf{Z}
+        \right]
+        =
+        \text{E}
+        \left[
+            \sqrt{n}
+            \bm{\Sigma}^{-1/2}
+            \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        =
+        \sqrt{n}
+        \bm{\Sigma}^{-1/2}
+        \text{E}
+        \left[
+            \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        =
+    \]
+    \[
+        =
+        \sqrt{n}
+        \bm{\Sigma}^{-1/2}
+        \left(
+            \text{E}
+            \left[
+                \bar{\textbf{X}}
+            \right]
+            -
+            \text{E}
+            \left[
+                \bm{\mu}
+            \right]
+        \right)
+        =
+        \sqrt{n}
+        \bm{\Sigma}^{-1/2}
+        \left(
+            \bm{\mu}
+            -
+            \bm{\mu}
+        \right)
+        =
+        \sqrt{n}
+        \bm{\Sigma}^{-1/2}
+        \textbf{0}
+        =
+        \textbf{0}
+    \]
+    \[
+        \text{Covar}
+        \left[
+            \textbf{Z}
+        \right]
+        =
+        \text{Covar}
+        \left[
+            \sqrt{n}
+            \bm{\Sigma}^{-1/2}
+            \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        =
+    \]
+    \[=
+        {\left(\sqrt{n}\right)}^{2}
+        \bm{\Sigma}^{-1/2}
+        \text{Covar}
+        \left[
+            \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        {\left(\bm{\Sigma}^{-1/2}\right)}^{\prime}
+        =
+    \]
+    \[
+        =
+        n
+        \bm{\Sigma}^{-1/2}
+        \left(
+            \text{Covar}
+            \left[
+                \bar{\textbf{X}}
+            \right]
+            +
+            \text{Covar}
+            \left[
+                \bm{\mu}
+            \right]
+        \right)
+        \bm{\Sigma}^{-1/2}
+        =
+    \]
+    \[
+        =
+        n
+        \bm{\Sigma}^{-1/2}
+        \left(
+            \frac{1}{n}\bm{\Sigma}
+            +
+            0
+        \right)
+        \bm{\Sigma}^{-1/2}
+        =
+    \]
+    \[
+        =
+        n
+        \bm{\Sigma}^{-1/2}
+        \left(
+            \frac{1}{n}
+            \bm{\Sigma}^{1/2}
+            \bm{\Sigma}^{1/2}
+        \right)
+        \bm{\Sigma}^{-1/2}
+        =
+    \]
+    \[
+        =
+        n
+        \frac{1}{n}
+        \left(
+            \bm{\Sigma}^{-1/2}
+            \bm{\Sigma}^{1/2}
+        \right)
+        \left(
+            \bm{\Sigma}^{-1/2}
+            \bm{\Sigma}^{1/2}
+        \right)
+        =
+    \]
+    \[
+        =
+        \left(
+            \textbf{I}_{p}
+        \right)
+        \left(
+            \textbf{I}_{p}
+        \right)
+        =
+        \textbf{I}_{p}
+    \]
+    We now have that 
+    \[
+        \textbf{Z}
+        \sim
+        N_{p}\left(\textbf{0}, \textbf{I}_{p}\right)
+    \]
+    Now $\textbf{Z}^{\prime}\textbf{Z} = \sum_{j=1}^{p}{Z_{j}^{2}}$, the sum of squared standard normal random variables is a chi-squared distribution with $p$ degrees of freedom, so
+    \[
+        n
+        {\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}
+        \bm{\Sigma}^{-1}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \sim
+        \mathlarger{\chi}_{4}^{2}
+    \]
+    \item The approximate distribution of $n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\textbf{S}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)$
+    \vspace{0.4cm}
+    \par Well, if we know that $\bar{\textbf{X}} \sim N(\bm{\mu},\frac{1}{n}\bm{\Sigma})$ and 
+    that $(n-1)\textbf{S}$ is a $p=4$-variate Wishart distribution with $(60-1)$ degrees of freedom, then 
+    $n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\textbf{S}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)$ is a Hotelling's $T_{p=4,n-1=60-1}^{2}$ distribution.
+    The $T^{2}$ is related to an $F$-distribution as $T_{4,59}^{2} =\frac{4(60-1)}{60-4} F_{p=4,n-p=60-4}$.
+    Here, they're asking for an approximation though, so instead we can use the chi-squared approximation in (4--28) on page 176, where they aren't making assumtions about the distribution of the random sample (same as the answer to Exercise 4.22 (b)).
+    \[
+        n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\textbf{S}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \overset{\cdot}{\sim}
+        \mathlarger{\chi}_{4}^{2}
+    \]
+\end{enumerate}
