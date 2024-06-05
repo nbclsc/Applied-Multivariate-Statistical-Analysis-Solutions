@@ -1,0 +1,29 @@
+Let $\textbf{X}_{1}, \textbf{X}_{2}, \dots , \textbf{X}_{75}$ be a random sample from a population distribution with mean $\bm{\mu}$
+and covariance matrix $\bm{\Sigma}$. What is the approximate distribution of each of the following?
+\begin{enumerate}[label= (\alph*)]
+    \item $\bar{\textbf{X}}$
+    \vspace{0.4cm}
+    \par We have 75 observations, which is considered fairly large, so the asymptotic results from the section 4.5 apply. As $n$ increases, $\bar{\textbf{X}}$ converges in probability to $\bm{\mu}$ and $\textbf{S}$ converges in probability to $\bm{\Sigma}$. 
+    Result 4.13 basically gives our answer. 
+    In the result, they have $\sqrt{n}\left(\bar{\textbf{X}} - \bm{\mu}\right) \overset{\cdot}{\sim} N_{p}\left(\textbf{0}, \bm{\Sigma}\right)$. If we leave off the $\sqrt{n}$ and the subtraction of $\bm{\mu}$ we have
+    \[
+        \bar{\textbf{X}}
+        \overset{\cdot}{\sim}
+        N_{p}
+        \left(
+            \bm{\mu},
+            \frac{1}{n}
+            \bm{\Sigma}
+        \right)
+    \]
+
+    \item $n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\textbf{S}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)$
+    \vspace{0.4cm}
+    \par Again, we only know that we have a population mean vector $\bm{\mu}$ and covaraince matrix $\bm{\Sigma}$. We're not making any statements about what distribution they belong to. Using the central limit theorem from Result 4.13 from page 176, where $\sqrt{n}\left(\bar{\textbf{X}} - \bm{\mu}\right) \overset{\cdot}{\sim} N_{p}\left(\textbf{0}, \bm{\Sigma}\right)$ and then $n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right) \overset{\cdot}{\sim} \mathlarger{\chi}_{p}^{2}$
+    so replacing the true population covaraince, $\bm{\Sigma}$, with the sample covariance, $\textbf{\textbf{S}}$, won't cause massive errors as long as $n >>p$, and we have
+    \[
+        n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\textbf{S}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \overset{\cdot}{\sim}
+        \mathlarger{\chi}_{p}^{2}
+    \]
+\end{enumerate}
