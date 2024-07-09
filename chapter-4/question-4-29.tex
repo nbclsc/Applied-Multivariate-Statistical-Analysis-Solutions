@@ -1,0 +1,58 @@
+Given the air-pollution data in Table 1.5, examine the pairs $X_{5} = \text{NO}_{2}$ and $X_{6} = \text{O}_{3}$ for
+bivariate normality.
+\begin{enumerate}[label= (\alph*)]
+    \item Calculate statistical distances ${(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}\textbf{S}^{-1}(\textbf{x}_{j} - \bar{\textbf{x}})$, $j = 1, 2, \dots, 42$, where $\textbf{x}_{j}^{\prime} = [x_{j5}, x_{j6}]$·
+    
+    \[
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            10.0476 \\
+            9.4048
+        \end{bNiceArray}
+        \hspace{0.2cm}
+        \textbf{S}
+        =
+        \begin{bNiceArray}{cc}
+            11.3635 &  3.1266 \\
+             3.1266 & 30.9785
+        \end{bNiceArray}
+        \Rightarrow
+        \textbf{S}^{-1}
+        =
+        \begin{bNiceArray}{rr}
+              0.0905 &  -0.0091 \\
+             -0.0091 &   0.0332
+        \end{bNiceArray}
+    \]
+    \[
+        {(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}
+        \textbf{S}^{-1}
+        (\textbf{x}_{j} - \bar{\textbf{x}})
+        =
+    \]
+    \[
+        =
+        \begin{bNiceArray}{c}
+            x_{j5} - 10.0476 \\
+            x_{j6} - \phantom{0}9.4048
+        \end{bNiceArray}
+        \begin{bNiceArray}{rr}
+            0.0905 &  -0.0091 \\
+           -0.0091 &   0.0332
+      \end{bNiceArray}
+        \begin{bNiceArray}{c}
+            x_{j5} - 10.0476 \\
+            x_{j6} - \phantom{0}9.4048
+        \end{bNiceArray}
+    \]
+    \item Determine the proportion of observations $\textbf{x}_{j}^{\prime} = [x_{j5} , x_{j6}]$, $j = 1, 2, \dots, 42$, falling within the approximate 50\% probability contour of a bivariate normal distribution.
+    
+The Chi-square value where 50\% of the data is inside is found using the inverse CDF of a Chi-squared with $p = 2$ degrees of freedom, $F^{-1}(\text{prob} = 0.50| p = 2) = 1.3863$. For this data, 26 of the 42 $\textbf{d}^{2}$ observations are equal to, or less than, 1.3863, so 61.90\%.
+
+    \item Construct a chi-square plot of the ordered distances in Part a.
+    
+    \begin{figure}[H]
+        \includegraphics[scale=0.8]{./matlab/chapter-4/sol4.29c.png}
+    \end{figure}
+\end{enumerate}
