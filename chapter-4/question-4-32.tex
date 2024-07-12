@@ -43,9 +43,9 @@ For sleep ($x_{3}$), we're measuring patient sleep on a continuous scale from 1 
     \end{figure}
 \end{center}
 
-For eat ($x_{4}$), we're measuring ammount of food consumed on a continuous scale from 1 to 3, and have 98 valid observations. The Q-Q correlation on the raw data was 0.9810. The simulated 0.01, 0.05, and 0.10 level critical correlation coefficient test values for a sample size of 98 are, 0.9819, 0.9871, and 0.9893, respectively. Our Q-Q correlation value (0.9810) is smaller than all of these, so out data is not considered normally distributed at any of the 3 levels.
+For eat ($x_{4}$), we're measuring amount of food consumed on a continuous scale from 1 to 3, and have 98 valid observations. The Q-Q correlation on the raw data was 0.9810. The simulated 0.01, 0.05, and 0.10 level critical correlation coefficient test values for a sample size of 98 are, 0.9819, 0.9871, and 0.9893, respectively. Our Q-Q correlation value (0.9810) is smaller than all of these, so out data is not considered normally distributed at any of the 3 levels.
 
-The Box-Cox power transformation is maximized at 0.2305, but I chose to round it to 0.25, so $x_{4}^{\prime} = \sqrt{4}{x_{4}}$. The Q-Q correlation coefficient on the transformed data was increased slightly to 0.9834. This value is larger than the critical value at the 0.01-level (0.9819), but still smaller than the critical values at 0.05 and 0.01 levels. In this case our transformation has improved the normality of our data, if only slightly. I should also note that most of the data is tightly clustered, with the exception of observation 13, who has an eat value lower than the others with value 1.2826 and standardized residual of -2.8.
+The Box-Cox power transformation is maximized at 0.2305, but I chose to round it to 0.25, so $x_{4}^{\prime} = \sqrt[4]{x_{4}}$. The Q-Q correlation coefficient on the transformed data was increased slightly to 0.9834. This value is larger than the critical value at the 0.01-level (0.9819), but still smaller than the critical values at 0.05 and 0.01 levels. In this case our transformation has improved the normality of our data, if only slightly. I should also note that most of the data is tightly clustered, with the exception of observation 13, who has an eat value lower than the others with value 1.2826 and standardized residual of -2.8.
 
 \begin{center}
     \begin{figure}[H]
@@ -67,5 +67,18 @@ For appetite ($x_{5}$), we're measuring patient appetite on a continuous scale f
     \begin{figure}[H]
         \centering
         \includegraphics[scale=0.6]{./matlab/chapter-4/sol4.32.qq.5.png}
+    \end{figure}
+\end{center}
+
+For skin reaction ($x_{6}$), we're measuring amount of skin reaction on a discrete scale from 0 to 3, and have 98 valid observations. The problem here is that the daata is discrete, so I would think a transformation might not be appropriate since this would be considered a factor varaible. I'll do the work anyway just to see what happens.
+
+The Q-Q correlation on the raw data was 0.9278. The simulated 0.01, 0.05, and 0.10 level critical correlation coefficient test values for a sample size of 98 are, 0.9819, 0.9871, and 0.9893, respectively. Our Q-Q correlation value (0.9278) is smaller than all of these, so out data is not considered normally distributed at any of the 3 levels.
+
+The Box-Cox power transformation is maximized at 0.2705, so $x_{6}^{\prime} = x_{6}^{0.2705}$. The Q-Q correlation coefficient on the transformed data was decreased to 0.8371. This value is worse than the one for the raw data and so still not larger than any of the 3 critical points. The Q-Q plot on the raw data is below. Just like for the activity variable we have lots of flat spots, so it's unlikely a common transformation will increase the Q-Q correlation value high enough to be larger than any of the critical points. It probably best to use the raw data for analysis or use it as a factor variable.
+
+\begin{center}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.6]{./matlab/chapter-4/sol4.32.qq.6.png}
     \end{figure}
 \end{center}
