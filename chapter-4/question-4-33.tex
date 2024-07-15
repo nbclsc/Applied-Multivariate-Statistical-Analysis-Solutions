@@ -66,7 +66,15 @@ For ($x_{4}$), we're determining the stiffness of a bord in a static test, again
 
 Checking out the bivariate, we have ${4 \choose 2} = 6$ pairs of variables to evaluate for
 
-$\{(x_{1}, x_{2}), (x_{1}, x_{3}), (x_{1}, x_{4}), (x_{2}, x_{3}), (x_{2}, x_{4}), (x_{3}, x_{4})\}$
+\[
+\left\{
+    \begin{NiceArray}{ccc}
+        (x_{1}, x_{2}), & (x_{1}, x_{3}), & (x_{1}, x_{4}), \\
+        (x_{2}, x_{3}), & (x_{2}, x_{4}), \\
+        (x_{3}, x_{4})
+    \end{NiceArray}
+\right\}
+\]
 
 \begin{table}[H]
     \caption*{Proportion less than $\chi_{2}^{2}(0.50) = 1.3863$}
