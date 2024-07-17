@@ -97,5 +97,78 @@ scores were accumulated into five subscale scores labeled \textit{independence} 
     \end{center}
 
     \item Using all five variables, check for multivariate normality.
+    
+    The $\chi^2$ plot for the five covariates is below. It looks fairly linear. However, there are three observations with large $d^{2}$ values that stand out as possible outliers.
+    
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{./matlab/chapter-4/sol4.39.b.png}
+        \end{figure}
+    \end{center}
+
     \item Refer to part (a). For those variables that are nonnormal, determine the transformation that makes them more nearly normal.
+    
+    From part (a) we found that independence ($x_{1}$), support ($x_{2}$) and leadership ($x_{5}$) could use a transformation.
+
+    For independence score, $x_{1}$, the optimal Box-Cox power transformation value found was 0.5311.
+    I rounded that to 0.5, so $x_{1}^{\prime} = \sqrt{x_{1}}$. This transformation increased the Q-Q correlation coefficient to 0.9949, which is larger than the critical point values of 0.9860, 0.9900, and 0.9916 who represent the 0.01, 0.05, and 0.10 levels, respectively.
+    Because of this the data would be considered normally distributed at all the usual levels.
+    Below are the results of the power transformation and the Q-Q plots of the transformed data.
+    The original plot shows an outlier separated out. The Q-Q plot of the transformed data was able to make the data appear more linear.
+
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.4]{./matlab/chapter-4/sol4.39.power.1.png}
+        \end{figure}
+    \end{center}
+    
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.4]{./matlab/chapter-4/sol4.39.qq.tr.1.png}
+        \end{figure}
+    \end{center}
+
+    For support score, $x_{2}$, the optimal Box-Cox power transformation value found was 1.3928.
+    I rounded that to 1.4, so $x_{2}^{\prime} = x_{2}^{1.4}$. This transformation increased the Q-Q correlation coefficient to 0.9920, which is larger than the critical point values of 0.9860, 0.9900, and 0.9916 who represent the 0.01, 0.05, and 0.10 levels, respectively.
+    Because of this the data would be considered normally distributed at all the usual levels.
+    Below are the results of the power transformation and the Q-Q plots of the transformed data.
+    The original plot shows an outlier separated out. The Q-Q plot of the transformed data was able to make the data appear more linear.
+
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.4]{./matlab/chapter-4/sol4.39.power.2.png}
+        \end{figure}
+    \end{center}
+    
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.4]{./matlab/chapter-4/sol4.39.qq.tr.2.png}
+        \end{figure}
+    \end{center}
+
+    For leadership score, $x_{5}$, the optimal Box-Cox power transformation value found was 0.3908.
+    I rounded that to 0.4, so $x_{5}^{\prime} = x_{5}^{0.4}$. This transformation increased the Q-Q correlation coefficient to 0.9965, which is larger than the critical point values of 0.9860, 0.9900, and 0.9916 who represent the 0.01, 0.05, and 0.10 levels, respectively.
+    Because of this the data would be considered normally distributed at all the usual levels.
+    Below are the results of the power transformation and the Q-Q plots of the transformed data.
+    The original plot shows an outlier separated out. The Q-Q plot of the transformed data was able to make the data appear more linear.
+
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.4]{./matlab/chapter-4/sol4.39.power.5.png}
+        \end{figure}
+    \end{center}
+    
+    \begin{center}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.4]{./matlab/chapter-4/sol4.39.qq.tr.5.png}
+        \end{figure}
+    \end{center}
+
 \end{enumerate}
