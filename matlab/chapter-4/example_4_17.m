@@ -23,20 +23,26 @@ if sum(lambda2==0)
     x2_lambda(:, lambda2==0) = log(X(:,2));
 end
 
-% Compute values for function to maximize.
-l_lambda = zeros(length(lambda1), length(lambda2));
-for i=1:length(lambda1)
-    for j=1:length(lambda2)
-        l_lambda(i,j) = -(height(X)/2)*log(det(cov(x1_lambda(:,i), x2_lambda(:,j)))) + (lambda1(i) - 1) * sum(log(X(:,1))) + (lambda2(j) - 1) * sum(log(X(:,2)));
+% Compute values for function to maximize equation (4-40).
+% To be consistent with meshgrid, rows are X2 and columns are X1.
+l_lambda = zeros(length(lambda2), length(lambda1));
+n = height(X);
+part1 = sum(log(X(:,1)));
+part2 = sum(log(X(:,2)));
+% Index i is rows (X2) and j is columns (X1).
+for i=1:length(lambda2)
+    for j=1:length(lambda1)
+        l_lambda(i,j) = -(n/2)*log(det(cov(x2_lambda(:,i), x1_lambda(:,j)))) + (lambda1(j) - 1) * part1 + (lambda2(i) - 1) * part2;
     end
 end
 
-% Find the maximum.
+% Find the maximum by stacking columns (linear).
 [a, max_idx] = max(l_lambda(:));
 % We used l1 on x-axis for meshgrid, which corresponds to the columns and
-% l2 on the y-axis corresponding to the rows. In the matrix l_lambda, the
-% rows correspond to l1 and columns to l2, that's why things are switched
-% in the output of applying ind2sub below.
+% l2 on the y-axis corresponding to the rows. The same for matrix l_lambda,
+% the rows correspond to l2 and columns to l1, that's why l2_max is first,
+% since it's for rows and l1_max is second for columns in the output of
+% applying ind2sub below.
 [l2_max, l1_max] = ind2sub(size(l_lambda), max_idx);
 
 % Plot the surface.
@@ -49,3 +55,10 @@ hold off
 
 surf(l1, l2, l_lambda)
 colormap default
+hold on
+plot3(lambda1(l1_max), lambda2(l2_max), a, ...
+    'bo', 'MarkerSize', 10, 'LineWidth', 2, 'MarkerFaceColor', 'b')
+text(lambda1(l1_max), lambda2(l2_max), a+2, ...
+    sprintf('(%5.3f, %5.3f)', lambda1(l1_max), lambda2(l2_max)), ...
+    'VerticalAlignment', 'top', 'HorizontalAlignment', 'right')
+hold off
