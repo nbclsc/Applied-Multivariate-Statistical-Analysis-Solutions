@@ -26,6 +26,10 @@ test_value <= critical_valu
 xleng = sqrt(lmbda(1,1))*sqrt(((n-1)*p)/(n*(n-p))*icdf('F',1-an_alpha,p,n-p));
 yleng = sqrt(lmbda(2,2))*sqrt(((n-1)*p)/(n*(n-p))*icdf('F',1-an_alpha,p,n-p));
 
+ratio_major_minor = max(xleng, yleng)/min(xleng, yleng);
+ratio_major_minor
+% Length of the major axis is 3 times that of the minor axis.
+
 % Plot the ellipse seen in figure 5.1.
 my_plot_ellipse(e, xbar, xleng, yleng, [0.51 0.62] , [0.5 0.68])
 line([xbar(1), xbar(1)], [0, xbar(2)], 'Color', 'r', 'LineStyle', '--'); % Vertical dashed line
