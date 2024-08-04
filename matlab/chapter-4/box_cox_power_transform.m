@@ -1,4 +1,4 @@
-function [best_lambda] = box_cox_power_transform(x, col_label, output_file)
+function [best_lambda] = box_cox_power_transform(x, col_label, lam_min, lam_max, output_file)
     % Univariate Box-Cox power transform to find the optimal power transformation attempting to make the input data normally distributed.
     
     % If there are 0 values need to add small amount so don't get Inf.
@@ -6,7 +6,7 @@ function [best_lambda] = box_cox_power_transform(x, col_label, output_file)
         x = x + 0.0000001;
     end
 
-    lambda = linspace(-5, 5, 500);
+    lambda = linspace(lam_min, lam_max, 500);
 
     x_lambda = (x.^(lambda) - 1) ./ lambda;
     if sum(lambda==0)
