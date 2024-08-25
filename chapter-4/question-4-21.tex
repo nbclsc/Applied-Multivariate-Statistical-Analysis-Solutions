@@ -8,7 +8,7 @@ having mean $\bm{\mu}$ and covariance $\bm{\Sigma}$. Specify each of the followi
     \[
         \bar{\textbf{X}}
         \sim
-        N_{4}\left(\underset{(4 \times 1)}{\textbf{0}}, \frac{1}{60}\underset{(4 \times 4)}{\bm{\Sigma}}\right)
+        N_{4}\left(\underset{(4 \times 1)}{\bm{\mu}}, \frac{1}{60}\underset{(4 \times 4)}{\bm{\Sigma}}\right)
     \]
 
     \item The distribution of ${\left(\textbf{X}_{1} - \bm{\mu}\right)}^{\prime}\bm{\Sigma}^{-1}\left(\textbf{X}_{1} - \bm{\mu}\right)$
@@ -229,15 +229,60 @@ having mean $\bm{\mu}$ and covariance $\bm{\Sigma}$. Specify each of the followi
         \bm{\Sigma}^{-1}
         \left(\bar{\textbf{X}} - \bm{\mu}\right)
         \sim
-        \mathlarger{\chi}_{4}^{2}
+        \mathlarger{\chi}_{4}^{2} 
     \]
     \item The approximate distribution of $n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\textbf{S}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)$
     \vspace{0.4cm}
     \par Well, if we know that $\bar{\textbf{X}} \sim N(\bm{\mu},\frac{1}{n}\bm{\Sigma})$ and 
     that $(n-1)\textbf{S}$ is a $p=4$-variate Wishart distribution with $(60-1)$ degrees of freedom, then 
     $n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\textbf{S}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)$ is a Hotelling's $T_{p=4,n-1=60-1}^{2}$ distribution.
-    The $T^{2}$ is related to an $F$-distribution as $T_{4,59}^{2} =\frac{4(60-1)}{60-4} F_{p=4,n-p=60-4}$.
-    Here, they're asking for an approximation though, so instead we can use the chi-squared approximation in (4--28) on page 176, where they aren't making assumtions about the distribution of the random sample (same as the answer to Exercise 4.22 (b)).
+    The $T^{2}$ is related to an $F$-distribution as $T_{4,59}^{2} =\frac{4(60-1)}{60-4} F_{p=4,n-p=60-4}$, covered in Chapter 5.
+    Here, they're asking for an approximation though, so instead we can use the chi-squared approximation in (4--28) on page 176, where they aren't making assumtions about the distribution of the random sample (same as the answer to Exercise 4.22 (b)), where for large $n$ relative to $p$, we can use the CLT and
+    \[
+        n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}
+        \textbf{S}^{-1}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \overset{\cdot}{=}
+    \]
+    \[
+        \left[
+        \sqrt{n}
+        {\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}
+        \right]
+        \bm{\Sigma}^{-1}
+        \left[
+        \sqrt{n}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        =
+    \]
+    \[
+        =
+        {\left[
+        \sqrt{n}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]}^{\prime}
+        \bm{\Sigma}^{-1/2}\bm{\Sigma}^{-1/2}
+        \left[
+        \sqrt{n}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        =
+    \]
+    \[
+        =
+        {\left[
+        \sqrt{n}
+        \bm{\Sigma}^{-1/2}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]}^{\prime}
+        \left[
+        \sqrt{n}
+        \bm{\Sigma}^{-1/2}
+        \left(\bar{\textbf{X}} - \bm{\mu}\right)
+        \right]
+        = \text{same as in part (c)}
+    \]
     \[
         n{\left(\bar{\textbf{X}} - \bm{\mu}\right)}^{\prime}\textbf{S}^{-1}\left(\bar{\textbf{X}} - \bm{\mu}\right)
         \overset{\cdot}{\sim}
