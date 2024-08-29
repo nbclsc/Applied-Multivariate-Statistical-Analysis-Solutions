@@ -1,0 +1,199 @@
+Using the data in Example 5.1, verify that $T^{2}$ remains unchanged if each observation $\textbf{x}_{j}$, $j = 1, 2, 3$, is replaced by $\textbf{C}\textbf{x}_{j}$, where
+\[
+    \textbf{C}
+    =
+    \begin{bNiceArray}{cc}
+        1 & -1 \\
+        1 &  1
+    \end{bNiceArray}
+\]
+Note that the observations
+\[
+    \textbf{C}\textbf{x}_{j}
+    =
+    \begin{bNiceArray}{c}
+        x_{j1} - x_{j2} \\
+        x_{j1} + x_{j2}
+    \end{bNiceArray}
+\]
+yield the data matrix
+\[
+    {
+    \begin{bNiceArray}{ccc}
+        (6-9) & (10-6) & (8-3) \\
+        (6+9) & (10+6) & (8+3)
+    \end{bNiceArray}
+    }^{\prime}
+\]
+
+\[
+    \textbf{C}\textbf{x}_{j}
+    =
+    \textbf{X}\textbf{C}^{\prime}
+    =
+    {\left(\textbf{C}\textbf{X}^{\prime}\right)}^{\prime}
+    =
+    {\left(
+        \begin{bNiceArray}{cc}
+            1 & -1 \\
+            1 &  1
+        \end{bNiceArray}
+        \begin{bNiceArray}{ccc}
+            6 & 10 & 8 \\
+            9 & 6 & 3
+        \end{bNiceArray}
+    \right)}^{\prime}
+    =
+\]
+\[
+    =
+    {
+        \begin{bNiceArray}{ccc}
+            (6-9) & (10-6) & (8-3) \\
+            (6+9) & (10+6) & (8+3)
+        \end{bNiceArray}
+    }^{\prime}
+    =
+    {
+        \begin{bNiceArray}{ccc}
+            -3 & 4 & 5 \\
+            15 & 16 & 11
+        \end{bNiceArray}
+    }^{\prime}
+    =
+    \begin{bNiceArray}{rr}
+        -3 & 15 \\
+        4  & 16 \\
+        5  & 11
+    \end{bNiceArray}
+\]
+
+\[
+    \textbf{C}\bm{\mu}_{0}
+    =
+    \begin{bNiceArray}{cc}
+        1 & -1 \\
+        1 &  1
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        9 \\
+        5
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        4 \\
+        14
+    \end{bNiceArray}
+\]
+
+\[
+    \bar{\textbf{x}}
+    =
+    \begin{bNiceArray}{c}
+        \bar{x}_{1} \\
+        \bar{x}_{2}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        \frac{-3 + 4 + 5}{3} \\
+        \frac{15 + 16 + 11}{3}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        2 \\
+        14
+    \end{bNiceArray}
+\]
+
+\[
+    s_{11}
+    =
+    \frac{{(-3-2)}^{2} + {(4-2)}^{2} + {(5-2)}^{2}}{3 - 1}
+    =
+    19
+\]
+
+\[
+    s_{12}
+    =
+    \frac{{(-3-2)(15-14)} + {(4-2)(16-14)} + {(5-2)(11-14)}}{3 - 1}
+    =
+    -5
+\]
+
+\[
+    s_{22}
+    =
+    \frac{{(15-14)}^{2} + {(16-14)}^{2} + {(11-14)}^{2}}{4 - 1}
+    =
+    7
+\]
+
+\[
+    \textbf{S}
+    =
+    \begin{bNiceArray}{cc}
+        19     & -5 \\
+        -5 & 7
+    \end{bNiceArray}
+\]
+
+\[
+    \textbf{S}^{-1}
+    =
+    \frac{1}{(19)(7) - (-5)(-5)}
+    \begin{bNiceArray}{cc}
+        7 & 5  \\
+        5 & 19
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        7/108  & 5/108 \\
+        5/108 & 19/108
+    \end{bNiceArray}
+\]
+
+\[
+    T^{2}
+    =
+    n
+    {\left(\bar{\textbf{x}} - \bm{\mu}\right)}^{\prime}
+    S^{-1}
+    \left(\bar{\textbf{x}} - \bm{\mu}\right)
+    =
+\]
+\[
+    =
+    3
+    \begin{bNiceArray}{cc}
+        2 - 4, & 14 - 14
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        7/108  & 5/108 \\
+        5/108 & 19/108
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        2 - 4 \\
+        14 - 14
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    3
+    \begin{bNiceArray}{cc}
+        -2, & 0
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        -14/108 \\
+        -10/108
+    \end{bNiceArray}
+    =
+    84/108
+    =
+    7/9
+    =
+    0.7778
+\]
+
+This is the same $T^{2}$ value from Example 5.1.
