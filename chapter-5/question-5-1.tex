@@ -1,0 +1,149 @@
+\begin{enumerate}[label= (\alph*)]
+    \item Evaluate $T^{2}$, for testing $H_{0}: \bm{\mu}^{\prime} = [7,\ 11]$, using the data
+        \[
+            \begin{bNiceArray}{cc}
+                2 & 12 \\
+                8 & 9  \\
+                6 & 9  \\
+                8 & 10
+            \end{bNiceArray}
+        \]
+
+        \[
+            \bar{\textbf{x}}
+            =
+            \begin{bNiceArray}{c}
+                \bar{x}_{1} \\
+                \bar{x}_{2}
+            \end{bNiceArray}
+            =
+            \begin{bNiceArray}{c}
+                \frac{2 + 8+ 6+ 8}{4} \\
+                \frac{12 + 9+ 9 + 10}{4}
+            \end{bNiceArray}
+            =
+            \begin{bNiceArray}{c}
+                6 \\
+                10
+            \end{bNiceArray}
+        \]
+
+        \[
+            s_{11}
+            =
+            \frac{{(2-6)}^{2} + {(8-6)}^{2} + {(6-6)}^{2} + {(8-6)}^{2}}{4 - 1}
+            =
+            8
+        \]
+
+        \[
+            s_{12}
+            =
+            \frac{{(2-6)(12-10)} + {(8-6)(9-10)} + {(6-6)(9-10)} + {(8-6)(10-10)}}{4 - 1}
+            =
+            \frac{-10}{3}
+        \]
+
+        \[
+            s_{22}
+            =
+            \frac{{(12-10)}^{2} + {(9-10)}^{2} + {(9-10)}^{2} + {(10-10)}^{2}}{4 - 1}
+            =
+            2
+        \]
+
+        \[
+            \textbf{S}
+            =
+            \begin{bNiceArray}{cc}
+                8     & -10/3 \\
+                -10/3 & 2
+            \end{bNiceArray}
+        \]
+
+        \[
+            \textbf{S}^{-1}
+            =
+            \frac{1}{(8)(2) - (10/3)(10/3)}
+            \begin{bNiceArray}{cc}
+                2     & 10/3 \\
+                10/3 & 8
+            \end{bNiceArray}
+            =
+            \begin{bNiceArray}{cc}
+                9/22  & 15/22 \\
+                15/22 & 18/11
+            \end{bNiceArray}
+        \]
+
+        \[
+            T^{2}
+            =
+            n
+            {\left(\bar{\textbf{x}} - \bm{\mu}\right)}^{\prime}
+            S^{-1}
+            \left(\bar{\textbf{x}} - \bm{\mu}\right)
+            =
+        \]
+        \[
+            =
+            4
+            \begin{bNiceArray}{cc}
+                6 - 7, & 10 - 11
+            \end{bNiceArray}
+            \begin{bNiceArray}{cc}
+                9/22  & 15/22 \\
+                15/22 & 18/11
+            \end{bNiceArray}
+            \begin{bNiceArray}{c}
+                6 - 7 \\
+                10 - 11
+            \end{bNiceArray}
+            =
+        \]
+        \[
+            =
+            4
+            \begin{bNiceArray}{cc}
+                -1, & -1
+            \end{bNiceArray}
+            \begin{bNiceArray}{c}
+                -24/22 \\
+                -51/22
+            \end{bNiceArray}
+            =
+            300/22
+            =
+            13.6364
+        \]
+    \item Specify the dstribution of $T^{2}$ for the situation in (a).
+    \newline
+    $T^{2}$ has a distribution of
+        \[
+            \frac{(n-1)p}{(n-p)}F_{p, n-p}(\alpha)
+            =
+            \frac{(4-1)2}{(4-2)}F_{2, 4-2}(\alpha)
+            =
+            3F_{2, 2}(\alpha)
+        \]
+    random variable.
+    
+    \item Using (a) and (b), test $H_{0}$ at the $\alpha = 0.05$ level. What conclusion do you reach.
+    \[
+    \begin{aligned}
+        H_{0}: & \bm{\mu} = \bm{\mu}_{0} \\
+        H_{1}: & \bm{\mu} \ne \bm{\mu}_{0} 
+    \end{aligned}
+    \]
+    Comparing the observed $T^{2} = 13.6364$ with the critical value
+    \[
+        \frac{(n-1)p}{(n-p)}F_{p, n-p}(.05)
+        =
+        \frac{(3)2}{2}F_{2, 2}(.05)
+        =
+        3(19.00)
+        =
+        57
+    \]
+    we see that $T^{2} = 13.6364 < 57$, and consequently, we fail to reject $H_{0}$ at the 5\% level of significance.
+\end{enumerate}
