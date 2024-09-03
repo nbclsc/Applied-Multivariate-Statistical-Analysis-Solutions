@@ -1,0 +1,367 @@
+\begin{enumerate}[label=(\alph*)]
+    \item Use expression (5--15) to evaluate $T^{2}$ for the data in Exercise 5.1.
+    \[
+        \textbf{X}
+        =
+        \begin{bNiceArray}{cc}
+            2 & 12 \\
+            8 & 9  \\
+            6 & 9  \\
+            8 & 10
+        \end{bNiceArray}
+        \hspace{0.4cm}
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            6  \\
+            10
+        \end{bNiceArray}
+        \hspace{0.4cm}
+        \bm{\mu}_{0}
+        =
+        \begin{bNiceArray}{c}
+            7  \\
+            11
+        \end{bNiceArray}
+    \]
+    \[
+        \sum_{j=1}^{n}{(\textbf{x}_{j} - \bm{\mu}_{0}){(\textbf{x}_{j} - \bm{\mu}_{0})}^{\prime}}
+        =
+    \]
+    
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{c}
+            (2 - 7) \\
+            (12 - 11)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            (2 - 7) & (12 - 11)
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            (8 - 7) \\
+            (9 - 11)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            (8 - 7) & (9 - 11)
+        \end{bNiceArray}
+        \\
+        +
+        \begin{bNiceArray}{c}
+            (6 - 7) \\
+            (9 - 11)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            (6 - 7) & (9 - 11)
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            (8 - 7) \\
+            (10 - 11)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            (8 - 7) & (10 - 11)
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{c}
+            -5 \\
+            1
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            -5 & 1
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            1  \\
+            -2
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            1 & -2
+        \end{bNiceArray}
+        \\
+        +
+        \begin{bNiceArray}{c}
+            -1 \\
+            -2
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            -1 & -2
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            1 \\
+            -1
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            1 & -1
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{cc}
+            25 & -5 \\
+            -5 & 1
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            1 & -2  \\
+            -2 & 4
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            1 & 2 \\
+            2 & 4
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            1 & -1 \\
+            -1 & 1
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            28 & -6 \\
+            -6 & 10
+        \end{bNiceArray}
+    \]
+
+    \[
+        \sum_{j=1}^{n}{(\textbf{x}_{j} - \bar{\textbf{x}}){(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}}
+        =
+    \]
+    
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{c}
+            (2 - 6) \\
+            (12 - 10)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            (2 - 6) & (12 - 10)
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            (8 - 6) \\
+            (9 - 10)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            (8 - 6) & (9 - 10)
+        \end{bNiceArray}
+        \\
+        +
+        \begin{bNiceArray}{c}
+            (6 - 6) \\
+            (9 - 10)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            (6 - 6) & (9 - 10)
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            (8 - 6) \\
+            (10 - 10)
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            (8 - 6) & (10 - 10)
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{c}
+            -4 \\
+            2
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            -4 & 2
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            2  \\
+            -1
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            2 & -1
+        \end{bNiceArray}
+        \\
+        +
+        \begin{bNiceArray}{c}
+            0 \\
+            -1
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            0 & -1
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{c}
+            2 \\
+            0
+        \end{bNiceArray}
+        \begin{bNiceArray}{cc}
+            2 & 0
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \begin{multline*}
+        =
+        \begin{bNiceArray}{cc}
+            16 & -8 \\
+            -8 & 4
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            4 & -2  \\
+            -2 & 1
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            0 & 0 \\
+            0 & 1
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            4 & 0 \\
+            0 & 0
+        \end{bNiceArray}
+        =
+    \end{multline*}
+    \[
+        =
+        \begin{bNiceArray}{cc}
+            24 & -10 \\
+            -10 & 6
+        \end{bNiceArray}
+    \]
+
+    \[
+        \left| \sum_{j=1}^{n}{(\textbf{x}_{j} - \bm{\mu}_{0}){(\textbf{x}_{j} - \bm{\mu}_{0})}^{\prime}} \right|
+        =
+        \left|
+            \begin{NiceArray}{cc}
+                28 & -6 \\
+                -6 & 10
+            \end{NiceArray}
+        \right|
+        =
+        (28)(10) - (6)(6)
+        =
+        244
+    \]
+
+    \[
+        \left| \sum_{j=1}^{n}{(\textbf{x}_{j} - \bar{\textbf{x}}){(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}} \right|
+        =
+        \left|
+            \begin{NiceArray}{cc}
+                24 & -10 \\
+                -10 & 6
+            \end{NiceArray}
+        \right|
+        =
+        (24)(6) - (10)(10)
+        =
+        44
+    \]
+    \[
+        T^{2}
+        =
+        \frac{
+            (n-1)
+            \left|
+                \sum_{j=1}^{n}{
+                    (\textbf{x}_{j} - \bm{\mu}_{0})
+                    {(\textbf{x}_{j} - \bm{\mu}_{0})}^{\prime}
+                }
+            \right|
+        }{
+            \left|
+                \sum_{j=1}^{n}{
+                    (\textbf{x}_{j} - \bar{\textbf{x}})
+                    {(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}
+                }
+            \right|
+        }
+        -
+        (n-1)
+        =
+        \frac{(3)(244)}{44} - 3
+        =
+        13.63
+    \]
+
+    This is the same answer as in Exercise 5.1.
+
+    \item Use the data in Exercise 5.1 to evaluate A in (5--13). Also, evaluate Wilks' lambda.
+    
+    From (5--13),
+    
+    \[
+        H_{0}:
+        \bm{\mu}
+        =
+        \bm{\mu}_{0}
+        \hspace{0.4cm}
+        \text{versus}
+        \hspace{0.4cm}
+        H_{1}:
+        \bm{\mu}
+        \ne
+        \bm{\mu}_{0}
+    \]
+    Reject $H_{0}$ if
+    \[
+        \Lambda
+        =
+        {\left(
+            \frac{|\hat{\bm{\Sigma}}|}{|\hat{\bm{\Sigma}}_{0}|}
+        \right)}^{n/2}
+        =
+        {\left(
+            \frac{
+                \left|
+                    \sum_{j=1}^{n}{
+                        (\textbf{x}_{j} - \bar{\textbf{x}})
+                        {(\textbf{x}_{j} - \bar{\textbf{x}})}^{\prime}
+                    }
+                \right|
+            }{
+                \left|
+                    \sum_{j=1}^{n}{
+                        (\textbf{x}_{j} - \bm{\mu}_{0})
+                        {(\textbf{x}_{j} - \bm{\mu}_{0})}^{\prime}
+                    }
+                \right|
+            }
+        \right)}^{n/2}
+        < c_{\alpha}
+    \]
+    where $c_{\alpha}$ is the lower ($100\alpha$) percentile of the distribution of $\Lambda$.
+    \[
+        \Lambda
+        =
+        {\left(\frac{44}{244}\right)}^{4/2}
+        =
+        {\left(0.18032786885\right)}^{2}
+        =
+        0.03251814028
+        <
+        c_{\alpha}
+    \]
+    Wilk's lambda:
+    \[
+        \Lambda^{1/2}
+        =
+        \frac{|\hat{\bm{\Sigma}}|}{|\hat{\bm{\Sigma}}_{0}|}
+        =
+        \frac{44}{244}
+        =
+        0.18032786885
+    \]
+\end{enumerate}
