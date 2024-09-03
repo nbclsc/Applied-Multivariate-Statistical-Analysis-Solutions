@@ -1,0 +1,89 @@
+The quantities $\bar{\textbf{x}}$, $\textbf{S}$, and $\textbf{S}^{-1}$ are given in Example 5.3 for the transformed microwave radiation data.
+Conduct a test of the null hypothesis $H_{0}: \bm{\mu}^{\prime} = [ .55, .60]$ at the $\alpha = .05$ level of significance.
+Is your result consistent with the 95\% confidence ellipse for $\bm{\mu}$ pictured in Figure 5.1?
+Explain.
+\[
+    H_{0}: \bm{\mu} = \bm{\mu}_{0}
+    =
+    \begin{bNiceArray}{c}
+        0.55 \\
+        0.60
+    \end{bNiceArray}
+    \hspace{0.4cm}
+    \text{versus}
+    \hspace{0.4cm}
+    H_{1}: \bm{\mu} \ne \bm{\mu}_{0}
+    =
+    \begin{bNiceArray}{c}
+        0.55 \\
+        0.60
+    \end{bNiceArray}
+\]
+\[
+    \bar{\textbf{x}}
+    =
+    \begin{bNiceArray}{c}
+        0.564 \\
+        0.603
+    \end{bNiceArray}
+    \hspace{0.4cm}
+    \textbf{S}
+    =
+    \begin{bNiceArray}{cc}
+        0.0144 & 0.0117 \\
+        0.0117 & 0.0146
+    \end{bNiceArray}
+\]
+\[
+    \textbf{S}^{-1}
+    =
+    \begin{bNiceArray}{cc}
+         203.018 & -163.391 \\
+        -163.391 &  200.228
+    \end{bNiceArray}
+\]
+\[
+    T^{2}
+    =
+    n
+    {(\bar{\textbf{x}} - \bm{\mu}_{0})}^{\prime}
+    \textbf{S}^{-1}
+    (\bar{\textbf{x}} - \bm{\mu}_{0})
+    =
+\]
+\[
+    =
+    42
+    \begin{bNiceArray}{cc}
+        0.564 - 0.55 & 0.603 - 0.60
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        203.018 & -163.391 \\
+       -163.391 &  200.228
+   \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        0.564 - 0.55 \\
+        0.603 - 0.60
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    1.22711625
+\]
+The critical value:
+\[
+    \frac{(n-1)p}{(n-p)}
+    F_{p, n-p}(\alpha)
+    =
+    \frac{(41)2}{40}
+    F_{2, 40}(0.05)
+    =
+    \frac{82}{40}
+    (3.2317)
+    =
+    6.6250
+\]
+Our $T^{2}$ value is less than the critical value ($T^{2} = 1.227 < 6.6250$), so we'd fail to reject the null hypothesis that $\bm{\mu}_{0}^{\prime} = [ .55, .60]$. This makes sense, since our choice of $\bm{\mu}_{0}^{\prime}$ is close to the mean vector, $\bar{\textbf{x}}$.
+\par
+Yes, this conclusion (fail to reject $H_{0}$) is consistent with the 95\% confidence ellipse, since the choice of $\bm{\mu}_{0}^{\prime} = [ .55, .60]$ can be found within the confidence ellipse. If we rejected the null, our vector $\bm{\mu}_{0}$ would be outside the ellipse.
