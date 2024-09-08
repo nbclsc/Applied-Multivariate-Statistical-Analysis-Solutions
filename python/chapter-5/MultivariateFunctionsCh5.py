@@ -26,12 +26,12 @@ class MultivariateFunctionsCh5(object):
         Returns:
             tuple[plt, ax]: The plot graphic.
         '''
+        if isinstance(x, pd.DataFrame):
+            x = x.to_numpy()
         x = x.copy()
         assert n == x.shape[0], f'Numer of rows and parameter n do not match. Paramerter n = {n}. Rows in x = {x.shape[0]}'
         assert x.shape[1] == 2, f'Input matrix should have two columns, found {x.shape[1]}.'
         xbar = np.mean(x, axis=0)
-        if isinstance(x, pd.DataFrame):
-            xbar = xbar.to_numpy()
 
         eigenvalues, eigenvectors = la.eig(np.cov(x.T))
         max_idx, min_idx = np.argmax(eigenvalues), np.argmin(eigenvalues)
@@ -98,3 +98,51 @@ class MultivariateFunctionsCh5(object):
         t_crit = stats.t.ppf(1-(alpha/(2*m)), df=n-1)
         ci = xbar + np.array([-1, 1])*t_crit*np.sqrt(S/n)
         return ci
+
+    def plot_control_ellipse(x: np.ndarray, alpha: float):
+        '''
+        Plot the control ellipse.
+        '''
+        if isinstance(x, pd.DataFrame):
+            x = x.to_numpy()
+        x = x.copy()
+        n, p = x.shape
+        S = np.cov(x, rowvar=False)
+        xbar = np.mean(x, axis=0).reshape(p, 1)
+
+        eigenvalues, eigenvectors = np.linalg.eig(S)
+        max_idx, min_idx = np.argmax(eigenvalues), np.argmin(eigenvalues)
+        lmbda1, lmbda2 = eigenvalues[max_idx], eigenvalues[min_idx]
+        e1, e2 = eigenvectors[:, max_idx].copy(), eigenvectors[:, min_idx].copy()
+
+        chi2_val = stats.chi2(df=p).ppf(1 - alpha)
+
+        ell_width = np.sqrt(lmbda1)*np.sqrt(chi2_val)
+        ell_height = np.sqrt(lmbda2)*np.sqrt(chi2_val)
+        ell_angle = np.degrees(np.arctan2(e1[1], e1[0]))
+
+        plt.figure()
+        ax = plt.gca()
+        ellipse = Ellipse(xy=xbar,
+                        width=2*ell_width,
+                        height=2*ell_height,
+                        angle=ell_angle,
+                        fill=False)
+        ax.add_patch(ellipse)
+        for i in [-1, 1]:
+            plt.quiver(xbar[0],
+                    xbar[1],
+                    e1[0] * ell_width * i,
+                    e1[1] * ell_width * i,
+                    angles='xy',
+                    scale_units='xy',
+                    scale=1
+                    )
+            plt.quiver(xbar[0],
+                    xbar[1],
+                    e2[0] * ell_height * i,
+                    e2[1] * ell_height * i,
+                    angles='xy',
+                    scale_units='xy',
+                    scale=1)
+        return plt, ax
