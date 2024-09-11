@@ -141,12 +141,231 @@ Let $\textbf{X}_{1},\textbf{X}_{2},\dots,\textbf{X}_{20}$ be a random sample of 
     \]
     This is the same as the approximation in (4--28) in section 4.5 on page 176.
     \item The distribution of (n-1)\textbf{S}
-    \newline
-    \newline
-    Answers in (4--23) on page 174.
+    \[
+        (n-1)\textbf{S}
+        =
+        \frac{n-1}{n -1}
+        \sum_{j=1}^{n}{
+            \left(\textbf{X}_{j} - \bar{\textbf{X}}\right)
+            {\left(\textbf{X}_{j} - \bar{\textbf{X}}\right)}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \sum_{j=1}^{n}{
+            \left(\textbf{X}_{j} + \bm{\mu} - \bm{\mu} - \bar{\textbf{X}}\right)
+            {\left(\textbf{X}_{j} + \bm{\mu} - \bm{\mu} - \bar{\textbf{X}}\right)}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \sum_{j=1}^{n}{
+            \left((\textbf{X}_{j} - \bm{\mu}) - (\bar{\textbf{X}} - \bm{\mu})\right)
+            {\left((\textbf{X}_{j} - \bm{\mu}) - (\bar{\textbf{X}} - \bm{\mu})\right)}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+            -
+            (\bar{\textbf{X}} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+            -
+            (\textbf{X}_{j} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+            +
+            (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        +
+        \sum_{j=1}^{n}{
+            (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2
+        (\bar{\textbf{X}} - \bm{\mu})
+        \sum_{j=1}^{n}{
+            {(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        +
+        n
+        (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2
+        (\bar{\textbf{X}} - \bm{\mu})
+        {((\sum_{j=1}^{n}{\textbf{X}_{j}}) - n\bm{\mu})}^{\prime}
+        +
+        n
+        (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2
+        (\bar{\textbf{X}} - \bm{\mu})
+        {(n\bar{\textbf{X}} - n\bm{\mu})}^{\prime}
+        +
+        n
+        (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2n
+        (\bar{\textbf{X}} - \bm{\mu})
+        {(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        +
+        n
+        (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        n
+        (\bar{\textbf{X}} - \bm{\mu})
+        {(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        =
+    \]
+    \[
+        =
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        \left[
+            \sqrt{n}
+            (\bar{\textbf{X}} - \bm{\mu})
+        \right]
+        \left[
+            \sqrt{n}
+            {(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        \right]
+        =
+    \]
+    so looking at the first and second part of this equation
+    \[
+        \textbf{X}_{j}
+        \sim
+        N(\underset{(p \times 1)}{\bm{\mu}}, \underset{(p \times p)}{\bm{\Sigma}})
+        \hspace{0.2cm}
+        \Rightarrow
+        \hspace{0.2cm}
+        (\textbf{X}_{j} - \bm{\mu})
+        \sim
+        N(\textbf{0}, \Sigma)
+        \Rightarrow
+    \]
+    \[
+        \Rightarrow
+        (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        \sim
+        \chi_{1}^{2}
+        \Rightarrow
+    \]
+    \[
+        \Rightarrow
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        \sim
+        W_{n}(\Sigma)
+    \]
+    That is, the first term in the sum is distributed as a Wishart distribution with $n$ degrees of freedom. For the second term,
+    \[
+        \bar{\textbf{X}}
+        \sim
+        N(\bm{\mu}, \bm{\Sigma}/n)
+        \Rightarrow
+        (\bar{\textbf{X}} - \bm{\mu})
+        \sim
+        N(\textbf{0}, \bm{\Sigma}/n)
+        \Rightarrow
+    \]
+    \[
+        \Rightarrow
+        \sqrt{n}
+        (\bar{\textbf{X}} - \bm{\mu})
+        \sim
+        N(\textbf{0}, \bm{\Sigma})
+        \Rightarrow
+    \]
+    \[
+        \left[
+            \sqrt{n}
+            (\bar{\textbf{X}} - \bm{\mu})
+        \right]
+        \left[
+            \sqrt{n}
+            {(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        \right]
+        \sim
+        W_{1}(\bm{\Sigma})
+    \]
+    That is, the second term in the sum is distributed as a Wishart distribution with 1 degree of freedom.
+
+    Combining the two, we now has a Wishart distribution with $n$ degrees of freedom minus another Wishart distribution with 1 degree of freedom to create a Wishart distribution with $n - 1$ distribution, so we finally have
     \[
         (n-1)\textbf{S}
         \sim
-        W_{m=20-1}\left((n-1)\textbf{S} \bigg| \bm{\Sigma}\right)
+        W_{n-1}\left(\underset{(p \times p)}{\bm{\Sigma}}\right)
     \]
+    This is the answers found in (4--23) on page 174. For this data we have
+    \[
+        (n-1)\textbf{S}
+        \sim
+        W_{20-1}\left(\underset{(6 \times 6)}{\bm{\Sigma}}\right)
+    \]
+    A Wishart distribution with 19 degrees of freedom.
+    
 \end{enumerate}
