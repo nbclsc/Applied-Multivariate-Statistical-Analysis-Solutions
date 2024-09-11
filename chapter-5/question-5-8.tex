@@ -1,0 +1,120 @@
+From (5--23), we know that $T^{2}$ is equal to the largest squared univariate t-value
+constructed from the linear combi!1ation $\textbf{a}^{\prime}\textbf{x}_{j}$ with $\textbf{a} = \textbf{S}^{-1}\left(\bar{\textbf{x}} - \bm{\mu}_{0}\right)$. Using the
+results in Example 5.3 and the $H_{0}$ m Exercise 5.5, evaluate \textbf{a} for the transformed
+microwave-radiation data. Verify that the $t^{2}$-value computed with this \textbf{a} is equal to $T^{2}$ in Exercise 5.5.
+\newline
+From Exercise 5.5, we have,
+\[
+    T^{2} = 1.2271162508
+\]
+
+Using
+\[
+    \textbf{a}
+    =
+    \textbf{S}^{-1}
+    (\bar{\textbf{x}} - \bm{\mu}_{0})
+    =
+    \begin{bNiceArray}{cc}
+        203.018 & -163.391 \\
+       -163.391 &  200.228
+   \end{bNiceArray}
+   \begin{bNiceArray}{c}
+    0.564 - 0.55 \\
+    0.603 - 0.60
+\end{bNiceArray}
+=
+\begin{bNiceArray}{r}
+    2.413 \\
+    -1.738
+\end{bNiceArray}
+\]
+Computing $t^{2}$ using (5--22),
+\[
+    n
+    {\left(
+        \left(
+            \textbf{a}^{\prime}\bar{\textbf{x}}
+            -
+            \textbf{a}^{\prime}\bm{\mu}_{0}
+        \right)
+    \right)}^{2}
+    =
+    n
+    {\left(
+        \textbf{a}^{\prime}
+        \left(
+            \bar{\textbf{x}}
+            -
+            \bm{\mu}_{0}
+        \right)
+    \right)}^{2}
+    =
+    42
+    {\left(
+    \begin{bNiceArray}{rr}
+        2.413 & -1.738
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+        0.564 - 0.55 \\
+        0.603 - 0.60
+    \end{bNiceArray}
+    \right)}^{2}
+    =
+\]
+\[
+    =
+    42{(0.0292)}^{2}
+    =
+    0.0359
+\]
+\[
+    \textbf{a}^{\prime}
+    \textbf{S}
+    \textbf{a}
+    =
+    \begin{bNiceArray}{rr}
+        2.413 & -1.738
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        0.0144 & 0.0117 \\
+        0.0117 & 0.0146
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}
+        2.413 \\
+        -1.738
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{rr}
+        0.014 & 0.003
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}
+        2.413 \\
+        -1.738
+    \end{bNiceArray}
+    =
+    0.029
+\]
+\[
+    t^{2}
+    =
+    \frac{
+            n
+            {\left(
+                \left(
+                    \textbf{a}^{\prime}\bar{\textbf{x}}
+                    -
+                    \textbf{a}^{\prime}\bm{\mu}_{0}
+                \right)
+            \right)}^{2}
+        }{
+            \textbf{a}^{\prime}
+            \textbf{S}
+            \textbf{a}}
+    =
+    1.2271162508
+\]
+We can see that $T^{2}$ from Exercise 5.5 is the same as $t^{2}$ computed in (5--22).
