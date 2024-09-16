@@ -30,7 +30,7 @@ def plot_confidence_ellipse(x: np.ndarray | pd.DataFrame, n: int, p: int, alpha:
     assert x.shape[1] == 2, f'Input matrix should have two columns, found {x.shape[1]}.'
     xbar = np.mean(x, axis=0)
 
-    eigenvalues, eigenvectors = la.eig(np.cov(x.T))
+    eigenvalues, eigenvectors = la.eigh(np.cov(x.T))
     max_idx, min_idx = np.argmax(eigenvalues), np.argmin(eigenvalues)
     lmbda1, lmbda2 = eigenvalues[max_idx], eigenvalues[min_idx]
     e1, e2 = eigenvectors[:, max_idx].copy(), eigenvectors[:, min_idx].copy()
@@ -70,13 +70,15 @@ def plot_confidence_ellipse(x: np.ndarray | pd.DataFrame, n: int, p: int, alpha:
     return plt, ax
 
 @staticmethod
-def simult_conf_int(x: np.ndarray, alpha: float) -> np.ndarray:
+def simult_conf_int(x: np.ndarray, alpha: float, p: int=None) -> np.ndarray:
     '''
     Compute the simultaneous confidence intervals.
     '''
-    n, p = x.shape
-    xbar = np.mean(x, axis=0).reshape(p, 1)
-    S = np.diag(np.cov(x, rowvar=False)).reshape(p,1)
+    n, p_data = x.shape
+    if not p:
+        p = p_data
+    xbar = np.mean(x, axis=0).reshape(p_data, 1)
+    S = np.diag(np.cov(x, rowvar=False)).reshape(p_data,1)
 
     const = ((n-1)*p)/(n-p)
     f_crit = const*stats.f.ppf(1-alpha, dfn=p, dfd=n-p)
@@ -103,11 +105,11 @@ def plot_control_ellipse(x: np.ndarray | pd.DataFrame, alpha: float):
     if isinstance(x, pd.DataFrame):
         x = x.to_numpy()
     x = x.copy()
-    n, p = x.shape
+    _, p = x.shape
     S = np.cov(x, rowvar=False)
     xbar = np.mean(x, axis=0).reshape(p, 1)
 
-    eigenvalues, eigenvectors = np.linalg.eig(S)
+    eigenvalues, eigenvectors = la.eigh(S)
     max_idx, min_idx = np.argmax(eigenvalues), np.argmin(eigenvalues)
     lmbda1, lmbda2 = eigenvalues[max_idx], eigenvalues[min_idx]
     e1, e2 = eigenvectors[:, max_idx].copy(), eigenvectors[:, min_idx].copy()
