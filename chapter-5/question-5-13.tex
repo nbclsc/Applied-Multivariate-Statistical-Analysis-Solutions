@@ -1,0 +1,42 @@
+Determine the approximate distribution of $-n \ln\left( |\hat{\bm{\Sigma}}|/ |\hat{\bm{\Sigma}}_{0}| \right)$ for the sweat data in
+Tuble 5.1. (See Result 5.2.)
+\newline
+\par
+From Result 5.2, when the sample size $n$ is large, under the null hypothesis,
+\[
+\mathlarger{
+    -2 \ln \left(
+        \frac{\max_{\bm{\theta} \in \bm{\Theta}_{0}} L\left(\bm{\theta}\right)}{\max_{\bm{\theta} \in \bm{\Theta}} L\left(\bm{\theta}\right)}
+    \right)
+    \overset{\cdot}{\sim}
+    \chi_{v- v_{0}}^{2}
+}
+\]
+where $v$ is the dimension of $\bm{\Theta}$ and $v_{0}$ is the dimension of $\bm{\Theta}_{0}$.
+From 219, the dimension of $\bm{\Theta}$ is
+\[
+    v
+    =
+    p +\frac{p(p+1)}{2}
+    =
+    3 + \frac{3(3+1)}{2}
+    =
+    3 + 6
+    =
+    9
+\]
+so we have 3 coming from estimating each $\mu$ in the mean vector $\bm{\mu}$, ($\mu_{1}$, $\mu_{1}$, $\mu_{1}$), and 6 coming from the covariance matrix $\bm{\Sigma}$, 3 on the diagonal for $\sigma_{11}$, $\sigma_{22}$, and $\sigma_{33}$ and 3 for the off-diagonal, $\sigma_{12}$, $\sigma_{13}$, and $\sigma_{23}$. It's symmetric, so we don't need the rest. Also from 219, the dimension of $\bm{\Sigma}_{0}$ would be
+\[
+    v_{0}
+    =
+    0 +\frac{p(p+1)}{2}
+    =
+    0 + \frac{3(3+1)}{2}
+    =
+    0 + 6
+    =
+    6
+\]
+For the null hypothesis we're saying we know $\bm{\mu}$ with $\bm{\mu}_{0}$ so we're not estimating the 3 parameters for the mean vector $\bm{\mu}$. All we have left is to estimate the 6 parameters in the covariance matrix $\bm{\Sigma}$.
+
+Finally the degrees of freedom of the $\chi^2$ distribution would be $v - v_{0} = p = 3$.
