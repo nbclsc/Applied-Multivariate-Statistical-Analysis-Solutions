@@ -1,0 +1,32 @@
+Given the data
+\[
+    {\large{\textbf{X}}}
+    =
+    \begin{bNiceArray}{ccc}
+        3 & 6 & 0 \\
+        4 & 4 & 3 \\
+        \makebox[2em][c]{\textemdash} & 8 & 3 \\
+        5 & \makebox[2em][c]{\textemdash} & \makebox[2em][c]{\textemdash}
+    \end{bNiceArray}
+\]
+with missing components, use the prediction-estimation algorithm of Section 5.7 to
+estimate $\bm{\mu}$, and $\bm{\Sigma}$. Determine the initial estimates, and iterate to find the first revised estimates.
+\[
+    \tilde{\bm{\mu}}
+    =
+    \begin{bNiceArray}{c}
+        4.0833 \\
+        6.0000 \\
+        2.2500
+    \end{bNiceArray}
+\]
+
+\[
+    \tilde{\bm{\Sigma}}
+    =
+    \begin{bNiceArray}{ccc}
+        0.6042 & 0.1667 & 0.8125 \\
+        0.1667 & 2.5000 & 0.0000 \\
+        0.8125 & 0.0000 & 1.9375  
+    \end{bNiceArray}
+\]
