@@ -1,0 +1,192 @@
+\textit{Exercises 5.15, 5.16, and 5.17 refer to the following information:}
+\newline
+\newline
+Frequently, some or all of the population characteristics of interest are in the form of
+attributes. Each individual in the population may then be described in terms of the
+attributes it possesses. For convenience, attributes are usually numerically coded with respect
+to their presence or absence. If we let the variable $X$ pertain to a specific attribute
+then we can distinguish between the presence or absence of this attribute by defining
+
+\[
+    X
+    =
+    \begin{cases}
+        1 & \text{if attribute present} \\
+        0 & \text{if attribute absent}
+    \end{cases}
+\]
+\newline
+In this way, we can assign numerical values to qualitative characteristics.
+\par
+When attributes are numerically coded as $0-1$ variables, a random sample from the
+population of interest results in statistics that consist of the counts of the number of
+sample items that have each distinct set of characteristics. If the sample counts are
+large, methods for producing simultaneous confidence statements can be easily adapted
+to situations involving proportions.
+\par
+We consider the situation where an individual with a particular combination of
+attributes can be classified into one of q + 1 mutually exclusive and exhaustive
+categories. The corresponding probabilities are denoted by $p_{1}, p_{2}, \dots, p_{q}, p_{q+r}$. Since
+the categories include all possibilities, we take $p_{q+1} = 1 - (p_{1} + p_{2} + \dots + p_{q})$, An
+individual from category k will be assigned the $( ( q + 1) \times 1 )$ vector value ${[ 0, \dots , 0, 1, 0, \dots , 0]}^{\prime}$ with 1 in the $k$th position.
+\par
+The probability distribution for an observation from the population of individuals in
+$q + 1$ mutually exclusive and exhaustive categories is known as the multinomial distribution.
+It has the following structure:
+
+\begin{center}
+    \begin{tabular}{p{5em} ccccccc}
+        Category & 1 & 2 & $\cdots$ & $k$ & $\cdots$ & $q$ & $q + 1$ \\
+        Outcome (value) &
+
+        $\begin{bNiceArray}{c}
+            1 \vphantom{\vdots} \\
+            0 \vphantom{\vdots} \\
+            0 \vphantom{\vdots} \\
+            \vdots \\
+            \vdots \\
+            \vdots \\
+            0 \vphantom{\vdots}
+        \end{bNiceArray}$ &
+
+        $\begin{bNiceArray}{c}
+            0 \vphantom{\vdots} \\
+            1 \vphantom{\vdots} \\
+            0 \vphantom{\vdots} \\
+            \vdots \\
+            \vdots \\
+            \vdots \\
+            0 \vphantom{\vdots}
+        \end{bNiceArray}$ &
+
+        $\cdots$ &
+
+        $\begin{bNiceArray}{c}
+            0 \vphantom{\vdots} \\
+            \vdots \\
+            0 \vphantom{\vdots} \\
+            1 \vphantom{\vdots} \\
+            0 \vphantom{\vdots} \\
+            \vdots \\
+            0 \vphantom{\vdots}
+        \end{bNiceArray}$ &
+
+        $\cdots$ &
+
+        $\begin{bNiceArray}{c}
+            0 \vphantom{\vdots} \\
+            0 \vphantom{\vdots} \\
+            0 \vphantom{\vdots} \\
+            \vdots \\
+            0 \vphantom{\vdots} \\
+            1 \vphantom{\vdots} \\
+            0 \vphantom{\vdots}
+        \end{bNiceArray}$ &
+       
+        $\begin{bNiceArray}{c}
+            0 \vphantom{\vdots} \\
+            0 \vphantom{\vdots} \\
+            0 \vphantom{\vdots} \\
+            \vdots \\
+            \vdots \\
+            0 \vphantom{\vdots} \\
+            1 \vphantom{\vdots}
+        \end{bNiceArray}$ \\
+        probability \\ (proportion) & $p_{1}$ & $p_{2}$ & $\cdots$ & $p_{k}$ & $\cdots$ & $p_{q}$ & $p_{q+1} = 1 - \sum_{i=1}^{q}{p_{i}}$ 
+    \end{tabular}
+\end{center}
+
+Let $\textbf{X}_{j}$, $j = 1, 2, \dots, n$, be a random sample of size $n$ from the multinomial distribution.
+\par
+The kth component, $X_{jk}$ of $\textbf{X}_{j}$ is 1 if the observation (individual) is from category $k$ and is 0 otheiwise.
+The random sample $\textbf{X}_{1}, \textbf{X}_{2}, \dots, \textbf{X}_{n}$ can be converted to a sample proportion vector, which, given the nature of the preceding observations, is a sample
+mean vector.
+Thus,
+
+\[
+    \hat{\textbf{P}}
+    =
+    \begin{bNiceArray}{c}
+        \hat{p}_{1} \\
+        \hat{p}_{2} \\
+        \vdots \\
+        \hat{p}_{q+1}
+    \end{bNiceArray}
+    =
+    \frac{1}{n}
+    \sum_{j=1}^{n}{\textbf{X}_{j}}
+    \hspace{0.5cm}
+    \text{with}
+    \hspace{0.5cm}
+    E(\hat{\textbf{p}})
+    =
+    \textbf{p}
+    =
+    \begin{bNiceArray}{c}
+        p_{1} \\
+        p_{2} \\
+        \vdots \\
+        p_{q+1}
+    \end{bNiceArray}
+\]
+and
+\[
+    \text{Cov}(\hat{\textbf{p}})
+    =
+    \frac{1}{n}
+    \text{Cov}(\textbf{X}_{j})
+    =
+    \frac{1}{n}
+    \bm{\Sigma}
+    =
+    \frac{1}{n}
+    \begin{bNiceArray}{cccc}
+        \sigma_{11} & \sigma_{12} & \cdots & \sigma_{1, q+1} \\
+        \sigma_{21} & \sigma_{22} & \cdots & \sigma_{2, q+1} \\
+        \vdots      & \vdots      & \ddots & \vdots \\
+        \sigma_{1, q+1} & \sigma_{2, q+1} & \cdots & \sigma_{q+1, q+1} \\
+    \end{bNiceArray}
+\]
+
+For large $n$, the approximate sampling distribution of $\hat{\textbf{p}}$ is provided by the central limit theorem. We have
+
+\[
+    \sqrt{n} \left(\hat{\textbf{p}} - \textbf{p}\right)
+    \hspace{0.5cm}
+    \text{is approximately}
+    \hspace{0.5cm}
+    N (\textbf{0}, \bm{\Sigma})
+\]
+
+where the elements of $\bm{\Sigma}$ are $\sigma_{kk} = p_{k}( 1 - p_{k})$ and $\sigma_{ik} = -p_{i}p_{k}$. The normal approximation
+remains valid when $\sigma_{kk}$ is estimated by $\hat{\sigma}_{kk} = \hat{p}_{k}(1 - \hat{p}_{k})$ and $\sigma_{ik}$ is estimated
+by $\sigma_{ik} = -\hat{p}_{i}\hat{p}_{k}$, $i \ne k$.
+\par
+Since each individual must belong to exactly one category, $X_{q+1,i} =
+1 - (X_{1i} + X_{2i} + \dots + X_{qj})$, so $\hat{p}_{q+1} = 1 - (\hat{p}_{1} + \hat{p}_{2} + \dots + \hat{p}_{q})$, and as a result, $\hat{\bm{\Sigma}}$
+has rank $q$.
+The usual inverse of $\hat{\bm{\Sigma}}$ does not exist, but it is still possible to develop simultaneous
+$100(1 - \alpha)$\% confidence intervals for all linear combinations $\textbf{a}^{\prime}\textbf{p}$.
+\newline
+\newline
+\textbf{Result.} Let $\textbf{X}_{1} , \textbf{X}_{2} , \dots, \text{X}_{n}$ be a random sample from a $q + 1$ category multinoinial
+distribution with $P[X_{jk} = 1] = p_{k}$, $k = 1, 2, \dots, q + 1$, $j = 1, 2, \dots, n$.
+Approximate
+simultaneous $100(1 - \alpha)$\% confidence regions for all linear combinations $\textbf{a}^{\prime}\textbf{p} = a_{1}p_{1} + a_{2}p_{2} + \dots + a_{q+1}p_{q+1}$ are given by the observed values of
+
+\[
+    \textbf{a}^{\prime}\textbf{p}
+    \pm
+    \sqrt{\chi^{2}_{q}(\alpha)}
+    \sqrt{\frac{\textbf{a}^{\prime}\hat{\bm{\Sigma}}\textbf{a}}{n}}
+\]
+
+provided that $n-q$ is large. Here $p = (1/n) \sum_{j=1}^{n}{\textbf{X}_{j}}$, and $\hat{\bm{\Sigma}} = {\hat{\sigma}_{ik}}$ is a $(q + 1) \times (q + 1)$
+matrix with $\hat{\sigma}_{kk} = \hat{p}_{k}(l - \hat{p}_{k})$ and $\hat{\sigma}_{ik} = -\hat{p}_{i}\hat{p}_{k}$, $i \ne k$. Also, $\chi^{2}_{q}(\alpha)$ is the upper
+$(l00\alpha)$th percentile of the chi-square distribution with $q$ d.f.
+\newline
+\newline
+\par
+In this result, the requirement that $n - q$ is large is interpreted to mean $n\hat{p}_{k}$ is about 20 or more for each category.
+\par
+We have only touched on the possibilities for the analysis of categorical data. Complete discussions of categorical data analysis are available in [l] and [4].
