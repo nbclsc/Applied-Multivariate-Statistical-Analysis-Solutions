@@ -12,7 +12,736 @@ Given the data
 with missing components, use the prediction-estimation algorithm of Section 5.7 to
 estimate $\bm{\mu}$, and $\bm{\Sigma}$. Determine the initial estimates, and iterate to find the first revised estimates.
 \[
+    \widetilde{\mu}_{1}
+    =
+    \frac{3+4+5}{3}
+    =
+    \frac{12}{3}
+    =
+    4
+\]
+\[
+    \widetilde{\mu}_{2}
+    =
+    \frac{6+4+8}{3}
+    =
+    \frac{18}{3}
+    =
+    6
+\]
+\[
+    \widetilde{\mu}_{3}
+    =
+    \frac{0+3+3}{3}
+    =
+    \frac{6}{3}
+    =
+    2
+\]
+\[
+    \widetilde{\sigma}_{11}
+    =
+    \frac{
+        {(3 - 4)}^{2}+
+        {(4 - 4)}^{2}+
+        {(4 - 4)}^{2}+
+        {(5 - 4)}^{2}
+    }{4}
+    =
+    \frac{1 + 1}{4}
+    =
+    \frac{1}{2}
+\]
+\[
+    \widetilde{\sigma}_{22}
+    =
+    \frac{
+        {(6 - 6)}^{2}+
+        {(4 - 6)}^{2}+
+        {(8 - 6)}^{2}+
+        {(6 - 6)}^{2}
+    }{4}
+    =
+    \frac{4 + 4}{4}
+    =
+    2
+\]
+\[
+    \widetilde{\sigma}_{33}
+    =
+    \frac{
+        {(0 - 2)}^{2}+
+        {(3 - 2)}^{2}+
+        {(3 - 2)}^{2}+
+        {(2 - 2)}^{2}
+    }{4}
+    =
+    \frac{4 + 1 + 1}{4}
+    =
+    \frac{3}{2}
+\]
+
+\[
+    \widetilde{\sigma}_{12}
+    =
+    \frac{
+        (3 - 4)(6 - 6)+
+        (4 - 4)(4 - 6)+
+        (4 - 4)(8 - 6)+
+        (5 - 4)(6 - 6)+
+    }{4}
+    =
+    0
+\]
+\[
+    \widetilde{\sigma}_{13}
+    =
+    \frac{
+        (3 - 4)(0 - 2)+
+        (4 - 4)(3 - 2)+
+        (4 - 4)(3 - 2)+
+        (5 - 4)(2 - 2)+
+    }{4}
+    =
+    \frac{1}{2}
+\]
+\[
+    \widetilde{\sigma}_{23}
+    =
+    \frac{
+        (6 - 6)(0 - 2)+
+        (4 - 6)(3 - 2)+
+        (8 - 6)(3 - 2)+
+        (6 - 6)(2 - 2)+
+    }{4}
+    =
+    0
+\]
+
+\underline{Observation 3, $\textbf{x}_{3}$:}
+\newline
+The first component of $\textbf{x}_{3}$ is missing, so we partition $\tilde{\bm{\mu}}$ and $\tilde{\bm{\Sigma}}$ as
+\[
     \tilde{\bm{\mu}}
+    =
+    \begin{bNiceArray}{c}[margin]
+        \widetilde{\mu}_{1} \\
+        \widetilde{\mu}_{2} \\
+        \widetilde{\mu}_{3} \\
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}[margin]
+        4 \\
+        6 \\
+        2 \\
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray}
+\]
+\[
+    \tilde{\bm{\Sigma}}
+    =
+    \begin{bNiceArray}{ccc}[margin]
+        \widetilde{\sigma}_{11} & \widetilde{\sigma}_{12} & \widetilde{\sigma}_{13} \\
+        \widetilde{\sigma}_{21} & \widetilde{\sigma}_{22} & \widetilde{\sigma}_{23} \\
+        \widetilde{\sigma}_{31} & \widetilde{\sigma}_{32} & \widetilde{\sigma}_{33} \\
+        \CodeAfter \tikz \draw[dotted] (2|-1) -- (2|-last);
+        \CodeAfter \tikz \draw[dotted] (1|-2) -- (last|-2);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{ccc}[margin]
+        \frac{1}{2} & 0 & \frac{1}{2} \\
+        0           & 2 & 0           \\
+        \frac{1}{2} & 0 & \frac{3}{2} \\
+        \CodeAfter \tikz \draw[dotted] (2|-1) -- (2|-last);
+        \CodeAfter \tikz \draw[dotted] (1|-2) -- (last|-2);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}[margin]
+        \widetilde{\bm{\Sigma}}_{11} & \widetilde{\bm{\Sigma}}_{12} \\
+        \widetilde{\bm{\Sigma}}_{21} & \widetilde{\bm{\Sigma}}_{22} \\
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+        \CodeAfter \tikz \draw[dotted] (1-|2) -- (last-|2);
+    \end{bNiceArray}
+\]
+Using,
+\[
+    \widetilde{\textbf{x}}_{j}^{(1)} =
+    E(\textbf{X}_{j}^{(1)}
+      \big{\vert}
+      \textbf{x}_{j}^{(2)};
+      \widetilde{\bm{\mu}}, \widetilde{\bm{\Sigma}}
+    )
+    =
+    \widetilde{\bm{\mu}}^{(1)}
+    +
+    \widetilde{\bm{\Sigma}}_{12}
+    \widetilde{\bm{\Sigma}}_{22}^{-1}
+    (\textbf{x}^{(2)} - \widetilde{\bm{\mu}}^{(2)})
+    \Rightarrow
+\]
+\[
+    \Rightarrow
+    \widetilde{x}_{31}
+    =
+    \widetilde{\mu}_{1}
+    +
+    \widetilde{\bm{\Sigma}}_{12}
+    \widetilde{\bm{\Sigma}}_{22}^{-1}
+    \begin{bNiceArray}{r}
+        x_{32} - \widetilde{\mu}_{2} \\
+        x_{33} - \widetilde{\mu}_{3}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    4
+    +
+    \begin{bNiceArray}{rr}
+        0 & \frac{1}{2}
+    \end{bNiceArray}
+    \left(\frac{1}{3}\right)
+    \begin{bNiceArray}{rr}
+        \frac{3}{2} & 0 \\
+        0 & 2
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}
+        8 - 6 \\
+        3 - 2
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    4
+    +
+    \left(\frac{1}{3}\right)
+    \begin{bNiceArray}{rr}
+        0 & 1
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}
+        2 \\
+        1
+    \end{bNiceArray}
+    =
+    \frac{13}{3}
+\]
+The superscript $(1)$ is for missing values. The superscript $(2)$ is for observed values.
+
+Computing the squared term,
+\[
+    \widetilde{
+        \textbf{x}_{j}^{(1)}
+        {\textbf{x}_{j}^{(1)}}^{\prime}
+    }
+    =
+    E(\textbf{X}_{j}^{(1)}{\textbf{X}_{j}^{(1)}}^{\prime}
+      \big{\vert}
+      \tilde{\textbf{x}}_{j}^{(2)};
+      \tilde{\bm{\mu}}, \tilde{\bm{\Sigma}}
+    )
+    =
+    \widetilde{\bm{\Sigma}}_{11}
+    -
+    \tilde{\bm{\Sigma}}_{12}
+    \tilde{\bm{\Sigma}}_{22}^{-1}
+    \tilde{\bm{\Sigma}}_{21}
+    +
+    \widetilde{ \textbf{x} }_{j}^{(1)}
+    \widetilde{ \textbf{x} }_{j}^{(1)\prime}
+    \Rightarrow
+\]
+\[
+    \Rightarrow
+    \widetilde{x}_{31}^{2}
+    =
+    \widetilde{\sigma}_{11}
+    -
+    \tilde{\bm{\Sigma}}_{12}
+    \tilde{\bm{\Sigma}}_{22}^{-1}
+    \tilde{\bm{\Sigma}}_{21}
+    +
+    {\left(\widetilde{x}_{31}\right)}^{2}
+    =
+\]
+\[
+    =
+    \frac{1}{2}
+    -
+    \begin{bNiceArray}{rr}
+        0 & \frac{1}{2}
+    \end{bNiceArray}
+    \left(\frac{1}{3}\right)
+    \begin{bNiceArray}{rr}
+        \frac{3}{2} & 0 \\
+        0 & 2
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}
+        0 \\
+        \frac{1}{2}
+    \end{bNiceArray}
+    +
+    {\left(\frac{13}{3}\right)}^{2}
+    =
+\]
+\[
+    \frac{1}{2}
+    -
+    \left(\frac{1}{3}\right)
+    \begin{bNiceArray}{rr}
+        0 & 1
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}
+        0 \\
+        \frac{1}{2}
+    \end{bNiceArray}
+    +
+    \frac{169}{9}
+    =
+    \frac{172}{9}
+\]
+Computing the cross-terms
+\[
+    \textbf{x}_{j}^{(1)}
+    \textbf{x}_{j}^{(2)\prime}
+    =
+    E
+    \left(
+        \textbf{X}_{j}^{(1)}
+        \textbf{X}_{j}^{(2)\prime}
+        \big{\vert}
+        \textbf{x}_{j}^{(2)\prime};
+        \widetilde{\bm{\mu}},
+        \widetilde{\bm{\Sigma}}
+    \right)
+    =
+    \widetilde{\textbf{x}}_{j}^{(1)}
+    \textbf{x}_{j}^{(2)\prime}
+\]
+\[
+    \Rightarrow
+    \widetilde{x_{31}}
+        \begin{bNiceArray}{rr}
+            x_{32}, & x_{33}
+        \end{bNiceArray}
+    =
+    \widetilde{x_{31}}
+    \begin{bNiceArray}{rr}
+        x_{32}, & x_{33}
+    \end{bNiceArray}
+    =
+    \frac{13}{3}
+    \begin{bNiceArray}{rr}
+        8, & 3
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{rr}
+        \frac{104}{3}, & 13
+    \end{bNiceArray}
+\]
+
+\underline{Observation 4, $\textbf{x}_{4}$:}
+\newline
+The second and third component of $\textbf{x}_{4}$ is missing, so we partition $\tilde{\bm{\mu}}$ and $\tilde{\bm{\Sigma}}$ as
+\[
+    \tilde{\bm{\mu}}
+    =
+    \begin{bNiceArray}{c}[margin]
+        \widetilde{\mu}_{2} \\
+        \widetilde{\mu}_{3} \\
+        \widetilde{\mu}_{1} \\
+        \CodeAfter \tikz \draw[dotted] (3-|1) -- (3-|last);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}[margin]
+        6 \\
+        2 \\
+        4 \\
+        \CodeAfter \tikz \draw[dotted] (3-|1) -- (3-|last);
+    \end{bNiceArray}
+\]
+ We moved $\widetilde{\mu}_{1}$ to the bottom.
+\[
+    \tilde{\bm{\Sigma}}
+    =
+    \begin{bNiceArray}{ccc}[margin]
+        \widetilde{\sigma}_{22} & \widetilde{\sigma}_{23} & \widetilde{\sigma}_{21} \\
+        \widetilde{\sigma}_{32} & \widetilde{\sigma}_{33} & \widetilde{\sigma}_{31} \\
+        \widetilde{\sigma}_{12} & \widetilde{\sigma}_{13} & \widetilde{\sigma}_{11} \\
+        \CodeAfter \tikz \draw[dotted] (3|-1) -- (3|-last);
+        \CodeAfter \tikz \draw[dotted] (1|-3) -- (last|-3);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{ccc}[margin]
+        2 & 0           & 0 \\
+        0 & \frac{3}{2} & \frac{1}{2}           \\
+        0 & \frac{1}{2} & \frac{1}{2} \\
+        \CodeAfter \tikz \draw[dotted] (3|-1) -- (3|-last);
+        \CodeAfter \tikz \draw[dotted] (1|-3) -- (last|-3);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}[margin]
+        \widetilde{\bm{\Sigma}}_{11} & \widetilde{\bm{\Sigma}}_{12} \\
+        \widetilde{\bm{\Sigma}}_{21} & \widetilde{\bm{\Sigma}}_{22} \\
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+        \CodeAfter \tikz \draw[dotted] (1-|2) -- (last-|2);
+    \end{bNiceArray}
+\]
+We moved row 1 to the end and then moved column 1 to the end.
+\newline
+Using,
+\[
+    \widetilde{\textbf{x}}_{j}^{(1)} =
+    E(\textbf{X}_{j}^{(1)}
+      \big{\vert}
+      \textbf{x}_{j}^{(2)};
+      \widetilde{\bm{\mu}}, \widetilde{\bm{\Sigma}}
+    )
+    =
+    \widetilde{\bm{\mu}}^{(1)}
+    +
+    \widetilde{\bm{\Sigma}}_{12}
+    \widetilde{\bm{\Sigma}}_{22}^{-1}
+    (\textbf{x}^{(2)} - \widetilde{\bm{\mu}}^{(2)})
+    \Rightarrow
+\]
+\[
+    \Rightarrow
+    \begin{bNiceArray}{c}
+        \widetilde{x}_{42} \\
+        \widetilde{x}_{43}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        \widetilde{\mu}_{2} \\
+        \widetilde{\mu}_{3}
+    \end{bNiceArray}
+    +
+    \widetilde{\bm{\Sigma}}_{12}
+    \widetilde{\bm{\Sigma}}_{22}^{-1}
+    (x_{41} - \widetilde{\mu}_{1})
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{c}
+        6 \\
+        2
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{r}
+        0 \\
+        \frac{1}{2}
+    \end{bNiceArray}
+    \left(2\right)
+    (5 - 4)
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{c}
+        6 \\
+        2
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{c}
+        0 \\
+        1
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{r}
+        6 \\
+        3
+    \end{bNiceArray}
+\]
+The superscript $(1)$ is for missing values. The superscript $(2)$ is for observed values.
+
+Computing the squared term,
+\[
+    \widetilde{
+        \textbf{x}_{j}^{(1)}
+        {\textbf{x}_{j}^{(1)}}^{\prime}
+    }
+    =
+    E(\textbf{X}_{j}^{(1)}{\textbf{X}_{j}^{(1)}}^{\prime}
+      \big{\vert}
+      \tilde{\textbf{x}}_{j}^{(2)};
+      \tilde{\bm{\mu}}, \tilde{\bm{\Sigma}}
+    )
+    =
+    \widetilde{\bm{\Sigma}}_{11}
+    -
+    \tilde{\bm{\Sigma}}_{12}
+    \tilde{\bm{\Sigma}}_{22}^{-1}
+    \tilde{\bm{\Sigma}}_{21}
+    +
+    \widetilde{ \textbf{x} }_{j}^{(1)}
+    \widetilde{ \textbf{x} }_{j}^{(1)\prime}
+    \Rightarrow
+\]
+\[
+    \Rightarrow
+    \begin{bNiceArray}{cc}
+        \widetilde{x_{42}^{2}}   & \widetilde{x_{42}x_{43}} \\
+        \widetilde{x_{43}x_{42}} & \widetilde{x_{43}^{2}}
+    \end{bNiceArray}
+    =
+    \widetilde{\Sigma}_{11}
+    -
+    \tilde{\bm{\Sigma}}_{12}
+    \left(\frac{1}{\widetilde{\sigma}_{11}}\right)
+    \tilde{\bm{\Sigma}}_{21}
+    +
+    \begin{bNiceArray}{c}
+        \widetilde{x}_{42} \\
+        \widetilde{x}_{43}
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \widetilde{x}_{42} & \widetilde{x}_{43}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        2 & 0           \\
+        0 & \frac{3}{2}
+    \end{bNiceArray}
+    -
+    \begin{bNiceArray}{c}
+        0 \\
+        \frac{1}{2}
+    \end{bNiceArray}
+    \left(\frac{1}{(1/2)}\right)
+    \begin{bNiceArray}{cc}
+        0 & \frac{1}{2}
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{c}
+        6 \\
+        3
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        6 & 3
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{cc}
+        2 & 0           \\
+        0 & \frac{3}{2}
+    \end{bNiceArray}
+    -
+    \begin{bNiceArray}{cc}
+        0 & 0           \\
+        0 & \frac{1}{2}
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{cc}
+        36 & 18 \\
+        18 & 9
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{cc}
+        38 & 18 \\
+        18 & 10
+    \end{bNiceArray}
+\]
+Computing the cross-terms
+\[
+    \textbf{x}_{j}^{(1)}
+    \textbf{x}_{j}^{(2)\prime}
+    =
+    E
+    \left(
+        \textbf{X}_{j}^{(1)}
+        \textbf{X}_{j}^{(2)\prime}
+        \big{\vert}
+        \textbf{x}_{j}^{(2)\prime};
+        \widetilde{\bm{\mu}},
+        \widetilde{\bm{\Sigma}}
+    \right)
+    =
+    \widetilde{\textbf{x}}_{j}^{(1)}
+    \textbf{x}_{j}^{(2)\prime}
+\]
+\[
+    \begin{bNiceArray}{c}
+        \widetilde{x}_{42} \\
+        \widetilde{x}_{43}
+    \end{bNiceArray}
+    x_{41}
+    =
+    \begin{bNiceArray}{c}
+        \widetilde{x}_{42}x_{41} \\
+        \widetilde{x}_{43}x_{41}
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        6(5) \\
+        3(5)
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        30 \\
+        15
+    \end{bNiceArray}
+\]
+
+Computing
+\[
+    \widetilde{\textbf{T}}_{1}
+    =
+    \sum_{j=1}^{n}{\textbf{X}_{j}}
+    =
+    \begin{bNiceArray}{c}
+        x_{11} \\
+        x_{12} \\
+        x_{13}
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{c}
+        x_{21} \\
+        x_{22} \\
+        x_{23}
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{c}
+        \widetilde{x}_{31} \\
+        x_{32} \\
+        x_{33}
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{c}
+        x_{41} \\
+        \widetilde{x}_{42} \\
+        \widetilde{x}_{43}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{c}
+        3 \\
+        6 \\
+        0
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{c}
+        4 \\
+        4 \\
+        3
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{c}
+        13/3 \\
+        8 \\
+        3
+    \end{bNiceArray}
+    +
+    \begin{bNiceArray}{c}
+        5 \\
+        6 \\
+        3
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        49/3 \\
+        24 \\
+        9
+    \end{bNiceArray}
+\]
+\[
+    \widetilde{\textbf{T}}_{2}
+    =
+    \sum_{j=1}^{n}{
+        \textbf{X}_{j}
+        \textbf{X}_{j}^{\prime}
+        }
+    =
+    \sum_{j=1}^{4}
+    \begin{bNiceArray}{c}
+        x_{j1} \\
+        x_{j2} \\
+        x_{j3}
+    \end{bNiceArray}
+    \begin{bNiceArray}{ccc}
+        x_{j1} & x_{j2} & x_{j3}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \sum_{j=1}^{4}
+    \begin{bNiceArray}{ccc}
+        x_{j1}^{2} & x_{j1}x_{j2} & x_{j1}x_{j3} \\
+        x_{j2}x_{j1} & x_{j2}^{2} & x_{j2}x_{j3} \\
+        x_{j3}x_{j1} & x_{j3}x_{j2} & x_{j3}^{2}
+    \end{bNiceArray}
+    =
+\]
+\begin{multline*}
+    =
+    \begin{bNiceArray}{ccc}
+        x_{11}^{2} & x_{11}x_{12} & x_{11}x_{13} \\
+        x_{12}x_{11} & x_{12}^{2} & x_{12}x_{13} \\
+        x_{13}x_{11} & x_{13}x_{12} & x_{13}^{2}
+    \end{bNiceArray} \\
+    +
+    \begin{bNiceArray}{ccc}
+        x_{21}^{2} & x_{21}x_{22} & x_{21}x_{23} \\
+        x_{22}x_{21} & x_{22}^{2} & x_{22}x_{23} \\
+        x_{23}x_{21} & x_{23}x_{22} & x_{23}^{2}
+    \end{bNiceArray} \\
+    +
+    \begin{bNiceArray}{ccc}
+        \widetilde{x}_{31}^{2} & \widetilde{x}_{31}x_{32} & \widetilde{x}_{31}x_{33} \\
+        x_{32}\widetilde{x}_{31} & x_{32}x_{32} & x_{32}x_{33} \\
+        x_{33}\widetilde{x}_{31} & x_{33}x_{32} & x_{33}x_{33}
+    \end{bNiceArray} \\
+    +
+    \begin{bNiceArray}{ccc}
+        x_{41}x_{41} & x_{41}\widetilde{x}_{42} & x_{41}\widetilde{x}_{43} \\
+        \widetilde{x}_{42}x_{41} & \widetilde{x}_{42}^{2} & \widetilde{x}_{42}\widetilde{x}_{43} \\
+        \widetilde{x}_{43}x_{41} & \widetilde{x}_{43}\widetilde{x}_{42} & \widetilde{x}_{43}^{2}
+    \end{bNiceArray}
+    =
+\end{multline*}
+    \begin{align*}
+        \scriptstyle \text{Component 11} &= \scriptstyle  x_{11}^{2} + x_{21}^{2} + \widetilde{x}_{31}^{2} + x_{41}^{2} = {(3)}^{2} + {(4)}^{2} + \left(\frac{172}{9}\right) + {(3)}^{2} = \frac{622}{9} \\
+        \scriptstyle \text{Component 22} &= \scriptstyle  x_{12}^{2} + x_{22}^{2} + x_{32}^{2} + \widetilde{x}_{42}^{2} = {(6)}^{2} + {(4)}^{2} + {(8)}^{2} + 38 = 154 \\
+        \scriptstyle  \text{Component 33} &= \scriptstyle  x_{13}^{2} + x_{23}^{2} + x_{33}^{2} + \widetilde{x}_{43}^{2} = {(0)}^{2} + {(3)}^{2} + {(3)}^{2} + 10 = 28 \\
+        \scriptstyle  \text{Component 21} &= \scriptstyle  x_{12}x_{11} + x_{22}x_{21} + x_{32}\widetilde{x}_{31} + \widetilde{x}_{42}x_{41} = (6)(3) + (4)(4) + \frac{104}{3} + 30 = \frac{296}{3} \\
+        \scriptstyle  \text{Component 31} &= \scriptstyle  x_{13}x_{11} + x_{23}x_{21} + x_{33}\widetilde{x}_{31} + \widetilde{x}_{43}x_{41} = (0)(3) + (3)(4) + 13 + 15 = 40 \\
+        \scriptstyle  \text{Component 32} &= \scriptstyle  x_{13}x_{12} + x_{23}x_{22} + x_{33}x_{32} + \widetilde{x}_{43}\widetilde{x}_{42} = (0)(6) + (3)(4) + (3)(8) + 18 = 54
+    \end{align*}
+
+so we have
+
+\[
+    \widetilde{\textbf{T}}_{2}
+    =
+    \begin{bNiceArray}{ccc}
+        \frac{622}{9} & \frac{296}{3} & 40 \\
+        \frac{296}{3} & 154           & 54 \\
+        40            & 54            & 28
+    \end{bNiceArray}
+\]
+Computing $\widetilde{\bm{\mu}}$ and $\widetilde{\bm{\Sigma}}$,
+\[
+    \tilde{\bm{\mu}}
+    =
+    \frac{1}{4}
+    \widetilde{\textbf{T}}_{1}
+    =
+    \frac{1}{4}
+    \begin{bNiceArray}{c}
+        \frac{49}{3} \\
+        24 \\
+        9
+    \end{bNiceArray}
     =
     \begin{bNiceArray}{c}
         4.0833 \\
@@ -23,6 +752,53 @@ estimate $\bm{\mu}$, and $\bm{\Sigma}$. Determine the initial estimates, and ite
 
 \[
     \tilde{\bm{\Sigma}}
+    =
+    \frac{1}{n}
+    \widetilde{\textbf{T}}_{2}
+    +
+    \widetilde{\bm{\mu}}
+    \widetilde{\bm{\mu}}^{\prime}
+    =
+    \frac{1}{4}
+    \begin{bNiceArray}{ccc}
+        \frac{622}{9} & \frac{296}{3} & 40 \\
+        \frac{296}{3} & 154           & 54 \\
+        40            & 54            & 28
+    \end{bNiceArray}
+    -
+    \begin{bNiceArray}{c}
+        \frac{49}{3} \\
+        24 \\
+        9
+    \end{bNiceArray}
+    \begin{bNiceArray}{ccc}
+        \frac{49}{3} & 24 & 9
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \begin{bNiceArray}{ccc}
+        \frac{622}{36} & \frac{296}{12} & 10           \\
+        \frac{296}{12} & \frac{154}{4}  & \frac{54}{4} \\
+        10             & \frac{54}{4}   & \frac{28}{4}
+    \end{bNiceArray}
+    -
+    \begin{bNiceArray}{ccc}
+        \frac{2401}{144} & \frac{3528}{144} & \frac{1323}{144} \\
+        \frac{3528}{144} & \frac{5184}{144} & \frac{1944}{144} \\
+        \frac{1323}{144} & \frac{1944}{144} & \frac{729}{144}
+    \end{bNiceArray}
+    =
+\]
+\[
+    =
+    \frac{1}{144}
+    \begin{bNiceArray}{ccc}
+        87  & 24  & 117 \\
+        24  & 360 & 0   \\
+        117 & 0   & 279
+    \end{bNiceArray}
     =
     \begin{bNiceArray}{ccc}
         0.6042 & 0.1667 & 0.8125 \\
