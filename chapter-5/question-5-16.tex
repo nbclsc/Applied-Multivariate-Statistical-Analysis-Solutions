@@ -1,0 +1,206 @@
+As part of a larger marketing research project, a consultant for the Bank of Shorewood
+wants to know the proportion of savers that uses the bank's facilities as their primary vehicle
+for saving. The consultant would also like to know the proportions of savers who
+use the three major competitors: Bank B, Bank C, and Bank D. Each individual contacted
+in a survey responded to the following question:
+\newline
+Which bank is your primary savings bank?
+
+\begin{center}
+    \begin{NiceTabular}{c >{\centering\arraybackslash} m{1.7cm}| >{\centering\arraybackslash} m{1.2cm}| >{\centering\arraybackslash} m{1.2cm}|>{\centering\arraybackslash} m{1.2cm}|>{\centering\arraybackslash} m{1.4cm}| >{\centering\arraybackslash} m{1.5cm}}
+        \textit{Response:}
+        &
+        Bank of Shorewood
+        &
+        Bank B
+        &
+        Bank C
+        &
+        Bank D
+        &
+        Another Bank
+        &
+        \makecell{No \\ Savings}
+    \end{NiceTabular}
+\end{center}
+
+A sample of $n = 355$ people with savings accounts produced the following counta
+when asked to indicate their primary savings banks (the people with no savings will be
+ignored in the comparison of savers, so there are five categories):
+% \makecell{$p_{5} = 1 -$ \\ $(p_{1} + p_{2} + p_{3} + p_{4})$}
+\begin{center}
+    \begin{tabular}{>{\centering\arraybackslash} m{1.8cm} | >{\centering\arraybackslash} m{2cm} >{\centering\arraybackslash} m{1.4cm} >{\centering\arraybackslash} m{1.4cm} >{\centering\arraybackslash} m{1.4cm} >{\centering\arraybackslash} m{2.9cm}}
+        \hline
+        Bank (category)
+        &
+        Bank of Shorewood
+        &
+        Bank B
+        &
+        Bank C
+        &
+        Bank D
+        &
+        Another Bank \\
+        \hline
+        \begin{tabular}{>{\centering\arraybackslash} m{1.8cm} >{\centering\arraybackslash} m{2cm} >{\centering\arraybackslash} m{1.4cm} >{\centering\arraybackslash} m{1.4cm} >{\centering\arraybackslash} m{1.4cm} >{\centering\arraybackslash} m{1.45cm} | >{\centering\arraybackslash} m{1.4cm} >{\centering\arraybackslash} m{1.45cm}}
+            \addlinespace[0.2cm]
+            Observed number & 105 & 119 & 56 & 25 & 50 & \makecell{Total \\ n = 355}
+        \end{tabular}
+        \\
+        \hline
+        Population proportion & $p_{1}$ & $p_{2}$ & $p_{3}$ & $p_{4}$ & 
+        {\begin{align*}
+            p_{5} =& 1 - \\ 
+            \phantom{p_{5} =} & (p_{1} + p_{2} + p_{3} + p_{4})
+        \end{align*}}
+        \\
+        \hline
+        Observed sample proportion
+        &
+        $\hat{p}_{1} = \frac{105}{355} = .30$
+        &
+        $\hat{p}_{2} = .33$
+        &
+        $\hat{p}_{3} = .16$
+        &
+        $\hat{p}_{4} = .07$
+        &
+        $\hat{p}_{5} = .14$ \\
+        \hline
+    \end{tabular}
+\end{center}
+\vspace{0.5cm}
+\par
+Let the population proportions be
+\begin{align*}
+    p_{1} =& \text{proportion of savers at Bank of Shorewood} \\
+    p_{2} =& \text{proportionofsaversatBankB} \\
+    p_{3} =& \text{proportion of savers at Bank C} \\
+    p_{4} =& \text{proportion of savers atBankD} \\
+    1 - (p_{1} + p_{2} + p_{3} + p_{4}) =& \text{proportion of savers at other banks}
+\end{align*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Construct simultaneous 95\% confidence intervals for $p_{1}, p_{2}, \dots , p_{5}$.
+    
+    \[
+        \hat{\textbf{p}}
+        =
+        \begin{bNiceArray}{c}
+            0.29577465 \\
+            0.33521127 \\
+            0.15774648 \\
+            0.07042254 \\
+            0.14084507
+        \end{bNiceArray},
+    \]
+    \[
+        \hat{\bm{\Sigma}}
+        =
+        \scalebox{0.8}{$
+        \begin{bNiceArray}{rrrrr}
+             0.20829201 & -0.09914699 & -0.04665741 & -0.0208292  & -0.0416584  \\
+            -0.09914699 &  0.22284467 & -0.0528784  & -0.02360643 & -0.04721285 \\
+            -0.04665741 & -0.0528784  &  0.13286253 & -0.01110891 & -0.02221781 \\
+            -0.0208292  & -0.02360643 & -0.01110891 &  0.0654632  & -0.00991867 \\
+            -0.0416584  & -0.04721285 & -0.02221781 & -0.00991867 &  0.12100774 \\
+        \end{bNiceArray}
+        $}
+    \]
+    \[
+        \textbf{a}^{\prime} \hat{\textbf{p}}
+        \pm
+        \sqrt{\chi_{q}^{2}(\alpha)}
+        \sqrt{\frac{\textbf{a}^{\prime}\hat{\bm{\Sigma}}\textbf{a}}{n}}
+    \]
+    where $\chi_{5}^{2}(0.05) = 9.49$. I used 5 vectors for $\textbf{a}$,
+    \[
+        \textbf{a}_{1}
+        =
+        \left[
+            \begin{array}{r}
+            1 \\
+            0 \\
+            0 \\
+            0 \\
+            0
+            \end{array}
+        \right],
+        \textbf{a}_{2}
+        =
+        \left[
+            \begin{array}{r}
+            0 \\
+            1 \\
+            0 \\
+            0 \\
+            0
+            \end{array}
+        \right],
+        \textbf{a}_{3}
+        =
+        \left[
+            \begin{array}{r}
+            0 \\
+            0 \\
+            1 \\
+            0 \\
+            0
+            \end{array}
+        \right],
+        \textbf{a}_{4}
+        =
+        \left[
+            \begin{array}{r}
+            0 \\
+            0 \\
+            0 \\
+            1 \\
+            0
+            \end{array}
+        \right],
+        \textbf{a}_{5}
+        =
+        \left[
+            \begin{array}{r}
+            0 \\
+            0 \\
+            0 \\
+            0 \\
+            1
+            \end{array}
+        \right]
+    \]
+
+    \[
+    \begin{NiceArray}{rrrr}
+       0.30 \pm \sqrt{9.49} \frac{\sqrt{0.21}}{\sqrt{355}} & \text{contains }\mu_{1} & \text{ or } & 0.22 \leq \mu_{1} \leq 0.37 \\
+       0.34 \pm \sqrt{9.49} \frac{\sqrt{0.22}}{\sqrt{355}} & \text{contains }\mu_{2} & \text{ or } & 0.26 \leq \mu_{2} \leq 0.41 \\
+       0.16 \pm \sqrt{9.49} \frac{\sqrt{0.13}}{\sqrt{355}} & \text{contains }\mu_{3} & \text{ or } & 0.10 \leq \mu_{3} \leq 0.22  \\
+       0.07 \pm \sqrt{9.49} \frac{\sqrt{0.07}}{\sqrt{355}} & \text{contains }\mu_{4} & \text{ or } & 0.03 \leq \mu_{4} \leq 0.11 \\
+       0.14 \pm \sqrt{9.49} \frac{\sqrt{0.12}}{\sqrt{355}} & \text{contains }\mu_{5} & \text{ or } & 0.08 \leq \mu_{5} \leq 0.20  \\
+    \end{NiceArray}
+    \]
+
+    \item Construct a simultaneous 95\% confidence interval that allows a comparison of the
+    Bank of Shorewood with its major competitor, Bank B. Interpret this interval.
+    \newline\par
+    Here, I used
+    \[
+        \textbf{a}
+        =
+        \begin{bNiceArray}{r}
+            -1 \\
+            1 \\
+            0 \\
+            0 \\
+            0
+        \end{bNiceArray}
+    \]
+    \[
+        \begin{NiceArray}{rrrr}
+           0.04 \pm \sqrt{9.49} \frac{\sqrt{0.63}}{\sqrt{355}} & \text{contains }\mu_{1} & \text{ or } & -0.09 \leq \mu_{1} \leq 0.17
+        \end{NiceArray}
+        \]
+\end{enumerate}
