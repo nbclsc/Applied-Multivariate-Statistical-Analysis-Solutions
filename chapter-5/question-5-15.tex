@@ -1,0 +1,103 @@
+Let $X_{ji}$ and $X_{jk}$ be the $i$th and $k$th components, respectively, of $\textbf{X}_{j}$.
+\begin{enumerate}
+    \item Show that $\mu_{i} = E(X_{ji}) = p_{i}$ and $\sigma_{ii} = \text{Var}(X_{ji}) = p_{i}(l - p_{i})$, $i = 1, 2, \dots, p$.
+    
+    Using the definition of discrete expectation for a single random variable,
+    \[
+        E[X] = \sum_{\ell}x_{\ell}P(X_{\ell} = x_{\ell})
+    \]
+    Here, we have a random matrix and for each component we have
+    \[
+        E[X_{ji}]
+        =
+        \sum_{\ell=1}^{k}x_{j\ell}P(X_{j\ell} = x_{j\ell})
+        =
+    \]
+    \[{\scriptstyle 
+        =
+        0 \cdot P(X_{j1} = x_{j1}) + \dots + 1 \cdot P(X_{ji} = x_{ji}) + 0 \cdot P(X_{j,i+1} = x_{j,i+1}) + \dots + 0 \cdot P(X_{jk} = x_{jk})
+        =
+    }
+    \]
+    \[
+        =
+        0 \cdot p_{1} + \dots + 0 \cdot p_{i-1} + 1 \cdot p_{i} + 0 \cdot p_{i+1} + \dots + 0 \cdot p_{k}
+        =
+    \]
+    \[
+        =
+        0 + \dots + 0 + p_{i} + 0 + \dots + 0
+        =
+    \]
+    \[
+        =
+        p_{i}
+    \]
+    Similarly, the second moment is,
+    \[
+        E[X_{ji}X_{ji}]
+        =
+        E[X_{ji}^{2}]
+        =
+        \sum_{\ell=1}^{k}x_{j\ell}P(X_{j\ell} = x_{j\ell})
+        =
+    \]
+    \[{\scriptstyle 
+        =
+        0^{2} \cdot P(X_{j1} = x_{j1}) + \dots + 1^{2} \cdot P(X_{ji} = x_{ji}) + 0^{2} \cdot P(X_{j,i+1} = x_{j,i+1}) + \dots + 0^{2} \cdot P(X_{jk} = x_{jk})
+        =
+    }
+    \]
+    \[
+        =
+        0^{2} \cdot p_{1} + \dots + 0^{2} \cdot p_{i-1} + 1^{2} \cdot p_{i} + 0^{2} \cdot p_{i+1} + \dots + 0^{2} \cdot p_{k}
+        =
+    \]
+    \[
+        =
+        0 + \dots + 0 + p_{i} + 0 + \dots + 0
+        =
+    \]
+    \[
+        =
+        p_{i}
+    \]
+
+    Using the definition for the variance for a single component,
+    \[
+        V[X_{ji}]
+        =
+        E[{(X_{ji}-E[X_{ji}])}^{2}]
+        =
+        E[{(X_{ji}-p_{i})}^{2}]
+        =
+    \]
+    \[
+        =
+        E[X_{ji}X_{ji} - X_{ji}p_{i} - p_{i}X_{ji} + {p_{i}}^{2}]
+        =
+        E[X_{ji}X_{ji}] - E[X_{ji}]p_{i} - p_{i}E[X_{ji}] + {p_{i}}^{2}
+        =
+    \]
+    \[
+        =
+        p_{i} - p_{i}^{2} - p_{i}^{2} + {p_{i}}^{2}
+        =
+        p_{i} - p_{i}^{2}
+        =
+        p_{i}(1 - p_{i})
+    \]
+    \item Show that $\sigma_{ik} = \text{Cov}(X_{ji}, X_{jk}) = - p_{i}p_{k}$, $i \ne k$. Why must this covariance necessarily be negative?
+    
+    The cross term is
+    \[
+        E[X_{ji}X_{jk}]
+        =
+        \sum_{\ell=1}^{k}\sum_{m=1}^{k}x_{j\ell}x_{jm}P(X_{j\ell} = x_{j\ell}, X_{jm} = x_{jm})
+        =
+        0
+    \]
+    Because $x_{j\ell}x_{jm} = 0$ for all $\ell$ and $m$ because it's impossible for more than one value in our vector to take on the value 1, so we only have the cases, $0 \times 1 = 0$, $1 \times 0 = 0$, and $0 \times 0 = 0$.
+
+    The covariance is necessarily negative because we only have two values, 0 and 1. For two components $i$ and $k$, when $i$ is ``large'' it has a value of 1 and the other component must be 0, which is smaller than 1. This is always the case, since only one component can be 1, and all others have to be zero. This describes the situation where the covariance is negative, where large values for one variable correspond to smaller values in the other, and vice versa.
+\end{enumerate}
