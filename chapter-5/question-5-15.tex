@@ -65,7 +65,7 @@ Let $X_{ji}$ and $X_{jk}$ be the $i$th and $k$th components, respectively, of $\
 
     Using the definition for the variance for a single component,
     \[
-        V[X_{ji}]
+        \text{Var}[X_{ji}]
         =
         E[{(X_{ji}-E[X_{ji}])}^{2}]
         =
@@ -87,9 +87,74 @@ Let $X_{ji}$ and $X_{jk}$ be the $i$th and $k$th components, respectively, of $\
         =
         p_{i}(1 - p_{i})
     \]
+    For the $q+1$ category, we use a few things. One, $X_{j,q+1} = 1 - \left( \sum_{\ell=1}^{q}{X_{j\ell}} \right)$. Two, $p_{q+1} = 1 - \left( \sum_{\ell=1}^{q}{p_{\ell}} \right)$. Three, result from part (b). Four, the definition of the variance for sums of random variables, where for $Y = X_{1} + \cdots + X_{q}$, we have
+    \[
+        \text{Var}[Y]
+        =
+        \text{Var}[X_{1} + \cdots + X_{q}]
+        =
+        \sum_{i=1}^{q}{\text{Var}[X_{i}]}
+        +
+        2\sum_{i < j}\text{Cov}[X_{i}, X_{j}]
+    \]
+    Contructing the variance is then,
+    \begin{align*}
+        \text{Var}[X_{j,q+1}] 
+        &=
+        \text{Var}\left[
+            1 - \left( \sum_{\ell=1}^{q}{X_{j\ell}} \right)
+        \right] \\
+        &=
+        \scriptstyle
+        \text{Var}\left[ 1 \right]
+        +
+        \sum_{\ell=1}^{q}{\text{Var}\left[X_{j\ell}\right]}
+        +
+        2\sum_{\ell}^{q}{\text{Cov}\left[1, X_{j\ell}\right]}
+        +
+        2\sum_{\ell<m}{\text{Cov}\left[X_{j\ell}, X_{jm}\right]} \\
+        &=
+        0
+        +
+        \sum_{\ell=1}^{q}{\text{Var}\left[X_{j\ell}\right]}
+        +
+        0
+        +
+        2\sum_{\ell<m}{\text{Cov}\left[X_{j\ell}, X_{jm}\right]} \\
+        &=
+        \sum_{\ell=1}^{q}{\text{Var}\left[X_{j\ell}\right]}
+        +
+        2\sum_{\ell<m}{\text{Cov}\left[X_{j\ell}, X_{jm}\right]}  \\
+        &=
+        \sum_{\ell=1}^{q}{p_{\ell}(1-p_{\ell})}
+        +
+        2\sum_{\ell<m}{(-p_{\ell}p_{m})} \\
+        &=
+        \sum_{\ell=1}^{q}{p_{\ell}} - \sum_{\ell=1}^{q}{p_{\ell}^{2}}
+        -
+        2\sum_{\ell<m}{p_{\ell}p_{m}} \\
+        &=
+        \sum_{\ell=1}^{q}{p_{\ell}}
+        -
+        \left( \sum_{\ell=1}^{q}{p_{\ell}^{2}} + 2\sum_{\ell<m}{p_{\ell}p_{m}} \right) \\
+        &=
+        \sum_{\ell=1}^{q}{p_{\ell}}
+        -
+        {\left( \sum_{\ell=1}^{q}{p_{\ell}} \right)}^{2} \\
+        &=
+        \left(
+            1
+            -
+            \left( \sum_{\ell=1}^{q}{p_{\ell}} \right)
+        \right)
+        \left( \sum_{\ell=1}^{q}{p_{\ell}} \right) \\
+        &=
+        p_{q+1}\left(1 - p_{q+1} \right)
+    \end{align*}
+
     \item Show that $\sigma_{ik} = \text{Cov}(X_{ji}, X_{jk}) = - p_{i}p_{k}$, $i \ne k$. Why must this covariance necessarily be negative?
     
-    The cross term is
+    First, the expected value of $X_{ji}X_{jk}$ is
     \[
         E[X_{ji}X_{jk}]
         =
@@ -97,9 +162,9 @@ Let $X_{ji}$ and $X_{jk}$ be the $i$th and $k$th components, respectively, of $\
         =
         0
     \]
-    Because $x_{j\ell}x_{jm} = 0$ for all $\ell$ and $m$ because it's impossible for more than one value in our vector to take on the value 1, so we only have the cases, $0 \times 1 = 0$, $1 \times 0 = 0$, and $0 \times 0 = 0$.
+    Because $x_{j\ell}x_{jm} = 0$ for all combinations of $\ell$ and $m$. This is because it's impossible for more than one value in our vector to take on the value 1, so we only have the cases, $0 \times 1 = 0$, $1 \times 0 = 0$, and $0 \times 0 = 0$.
 
-    For the single components $i$ and $k$,
+    The covariance for the single components $i$ and $k$,
     \[
         \text{Cov}[X_{ji}, X_{jk}]
         =
