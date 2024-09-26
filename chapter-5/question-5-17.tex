@@ -1,0 +1,130 @@
+In order to assess the prevalence of a drug problem among high school students in a
+particular city, a random sample of 200 students from the city's five high schools
+were surveyed. One of the survey questions and the corresponding responses are
+as follows:
+\newline
+What is your typical weekly marijuana usage?
+
+\begin{center}
+\begin{NiceTabular}{r{c}w{c}{2cm}w{c}{3cm}c}
+    & \Block{1-3}{Category} \\
+    \Block{2-1}{} & \Block{2-1}{None} & \Block{2-1}{Moderate \\ (1--3 joints)} & \Block{2-1}{Heavy \\ (4 or more joints)} \\
+    & & & \\
+    \Block{2-1}{Number of \\ responses} & \Block{2-1}{117} & \Block{2-1}{62} & \Block{2-1}{21} \\
+    & & & \\
+    % Draw rows.
+    \CodeAfter \tikz \draw[solid] (1-|2) -- (1-|5);
+    \CodeAfter \tikz \draw[solid] (2-|1) -- (2-|5);
+    \CodeAfter \tikz \draw[solid] (4-|1) -- (4-|5);
+    \CodeAfter \tikz \draw[solid] (6-|1) -- (6-|5);
+    % Draw columns.
+    \CodeAfter \tikz \draw[solid] (2-|1) -- (6-|1);
+    \CodeAfter \tikz \draw[solid] (1-|2) -- (6-|2);
+    \CodeAfter \tikz \draw[solid] (2-|3) -- (6-|3);
+    \CodeAfter \tikz \draw[solid] (2-|4) -- (6-|4);
+    \CodeAfter \tikz \draw[solid] (1-|5) -- (6-|5);
+\end{NiceTabular}
+\end{center}
+
+Construct 95\% simultaneous confidence intervals for the three proportions $p_{1}$, $p_{2}$, and
+$p_{3} = 1 - (p_{1} + p_{2})$,
+\newline
+Create the sample proportion vector
+\[
+    \hat{\textbf{p}}
+    =
+    \begin{bNiceArray}{c}
+        117/200 \\
+        62/200  \\
+        21/200
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}
+        0.585 \\
+        0.310 \\
+        0.105
+    \end{bNiceArray}
+\]
+The sample covariance matrix is then
+\[
+    \hat{\bm{\Sigma}}
+    =
+    \begin{bNiceArray}{rrr}
+         p_{1}(1 - p_{1}) & -p_{1}p_{2}       & -p_{1}p_{3}       \\
+        -p_{1}p_{2}       &  p_{2}(1 - p_{2}) & -p_{2}p_{3}       \\
+        -p_{1}p_{3}       & -p_{2}p_{3}       &  p_{3}(1 - p_{3})
+    \end{bNiceArray}
+    =
+    \scalebox{0.85}{$
+        \begin{bNiceArray}{rrr}
+            0.242775 & -0.18135  & -0.061425 \\
+            -0.18135  &  0.2139   & -0.03255  \\
+            -0.061425 & -0.03255  &  0.093975 \\
+        \end{bNiceArray}
+    $}
+\]
+\[
+    \textbf{a}^{\prime} \hat{\textbf{p}}
+    \pm
+    \sqrt{\chi_{q}^{2}(\alpha)}
+    \sqrt{\frac{\textbf{a}^{\prime}\hat{\bm{\Sigma}}\textbf{a}}{n}}
+\]
+where $\chi_{3}^{2}(0.05) = 7.82$. I used 3 vectors for $\textbf{a}$,
+\[
+    \textbf{a}_{1}
+    =
+    \left[
+        \begin{array}{r}
+        1 \\
+        0 \\
+        0 \\
+        0 \\
+        0
+        \end{array}
+    \right],
+    \textbf{a}_{2}
+    =
+    \left[
+        \begin{array}{r}
+        0 \\
+        1 \\
+        0 \\
+        0 \\
+        0
+        \end{array}
+    \right],
+    \textbf{a}_{3}
+        =
+        \left[
+            \begin{array}{r}
+            0 \\
+            0 \\
+            1 \\
+            0 \\
+            0
+            \end{array}
+        \right],
+\]
+
+\[
+    \begin{NiceArray}{rrrr}
+       0.59 \pm \sqrt{7.82} \frac{\sqrt{0.24}}{\sqrt{200}} & \text{contains } p_{1} & \text{ or } & 0.49 \leq p_{1} \leq 0.68 \\
+       0.31 \pm \sqrt{7.82} \frac{\sqrt{0.21}}{\sqrt{200}} & \text{contains } p_{2} & \text{ or } & 0.22 \leq p_{2} \leq 0.40 \\
+       0.11 \pm \sqrt{7.82} \frac{\sqrt{0.09}}{\sqrt{200}} & \text{contains } p_{3} & \text{ or } & 0.04 \leq p_{3} \leq 0.17
+    \end{NiceArray}
+\]
+
+This isn't necessary to do, but we can check that the variance for the heavy users, $p_{3}$, is the same as computing the variance of $1 - (X_{1} + X_{2})$.
+\begin{align*}
+    \text{Var}[X_{3}]
+    &= \text{Var}[1 - (X_{1} + X_{2})] \\
+    &= \text{Var}[1] + {(-1)}^{2}\text{Var}[X_{1} + X_{2}] & \text{(by independence)} \\
+    &= 0 + \text{Var}[X_{1} + X_{2}] \\
+    &= \text{Var}[X_{1}] +\text{Var}[X_{2}] + 2\text{Cov}[X_{1}, X_{2}] & \text{(Var of sum of $X_{1}$ and $X_{2}$)} \\
+    &= p_{1}(1 - p_{1}) + p_{2}(1 - p_{2}) + 2(-p_{1}p_{2}) \\
+    &= p_{1} + p_{2} - p_{1}^{2} - p_{2}^{2} - 2p_{1}p_{2} \\
+    &= (p_{1} + p_{2}) - (p_{1}^{2} + p_{2}^{2} + 2p_{1}p_{2}) \\
+    &= (p_{1} + p_{2}) - {(p_{1} + p_{2})}^{2} \\
+    &= (1 - (p_{1} + p_{2}))(p_{1} + p_{2}) \\
+    &= p_{3}(1 - p_{3})
+\end{align*}
