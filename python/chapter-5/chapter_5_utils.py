@@ -145,3 +145,44 @@ def plot_control_ellipse(x: np.ndarray | pd.DataFrame, alpha: float):
                 scale_units='xy',
                 scale=1)
     return plt, ax
+
+def my_q_q_plot(x: np.ndarray):
+    '''
+    Create a Q-Q plot, for an input variable.
+    '''
+    x = x.copy()
+    assert len(x.shape) == 1, "Wrong shape."
+    x.sort()
+    n = x.shape[0]
+    prob = (np.arange(x.size)+1 - 0.5) / n
+    quant = stats.norm.ppf(prob)
+
+    return plt.scatter(quant, x, facecolors='none', edgecolors='royalblue')
+
+def ppcc_simulation(n: int, num_simulations: int, q_levels: list[float]):
+    '''
+    Function to perform the simulation for correlation coefficient test for
+    normality from the paper 'Probability Plot Correlation Coefficient Test
+    for Normality' by Filliben. Just like in Table 4.2 on page 181.
+    '''
+    ppcc_values = list()
+    for i in range(num_simulations):
+        # Generate a random sample from a normal distribution.
+        sample_data = stats.norm.rvs(size=n)
+        sample_data.sort()
+
+        # Theoretical quantiles from a normal distribution.
+        probs = [((i+1) - 0.50)/n for i in range(n)]
+        theoretical_quantiles = stats.norm.ppf(probs)
+
+        # Compute the correlation coefficient.
+        correlation_coefficient = np.corrcoef(sample_data, theoretical_quantiles)[0,1]
+        
+        # Store the PPCC value.
+        ppcc_values.append(correlation_coefficient)
+    
+    # Determine critical values for common significance levels.
+    critical_values = np.quantile(ppcc_values, q_levels)
+
+    # Return the distribution of PPCC values and critical values.
+    return ppcc_values, critical_values
