@@ -76,3 +76,14 @@ The 95\% Bonferroni confidence intervals:
        0.69 \pm 2.88 \frac{\sqrt{0.011}}{\sqrt{25}} & \text{contains } \mu_{2} & \text{ or } & 0.63 \leq \mu_{6} \leq 0.75 \\
     \end{NiceArray}
 \]
+
+Dividing the length of the Bonferroni interval by the length of the $T^{2}$ interval,
+\[
+    \frac{\text{Length of Bonferroni interval}}{\text{Length of the }T^{2}\text{-interval}}
+    =
+    \frac{t_{n-1}(\frac{\alpha}{2m})}{\sqrt{\frac{(n-1)p}{n-p}F_{p, n-p}(\alpha)}}
+    =
+    0.6442
+\]
+The Bonferroni interval is only 64.42\% of the length of the simultaneous $T^{2}$ interval, so it's about 35\% shorter.
+
