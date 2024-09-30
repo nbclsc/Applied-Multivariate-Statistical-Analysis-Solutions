@@ -35,7 +35,7 @@ def plot_confidence_ellipse(x: np.ndarray | pd.DataFrame, n: int, p: int, alpha:
     lmbda1, lmbda2 = eigenvalues[max_idx], eigenvalues[min_idx]
     e1, e2 = eigenvectors[:, max_idx].copy(), eigenvectors[:, min_idx].copy()
 
-    const = (p*(n - 1))/(n*(n - p))
+    const = ((n - 1)*p)/(n*(n - p))
     f_val = stats.f.ppf(1-alpha,p,n-p)
 
     ell_width = np.sqrt(lmbda1)*np.sqrt(const*f_val)
@@ -141,6 +141,65 @@ def plot_control_ellipse(x: np.ndarray | pd.DataFrame, alpha: float):
                 xbar[1],
                 e2[0] * ell_height * i,
                 e2[1] * ell_height * i,
+                angles='xy',
+                scale_units='xy',
+                scale=1)
+    return plt, ax
+
+def plot_future_control_ellipse(x: np.ndarray | pd.DataFrame, n: int, p: int, alpha: float):
+    '''
+    Plot the 2D control ellipse for future observations as found above (5-34) and Example
+    5.12 found in section 5.6 on page 248. The 1D future confidence intervals are
+    the projection of the 2D ellipse onto the component axis.
+    Args:
+        x (np.ndarray): A 2-dimensional array to create a future observation confidence
+        ellipse for.
+        n (int): The number of rows for the 2-D array.
+        p (int): The original number of features sumultaneous confidence intervals were created for.
+        alpha (float):
+    Returns:
+        tuple[plt, ax]: The plot graphic.
+    '''
+    if isinstance(x, pd.DataFrame):
+        x = x.to_numpy()
+    x = x.copy()
+    assert n == x.shape[0], f'Numer of rows and parameter n do not match. Paramerter n = {n}. Rows in x = {x.shape[0]}'
+    assert x.shape[1] == 2, f'Input matrix should have two columns, found {x.shape[1]}.'
+    xbar = np.mean(x, axis=0)
+
+    eigenvalues, eigenvectors = la.eigh(np.cov(x.T))
+    max_idx, min_idx = np.argmax(eigenvalues), np.argmin(eigenvalues)
+    lmbda1, lmbda2 = eigenvalues[max_idx], eigenvalues[min_idx]
+    e1, e2 = eigenvectors[:, max_idx].copy(), eigenvectors[:, min_idx].copy()
+
+    const = ((n + 1)*(n - 1)*p)/(n*(n - p))
+    f_val = stats.f.ppf(1-alpha,p,n-p)
+
+    ell_width = np.sqrt(lmbda1)*np.sqrt(const*f_val)
+    ell_height = np.sqrt(lmbda2)*np.sqrt(const*f_val)
+    ell_angle = np.degrees(np.arctan2(e1[1], e1[0]))
+
+    plt.figure()
+    ax = plt.gca()
+    ellipse = Ellipse(xy=xbar,
+                    width=2*ell_width,
+                    height=2*ell_height,
+                    angle=ell_angle,
+                    fill=False)
+    ax.add_patch(ellipse)
+    for i in [-1, 1]:
+        plt.quiver(xbar[0],
+                xbar[1],
+                e1[0] * ell_width * i,
+                e1[1] * ell_width * i,
+                angles='xy',
+                scale_units='xy',
+                scale=1
+                )
+        plt.quiver(xbar[0],
+                xbar[1],
+                e2[0]* ell_height * i,
+                e2[1]* ell_height * i,
                 angles='xy',
                 scale_units='xy',
                 scale=1)
