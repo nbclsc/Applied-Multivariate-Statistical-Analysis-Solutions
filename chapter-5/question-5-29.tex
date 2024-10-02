@@ -1,0 +1,36 @@
+Refer to the car body data in Exercise 5.28. These are all measured as deviations from
+target value so it is appropriate to test the null hypothesis that the mean vector is zero.
+Using the first 30 cases, test $H_{0}: \bm{\mu} = \textbf{0}$ at $\alpha = .05$
+\newline
+\par
+Okay, so we're testing
+\[
+    H_{0}: \bm{\mu} = \textbf{0} = \bm{\mu}
+    \hspace{0.2cm}
+    \text{ versus }
+    \hspace{0.2cm}
+    H_{1}: \bm{\mu} \ne \textbf{0}
+\]
+We need two things. One to compute the $T^{2}$ value, found in (5--4) on page 211.
+\[
+    T^{2}
+    =
+    n
+    {(\bar{\textbf{x}} - \bm{\mu}_{0})}^{\prime}
+    \textbf{S}^{-1}
+    (\bar{\textbf{x}} - \bm{\mu}_{0})
+    =
+    374.72
+\]
+The other is a critical value, computed as
+\[
+    \frac{(n-1)p}{n-p}
+    F_{p, n-p}(\alpha)
+    =
+    \frac{(29)6}{24}
+    (2.51)
+    =
+    18.18
+\]
+
+Our $T^{2}$ value of 374.72 is larger than our critical valuee of 18.18, so we'd reject the null hypothesis that $\bm{\mu} = \textbf{0}$ at the 0.05-level.
