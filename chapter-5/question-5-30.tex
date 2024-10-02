@@ -1,0 +1,105 @@
+Refer to the data on energy consumption in Exercise 3.18.
+\begin{enumerate}[label= (\alph*)]
+    \item Obtain the large sample 95\% Bonferroni confidence intervals for the mean consumption
+    of each of the four types, the total of the four, and the difference, petroleum
+    minus natural gas.
+
+    Energy consumption in 2001, by state, from the major sources
+    \begin{figure}[H]
+        \centering
+        \begin{NiceTabular}{cl}
+            $\mu_{1}$ &= population mean petroleum \\
+            $\mu_{2}$ &= population mean natural gas \\
+            $\mu_{3}$ &= population mean hydroelectric power \\
+            $\mu_{4}$ &= population mean nuclear electric power
+        \end{NiceTabular}
+    \end{figure}
+
+    \[
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            0.766 \\
+            0.508 \\
+            0.438 \\
+            0.161
+        \end{bNiceArray}
+        \hspace{0.2in}
+        \textbf{S}
+        =
+        \begin{bNiceArray}{cccc}
+            0.856 & 0.635 & 0.173 & 0.096 \\
+            0.635 & 0.568 & 0.128 & 0.067 \\
+            0.173 & 0.127 & 0.171 & 0.039 \\
+            0.096 & 0.067 & 0.039 & 0.043
+        \end{bNiceArray}
+    \]
+
+    Setup a matrix like what's in (3--38) on page 144, where each of the vectors we're interested in are rows.
+    \[
+        \textbf{A}
+        =
+        \begin{bmatrix}
+            \textbf{a}_{1}^{\prime} \\
+            \textbf{a}_{2}^{\prime} \\
+            \textbf{a}_{3}^{\prime} \\
+            \textbf{a}_{4}^{\prime} \\
+            \textbf{a}_{5}^{\prime} \\
+            \textbf{a}_{6}^{\prime}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            1 &  0 & 0 & 0 \\
+            0 &  1 & 0 & 0 \\
+            0 &  0 & 1 & 0 \\
+            0 &  0 & 0 & 1 \\
+            1 &  1 & 1 & 1 \\
+            1 & -1 & 0 & 0
+        \end{bmatrix}
+    \]
+
+    Large sample Bonferroni confidence intervals use the standard normal distribution
+    \[
+        \textbf{a}^{\prime} \bar{\textbf{x}}
+        \pm
+        z(\alpha/2m)
+        \sqrt{\frac{\textbf{a}^{\prime} \textbf{S} \textbf{a}}{n}}
+    \]
+
+    \[
+        \begin{NiceArray}{rrrr}
+            0.77 \pm 2.64 \frac{\sqrt{0.86}}{\sqrt{50}} & \text{contains } \mu_{1} & \text{ or } & 0.42 \leq \mu_{1} \leq 1.11 \\
+            0.51 \pm 2.64 \frac{\sqrt{0.57}}{\sqrt{50}} & \text{contains } \mu_{2} & \text{ or } & 0.23 \leq \mu_{2} \leq 0.79 \\
+            0.44 \pm 2.64 \frac{\sqrt{0.17}}{\sqrt{50}} & \text{contains } \mu_{3} & \text{ or } & 0.28 \leq \mu_{3} \leq 0.59 \\
+            0.16 \pm 2.64 \frac{\sqrt{0.04}}{\sqrt{50}} & \text{contains } \mu_{4} & \text{ or } & 0.08 \leq \mu_{4} \leq 0.24 \\
+            1.87 \pm 2.64 \frac{\sqrt{3.91}}{\sqrt{50}} & \text{contains } \sum_{i=1}^{4}{\mu_{i}} & \text{ or } & 1.13 \leq \sum_{i=1}^{4}{\mu_{i}} \leq 2.61 \\
+            0.26 \pm 2.64 \frac{\sqrt{0.15}}{\sqrt{50}} & \text{contains } \mu_{1} - \mu_{2} & \text{ or } & 0.11 \leq \mu_{1} - \mu_{2} \leq 0.40
+        \end{NiceArray}
+    \]
+
+    \item Obtain the large sample 95\% simultaneous $T^{2}$ intervals for the mean consumption
+    of each of the four types, the total of the four, and the difference, petroleum minus
+    natural gas. Compare with your results for Part a.
+    \par
+    Large sample $T^{2}$ confidence intervals use the $\chi^{2}$ distribution
+    \[
+        \textbf{a}^{\prime} \bar{\textbf{x}}
+        \pm
+        \sqrt{\chi_{p}^{2}(\alpha/2m)}
+        \sqrt{\frac{\textbf{a}^{\prime} \textbf{S} \textbf{a}}{n}}
+    \]
+
+    \[
+        \begin{NiceArray}{rrrr}
+            0.77 \pm \sqrt{13.70} \frac{\sqrt{0.86}}{\sqrt{50}} & \text{contains } \mu_{1} & \text{ or } & 0.28 \leq \mu_{1} \leq 1.25 \\
+            0.51 \pm \sqrt{13.70} \frac{\sqrt{0.57}}{\sqrt{50}} & \text{contains } \mu_{2} & \text{ or } & 0.11 \leq \mu_{2} \leq 0.90 \\
+            0.44 \pm \sqrt{13.70} \frac{\sqrt{0.17}}{\sqrt{50}} & \text{contains } \mu_{3} & \text{ or } & 0.22 \leq \mu_{3} \leq 0.65 \\
+            0.16 \pm \sqrt{13.70} \frac{\sqrt{0.04}}{\sqrt{50}} & \text{contains } \mu_{4} & \text{ or } & 0.05 \leq \mu_{4} \leq 0.27 \\
+            1.87 \pm \sqrt{13.70} \frac{\sqrt{3.91}}{\sqrt{50}} & \text{contains } \sum_{i=1}^{4}{\mu_{i}} & \text{ or } & 0.84 \leq \sum_{i=1}^{4}{\mu_{i}} \leq 2.91 \\
+            0.26 \pm \sqrt{13.70} \frac{\sqrt{0.15}}{\sqrt{50}} & \text{contains } \mu_{1} - \mu_{2} & \text{ or } & 0.05 \leq \mu_{1} - \mu_{2} \leq 0.46
+        \end{NiceArray}
+    \]
+
+    The large sample Bonferroni interval is only 71.29\% of the length of the large sample simultaneous $T^{2}$ interval, so it's about 30\% shorter.
+
+\end{enumerate}
