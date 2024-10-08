@@ -114,11 +114,11 @@ def plot_box_cox_transformation(lmbda_points: np.ndarray, max_lmbda: float, var_
 
 MultivariatePowerTransformation = namedtuple('MultivariatePowerTransformation',
                                                  ['mesh_x', 'mesh_y', 'l_lmbda', 'lmbda_x', 'lmbda_y', 'argmax_x', 'argmax_y', 'l_max'])
-def power_transform_2d(X: np.ndarray, lam_min: float, lam_max: float) -> MultivariatePowerTransformation:
+def power_transform_2d(x: np.ndarray, lam_min: float, lam_max: float) -> MultivariatePowerTransformation:
     r'''
     Compute the bivariate power transformation from input data. Returns lots of things used for plotting the contour plot.
     Args:
-        X (np.ndarray): A 2D array of data. The data should be n x p. n= number of observations. p = number of variables (should be 2).
+        x (np.ndarray): A 2D array of data. The data should be n x p. n= number of observations. p = number of variables (should be 2).
         lam_min (float): A minimum value of \lambda to apply transformation to.
         lam_max (float): A maximum value of \lambda to apply transformation to.
     Returns:
@@ -141,18 +141,18 @@ def power_transform_2d(X: np.ndarray, lam_min: float, lam_max: float) -> Multiva
 
     # Assuming X is already defined (e.g. X = np.random.rand(n, 2) for example purposes)
     # Transformed observations using (4-34).
-    x1_lmbda = (X[:, 0].reshape(-1, 1) ** lmbda1 - 1) / lmbda1  # n x 150
-    x2_lmbda = (X[:, 1].reshape(-1, 1) ** lmbda2 - 1) / lmbda2  # n x 150
+    x1_lmbda = (x[:, 0].reshape(-1, 1) ** lmbda1 - 1) / lmbda1  # n x 150
+    x2_lmbda = (x[:, 1].reshape(-1, 1) ** lmbda2 - 1) / lmbda2  # n x 150
 
     # Handle the case where lmbda1 or lmbda2 is zero from (4-34).
-    x1_lmbda[:, lmbda1 == 0] = np.log(X[:, 0])[:, np.newaxis]
-    x2_lmbda[:, lmbda2 == 0] = np.log(X[:, 1])[:, np.newaxis]
+    x1_lmbda[:, lmbda1 == 0] = np.log(x[:, 0])[:, np.newaxis]
+    x2_lmbda[:, lmbda2 == 0] = np.log(x[:, 1])[:, np.newaxis]
 
     # Compute values for function to maximize equation (4-40).
     l_lmbda = np.zeros((len(lmbda2), len(lmbda1)))
-    n = X.shape[0]  # Number of observations.
-    part1 = np.sum(np.log(X[:, 0]))  # Variable X1.
-    part2 = np.sum(np.log(X[:, 1]))  # Variable X2.
+    n = x.shape[0]  # Number of observations.
+    part1 = np.sum(np.log(x[:, 0]))  # Variable X1.
+    part2 = np.sum(np.log(x[:, 1]))  # Variable X2.
 
     # Loop through all lambda1 and lambda2 combinations.
     for i, _ in enumerate(lmbda2):
