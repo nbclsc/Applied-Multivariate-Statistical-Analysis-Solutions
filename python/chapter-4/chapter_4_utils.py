@@ -177,11 +177,11 @@ def power_transform_2d(X: np.ndarray, lam_min: float, lam_max: float) -> Multiva
                                     a)
     return results
 
-def plot_power_transformation_2d(pwr: MultivariatePowerTransformation) -> plt:
+def plot_power_transformation_2d(pwr: MultivariatePowerTransformation, title_text: str) -> plt:
     r'''
     Plot the contour plot and surface plot for a 2-D power transformation.
     Args:
-        MultivariatePowerTransformation: A named tuple of output from the 2-D power transformation. The elements are...
+        pwr (MultivariatePowerTransformation): A named tuple of output from the 2-D power transformation. The elements are...
             mesh_x: Is the meshgrid values in x-direction.
             mesh_y: Is the meshgrid values in y-direction.
             l_lmbda: Are the values computed in (4-40).
@@ -190,6 +190,7 @@ def plot_power_transformation_2d(pwr: MultivariatePowerTransformation) -> plt:
             argmax_x: Is the x-direction argmax.
             argmax_y Is the y-direction argmax.
             l_max: Is the max \ell(\lambda_{1}, \lambda_{2}) value.
+        title_text (str): Information about the data for the title.
     Returns:
         plt: The interface to the side-by-side plot of power transformation results. The contour plot on the left and surface plot on the right.
     '''
@@ -210,7 +211,7 @@ def plot_power_transformation_2d(pwr: MultivariatePowerTransformation) -> plt:
     # Plot the surface.
     ax = plt.subplot(gs[1], projection='3d')
     ax.plot_surface(pwr.mesh_x, pwr.mesh_y, pwr.l_lmbda, cmap='viridis')
-    ax.set_title(r'Surface Plot of $\ell\left( \lambda_{1}, \lambda_{2} \right)$ for Snow Data')
+    ax.set_title(fr'Surface Plot of $\ell\left( \lambda_{{1}}, \lambda_{{2}} \right)$ for {title_text}')
     ax.set_xlabel(r'$\lambda_{1}$')
     ax.set_ylabel(r'$\lambda_{2}$')
     ax.set_zlabel(r'$\ell(\lambda_1, \lambda_2)$')
