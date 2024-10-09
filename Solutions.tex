@@ -15,6 +15,10 @@
 \usepackage{relsize}
 \usepackage{booktabs} % Uses \toprule, midrule, etc. for tables.
 \usepackage{caption}
+\usepackage{makecell}
+
+\usetikzlibrary{positioning}
+\usetikzlibrary{quotes}
 
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
 
@@ -29,7 +33,7 @@
        tikz=densely dashed,
        width=\pgflinewidth
      },
-     cell-space-limits = 1pt
+     cell-space-limits = 2pt
   }
 
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
@@ -67,6 +71,12 @@
 \foreach \n in {1,...,41}{
     \subsection{}
     \input{chapter-4/question-4-\n}
+}
+\newpage
+\section{Chapter 5}
+\foreach \n in {1,...,31}{
+    \subsection{}
+    \input{chapter-5/question-5-\n}
 }
 
 \end{document}
