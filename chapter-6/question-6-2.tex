@@ -1,0 +1,76 @@
+Using the information in Example 6.1.\ construct the 95\% Bonferroni simultaneous intervals
+for the components of the mean difference vector $\bm{\delta}$. Compare the lengths of
+these intervals with those of the simultaneous intervals constructed in the example.
+
+\[
+    \bar{d}_{1}
+    =
+    \frac{ \sum_{j=1}^{n}{ d_{j1} } }{n-1}
+    =
+    \frac{-103}{11}
+    =
+    -9.36364
+\]
+\[
+    \bar{d}_{2}
+    =
+    \frac{ \sum_{j=1}^{n}{ d_{j2} } }{n-1}
+    =
+    \frac{146}{11}
+    =
+    13.27273,
+\]
+\[
+    s_{d_{1}}^{2}
+    =
+    \frac{ \sum_{j=1}^{n}{( d_{j1} - \bar{d}_{1} )}^{2} }{n-1}
+    =
+    \frac{1992.545}{11 - 1}
+    =
+    199.2545
+\]
+\[
+    s_{d_{2}}^{2}
+    =
+    \frac{ \sum_{j=1}^{n}{( d_{j2} - \bar{d}_{2} )}^{2} }{n-1}
+    =
+    \frac{4186.182}{11 - 1}
+    =
+    418.6182
+\]
+\[
+    t_{n-1}(\alpha/2p)
+    =
+    t_{11-1}(0.05/[2(2)])
+    =
+    2.6338
+\]
+\[
+    \delta_{1}:
+    \bar{d}_{1}
+    \pm
+    t_{n - 1}(\alpha)
+    \sqrt{ \frac{ s_{d_{1}}^{2} }{n} }
+    =
+    -9.36
+    \pm
+    2.63
+    \sqrt{ \frac{ 199.25 }{ 11 } }
+    \hspace{0.4cm}\text{or}\hspace{0.4cm}
+    (-20.57, 1.85)
+\]
+\[
+    \delta_{2}:
+    \bar{d}_{2}
+    \pm
+    t_{n - 1}(\alpha)
+    \sqrt{ \frac{ s_{d_{2}}^{2} }{n} }
+    =
+    13.27
+    \pm
+    2.63
+    \sqrt{ \frac{ 418.62 }{ 11 } }
+    \hspace{0.4cm}\text{or}\hspace{0.4cm}
+    (-2.97, 29.52)
+\]
+As we would expect, these intervals are shorter than 95\% simultaneous confidence intervals found on page 277.
