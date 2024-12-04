@@ -1,0 +1,96 @@
+Using the summary statistics for the electricity-demand data given in Example 6.4, compute
+$T^{2}$ and test the hypothesis $H_{0}: \bm{\mu}_{1} - \bm{\mu}_{2} = \textbf{0}$, assuming that $\bm{\Sigma}_{1} = \bm{\Sigma}_{2}$.
+Set $\alpha = .05$.
+Also, determine the linear combination of mean components most responsible for the
+rejection of $H_{0}$.
+
+\begin{align*}
+    \textbf{S}_{\text{pooled}}
+    & =
+    \frac{(n_{1} - 1)\textbf{S}_{1} + (n_{2} - 1)\textbf{S}_{2}}{(n_{1} - 1) + (n_{2} - 1)} \\
+    & =
+    \begin{bNiceArray}{cc}
+        10963.6857 & 21505.4224 \\
+        21505.4224 & 63661.3122
+    \end{bNiceArray}
+\end{align*}
+
+\begin{align*}
+    T^{2}
+    & =
+    {[\bar{\textbf{x}}_{1} - \bar{\textbf{x}}_{2} - (\bm{\mu}_{1} - \bm{\mu}_{2})]}^{\prime}
+    {\left[
+        \left(
+            \frac{1}{n_{1}}
+            +
+            \frac{1}{n_{2}}
+        \right)
+        \textbf{S}_{\text{pooled}}
+    \right]}^{-1}
+    [\bar{\textbf{x}}_{1} - \bar{\textbf{x}}_{2} - (\bm{\mu}_{1} - \bm{\mu}_{2})] \\
+    & =
+    \begin{bNiceArray}{cc}
+        74.4 & 201.6
+    \end{bNiceArray}
+    {\left[
+        \left(
+            \frac{1}{45}
+            +
+            \frac{1}{55}
+        \right)
+        \begin{bNiceArray}{cc}
+            10963.6857 & 21505.4224 \\
+            21505.4224 & 63661.3122
+        \end{bNiceArray}
+    \right]}^{-1}
+    \begin{bNiceArray}{c}
+        74.4 \\
+       201.6
+    \end{bNiceArray} \\
+    & =
+    16.0662
+\end{align*}
+
+\begin{align*}
+    c^{2}
+    & =
+    \frac{(n_{1} + n_{2} - 2)p}{(n_{1} + n_{2} - (p + 1))}
+    F_{p, n_{1} + n_{2} - (p + 1)}(\alpha) \\
+    & =
+    \frac{(98)2}{(97)}
+    F_{2, 97}(0.05) \\
+    & =
+    2.0206 \times 3.0902 \\
+    & =
+    6.2441
+\end{align*}
+
+We have that $T^{{2}} = 16.0662 > c^{2} = F_{2, 97}(0.05) = 6.2441$, so we would reject the null hypothesis that
+$\bm{\mu}_{1} = \bm{\mu}_{2}$ (the mean vectors for the two groups, those with and without AC, are equal).
+
+\begin{align*}
+    \hat{\textbf{a}}
+    & \propto
+    \textbf{S}^{-1}_{\text{pooled}}
+    (\bar{\textbf{x}}_{1} - \bar{\textbf{x}}_{2}) \\
+    & =
+    \begin{bNiceArray}{rr}
+         0.00027035 & -0.00009133 \\
+        -0.00009133 &  0.00004656
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}
+         74.4 \\
+        201.6
+    \end{bNiceArray} \\
+    & =
+    \begin{bNiceArray}{c}
+        0.00170252 \\
+        0.00259163
+   \end{bNiceArray}
+\end{align*}
+
+Okay, so this is the direction in which the two groups (with and without AC) differ the most when accounting for the covariance structure of the data, as modeled by $\text{S}_{\text{pooled}}$.
+This is a weighted linear combination of on-peak and off-peak consumption.
+I'm thinking of this as a projection of the mean difference vector onto the pooled sample covariance matrix,
+or applying the pooled sample covariance matrix as a transformation to the mean difference vector.
+From the output, it looks like the off-peak consumption ($X_{2}$) has more weight in the largest difference, than on-peak consumption ($X_{1}$).
