@@ -133,13 +133,18 @@ def create_array_text(a: np.ndarray) -> str:
     Returns:
         str: Latex code for the input array.
     '''
+    def latex_cell_value(v: float) -> str:
+        if v < 0:
+            return str(int(v))
+        else:
+            return r'\phantom{-} ' + str(int(v))
     g, n = a.shape
     array_col_num = 'r' * n
     start_array_latex = fr'\left[\begin{{array}}{{ {array_col_num} }}'
     end_array_latex = r'\end{array}\right]'
     array_str = start_array_latex
     for i in range(g):
-        array_str += ' & '.join(['' if np.isnan(v) else str(int(v)) for v in a[i,:]])
+        array_str += ' & '.join(['' if np.isnan(v) else latex_cell_value(v) for v in a[i,:]])
         array_str += r' \\ '
     array_str += end_array_latex
     return array_str
@@ -171,3 +176,75 @@ def display_manova_obs_breakdown(data: namedtuple, spacing: list[str]) -> None:
                  fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
                  fr'\hspace{{ {spacing[2]} }}\text{{(treatment effect)}}'
                  fr'\hspace{{ {spacing[3]} }}\text{{(residual)}}'))
+
+def compute_manova_ss_matrices(a1: np.ndarray, a2: np.ndarray) -> np.ndarray:
+    r'''
+    Use along with manova_obs_breakdown. Can use this to compute B = SS_tr or W = SS_res.
+    The manova_obs_breakdown function creates the components in,
+    $\textbf{X}_{v} = \textbf{M}_{v} + \textbf{T}_{v} + \textbf{E}_{v}$, where $v$ identifies
+    which measurement we're looking at.
+    For the sum of squares and cross-products in the MANOVA table we need a matrix result,
+    that comes from some block computations. An example of what that looks like for the
+    treatment effect is below. The The Hadamard product, denoted by $\circ$, performs
+    elementwise multiplication of the entries of matrices of the same dimensions. The code
+    for the computations implimented here is similar to the first part.
+
+    $$
+    \left[
+        \begin{array}{cc}
+            \text{sum}(\textbf{T}_{1} \circ \textbf{T}_{1}) & \text{sum}(\textbf{T}_{1} \circ \textbf{T}_{2}) \\
+            \text{sum}(\textbf{T}_{2} \circ \textbf{T}_{1}) & \text{sum}(\textbf{T}_{2} \circ \textbf{T}_{2})
+        \end{array}
+    \right]
+    =
+    \left[
+        \begin{array}{cc}
+            \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2}) \\
+            \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
+        \end{array}
+    \right]
+    $$
+    Args:
+        a1 (np.ndarray): Should be either a treatment effect or residual matrix created
+        by the manova_obs_breakdown function. This should be consistent with the a2 parameter.
+        a2 (np.ndarray): Should be either a treatment effect or residual matrix created
+        by the manova_obs_breakdown function. This should be consistent with the a1 parameter.
+    Returns:
+        np.ndarray: Both inputs are placed into 2 by 2 block matrices. In the result, each
+        block is element-wise multiplied and summed.
+    '''
+    # Stack the two matrices. The first dim is the variable. The rest is the 3x5 matrix of data.
+    X = np.stack([a1, a2])
+    X = np.nan_to_num(X)
+    # For [1,2], axis 1 is groups. Axis 2 is observation within group.
+    Y = np.tensordot(X, X, axes=([1, 2], [1, 2]))
+    return Y
+
+def diplay_manova_table(B: np.ndarray, W: np.ndarray, T: np.ndarray, nl: list[int], g: int) -> None:
+    '''
+    Display the MANOVA table.
+    Args:
+        B (np.ndarray): Between sample sum of squares and cross-product matrix.
+        W (np.ndarray): Within sum of squares and cross-products matrix.
+        T (np.ndarray): The total(corrected) sum of squares and cross-products matrix.
+        nl (list[int]): List containing the number of observations in each group.
+        g (int): The number of groups.
+    '''
+    n = sum(nl)
+    assert len(nl) == g, f'Number of groups ({g}) and length of nl ({len(nl)}) differ.'
+    display(Math(r'\begin{array}{lll}'
+             r'\text{Source} & \text{Matrix of sum of squares} &  \\'
+             r'\text{of variation} & \text{and cross products} & \text{Degrees of freedom} \\'
+             r'\hline \\'
+             r'\text{Treatment} & '
+             f'{create_array_text(B)} & '
+             fr'{g} - 1 = {g - 1} \\ \\'
+             r'\text{Residual} & '
+             f'{create_array_text(W)} &'
+             fr'{" + ".join([str(ni) for ni in nl])} - {g} = {n - g} \\ \\'
+             r'\hline \\'
+             r'\text{Total (corrected)} & '
+             f'{create_array_text(T)} & '
+             f'{(n - 1)}'
+             r'\end{array}'
+             ))
