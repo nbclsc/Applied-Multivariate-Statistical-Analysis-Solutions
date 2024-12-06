@@ -580,6 +580,17 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
     \item Evaluate Wilks' lambda, $\bm{\Lambda}^{\star}$, and use Table 6.3 to test for treatment effects.
     Set $\alpha = .01$. Repeat the test using the chi-square approximation with Bartlett's correction.
     [See (6--43).] Compare the conclusions.
+    
+    \par
+
+    Setup the test:
+    
+        \begin{NiceTabular}{l}
+            $H_{0}: \bm{\tau}_{1} = \bm{\tau}_{2} = \bm{\tau}_{3} = \textbf{0}$ \\
+            \text{versus} \\
+            $H_{1}: \text{At leat one } \bm{\tau}_{i} = \bm{\tau}_{j} \ne \textbf{0}$, for $i \ne j$ and $i,j = 1,2,3$
+        \end{NiceTabular}
+    
 
     \[
         \bm{\Lambda}^{\star}
@@ -625,4 +636,34 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
         4.7726
     \]
     We have that $F^{\star} = 17.027 > F_{\text{crit}} = F_{4,16}(0.01) = 4.773$, so we would reject the null hypothesis that $\bm{\tau}_{1} = \bm{\tau}_{2} = \bm{\tau}_{3} = \textbf{0}$.
+
+    The setup for Barlett's test is the same as that above. From (6--43), Bartlett's adjustment test statistic is
+    \begin{align*}
+        X^{\star}
+        & =
+        -(n - 1 - (p + g)/2)
+        \ln
+        \left(
+            \frac{|\textbf{W}|}{|\textbf{B} + \textbf{W}|}
+        \right) \\
+        & =
+        -(12 - 1 - (2 + 3)/2)
+        \ln
+        \left(
+            0.0362
+        \right) \\
+        & = 
+        28.2114
+    \end{align*}
+    The critical value to compare the Bartlett test statistic against is
+    \[
+        X_{\text{crit}}
+        =
+        \chi_{p(g-1)}^{2}
+        =
+        \chi_{2(3-1)}^{2}
+        =
+        13.2767
+    \]
+    For Bartlett's test we have, $X^{\star} = 28.2114 > X_{\text{crit}} = \chi_{4}^{2}(0.01) = 13.2767$, so we would reject the null hypothesis that $\bm{\tau}_{1} = \bm{\tau}_{2} = \bm{\tau}_{3} = \textbf{0}$. This is the same conclusion as the test above.
 \end{enumerate}
