@@ -1,0 +1,276 @@
+Observations on two responses are collected for three treatments. The observation
+vectors $\begin{bNiceArray}{c}x_{1} \\ x_{2}\end{bNiceArray}$ are
+
+\[
+\begin{NiceArray}{cccccc}[cell-space-top-limit = 0.25cm,cell-space-bottom-limit = 0.25cm]
+    \text{Treatment 1:}
+    &
+    \left[
+        \begin{array}{c}
+            6 \\
+            7
+        \end{array}
+    \right],
+    &
+    \left[
+        \begin{array}{c}
+            5 \\
+            9
+        \end{array}
+        \right],
+    &
+    \left[
+        \begin{array}{c}
+            8 \\
+            6
+        \end{array}
+        \right],
+    &
+    \left[
+        \begin{array}{c}
+            4 \\
+            9
+        \end{array}
+    \right],
+    &
+    \left[
+        \begin{array}{c}
+            7 \\
+            9
+        \end{array}
+    \right]
+    \\
+    \text{Treatment 2:}
+    &
+    \left[
+        \begin{array}{c}
+            3 \\
+            3
+        \end{array}
+    \right],
+    &
+    \left[
+        \begin{array}{c}
+            1 \\
+            6
+        \end{array}
+    \right],
+    &
+    \left[
+        \begin{array}{c}
+            2 \\
+            3
+        \end{array}
+    \right]\phantom{,}
+    &
+    &
+    \\
+    \text{Treatment 3:}
+    &
+    \left[
+        \begin{array}{c}
+            2 \\
+            3
+        \end{array}
+    \right],
+    &
+    \left[
+        \begin{array}{c}
+            5 \\
+            1
+        \end{array}
+    \right],
+    &
+    \left[
+        \begin{array}{c}
+            3 \\
+            1
+        \end{array}
+    \right],
+    &
+    \left[
+        \begin{array}{c}
+            2 \\
+            3
+        \end{array}
+    \right]\phantom{,}
+    &
+\end{NiceArray}
+\]
+
+\begin{enumerate}[label= (\alph*)]
+    \item Break up the observations into mean, treatment, and residual components, as in
+    (6--39). Construct the corresponding arrays for each variable. (See Example 6.9.)
+
+    \[
+        \text{Overall sample mean vector: }
+        \bar{\textbf{x}}
+        =
+        \begin{bNiceArray}{c}
+            4 \\
+            5
+        \end{bNiceArray}
+    \]
+    \[
+        \text{Sample mean vectors for each group: }
+        \bar{\textbf{x}}_{1}
+        =
+        \begin{bNiceArray}{c}
+            6 \\
+            8
+        \end{bNiceArray}
+        \text{,}
+        \hspace{0.4cm}
+        \bar{\textbf{x}}_{2}
+        =
+        \begin{bNiceArray}{c}
+            2 \\
+            4
+        \end{bNiceArray}
+        \text{,}
+        \hspace{0.4cm}
+        \bar{\textbf{x}}_{3}
+        =
+        \begin{bNiceArray}{c}
+            3 \\
+            2
+        \end{bNiceArray}
+    \]
+
+    From (6--39)
+    \begin{multline*}
+        \begin{array}{c}
+            \textbf{x}_{\ell j} \\
+            \text{(observation)}
+        \end{array}
+        =
+        \begin{array}{c}
+            \bar{\textbf{x}} \\
+            \left(
+                \begin{array}{c}
+                    \text{overall sample} \\
+                    \text{mean } \hat{\bm{\mu}}
+                \end{array}
+            \right)
+        \end{array}
+        + \\
+        \begin{array}{c}
+            (\textbf{x}_{\ell} - \bar{\textbf{x}}) \\
+            \left(
+                \begin{array}{c}
+                    \text{estimated} \\
+                    \text{treatment} \\
+                    \text{effect } \hat{\bm{\tau}}_{\ell}
+                \end{array}
+            \right)
+        \end{array}
+        +
+        \begin{array}{c}
+            (\textbf{x}_{\ell j} - \textbf{x}_{\ell}) \\
+            \left(
+                \begin{array}{c}
+                    \text{residual } \\
+                    \text{effect } \hat{\textbf{e}}_{\ell j}
+                \end{array}
+            \right)
+        \end{array}
+    \end{multline*}
+
+    \begin{multline*}
+        \begin{array}{c}
+            \left[
+                \begin{array}{ccccc}
+                    6 & 5 & 8 & 4 & 7 \\
+                    3 & 1 & 2 &   &   \\
+                    2 & 5 & 3 & 2 & 
+                \end{array}
+            \right] \\
+            \text{(observations)}
+        \end{array}
+        =
+        \begin{array}{c}
+            \left[
+                \begin{array}{ccccc}
+                    4 & 4 & 4 & 4 & 4 \\
+                    4 & 4 & 4 &   &   \\
+                    4 & 4 & 4 & 4 & 
+                \end{array}
+            \right] \\
+            \text{(mean)}
+        \end{array}
+        +\\
+        \begin{array}{c}
+            \left[
+                \begin{array}{rrrrr}
+                    2 &  2 &  2 &  2 & 2 \\
+                    -2 & -2 & -2 &    &   \\
+                    -1 & -1 & -1 & -1 & 
+                \end{array}
+            \right] \\
+            \text{(treatment effect)}
+        \end{array}
+        +
+        \begin{array}{c}
+            \left[
+                \begin{array}{rrrrr}
+                    0 & -1 & 2 & -2 & 1 \\
+                    1 & -1 & 0 &    &   \\
+                    -1 &  2 & 0 & -1 & 
+                \end{array}
+            \right] \\
+            \text{(residual)}
+        \end{array}
+    \end{multline*}
+
+    \begin{multline*}
+        \begin{array}{c}
+            \left[
+                \begin{array}{ccccc}
+                    7 & 9 & 6 & 9 & 9 \\
+                    3 & 6 & 3 &   &   \\
+                    3 & 1 & 1 & 3 & 
+                \end{array}
+            \right] \\
+            \text{(observations)}
+        \end{array}
+        =
+        \begin{array}{c}
+            \left[
+                \begin{array}{ccccc}
+                    5 & 5 & 5 & 5 & 5 \\
+                    5 & 5 & 5 &   &   \\
+                    5 & 5 & 5 & 5 & 
+                \end{array}
+            \right] \\
+            \text{(mean)}
+        \end{array}
+        + \\
+        \begin{array}{c}
+            \left[
+                \begin{array}{ccccc}
+                    3 &  3 &  3 &  3 & 3 \\
+                    -1 & -1 & -1 &    &   \\
+                    -3 & -3 & -3 & -3 & 
+                \end{array}
+            \right] \\
+            \text{(treatment effect)}
+        \end{array}
+        +
+        \begin{array}{c}
+            \left[
+                \begin{array}{ccccc}
+                    -1 &  1 & -2 & 1 & 1 \\
+                    -1 &  2 & -1 &   &   \\
+                    1 & -1 & -1 & 1 & 
+                \end{array}
+            \right] \\
+            \text{(residual)}
+        \end{array}
+    \end{multline*}
+
+    \item Using the information in Part a,construct the one-way MANOVA table.
+    
+    \item Evaluate Wilks' lambda, $\bm{\Lambda}^{\star}$, and use Table 6.3 to test for treatment effects.
+    Set $\alpha = .01$. Repeat the test using the chi-square approximation with Bartlett's correction.
+    [See (6--43).] Compare the conclusions.
+\end{enumerate}
