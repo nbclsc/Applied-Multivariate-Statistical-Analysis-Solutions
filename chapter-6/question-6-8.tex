@@ -273,312 +273,356 @@ vectors $\begin{bNiceArray}{c}x_{1} \\ x_{2}\end{bNiceArray}$ are
     Okay, what's displayed above is, $\textbf{X}_{v} = \textbf{M}_{v} + \textbf{T}_{v} + \textbf{E}_{v}$, where $v$ identifies which measurement we're looking at.
 For the sum of squares and cross-products in the MANOVA table we need a matrix result, that comes from some block computations. The book doesn't explicitly show the notation for it, but here's what the computations look like:
 
+    \[
+        \textbf{B}
+        =
+        \left[
+            \begin{array}{cc}
+                \text{sum}(\textbf{T}_{1} \circ \textbf{T}_{1}) & \text{sum}(\textbf{T}_{1} \circ \textbf{T}_{2}) \\
+                \text{sum}(\textbf{T}_{2} \circ \textbf{T}_{1}) & \text{sum}(\textbf{T}_{2} \circ \textbf{T}_{2})
+            \end{array}
+        \right]
+        =
+        \left[
+            \begin{array}{cc}
+                \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2}) \\
+                \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
+            \end{array}
+        \right]
+    \]
+    \begin{align*}
+        \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrrr}
+                2 &  2 &  2 &  2 & 2 \\
+                -2 & -2 & -2 &  0 & 0 \\
+                -1 & -1 & -1 & -1 & 0
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                2 & -2 & -1 \\
+                2 & -2 & -1 \\
+                2 & -2 & -1 \\
+                2 &  0 & -1 \\
+                2 &  0 &  0
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                20 & -12 & 8 \\
+                -12 &  12 & 6 \\
+                8 &   6 & 4
+            \end{bNiceArray}
+        \right) \\
+        & =
+        36
+    \end{align*}
 
-\[
-    \textbf{B}
-    =
-    \left[
-        \begin{array}{cc}
-            \text{sum}(\textbf{T}_{1} \circ \textbf{T}_{1}) & \text{sum}(\textbf{T}_{1} \circ \textbf{T}_{2}) \\
-            \text{sum}(\textbf{T}_{2} \circ \textbf{T}_{1}) & \text{sum}(\textbf{T}_{2} \circ \textbf{T}_{2})
-        \end{array}
-    \right]
-    =
-    \left[
-        \begin{array}{cc}
+    \begin{align*}
+        \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2})
+        & =
+        \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) \\
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrrr}
+                2 &  2 &  2 &  2 & 2 \\
+                -2 & -2 & -2 &  0 & 0 \\
+                -1 & -1 & -1 & -1 & 0
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                3 & -1 & -3 \\
+                3 & -1 & -3 \\
+                3 & -1 & -3 \\
+                3 &  0 & -3 \\
+                3 &  0 &  0
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                30 & -6 & -24 \\
+                -18 &  6 &  18 \\
+                -12 &  3 &  12
+            \end{bNiceArray}
+        \right) \\
+        & =
+        48
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrrr}
+                3 &  3 &  3 &  3 & 3 \\
+                -1 & -1 & -1 &  0 & 0 \\
+                -3 & -3 & -3 & -3 & 0
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                3 & -1 & -3 \\
+                3 & -1 & -3 \\
+                3 & -1 & -3 \\
+                3 &  0 & -3 \\
+                3 &  0 &  0
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                45 & -9 & -27 \\
+                -9 &  3 &   9 \\
+                -27 &  9 &  36
+            \end{bNiceArray}
+        \right) \\
+        & =
+        84
+    \end{align*}
+
+    \[
+        \text{Treatment}
+        =
+        \textbf{B}
+        =
+        \begin{bNiceArray}{cc}
             \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2}) \\
             \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
-        \end{array}
-    \right]
-\]
-\begin{align*}
-    \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1})
-    & =
-    \text{tr}
-    \left(
-        \begin{bNiceArray}{rrrrr}
-            2 &  2 &  2 &  2 & 2 \\
-            -2 & -2 & -2 &  0 & 0 \\
-            -1 & -1 & -1 & -1 & 0
         \end{bNiceArray}
-        \begin{bNiceArray}{rrr}
-            2 & -2 & -1 \\
-            2 & -2 & -1 \\
-            2 & -2 & -1 \\
-            2 &  0 & -1 \\
-            2 &  0 &  0
-        \end{bNiceArray}
-   \right) \\
-   & =
-   \text{tr}
-    \left(
-        \begin{bNiceArray}{rrr}
-            20 & -12 & 8 \\
-            -12 &  12 & 6 \\
-            8 &   6 & 4
-        \end{bNiceArray}
-    \right) \\
-    & =
-    36
-\end{align*}
-
-\begin{align*}
-    \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2})
-    & =
-    \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) \\
-    & =
-    \text{tr}
-    \left(
-        \begin{bNiceArray}{rrrrr}
-            2 &  2 &  2 &  2 & 2 \\
-            -2 & -2 & -2 &  0 & 0 \\
-            -1 & -1 & -1 & -1 & 0
-        \end{bNiceArray}
-        \begin{bNiceArray}{rrr}
-            3 & -1 & -3 \\
-            3 & -1 & -3 \\
-            3 & -1 & -3 \\
-            3 &  0 & -3 \\
-            3 &  0 &  0
-        \end{bNiceArray}
-   \right) \\
-   & =
-   \text{tr}
-    \left(
-        \begin{bNiceArray}{rrr}
-            30 & -6 & -24 \\
-            -18 &  6 &  18 \\
-            -12 &  3 &  12
-        \end{bNiceArray}
-    \right) \\
-    & =
-    48
-\end{align*}
-
-\begin{align*}
-    \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
-    & =
-    \text{tr}
-    \left(
-        \begin{bNiceArray}{rrrrr}
-            3 &  3 &  3 &  3 & 3 \\
-            -1 & -1 & -1 &  0 & 0 \\
-            -3 & -3 & -3 & -3 & 0
-        \end{bNiceArray}
-        \begin{bNiceArray}{rrr}
-            3 & -1 & -3 \\
-            3 & -1 & -3 \\
-            3 & -1 & -3 \\
-            3 &  0 & -3 \\
-            3 &  0 &  0
-        \end{bNiceArray}
-   \right) \\
-   & =
-   \text{tr}
-    \left(
-        \begin{bNiceArray}{rrr}
-            45 & -9 & -27 \\
-            -9 &  3 &   9 \\
-            -27 &  9 &  36
-        \end{bNiceArray}
-    \right) \\
-    & =
-    84
-\end{align*}
-
-\[
-    \text{Treatment}
-    =
-    \textbf{B}
-    =
-    \begin{bNiceArray}{cc}
-        \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2}) \\
-        \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
-    \end{bNiceArray}
-    =
-    \begin{bNiceArray}{cc}
-        36 & 48 \\
-        48 & 84
-    \end{bNiceArray}
-\]
-
-\[
-    \textbf{W}
-    =
-    \left[
-        \begin{array}{cc}
-            \text{sum}(\textbf{E}_{1} \circ \textbf{E}_{1}) & \text{sum}(\textbf{E}_{1} \circ \textbf{T}_{2}) \\
-            \text{sum}(\textbf{E}_{2} \circ \textbf{E}_{1}) & \text{sum}(\textbf{E}_{2} \circ \textbf{T}_{2})
-        \end{array}
-    \right]
-    =
-    \left[
-        \begin{array}{cc}
-            \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2}) \\
-            \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
-        \end{array}
-    \right]
-\]
-
-\begin{align*}
-    \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1})
-    & =
-    \text{tr}
-    \left(
-        \begin{bNiceArray}{rrrrr}
-            0 & -1 & 2 & -2 & 1 \\
-            1 & -1 & 0 &  0 & 0 \\
-            -1 &  2 & 0 & -1 & 0
-        \end{bNiceArray}
-        \begin{bNiceArray}{rrr}
-            0 &  1 & -1 \\
-            -1 & -1 &  2 \\
-            2 &  0 &  0 \\
-            -2 &  0 & -1 \\
-            1 &  0 &  0
-        \end{bNiceArray}
-   \right) \\
-   & =
-   \text{tr}
-    \left(
-        \begin{bNiceArray}{rrr}
-            10 &  1 &  0 \\
-            1 &  2 & -3 \\
-            0 & -3 &  6
-        \end{bNiceArray}
-    \right) \\
-    & =
-    18
-\end{align*}
-
-\begin{align*}
-    \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2})
-    & =
-    \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) \\
-    & =
-    \text{tr}
-    \left(
-        \begin{bNiceArray}{rrrrr}
-             0 & -1 & 2 & -2 & 1 \\
-             1 & -1 & 0 &  0 & 0 \\
-            -1 &  2 & 0 & -1 & 0
-        \end{bNiceArray}
-        \begin{bNiceArray}{rrr}
-            -1 & -1 &  1 \\
-             1 &  2 & -1 \\
-            -2 & -1 & -1 \\
-             1 &  0 &  1 \\
-             1 &  0 &  0
-        \end{bNiceArray}
-   \right) \\
-   & =
-   \text{tr}
-    \left(
-        \begin{bNiceArray}{rrr}
-            -6 & -4 & -3 \\
-            -2 & -3 &  2 \\
-            2 &  5 & -4
-        \end{bNiceArray}
-    \right) \\
-    & =
-    -13
-\end{align*}
-
-\begin{align*}
-    \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
-    & =
-    \text{tr}
-    \left(
-        \begin{bNiceArray}{rrrrr}
-            -1 &  1 & -2 & 1 & 1 \\
-            -1 &  2 & -1 & 0 & 0 \\
-            1 & -1 & -1 & 1 & 0
-        \end{bNiceArray}
-        \begin{bNiceArray}{rrr}
-            -1 & -1 &  1 \\
-            1 &  2 & -1 \\
-            -2 & -1 & -1 \\
-            1 &  0 &  1 \\
-            1 &  0 &  0
-        \end{bNiceArray}
-   \right) \\
-   & =
-   \text{tr}
-    \left(
-        \begin{bNiceArray}{rrr}
-            8 &  5 &  1 \\
-            5 &  6 & -2 \\
-            1 & -2 &  4
-        \end{bNiceArray}
-    \right) \\
-    & =
-    18
-\end{align*}
-
-\[
-    \text{Residual}
-    =
-    \textbf{W}
-    =
-    \begin{bNiceArray}{cc}
-        \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2}) \\
-        \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
-    \end{bNiceArray}
-    =
-    \begin{bNiceArray}{cc}
-         18 & -13 \\
-        -13 &  18
-    \end{bNiceArray}
-\]
-\[
-    \text{Total}
-    =
-    \textbf{B} + \textbf{W}
-    =
-    \begin{bNiceArray}{cc}
-        36 & 48 \\
-        48 & 84
-    \end{bNiceArray}
-    +
-    \begin{bNiceArray}{cc}
-        18 & -13 \\
-       -13 &  18
-   \end{bNiceArray}
-   =
-   \begin{bNiceArray}{cc}
-    54 & 35 \\
-    35 & 102
-    \end{bNiceArray}
-\]
-
-\[
-    \begin{array}{lll}
-        \text{Source} & \text{Matrix of sum of squares} &  \\
-        \text{of variation} & \text{and cross products} & \text{Degrees of freedom} \\
-        \hline \\
-        \text{Treatment} & 
+        =
         \begin{bNiceArray}{cc}
             36 & 48 \\
             48 & 84
-        \end{bNiceArray} & 
-        3 - 1 = 2 \\ \\
-    \text{Residual} & 
-    \begin{bNiceArray}{cc}
-        18 & -13 \\
-       -13 &  18
-   \end{bNiceArray} & 
-    5 + 4 + 3 - 3 = 9 \\ \\
-    \hline \\
-    \text{Total (corrected)} & 
+        \end{bNiceArray}
+    \]
+
+    \[
+        \textbf{W}
+        =
+        \left[
+            \begin{array}{cc}
+                \text{sum}(\textbf{E}_{1} \circ \textbf{E}_{1}) & \text{sum}(\textbf{E}_{1} \circ \textbf{T}_{2}) \\
+                \text{sum}(\textbf{E}_{2} \circ \textbf{E}_{1}) & \text{sum}(\textbf{E}_{2} \circ \textbf{T}_{2})
+            \end{array}
+        \right]
+        =
+        \left[
+            \begin{array}{cc}
+                \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2}) \\
+                \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
+            \end{array}
+        \right]
+    \]
+
+    \begin{align*}
+        \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrrr}
+                0 & -1 & 2 & -2 & 1 \\
+                1 & -1 & 0 &  0 & 0 \\
+                -1 &  2 & 0 & -1 & 0
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                0 &  1 & -1 \\
+                -1 & -1 &  2 \\
+                2 &  0 &  0 \\
+                -2 &  0 & -1 \\
+                1 &  0 &  0
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                10 &  1 &  0 \\
+                1 &  2 & -3 \\
+                0 & -3 &  6
+            \end{bNiceArray}
+        \right) \\
+        & =
+        18
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2})
+        & =
+        \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) \\
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrrr}
+                0 & -1 & 2 & -2 & 1 \\
+                1 & -1 & 0 &  0 & 0 \\
+                -1 &  2 & 0 & -1 & 0
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                -1 & -1 &  1 \\
+                1 &  2 & -1 \\
+                -2 & -1 & -1 \\
+                1 &  0 &  1 \\
+                1 &  0 &  0
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                -6 & -4 & -3 \\
+                -2 & -3 &  2 \\
+                2 &  5 & -4
+            \end{bNiceArray}
+        \right) \\
+        & =
+        -13
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrrr}
+                -1 &  1 & -2 & 1 & 1 \\
+                -1 &  2 & -1 & 0 & 0 \\
+                1 & -1 & -1 & 1 & 0
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                -1 & -1 &  1 \\
+                1 &  2 & -1 \\
+                -2 & -1 & -1 \\
+                1 &  0 &  1 \\
+                1 &  0 &  0
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                8 &  5 &  1 \\
+                5 &  6 & -2 \\
+                1 & -2 &  4
+            \end{bNiceArray}
+        \right) \\
+        & =
+        18
+    \end{align*}
+
+    \[
+        \text{Residual}
+        =
+        \textbf{W}
+        =
+        \begin{bNiceArray}{cc}
+            \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2}) \\
+            \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            18 & -13 \\
+            -13 &  18
+        \end{bNiceArray}
+    \]
+    \[
+        \text{Total}
+        =
+        \textbf{B} + \textbf{W}
+        =
+        \begin{bNiceArray}{cc}
+            36 & 48 \\
+            48 & 84
+        \end{bNiceArray}
+        +
+        \begin{bNiceArray}{cc}
+            18 & -13 \\
+        -13 &  18
+    \end{bNiceArray}
+    =
     \begin{bNiceArray}{cc}
         54 & 35 \\
         35 & 102
+        \end{bNiceArray}
+    \]
+
+    \[
+        \begin{array}{lll}
+            \text{Source} & \text{Matrix of sum of squares} &  \\
+            \text{of variation} & \text{and cross products} & \text{Degrees of freedom} \\
+            \hline \\
+            \text{Treatment} & 
+            \begin{bNiceArray}{cc}
+                36 & 48 \\
+                48 & 84
+            \end{bNiceArray} & 
+            3 - 1 = 2 \\ \\
+        \text{Residual} & 
+        \begin{bNiceArray}{cc}
+            18 & -13 \\
+        -13 &  18
     \end{bNiceArray} & 
-    11
-    \end{array}
-\]
+        5 + 4 + 3 - 3 = 9 \\ \\
+        \hline \\
+        \text{Total (corrected)} & 
+        \begin{bNiceArray}{cc}
+            54 & 35 \\
+            35 & 102
+        \end{bNiceArray} & 
+        11
+        \end{array}
+    \]
     
     \item Evaluate Wilks' lambda, $\bm{\Lambda}^{\star}$, and use Table 6.3 to test for treatment effects.
     Set $\alpha = .01$. Repeat the test using the chi-square approximation with Bartlett's correction.
     [See (6--43).] Compare the conclusions.
+
+    \[
+        \bm{\Lambda}^{\star}
+        =
+        \frac{\left|\textbf{W}\right|}{\left|\textbf{B} + \textbf{W}\right|}
+        =
+        \frac{18(18) - {(-13)}^{2}}{54(102) - {(35)}^{2}}
+        =
+        \frac{155}{8156}
+        =
+        0.0362
+    \]
+    \begin{align*}
+        F^{\star}
+        & =
+        \left(
+            \frac{\sum{n_{\ell} - g - 1}}{g - 1}
+        \right)
+        \left(
+            \frac{1 - \sqrt{\bm{\Lambda}^{\star}}}{\sqrt{\bm{\Lambda}^{\star}}}
+        \right) \\
+        & =
+        \left(
+            \frac{12 - 3 - 1}{3 - 1}
+        \right)
+        \left(
+            \frac{1 - \sqrt{0.0362}}{\sqrt{0.0362}}
+        \right) \\
+        & =
+        17.0266
+    \end{align*}
+    Since $p = 2$ and $g = 3$ using Table 6.3,
+    \[
+        \left(
+            \frac{\sum{n_{\ell} - g - 1}}{g - 1}
+        \right)
+        \left(
+            \frac{1 - \sqrt{\bm{\Lambda}^{\star}}}{\sqrt{\bm{\Lambda}^{\star}}}
+        \right)
+        \sim
+        F_{2(g-1), 2(\sum{n_{\ell} - g - 1})}(0.01)
+        =
+        4.7726
+    \]
+    We have that $F^{\star} = 17.027 > F_{\text{crit}} = F_{4,16}(0.01) = 4.773$, so we would reject the null hypothesis that $\bm{\tau}_{1} = \bm{\tau}_{2} = \bm{\tau}_{3} = \textbf{0}$.
 \end{enumerate}
