@@ -1,0 +1,115 @@
+Consider the univariate one-way decomposition of the observation $x_{\ell j}$ given by (6--34).
+Show that the mean vector $\bar{x}\textbf{1}$ is always perpendicular to the treatment effect vector
+$(\bar{x}_{1} - \bar{x})\textbf{u}_{1} + (\bar{x}_{2} - \bar{x})\textbf{u}_{2} + \cdots + (\bar{x}_{g} - \bar{x})\textbf{u}_{\text{g}}$ where 
+
+\[
+    \begin{NiceMatrix}
+        \Block{9-1}{\textbf{u}_{1} = }
+        & 1
+        & \Block{3-1}{\quad n_{1}}
+        & \Block{9-1}{,}
+        & \Block{9-1}{\textbf{u}_{2} = }
+        & 0
+        & \Block{9-1}{\quad n_{2}}
+        & \Block{9-1}{, \dots,}
+        & \Block{9-1}{\textbf{u}_{\text{g}} = }
+        & 0
+        & \Block{9-1}{
+            \quad \phantom{0} \\
+            \quad \phantom{\vdots} \\
+            \quad \phantom{0} \\
+            \quad \phantom{0} \\
+            \quad \phantom{\vdots} \\
+            \quad \phantom{0} \\
+            \quad \phantom{1} \\
+            \quad n_{\text{g}} \phantom{\vdots}\\
+            \quad \phantom{0}
+            } \\
+        & \vdots &  &  &  & \vdots &  &  &  & \vdots \\
+        & 1      &  &  &  & 0      &  &  &  & 0      \\
+        & 0      &  &  &  & 1      &  &  &  & 0      \\
+        & \vdots &  &  &  & \vdots &  &  &  & \vdots \\
+        & 0      &  &  &  & 1      &  &  &  & 0      \\
+        & 0      &  &  &  & 0      &  &  &  & 1      \\
+        & \vdots &  &  &  & \vdots &  &  &  & \vdots \\
+        & 0      &  &  &  & 0      &  &  &  & 1 
+        \CodeAfter
+        % Draw square brackets around the array.
+        \SubMatrix[{1-2}{9-2}]
+        \SubMatrix[{1-6}{9-6}]
+        \SubMatrix[{1-10}{9-10}]
+        % Draw the right brace for the first three rows.
+        \SubMatrix{.}{1-2}{3-2}{\}}[xshift=2mm]
+        \SubMatrix{.}{4-6}{6-6}{\}}[xshift=2mm]
+        \SubMatrix{.}{7-10}{9-10}{\}}[xshift=2mm]
+    \end{NiceMatrix}
+\]
+
+An $r \times c$ matrix of 1s is denoted $\textbf{1}_{r}^{c}$.
+
+Also, $n = \sum_{\ell=1}^{\text{g}}{n_{\ell}}$ and $\sum_{\ell=1}^{\text{g}}
+\sum_{j=1}^{n_{\ell}}
+{x_{\ell j}}/n = \bar{x}$.
+The dot product between the vectors of interest is
+
+\[
+    \bar{x} \textbf{1}_{n}
+    \cdot
+    [
+        (\bar{x}_{1} - \bar{x}) \textbf{u}_{1}
+        +
+        (\bar{x}_{2} - \bar{x}) \textbf{u}_{2}
+        + \cdots +
+        (\bar{x}_{g} - \bar{x}) \textbf{u}_{\text{g}}
+    ]
+    =
+\]
+\[
+    =
+    n_{1} \bar{x} (\bar{x}_{1} - \bar{x})
+    +
+    n_{2} \bar{x} (\bar{x}_{2} - \bar{x})
+    + \cdots +
+    n_{\text{g}} \bar{x} (\bar{x}_{g} - \bar{x})
+=
+\]
+\[
+    =
+    \sum_{\ell=1}^{\text{g}}
+    {
+        n_{\ell} \bar{x} (\bar{x}_{\ell} - \bar{x})
+    }
+    =
+    \sum_{\ell=1}^{\text{g}}
+    {
+        \left(
+            n_{\ell} \bar{x} \bar{x}_{\ell}
+            -
+            n_{\ell} \bar{x}^{2}
+        \right)
+    }
+    =
+    \bar{x}
+    \sum_{\ell=1}^{\text{g}}
+    {n_{\ell} \bar{x}_{\ell}}
+        -
+    \bar{x}^{2}
+    \sum_{\ell=1}^{\text{g}}
+    {n_{\ell}}
+    =
+\]
+\[
+    =
+    \bar{x}
+    \sum_{\ell=1}^{\text{g}}
+    \sum_{j=1}^{n_{\ell}}
+    {x_{\ell j}}
+    -
+    n\bar{x}^{2}
+    =
+    n\bar{x}^{2}
+    -
+    n\bar{x}^{2}
+    =
+    0
+\]
