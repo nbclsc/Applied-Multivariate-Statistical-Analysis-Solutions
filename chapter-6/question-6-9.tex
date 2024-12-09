@@ -1,0 +1,529 @@
+Using the contrast matrix \textbf{C} in (6--13), verify the relationships $\textbf{d}_{j} = \textbf{C}\textbf{x}_{j}$, $\bar{\textbf{d}} = \textbf{C}\bar{\textbf{x}}$, and
+$\textbf{S}_{d} = \textbf{C}\textbf{S}\textbf{C}^{\prime}$ in (6--14).
+
+\vspace{0.4cm}
+Using the definition (6--13) on page 279. I added the right-hand-side to make things a bit more concise.
+\[
+    \textbf{C}
+    =
+    \begin{bNiceArray}{rrrrrrrr}[margin]
+        1 & 0 & \cdots & 0 & -1 &  0 & \cdots &  0 \\
+        0 & 1 & \cdots & 0 &  0 & -1 & \cdots &  0 \\
+        \vdots & \vdots & \ddots & \vdots &  \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 1 &  0 &  0 & \cdots & -1
+        \CodeAfter \tikz \draw[dotted] (1-|5) -- (last-|5);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{rr}[margin]
+        \underset{(p \times p)}{\textbf{I}} & -\underset{(p \times p)}{\textbf{I}}
+        \CodeAfter \tikz \draw[dotted] (1-|2) -- (last-|2);
+    \end{bNiceArray}
+\]
+Here's the long way of showing $\textbf{C}\textbf{x}_{j} = \textbf{d}_{j}$, using the definition of an observation vector from the bottom of page 274 and the full matrix definition of $\textbf{C}$
+\[
+    \textbf{x}_{j}
+    =
+    \begin{bNiceArray}{r}[margin]
+        \textbf{x}_{1j} \\
+        \textbf{x}_{2j}
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{r}[margin]
+        x_{1j1} \\
+        x_{1j2} \\
+        \vdots  \\
+        x_{1jp} \\
+        x_{2j1} \\
+        x_{2j2} \\
+        \vdots  \\
+        x_{2jp}
+        \CodeAfter \tikz \draw[dotted] (5-|1) -- (5-|last);
+    \end{bNiceArray}
+\]
+
+\begin{align*}
+    \textbf{C}
+    \textbf{x}_{j}
+    & =
+    \begin{bNiceArray}{rrrrrrrr}[margin]
+        1 & 0 & \cdots & 0 & -1 &  0 & \cdots &  0 \\
+        0 & 1 & \cdots & 0 &  0 & -1 & \cdots &  0 \\
+        \vdots & \vdots & \ddots & \vdots &  \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 1 &  0 &  0 & \cdots & -1
+        \CodeAfter \tikz \draw[dotted] (1-|5) -- (last-|5);
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}[margin]
+        x_{1j1} \\
+        x_{1j2} \\
+        \vdots  \\
+        x_{1jp} \\
+        x_{2j1} \\
+        x_{2j2} \\
+        \vdots  \\
+        x_{2jp}
+        \CodeAfter \tikz \draw[dotted] (5-|1) -- (5-|last);
+    \end{bNiceArray} \\
+    & =
+    \begin{bNiceArray}{c}[margin]
+        x_{1j1} - x_{2j1} \\
+        x_{1j2} - x_{2j2} \\
+        \vdots  \\
+        x_{1jp} - x_{2jp}
+    \end{bNiceArray} \\
+    & =
+    \textbf{d}_{j}
+\end{align*}
+
+And here's a short way of showing $\textbf{C}\textbf{x}_{j} = \textbf{d}_{j}$
+
+\begin{align*}
+    \textbf{C}\textbf{x}_{j}
+    & =
+    \begin{bNiceArray}{rr}[margin]
+        \underset{(p \times p)}{\textbf{I}} & -\underset{(p \times p)}{\textbf{I}}
+        \CodeAfter \tikz \draw[dotted] (1-|2) -- (last-|2);
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}[margin]
+        \textbf{x}_{1j} \\
+        \textbf{x}_{2j}
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray} \\
+    & =
+    \underset{(p \times p)}{\textbf{I}} \textbf{x}_{1j}
+    -
+    \underset{(p \times p)}{\textbf{I}} \textbf{x}_{2j} \\
+    & =
+    \textbf{x}_{1j} - \textbf{x}_{2j} \\
+        & =
+    \textbf{d}_{j}
+\end{align*}
+
+To show $\textbf{C}\bar{\textbf{x}} = \bar{\textbf{d}}$, we use the definition of $\bar{\textbf{x}}$ in (6--11) on page 278
+\[
+    \bar{\textbf{x}}
+    =
+    \begin{bNiceArray}{r}[margin]
+        \bar{\textbf{x}}_{1} \\
+        \bar{\textbf{x}}_{2}
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray}
+    =
+    \begin{bNiceArray}{c}[margin]
+        \bar{x}_{11} \\
+        \bar{x}_{12} \\
+        \vdots  \\
+        \bar{x}_{1p} \\
+        \bar{x}_{21} \\
+        \bar{x}_{22} \\
+        \vdots  \\
+        \bar{x}_{2p}
+        \CodeAfter \tikz \draw[dotted] (5-|1) -- (5-|last);
+    \end{bNiceArray}
+\]
+
+\begin{align*}
+    \textbf{C}\bar{\textbf{x}}
+    & =
+    \begin{bNiceArray}{rrrrrrrr}[margin]
+        1 & 0 & \cdots & 0 & -1 &  0 & \cdots &  0 \\
+        0 & 1 & \cdots & 0 &  0 & -1 & \cdots &  0 \\
+        \vdots & \vdots & \ddots & \vdots &  \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & 1 &  0 &  0 & \cdots & -1
+        \CodeAfter \tikz \draw[dotted] (1-|5) -- (last-|5);
+    \end{bNiceArray}
+    \begin{bNiceArray}{c}[margin]
+        \bar{x}_{11} \\
+        \bar{x}_{12} \\
+        \vdots  \\
+        \bar{x}_{1p} \\
+        \bar{x}_{21} \\
+        \bar{x}_{22} \\
+        \vdots  \\
+        \bar{x}_{2p}
+        \CodeAfter \tikz \draw[dotted] (5-|1) -- (5-|last);
+    \end{bNiceArray} \\
+    & =
+    \begin{bNiceArray}{c}[margin]
+        \bar{x}_{11} - \bar{x}_{21} \\
+        \bar{x}_{12} - \bar{x}_{22} \\
+        \vdots  \\
+        \bar{x}_{1p} - \bar{x}_{2p}
+    \end{bNiceArray} \\
+    & =
+    \bar{\textbf{d}}
+\end{align*}
+
+And a slightly cleaner way, in my opinion anyway, of showing that $\textbf{C}\bar{\textbf{x}} = \bar{\textbf{d}}$
+
+\begin{align*}
+    \textbf{C}\bar{\textbf{x}}
+    & =
+    \begin{bNiceArray}{rr}[margin]
+        \underset{(p \times p)}{\textbf{I}} & -\underset{(p \times p)}{\textbf{I}}
+        \CodeAfter \tikz \draw[dotted] (1-|2) -- (last-|2);
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}[margin]
+        \bar{\textbf{x}}_{1} \\
+        \bar{\textbf{x}}_{2}
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray} \\
+    & =
+    \underset{(p \times p)}{\textbf{I}} \bar{\textbf{x}}_{1}
+    -
+    \underset{(p \times p)}{\textbf{I}} \bar{\textbf{x}}_{2}
+    \\
+    & =
+    \bar{\textbf{x}}_{1} - \bar{\textbf{x}}_{2}
+    \\
+    & =
+    \bar{\textbf{d}}
+\end{align*}
+
+To show $\textbf{C}\textbf{S}\textbf{C}^{\prime} = \textbf{S}_{d}$ we use the block matrix in (6--12) at the bottom of page 278
+\[
+    \textbf{S}
+    =
+    \begin{bNiceArray}{cc}
+        \underset{(p \times p)}{\textbf{S}_{11}} & \underset{(p \times p)}{\textbf{S}_{12}} \\
+        \underset{(p \times p)}{\textbf{S}_{21}} & \underset{(p \times p)}{\textbf{S}_{22}}
+    \end{bNiceArray}
+\] 
+Some details about the components
+\[
+    \begin{NiceArray}{lll}
+        (n-1) \underset{(p \times p)}{\textbf{S}_{11}}
+        & =
+        \sum_{j = 1}^{n}
+        {
+            \left(
+                \textbf{x}_{1j}
+                -
+                \bar{\textbf{x}}_{1}
+            \right)
+            {\left(
+                \textbf{x}_{1j}
+                -
+                \bar{\textbf{x}}_{1}
+            \right)}^{\prime}
+        }
+        & =
+        \left(
+            \sum_{j = 1}^{n}
+            {
+                \textbf{x}_{1j}
+                \textbf{x}_{1j}^{\prime}
+            }
+        \right)
+        -
+        n\bar{\textbf{x}}_{1}
+        \bar{\textbf{x}}_{1}^{\prime}
+        \\
+        (n-1) \underset{(p \times p)}{\textbf{S}_{12}}
+        & =
+        \sum_{j = 1}^{n}
+        {
+            \left(
+                \textbf{x}_{1j}
+                -
+                \bar{\textbf{x}}_{1}
+            \right)
+            {\left(
+                \textbf{x}_{2j}
+                -
+                \bar{\textbf{x}}_{2}
+            \right)}^{\prime}
+        }
+        & =
+        \left(
+            \sum_{j = 1}^{n}
+            {
+                \textbf{x}_{1j}
+                \textbf{x}_{2j}^{\prime}
+            }
+        \right)
+        -
+        n\bar{\textbf{x}}_{1}
+        \bar{\textbf{x}}_{1}^{\prime}
+        \\
+        (n-1) \underset{(p \times p)}{\textbf{S}_{21}}
+        & =
+        (n-1) \underset{(p \times p)}{\textbf{S}_{12}}
+        &
+        \\
+        (n-1) \underset{(p \times p)}{\textbf{S}_{22}}
+        & =
+        \sum_{j = 1}^{n}
+        {
+            \left(
+                \textbf{x}_{2j}
+                -
+                \bar{\textbf{x}}_{2}
+            \right)
+            {\left(
+                \textbf{x}_{2j}
+                -
+                \bar{\textbf{x}}_{2}
+            \right)}^{\prime}
+        }
+        & =
+        \left(
+            \sum_{j = 1}^{n}
+            {
+                \textbf{x}_{2j}
+                \textbf{x}_{2j}^{\prime}
+            }
+        \right)
+        -
+        n\bar{\textbf{x}}_{2}
+        \bar{\textbf{x}}_{2}^{\prime}
+    \end{NiceArray}
+\]
+
+
+\begin{align*}
+    \textbf{C}
+    \textbf{S}
+    \textbf{C}^{\prime}
+    & =
+    \textbf{C}
+    \begin{bNiceArray}{cc}
+        \textbf{S}_{11} & \textbf{S}_{12} \\
+        \textbf{S}_{21} & \textbf{S}_{22}
+    \end{bNiceArray}
+    \textbf{C}^{\prime} \\
+    & =
+    \begin{bNiceArray}{rr}[margin]
+        \underset{(p \times p)}{\textbf{I}} & -\underset{(p \times p)}{\textbf{I}}
+        \CodeAfter \tikz \draw[dotted] (1-|2) -- (last-|2);
+    \end{bNiceArray}
+    \begin{bNiceArray}{cc}
+        \textbf{S}_{11} & \textbf{S}_{12} \\
+        \textbf{S}_{21} & \textbf{S}_{22}
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}[margin]
+         \underset{(p \times p)}{\textbf{I}} \\
+        -\underset{(p \times p)}{\textbf{I}}
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray} \\
+    & =
+    \begin{bNiceArray}{cc}
+        (\underset{(p \times p)}{\textbf{I}} \textbf{S}_{11}
+        -
+        \underset{(p \times p)}{\textbf{I}} \textbf{S}_{21})
+        &
+        (\underset{(p \times p)}{\textbf{I}} \textbf{S}_{12}
+        -
+        \underset{(p \times p)}{\textbf{I}} \textbf{S}_{22}) \\
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}[margin]
+         \underset{(p \times p)}{\textbf{I}} \\
+        -\underset{(p \times p)}{\textbf{I}}
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray}
+    \\
+    & =
+    \begin{bNiceArray}{cc}
+        (\textbf{S}_{11} - \textbf{S}_{21}) &
+        (\textbf{S}_{12} - \textbf{S}_{22}) \\
+    \end{bNiceArray}
+    \begin{bNiceArray}{r}[margin]
+         \underset{(p \times p)}{\textbf{I}} \\
+        -\underset{(p \times p)}{\textbf{I}}
+        \CodeAfter \tikz \draw[dotted] (2-|1) -- (2-|last);
+    \end{bNiceArray}
+    \\
+    & =
+    \underset{(p \times p)}{\textbf{I}} (\textbf{S}_{11} - \textbf{S}_{21})
+    -
+    \underset{(p \times p)}{\textbf{I}} (\textbf{S}_{12} - \textbf{S}_{22})
+    \\
+    & =
+    (\textbf{S}_{11} - \textbf{S}_{21})
+    -
+    (\textbf{S}_{12} - \textbf{S}_{22})
+    \\
+    & =
+    \textbf{S}_{11} - \textbf{S}_{21} - \textbf{S}_{21} + \textbf{S}_{22}
+    \\
+    & =
+    \textbf{S}_{11} + \textbf{S}_{22} - 2 \textbf{S}_{21}
+    \\
+    & =
+    \left(
+        \frac{1}{n - 1}
+    \right)
+    \left\{
+        (n-1) \textbf{S}_{11} + (n-1) \textbf{S}_{22} - 2 (n-1) \textbf{S}_{21}
+    \right\}
+    \\
+    & =
+    \begin{multlined}[t]
+        \left(
+            \frac{1}{n - 1}
+        \right)
+        \Bigg\{
+        \Bigg[
+            \left(
+                \sum_{j = 1}^{n}
+                {
+                    \textbf{x}_{1j}
+                    \textbf{x}_{1j}^{\prime}
+                }
+            \right)
+            -
+            n\bar{\textbf{x}}_{1}
+            \bar{\textbf{x}}_{1}^{\prime}
+        \Bigg]
+        +
+        \Bigg[
+            \left(
+                \sum_{j = 1}^{n}
+                {
+                    \textbf{x}_{2j}
+                    \textbf{x}_{2j}^{\prime}
+                }
+            \right)
+            -
+            n\bar{\textbf{x}}_{2}
+            \bar{\textbf{x}}_{2}^{\prime}
+        \Bigg]
+        \\ -
+        2
+        \Bigg[
+            \left(
+                \sum_{j = 1}^{n}
+                {
+                    \textbf{x}_{1j}
+                    \textbf{x}_{2j}^{\prime}
+                }
+            \right)
+            -
+            n\bar{\textbf{x}}_{1}
+            \bar{\textbf{x}}_{2}^{\prime}
+        \Bigg]
+        \Bigg\}
+    \end{multlined}
+    \\
+    & =
+    \left(
+        \frac{1}{n - 1}
+    \right)
+    \begin{multlined}[t]
+        \Bigg\{
+        \left(
+            \sum_{j = 1}^{n}
+            {
+                \textbf{x}_{1j}
+                \textbf{x}_{1j}^{\prime}
+                +
+                \textbf{x}_{2j}
+                \textbf{x}_{2j}^{\prime}
+                -2
+                \textbf{x}_{1j}
+                \textbf{x}_{2j}^{\prime}
+            }    
+        \right) \\
+        -
+        n
+        \Bigg(
+            \bar{\textbf{x}}_{1}
+            \bar{\textbf{x}}_{1}^{\prime}
+            +
+            \bar{\textbf{x}}_{2}
+            \bar{\textbf{x}}_{2}^{\prime}
+            -
+            2
+            \bar{\textbf{x}}_{1}
+            \bar{\textbf{x}}_{2}^{\prime}
+        \Bigg)
+        \Bigg\}
+    \end{multlined}
+    \\
+    & =
+    \left(
+        \frac{1}{n - 1}
+    \right)
+    \begin{multlined}[t]
+        \Bigg\{
+            \left(
+            \sum_{j = 1}^{n}
+            {
+                \left(
+                    \textbf{x}_{1j}
+                    -
+                    \textbf{x}_{2j}    
+                \right)
+                {\left(
+                    \textbf{x}_{1j}
+                    -
+                    \textbf{x}_{2j} 
+                \right)}^{\prime}
+            }
+            \right)
+        -
+        n
+        \left(
+            \bar{\textbf{x}}_{1}
+            -
+            \bar{\textbf{x}}_{2}
+        \right)
+        {\left(
+            \bar{\textbf{x}}_{1}
+            -
+            \bar{\textbf{x}}_{2}
+        \right)}^{\prime}
+        \Bigg\}
+    \end{multlined}
+    \\
+    & =
+    \left(
+        \frac{1}{n - 1}
+    \right)
+    \sum_{j = 1}^{n}
+    \left(
+        \left(
+            \textbf{x}_{1j}
+            -
+            \textbf{x}_{2j}
+        \right)
+        -
+        \left(
+            \bar{\textbf{x}}_{1}
+            -
+            \bar{\textbf{x}}_{2}
+        \right)
+    \right)
+    {\left(
+        \left(
+            \textbf{x}_{1j}
+            -
+            \textbf{x}_{2j}
+        \right)
+        -
+        \left(
+            \bar{\textbf{x}}_{1}
+            -
+            \bar{\textbf{x}}_{2}
+        \right) 
+    \right)}^{\prime}
+    \\
+    & =
+    \left(
+        \frac{1}{n - 1}
+    \right)
+    \sum_{j = 1}^{n}
+    \left(
+        \textbf{d}_{j}
+        -
+        \bar{\textbf{d}}
+    \right)
+    {\left(
+        \textbf{d}_{j}
+        -
+        \bar{\textbf{d}}
+    \right)}^{\prime}
+    \\
+    & =
+    \textbf{S}_{d}
+\end{align*}
