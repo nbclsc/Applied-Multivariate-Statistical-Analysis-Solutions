@@ -1,5 +1,4 @@
 # Load the data file for Table 6.4.
-# film_df <- readxl::read_excel("./Applied-Multivariate-Statistical-Analysis-Solutions/data/Table6.4.xlsx")
 film_df <- readxl::read_excel("../../data/Table6.4.xlsx")
 
 # Rename the columns to something shorter.
