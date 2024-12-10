@@ -1,0 +1,314 @@
+A likelihood argument provides additional support for pooling the two independent
+sample covariance matrices to estimate a common covariance matrix in the case of two
+normal populations.
+Give the likelihood function, $L(\bm{\mu}_{1}, \bm{\mu}_{2}, \bm{\Sigma})$, for two independent
+samples of sizes $n_{1}$ and $n_{2}$ from $N_{p}(\bm{\mu}_{1}, \bm{\Sigma})$ and $N_{p}(\bm{\mu}_{2}, \bm{\Sigma})$ populations,respectively.
+Show that this likelihood is maximized by the choices $\hat{\bm{\mu}}_{1} = \bar{\textbf{x}}_{1}$, $\hat{\bm{\mu}}_{2} = \bar{\textbf{x}}_{2}$ and
+\[
+    \hat{\bm{\Sigma}}
+    =
+    \frac{1}{n_{1} + n_{2}}
+    \left[ (n_{1} - 1) \textbf{S}_{1} + (n_{2} - 1) \textbf{S}_{2} \right]
+    =
+    \left(
+        \frac{n_{1} + n_{2} - 2}{n_{1} + n_{2}}
+    \right)
+    \textbf{S}_{\text{pooled}}
+\]
+Information about the likelihood of the multivariate normal can be found on Section 4.3 starting on page 168. From (6--17) on page 170,
+
+\begin{align*}
+    L(\bm{\mu}_{1}, \bm{\Sigma})
+    & =
+    \begin{multlined}[t]
+        \frac{1}{{(2\pi)}^{n_{1}p/2}{|\bm{\Sigma}|}^{n_{1}/2}}
+        \exp
+        \Bigg\{
+            \frac{
+            \text{tr}
+            \left[
+                \bm{\Sigma}^{-1}
+                \left(
+                    \sum_{j=1}^{n_{1}}
+                    (\textbf{x}_{1j} - \bar{\textbf{x}}_{1})
+                    {(\textbf{x}_{1j} - \bar{\textbf{x}}_{1})}^{\prime}
+                \right)
+            \right]
+            }{2} \\
+            +
+            \frac{
+                n_{1}
+                {(\bar{\textbf{x}}_{1} - \bm{\mu}_{1})}^{\prime}
+                \bm{\Sigma}^{-1}
+                (\bar{\textbf{x}}_{1} - \bm{\mu}_{1})
+            }{2}
+        \Bigg\}
+    \end{multlined} \\
+    & =
+    \frac{1}{{(2\pi)}^{n_{1}p/2}{|\bm{\Sigma}|}^{n_{1}/2}}
+        \exp
+        \Bigg\{
+            \frac{\text{tr}(Q_{11})}{2}
+            +
+            \frac{Q_{12}}{2}
+        \Bigg\}
+\end{align*}
+where
+\[
+    Q_{11}
+    =
+    \bm{\Sigma}^{-1}
+    \left(
+        \sum_{j=1}^{n_{1}}
+        (\textbf{x}_{1j} - \bar{\textbf{x}}_{1})
+        {(\textbf{x}_{1j} - \bar{\textbf{x}}_{1})}^{\prime}
+    \right)
+\]
+and
+\[
+    Q_{12}
+    =
+    n_{1}
+    {(\bar{\textbf{x}}_{1} - \bm{\mu}_{1})}^{\prime}
+    \bm{\Sigma}^{-1}
+    (\bar{\textbf{x}}_{1} - \bm{\mu}_{1})
+\]
+
+\begin{align*}
+    L(\bm{\mu}_{2}, \bm{\Sigma})
+    & =
+    \begin{multlined}[t]
+        \frac{1}{{(2\pi)}^{n_{2}p/2}{|\bm{\Sigma}|}^{n_{2}/2}}
+        \exp
+        \Bigg\{
+            \frac{
+            \text{tr}
+            \left[
+                \bm{\Sigma}^{-1}
+                \left(
+                    \sum_{j=1}^{n_{2}}
+                    (\textbf{x}_{2j} - \bar{\textbf{x}}_{2})
+                    {(\textbf{x}_{2j} - \bar{\textbf{x}}_{2})}^{\prime}
+                \right)
+            \right]
+            }{2} \\
+            +
+            \frac{
+                n_{2}
+                {(\bar{\textbf{x}}_{2} - \bm{\mu}_{2})}^{\prime}
+                \bm{\Sigma}^{-1}
+                (\bar{\textbf{x}}_{2} - \bm{\mu}_{2})
+            }{2}
+        \Bigg\}
+    \end{multlined} \\
+    & =
+    \frac{1}{{(2\pi)}^{n_{2}p/2}{|\bm{\Sigma}|}^{n_{2}/2}}
+        \exp
+        \Bigg\{
+            \frac{\text{tr}(Q_{21})}{2}
+            +
+            \frac{Q_{22}}{2}
+        \Bigg\}
+\end{align*}
+where
+\[
+    Q_{21}
+    =
+    \bm{\Sigma}^{-1}
+    \left(
+        \sum_{j=1}^{n_{2}}
+        (\textbf{x}_{2j} - \bar{\textbf{x}}_{2})
+        {(\textbf{x}_{2j} - \bar{\textbf{x}}_{2})}^{\prime}
+    \right)
+\]
+and
+\[
+    Q_{22}
+    =
+    n_{2}
+    {(\bar{\textbf{x}}_{2} - \bm{\mu}_{2})}^{\prime}
+    \bm{\Sigma}^{-1}
+    (\bar{\textbf{x}}_{2} - \bm{\mu}_{2})
+\]
+
+\begin{align*}
+    L(\bm{\mu}_{1}, \bm{\mu}_{2}, \bm{\Sigma})
+    & =
+    L(\bm{\mu}_{1}, \bm{\Sigma})
+    L(\bm{\mu}_{2}, \bm{\Sigma})
+    \\
+    & =
+    \begin{multlined}[t]
+    \left[
+        \frac{1}{{(2\pi)}^{n_{2}p/2}{|\bm{\Sigma}|}^{n_{2}/2}}
+        \exp
+        \Bigg\{
+            \frac{\text{tr}(Q_{21})}{2}
+            +
+            \frac{Q_{22}}{2}
+        \Bigg\}
+    \right] \\
+    \times
+    \left[
+        \frac{1}{{(2\pi)}^{n_{2}p/2}{|\bm{\Sigma}|}^{n_{2}/2}}
+        \exp
+        \Bigg\{
+            \frac{\text{tr}(Q_{21})}{2}
+            +
+            \frac{Q_{22}}{2}
+        \Bigg\}
+    \right]
+    \end{multlined}
+    \\
+    & =
+    \frac{1}{{(2\pi)}^{(n_{1} + n_{2})p/2}{|\bm{\Sigma}|}^{(n_{1} + n_{2})/2}}
+    \exp
+    \begin{multlined}[t]
+        \Bigg\{
+        \frac{\text{tr}(Q_{11})}{2}
+        +
+        \frac{\text{tr}(Q_{21})}{2} \\
+        +
+        \frac{Q_{12}}{2}
+        +
+        \frac{Q_{22}}{2}
+        \Bigg\}
+    \end{multlined}
+    \\
+    & =
+    \frac{1}{{(2\pi)}^{(n_{1} + n_{2})p/2}{|\bm{\Sigma}|}^{(n_{1} + n_{2})/2}}
+    \exp
+    \begin{multlined}[t]
+        \Bigg\{
+        \frac{\text{tr}(Q_{11} + Q_{21})}{2}
+        +
+        \frac{Q_{12} + Q_{22}}{2}
+        \Bigg\}
+    \end{multlined}
+\end{align*}
+Having a look at what's in the exponential function
+\begin{align*}
+    \text{tr}(Q_{11} + Q_{21})
+    & =
+    \text{tr}
+    \begin{multlined}[t]
+        \Bigg(
+            \bm{\Sigma}^{-1}
+        \left(
+            \sum_{j=1}^{n_{1}}
+            (\textbf{x}_{1j} - \bar{\textbf{x}}_{1})
+            {(\textbf{x}_{1j} - \bar{\textbf{x}}_{1})}^{\prime}
+        \right)
+        \\
+        +
+        \bm{\Sigma}^{-1}
+        \left(
+            \sum_{j=1}^{n_{1}}
+            (\textbf{x}_{1j} - \bar{\textbf{x}}_{1})
+            {(\textbf{x}_{1j} - \bar{\textbf{x}}_{1})}^{\prime}
+        \right)
+        \Bigg)
+    \end{multlined}
+    \\
+    &=
+    \text{tr}
+    \begin{multlined}[t]
+        \Bigg(
+            \bm{\Sigma}^{-1}
+            \Bigg(
+                \sum_{j=1}^{n_{1}}
+                (\textbf{x}_{1j} - \bar{\textbf{x}}_{1})
+                {(\textbf{x}_{1j} - \bar{\textbf{x}}_{1})}^{\prime}
+            \\
+            +
+                \sum_{j=1}^{n_{1}}
+                (\textbf{x}_{1j} - \bar{\textbf{x}}_{1})
+                {(\textbf{x}_{1j} - \bar{\textbf{x}}_{1})}^{\prime}
+            \Bigg)
+        \Bigg)
+    \end{multlined}
+    \\
+    &=
+    \text{tr}
+    \begin{multlined}[t]
+        \Bigg(
+            \bm{\Sigma}^{-1}
+            \Bigg(
+                (n_{1} - 1) \textbf{S}_{1}
+                +
+                (n_{2} - 1) \textbf{S}_{2}
+            \Bigg)
+        \Bigg)
+    \end{multlined}
+    \\
+    & =
+    \text{tr}
+    \Bigg(
+        \bm{\Sigma}^{-1}
+        \textbf{B}
+    \Bigg)
+\end{align*}
+where $\textbf{B} = (n_{1} - 1) \textbf{S}_{1}
++
+(n_{2} - 1) \textbf{S}_{2}$
+
+\begin{align*}
+    Q_{12} + Q_{22}
+    & =
+    n_{1}
+    {(\bar{\textbf{x}}_{1} - \bm{\mu}_{1})}^{\prime}
+    \bm{\Sigma}^{-1}
+    (\bar{\textbf{x}}_{1} - \bm{\mu}_{1})
+    +
+    n_{2}
+    {(\bar{\textbf{x}}_{2} - \bm{\mu}_{2})}^{\prime}
+    \bm{\Sigma}^{-1}
+    (\bar{\textbf{x}}_{2} - \bm{\mu}_{2})
+\end{align*}
+We can use a small extension of the work from Result 4.11. By Result 4.1,
+$\bm{\Sigma}^{-1}$ is positive definite, so the distance ${(\bar{\textbf{x}}_{1} - \bm{\mu}_{1})}^{\prime}
+\bm{\Sigma}^{-1}
+(\bar{\textbf{x}}_{1} - \bm{\mu}_{1}) > 0$ and ${(\bar{\textbf{x}}_{2} - \bm{\mu}_{2})}^{\prime}
+\bm{\Sigma}^{-1}
+(\bar{\textbf{x}}_{2} - \bm{\mu}_{2}) > 0$ unless $\bm{\mu}_{1} = \bar{\textbf{x}}_{1}$ and $\bm{\mu}_{2} = \bar{\textbf{x}}_{2}$. Thus, the likelihood is maximized with respect to $\bm{\mu}_{1}$ and $\bm{\mu}_{2}$ at $\bm{\mu}_{1} = \bar{\textbf{x}}_{1}$ and $\bm{\mu}_{2} = \bar{\textbf{x}}_{2}$. We still need to maximize
+
+\begin{align*}
+    L(\bm{\mu}_{1}, \bm{\mu}_{2}, \bm{\Sigma})
+    & =
+    \frac{1}{{(2\pi)}^{(n_{1} + n_{2})p/2}{|\bm{\Sigma}|}^{(n_{1} + n_{2})/2}}
+    \exp
+    \begin{multlined}[t]
+        \Bigg\{
+        \frac{\text{tr}(Q_{11} + Q_{21})}{2}
+        \Bigg\}
+    \end{multlined}
+    \\
+    & =
+    \frac{1}{{(2\pi)}^{(n_{1} + n_{2})p/2}{|\bm{\Sigma}|}^{(n_{1} + n_{2})/2}}
+    \exp
+    \begin{multlined}[t]
+        \Bigg\{
+        \frac{\text{tr}(\bm{\Sigma^{-1} \textbf{B}})}{2}
+        \Bigg\}
+    \end{multlined}
+\end{align*}
+over $\bm{\Sigma}$. By Result 4.10, with $b = (n_{1} + n_{2})/2$ and $\textbf{B} = (n_{1} - 1) \textbf{S}_{1}
++
+(n_{2} - 1) \textbf{S}_{2}$, the maximum occurs at
+\begin{align*}
+    \hat{\bm{\Sigma}}
+    & =
+    \left(\frac{1}{2b}\right)
+    \textbf{B}
+    \\
+    & =
+    \frac{(n_{1} - 1) \textbf{S}_{1}
+    +
+    (n_{2} - 1)}{n_{1} + n_{2}}
+    \\
+    & =
+    \left(
+        \frac{n_{1} + n_{2} - 2}{n_{1} + n_{2}}
+    \right)
+    \textbf{S}_{\text{pooled}}
+\end{align*}
