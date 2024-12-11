@@ -1,0 +1,94 @@
+\textit{(Test for linear profiles, given that the profiles are parallel.)}
+Let $\bm{\mu}_{1}^{\prime} = [\mu_{11}, \mu_{12},\dots,\mu_{1p}]$ and $\bm{\mu}_{2}^{\prime} = [\mu_{21}, \mu_{22},\dots,\mu_{2p}]$ be the mean responses to $p$ treatments
+for populations 1 and 2, respectively. Assume that the profiles given by the two
+mean vectors are parallel.
+\begin{enumerate}[label= (\alph*)]
+    \item Show that the hypothesis that the profiles are linear can be written as $H_{0}: (\mu_{1i} - \mu_{2i}) - (\mu_{1i-1} - \mu_{2i-1}) = (\mu_{1i-1} + \mu_{2i-1}) - (\mu_{1i-2} - \mu_{2i-2})$, $i=3, \dots, p$ or as $H_{0}: \textbf{C}(\bm{\mu}_{1} + \bm{\mu}_{2}) = \textbf{0}$, where the $(p-2)\times p$ matrix
+    \[
+        \textbf{C}
+        =
+        \begin{bNiceArray}{rrrrrrrr}
+            1 & -2 &  1 & 0 & \cdots & 0 &  0 & 0 \\
+            0 &  1 & -2 & 1 & \cdots & 0 &  0 & 0 \\
+            \vdots & \vdots & \vdots & \vdots & & \vdots & \vdots & \vdots \\
+            0 &  0 &  0 & 0 & \cdots & 1 & -2 & 1
+        \end{bNiceArray}
+    \]
+
+        \begin{align*}
+            \textbf{C}(\bm{\mu}_{1} + \bm{\mu}_{2})
+            & =
+            \begin{bNiceArray}{c}
+                (\mu_{11} + \mu_{21}) - 2(\mu_{12} + \mu_{22}) + (\mu_{13} + \mu_{23}) \\
+                \vdots \\
+                (\mu_{1p-2} + \mu_{2p-2}) - 2(\mu_{1p-1} + \mu_{2p-1}) + (\mu_{1p} + \mu_{2p})
+            \end{bNiceArray} \\
+            & =
+            \begin{bNiceArray}{c}
+                0 \\
+                \vdots \\
+                0
+            \end{bNiceArray}
+        \end{align*}
+
+        Picking out a single element
+        
+        \[
+            (\mu_{1i-2} + \mu_{2i-2}) - 2(\mu_{1i-1} + \mu_{2i-1}) + (\mu_{1i} + \mu_{2i}) = 0
+        \]
+        for $i = 3, \dots, p$. We can rearrange ti get
+
+        \[
+            (\mu_{1i-2} + \mu_{2i-2}) - 2(\mu_{1i-1} + \mu_{2i-1}) + (\mu_{1i} + \mu_{2i})
+            =
+            0
+        \]
+        \[
+            \Rightarrow
+            (\mu_{1i} + \mu_{2i}) - (\mu_{1i-1} + \mu_{2i-1})
+            =
+            (\mu_{1i-1} + \mu_{2i-1}) - (\mu_{1i-2} + \mu_{2i-2})
+        \]
+
+    \item Following an argument similar to the one leading to (6--73), we reject $H_{0}: \textbf{C}(\bm{\mu}_{1} + \bm{\mu}_{2}) = \textbf{0}$ at level $\alpha$ if
+    \[
+        T^{2}
+        =
+        {(\bar{\textbf{x}}_{1} + \bar{\textbf{x}}_{2})}^{\prime}
+        \textbf{C}^{\prime}
+        {\left[
+            \left(
+                \frac{1}{n_{1}}
+                +
+                \frac{1}{n_{2}}
+            \right)
+            \textbf{C}
+            \textbf{S}_{\text{pooled}}
+            \textbf{C}^{\prime}
+        \right]}^{-1}
+        \textbf{C}
+        (\bar{\textbf{x}}_{1} + \bar{\textbf{x}}_{2})
+        >
+        c^{2}
+    \]
+    where
+    \[
+        c^{2}
+        =
+        \frac{(n_{1} + n_{2} - 2)(p - 2)}{n_{1} + n_{2} - p + 1}
+        F_{p - 2, n_{1} + n_{2} - p + 1}
+        (\alpha)
+    \]
+    Let $n_{1} = 30$, $n_{2} = 30$, $\bar{\textbf{x}}_{1}^{\prime} = [6.4,6.8,7.3,7.0]$, $\bar{\textbf{x}}_{2}^{\prime} = [4.3,4.9,5.3,5.1]$, and
+    \[
+        \textbf{S}_{\text{pooled}}
+        =
+        \begin{bNiceArray}{cccc}[cell-space-limits=1.5mm]
+            .61 & .26 & .07 & .16 \\
+            .26 & .64 & .17 & .14 \\
+            .07 & .17 & .81 & .03 \\
+            .16 & .14 & .03 & .31
+        \end{bNiceArray}
+    \]
+    Test for linear profiles, assuming that the profiles are parallel. Use $\alpha = .05$.
+\end{enumerate}
