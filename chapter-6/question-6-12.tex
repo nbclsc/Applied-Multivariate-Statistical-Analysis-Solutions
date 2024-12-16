@@ -91,4 +91,50 @@ mean vectors are parallel.
         \end{bNiceArray}
     \]
     Test for linear profiles, assuming that the profiles are parallel. Use $\alpha = .05$.
+    \begin{align*}
+        T^{2}
+        & =
+        {(\bar{\textbf{x}}_{1} + \bar{\textbf{x}}_{2})}^{\prime}
+        \textbf{C}^{\prime}
+        {\left[
+            \left(
+                \frac{1}{n_{1}}
+                +
+                \frac{1}{n_{2}}
+            \right)
+            \textbf{C}
+            \textbf{S}_{\text{pooled}}
+            \textbf{C}^{\prime}
+        \right]}^{-1}
+        \textbf{C}
+        (\bar{\textbf{x}}_{1} + \bar{\textbf{x}}_{2})
+        \\
+        & =
+        10137.74
+    \end{align*}
+
+    \begin{align*}
+        c^{2}
+        & =
+        \frac{(n_{1} + n_{2} - 2)(p-2)}{n_{1} + n_{2} - (p - 1)}
+        F_{p-2, n_{1} + n_{2} - (p - 1)}
+        (\alpha)
+        \\
+        & =
+        \frac{(30 + 30 - 2)(4-2)}{30 + 30 - (4 - 1)}
+        F_{4-2, 30 + 30 - (4 - 1)}
+        (0.05)
+        \\
+        & =
+        \frac{58(2)}{57}
+        F_{2, 57}
+        (0.05)
+        \\
+        & =
+        2.04(3.16)
+        \\
+        & =
+        6.43
+    \end{align*}
+    We have that $T^{2} = 10137.74 > c^{2} = F_{2, 57}(0.05) = 6.43$, so we would reject the null hypothesis that $\textbf{C}(\bm{\mu}_{1} + \bm{\mu}_{2}) = \textbf{0}$, that we have parallel linear profiles.
 \end{enumerate}
