@@ -1,0 +1,148 @@
+A \textit{replicate} of the experiment in Exercise 6.13 yields the following data:
+
+\begin{center}
+    \begin{NiceTabular}{cccccc}[margin,cell-space-limits=1.5mm]
+        & & \Block{1-4}{Factor 2} \\
+        &
+        &
+        \Block[c]{}{Level \\ 1}
+        &
+        \Block[c]{}{Level \\ 2}
+        &
+        \Block[c]{}{Level \\ 3}
+        &
+        \Block[c]{}{Level \\ 4} \\
+        \Block{3-1}{Factor 1} & Level 1 &
+        $\left[
+            \begin{array}{r}
+                14 \\
+                 8
+            \end{array}
+        \right]$
+        &
+        $\left[
+            \begin{array}{r}
+                6 \\
+                2
+            \end{array}
+        \right]$
+        &
+        $\left[
+            \begin{array}{r}
+                8 \\
+                2
+            \end{array}
+        \right]$
+        &
+        $\left[
+            \begin{array}{r}
+                16 \\
+                -4
+            \end{array}
+        \right]$
+        \\
+        & Level 2 &
+        $\left[
+            \begin{array}{r}
+                1 \\
+                6
+            \end{array}
+        \right]$
+        &
+        $\left[
+            \begin{array}{r}
+                 5 \\
+                12
+            \end{array}
+        \right]$
+        &
+        $
+        \left[
+            \begin{array}{r}
+                 0 \\
+                15
+            \end{array}
+        \right]$
+        &
+        $\left[
+            \begin{array}{r}
+                2 \\
+                7
+            \end{array}
+        \right]$
+        \\
+        & Level 3 &
+        $\left[
+            \begin{array}{r}
+                 3 \\
+                -2
+            \end{array}
+        \right]$
+        &
+        $\left[
+            \begin{array}{r}
+                -2 \\
+                 7
+            \end{array}
+        \right]$
+        &
+        $\left[
+            \begin{array}{r}
+                -11 \\
+                  1
+            \end{array}
+        \right]$
+        &
+        $\left[
+            \begin{array}{r}
+                -6 \\
+                 6
+            \end{array}
+        \right]$
+        \CodeAfter \tikz \draw[solid] (1-|1) -- (1-|last);
+                \tikz \draw[solid] (3-|1) -- (3-|last);
+                \tikz \draw[solid] (last-|1) -- (last-|last);
+                \tikz \draw[solid] (1-|3) -- (last-|3);
+    \end{NiceTabular}
+\end{center}
+\begin{enumerate}[label= (\alph*)]
+    \item Use these data to decompose each of the two measurements in the observation
+    vector as
+    \[
+        x_{\ell k}
+        =
+        \bar{x}
+        +
+        (
+            \bar{x}_{\ell \cdot}
+            -
+            \bar{x}
+        )
+        +
+        (
+            \bar{x}_{\cdot k}
+            -
+            \bar{x}
+        )
+        +
+        (
+            \bar{x}_{\ell k}
+            -
+            \bar{x}_{\ell \cdot}
+            -
+            \bar{x}_{\cdot k}
+            +
+            \bar{x}
+        )
+    \]
+    where $\bar{x}$ is the overall average, $\bar{x}_{\ell \cdot}$ is the average for the $\ell$th
+level of factor 1, and $\bar{x}_{\cdot k}$ is the average for the $k$th level of factor 2. Form the corresponding arrays for each of the two responses.
+    \item Combine the preceding data with the data in Exercise 6.13 and carry out the necessary
+    calculations to complete the general two-way MANOVA table.
+    \item Given the results in Part b, test for interactions, and if the interactions do not
+    exist, test for factor 1 and factor 2 main effects. Use the likelihood ratio test with
+    $\alpha= .05$.
+    \item If main effects, but no interactions, exist, examine the nature of the main effects by
+    constructing Bonferroni simultaneous 95\% confidence intervals for differences of
+    the components of the factor effect parameters.
+\end{enumerate}
