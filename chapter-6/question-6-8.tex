@@ -285,13 +285,13 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
         =
         \left[
             \begin{array}{cc}
-                \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2}) \\
-                \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
+                \text{tr}(\textbf{T}_{1} \textbf{T}_{1}^{\prime}) & \text{tr}(\textbf{T}_{1} \textbf{T}_{2}^{\prime}) \\
+                \text{tr}(\textbf{T}_{2} \textbf{T}_{1}^{\prime}) & \text{tr}(\textbf{T}_{2} \textbf{T}_{2}^{\prime})
             \end{array}
         \right]
     \]
     \begin{align*}
-        \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1})
+        \text{tr}(\textbf{T}_{1} \textbf{T}_{1}^{\prime})
         & =
         \text{tr}
         \left(
@@ -322,9 +322,9 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
     \end{align*}
 
     \begin{align*}
-        \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2})
+        \text{tr}(\textbf{T}_{1} \textbf{T}_{2}^{\prime})
         & =
-        \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) \\
+        \text{tr}(\textbf{T}_{2} \textbf{T}_{1}^{\prime}) \\
         & =
         \text{tr}
         \left(
@@ -355,7 +355,7 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
     \end{align*}
 
     \begin{align*}
-        \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
+        \text{tr}(\textbf{T}_{2} \textbf{T}_{2}^{\prime})
         & =
         \text{tr}
         \left(
@@ -391,8 +391,8 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
         \textbf{B}
         =
         \begin{bNiceArray}{cc}
-            \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{1}^{\prime} \textbf{T}_{2}) \\
-            \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{1}) & \text{tr}(\textbf{T}_{2}^{\prime} \textbf{T}_{2})
+            \text{tr}(\textbf{T}_{1} \textbf{T}_{1}^{\prime}) & \text{tr}(\textbf{T}_{1} \textbf{T}_{2}^{\prime}) \\
+            \text{tr}(\textbf{T}_{2} \textbf{T}_{1}^{\prime}) & \text{tr}(\textbf{T}_{2} \textbf{T}_{2}^{\prime})
         \end{bNiceArray}
         =
         \begin{bNiceArray}{cc}
@@ -413,14 +413,14 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
         =
         \left[
             \begin{array}{cc}
-                \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2}) \\
-                \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
+                \text{tr}(\textbf{E}_{1} \textbf{E}_{1}^{\prime}) & \text{tr}(\textbf{E}_{1} \textbf{E}_{2}^{\prime}) \\
+                \text{tr}(\textbf{E}_{2} \textbf{E}_{1}^{\prime}) & \text{tr}(\textbf{E}_{2} \textbf{E}_{2}^{\prime})
             \end{array}
         \right]
     \]
 
     \begin{align*}
-        \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1})
+        \text{tr}(\textbf{E}_{1} \textbf{E}_{1}^{\prime})
         & =
         \text{tr}
         \left(
@@ -451,9 +451,9 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
     \end{align*}
 
     \begin{align*}
-        \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2})
+        \text{tr}(\textbf{E}_{1} \textbf{E}_{2}^{\prime})
         & =
-        \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) \\
+        \text{tr}(\textbf{E}_{2} \textbf{E}_{1}^{\prime}) \\
         & =
         \text{tr}
         \left(
@@ -484,7 +484,7 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
     \end{align*}
 
     \begin{align*}
-        \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
+        \text{tr}(\textbf{E}_{2} \textbf{E}_{2}^{\prime})
         & =
         \text{tr}
         \left(
@@ -520,11 +520,11 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
         \textbf{W}
         =
         \begin{bNiceArray}{cc}
-            \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{1}^{\prime} \textbf{E}_{2}) \\
-            \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{1}) & \text{tr}(\textbf{E}_{2}^{\prime} \textbf{E}_{2})
+            \text{tr}(\textbf{E}_{1} \textbf{E}_{1}^{\prime}) & \text{tr}(\textbf{E}_{1} \textbf{E}_{2}^{\prime}) \\
+            \text{tr}(\textbf{E}_{2} \textbf{E}_{1}^{\prime}) & \text{tr}(\textbf{E}_{2} \textbf{E}_{2}^{\prime})
         \end{bNiceArray}
         =
-        \begin{bNiceArray}{cc}
+        \begin{bNiceArray}{rr}
             18 & -13 \\
             -13 &  18
         \end{bNiceArray}
@@ -539,13 +539,13 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
             48 & 84
         \end{bNiceArray}
         +
-        \begin{bNiceArray}{cc}
-            18 & -13 \\
-        -13 &  18
+        \begin{bNiceArray}{rr}
+             18 & -13 \\
+            -13 &  18
     \end{bNiceArray}
     =
     \begin{bNiceArray}{cc}
-        54 & 35 \\
+        54 &  35 \\
         35 & 102
         \end{bNiceArray}
     \]
@@ -562,15 +562,15 @@ For the sum of squares and cross-products in the MANOVA table we need a matrix r
             \end{bNiceArray} & 
             3 - 1 = 2 \\ \\
         \text{Residual} & 
-        \begin{bNiceArray}{cc}
-            18 & -13 \\
-        -13 &  18
+        \begin{bNiceArray}{rr}
+             18 & -13 \\
+            -13 &  18
     \end{bNiceArray} & 
         5 + 4 + 3 - 3 = 9 \\ \\
         \hline \\
         \text{Total (corrected)} & 
         \begin{bNiceArray}{cc}
-            54 & 35 \\
+            54 &  35 \\
             35 & 102
         \end{bNiceArray} & 
         11
