@@ -80,7 +80,7 @@ def plot_mean_difference_confidence_ellipse(x1: np.ndarray, x2: np.ndarray, alph
                 scale=1)
     return plt, ax
 
-def manova_obs_breakdown(df: pd.DataFrame, trt_col: str, var_col: str) -> namedtuple:
+def one_way_manova_obs_breakdown(df: pd.DataFrame, trt_col: str, var_col: str) -> namedtuple:
     '''
     Breakdown observations for an input variable into mean, treatment, and residual components.
     Args:
@@ -125,6 +125,230 @@ def manova_obs_breakdown(df: pd.DataFrame, trt_col: str, var_col: str) -> namedt
                         TreatmentEffect=trt_effect_a,
                         Residual=residual_a)
 
+class TwoWayManova(object):
+    def __init__(self, df: pd.DataFrame, trt1_col: str, trt2_col: str, var_col: str, rep_col: str = None) -> namedtuple:
+        '''
+        Breakdown observations for an input variable into mean, treatment, maybe interaction (if there are replications), and residual components. In the case there are no replications, the interaction term from the replication case becomes the residual.
+        Args:
+            df (pd.DataFrame): Input data with a column for treatments and columns for each variable.
+            trt1_col (str): The column with the treatment one (groups).
+            trt2_col (str): The column with the treatment two (groups).
+            var_col (str): The variable breakdown. Only one!
+            rep_col (str): Optional parameter for the replication column. Only include if there are replications for treatment combinations.
+        '''
+        self.trt1_col = trt1_col
+        self.trt2_col = trt2_col
+        self.var_col = var_col
+        self.rep_col = rep_col if rep_col else None
+
+        self.df = self.subset_df(df)
+        self.g = self.get_g()
+        self.b = self.get_b()
+
+        self.means = self.comp_means()
+        self.anova_values = self.comp_two_way_anova()
+        self.obs_breakdown = self.two_way_manova_obs_breakdown()
+
+    def get_g(self) -> int:
+        '''
+        Get the number of levels for the first factor.
+        Return:
+            int: The number levels for the first factor.
+        '''
+        return self.df[self.trt1_col].nunique()
+
+    def get_b(self) -> int:
+        '''
+        Get the number of levels for the second factor.
+        Return:
+            int: The number levels for the second factor.
+        '''
+        return self.df[self.trt2_col].nunique()
+    
+    def subset_df(self, df: pd.DataFrame) -> pd.DataFrame:
+        '''
+        Subset the columns needed for analysis from the input dataframe.
+        Args:
+            df (pd.DataFrame): The dataframe to perform MANOVA on.
+        Return:
+            pd.DataFrame: The dataframe with the columns needed for analysis.
+        '''
+        if self.rep_col:
+            keep_cols =  [self.trt1_col, self.trt2_col, self.var_col, self.rep_col]
+        else:
+            keep_cols =  [self.trt1_col, self.trt2_col, self.var_col]
+        return df[keep_cols].copy()
+
+    def comp_means(self) -> namedtuple:
+        '''
+        A named tuple, where each element is the mean values at different levels for different factors, or the global mean. Each element matrix is of dimension g x b.
+        Return:
+            namedtuple: The returned named tuple, of type MeansTwoWayANOVA, contains matrices of dimension g x b. The values are some kind of mean values repeated in vertical, horizontal, or both directions.
+        '''
+        MeansTwoWayANOVA = namedtuple('MeansTwoWayANOVA',
+                                    ['GlobalMean',
+                                     'Trt1Mean',
+                                     'Trt2Mean',
+                                     'Trt1Trt2Mean'])
+
+        xbar = self.df[self.var_col].mean().item()
+        global_xbar_a = xbar * np.ones([self.g, self.b])
+
+        xbar_ell = self.df.groupby(self.trt1_col)[self.var_col].mean().to_numpy()[:, np.newaxis]
+        xbar_ell_a = np.repeat(xbar_ell, self.b, axis=1)
+
+        xbar_k   = self.df.groupby(self.trt2_col)[self.var_col].mean().to_numpy()[:, np.newaxis]
+        xbar_k_a = np.repeat(xbar_k.T, self.g, axis=0)
+
+        xbar_ell_k_a = self.df.groupby([self.trt1_col, self.trt2_col])[self.var_col].mean().to_numpy().reshape((self.g, self.b))
+        return MeansTwoWayANOVA(GlobalMean=global_xbar_a,
+                                Trt1Mean=xbar_ell_a,
+                                Trt2Mean=xbar_k_a,
+                                Trt1Trt2Mean=xbar_ell_k_a
+                                )
+
+    def comp_two_way_anova(self) -> namedtuple:
+        '''
+        Compute the contribution to each observation from the different components. The output is a named tuple, where each element is of dimension g x b. Contributions are the global mean, factor 1 effect, factor 2 effect, and interaction. The residual is left out since it's different depending if there are replications or not.
+        Return:
+            namedtuple: A named tuple of contributions that build an observation. The residual is left out of this part.
+        '''
+        ANOVAPieces = namedtuple('ANOVAPieces', ['Mean',
+                                                 'Trt1Effect',
+                                                 'Trt2Effect',
+                                                 'Interaction'])
+        a = self.means
+        trt1_effect_a = a.Trt1Mean - a.GlobalMean
+        trt2_effect_a = a.Trt2Mean - a.GlobalMean
+        interaction_a = a.Trt1Trt2Mean - a.Trt1Mean - a.Trt2Mean + a.GlobalMean
+
+        return ANOVAPieces(Mean=a.GlobalMean,
+                           Trt1Effect=trt1_effect_a,
+                           Trt2Effect=trt2_effect_a,
+                           Interaction=interaction_a)
+
+    def two_way_anova_1rep(self) -> namedtuple:
+        '''
+        Breakdown observations for an input variable into mean, treatment, and residual components.
+        Return:
+            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'TreatmentEffect1', 'TreatmentEffect2', 'Residual'.
+        '''
+        # Store the output for the observations breakdown for a given variable.
+        tuple_values = ['Variable',
+                        'Obs',
+                        'Mean',
+                        'TreatmentEffect1',
+                        'TreatmentEffect2',
+                        'Residual']
+        ObsBreakdown = namedtuple('ObsBreakdown', tuple_values)
+
+        obs_a = pd.pivot(self.df, index=self.trt1_col, columns=self.trt2_col, values=self.var_col).to_numpy()
+        return ObsBreakdown(Variable=self.var_col,
+                            Obs=obs_a,
+                            Mean=self.anova_values.Mean,
+                            TreatmentEffect1=self.anova_values.Trt1Effect,
+                            TreatmentEffect2=self.anova_values.Trt2Effect,
+                            Residual=self.anova_values.Interaction)
+
+    def two_way_anova_multi_rep(self) ->list[namedtuple]:
+        '''
+        Breakdown observations for an input variable into mean, treatment, interaction, and residual components.
+        Return:
+            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'TreatmentEffect1', 'TreatmentEffect2', 'Interaction',
+            'Residual'.
+        '''
+        # Store the output for the observations breakdown for a given variable.
+        tuple_values = ['Variable',
+                        'Obs',
+                        'Mean',
+                        'TreatmentEffect1',
+                        'TreatmentEffect2',
+                        'Interaction',
+                        'Residual']
+        ObsBreakdown = namedtuple('ObsBreakdown', tuple_values) 
+        obs_list = []
+        for i in self.df[self.rep_col].unique():    
+            obs_a = pd.pivot(self.df[self.df[self.rep_col].eq(i)], index=self.trt1_col, columns=self.trt2_col, values=self.var_col).to_numpy()
+
+            # Compute the breakdown.
+            residual_a = obs_a - self.means.Trt1Trt2Mean
+            obs = ObsBreakdown(Variable=self.var_col,
+                                Obs=obs_a,
+                                Mean=self.anova_values.Mean,
+                                TreatmentEffect1=self.anova_values.Trt1Effect,
+                                TreatmentEffect2=self.anova_values.Trt2Effect,
+                                Interaction=self.anova_values.Interaction,
+                                Residual=residual_a)
+            obs_list.append(obs)
+        return obs_list
+    
+    def two_way_manova_obs_breakdown(self) ->list[namedtuple]:
+        '''
+        Store the output for the observations breakdown for a given variable.
+        Return:
+            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'TreatmentEffect1', 'TreatmentEffect2',
+            'Residual'.
+        ''' 
+        if self.rep_col:
+            return self.two_way_anova_multi_rep()
+
+        return self.two_way_anova_1rep()
+    
+    def display_2way_manova_obs_breakdown(self, spacing: list[str]) -> None:
+        '''
+        Take a breakdown of observations into components and display them using latex.
+        Args:
+            data (namedtuple): Contains breakdown of observations into components.
+            Row for each group, column for each observation.
+            spacing list[str]: A list with 4 string elements.
+            Something like, ['0.5cm','2.0cm','2.2cm','2.5cm'].
+        '''
+        if self.rep_col:
+            # Print for each observation.
+            for i, obs in enumerate(self.obs_breakdown):
+                data = obs
+                obs_latex = create_array_text(data.Obs)
+                mean_latex = create_array_text(data.Mean)
+                trt_effect1_latex = create_array_text(data.TreatmentEffect1)
+                trt_effect2_latex = create_array_text(data.TreatmentEffect2)
+                residual_latex = create_array_text(data.Residual)
+
+                assert len(spacing)==6, 'Spacing must have 4 string elements.'
+                interaction_latex = create_array_text(data.Interaction)
+                text_list = [mean_latex, trt_effect1_latex, trt_effect2_latex, interaction_latex,
+                             residual_latex]
+                latex_str = obs_latex + ' = '
+                latex_str += ' + '.join(text_list)
+
+                display(Math(fr'\text{{Variable: {data.Variable}, Observation: {i+1}}}'))
+                display(Math(latex_str))
+                display(Math(fr'\hspace{{ {spacing[0]} }}\text{{(observation)}}'
+                        fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
+                        fr'\hspace{{ {spacing[2]} }}\text{{(treatment 1 effect)}}'
+                        fr'\hspace{{ {spacing[3]} }}\text{{(treatment 2 effect)}}'
+                        fr'\hspace{{ {spacing[4]} }}\text{{(interaction)}}'
+                        fr'\hspace{{ {spacing[5]} }}\text{{(residual)}}'))
+        else:
+            data = self.obs_breakdown
+            obs_latex = create_array_text(data.Obs)
+            mean_latex = create_array_text(data.Mean)
+            trt_effect1_latex = create_array_text(data.TreatmentEffect1)
+            trt_effect2_latex = create_array_text(data.TreatmentEffect2)
+            residual_latex = create_array_text(data.Residual)
+            
+            assert len(spacing)==5, 'Spacing must have 4 string elements.'
+            text_list = [mean_latex, trt_effect1_latex, trt_effect2_latex, residual_latex]
+            latex_str = obs_latex + ' = '
+            latex_str += ' + '.join(text_list)
+
+            display(Math(fr'\text{{Variable: {data.Variable}}}'))
+            display(Math(latex_str))
+            display(Math(fr'\hspace{{ {spacing[0]} }}\text{{(observation)}}'
+                     fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
+                     fr'\hspace{{ {spacing[2]} }}\text{{(treatment 1 effect)}}'
+                     fr'\hspace{{ {spacing[3]} }}\text{{(treatment 2 effect)}}'
+                     fr'\hspace{{ {spacing[4]} }}\text{{(residual)}}'))
+
 def create_array_text(a: np.ndarray) -> str:
     '''
     Create a text string with the latex code to generate an array.
@@ -149,7 +373,7 @@ def create_array_text(a: np.ndarray) -> str:
     array_str += end_array_latex
     return array_str
 
-def display_manova_obs_breakdown(data: namedtuple, spacing: list[str]) -> None:
+def display_1way_manova_obs_breakdown(data: namedtuple, spacing: list[str]) -> None:
     '''
     Take a breakdown of observations into components and display them using latex.
     Args:
@@ -176,6 +400,38 @@ def display_manova_obs_breakdown(data: namedtuple, spacing: list[str]) -> None:
                  fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
                  fr'\hspace{{ {spacing[2]} }}\text{{(treatment effect)}}'
                  fr'\hspace{{ {spacing[3]} }}\text{{(residual)}}'))
+
+def display_2way_manova_obs_breakdown(data: namedtuple, spacing: list[str]) -> None:
+    '''
+    Take a breakdown of observations into components and display them using latex.
+    Args:
+        data (namedtuple): Contains breakdown of observations into components.
+        Row for each group, column for each observation.
+        spacing list[str]: A list with 4 string elements.
+        Something like, ['0.5cm','2.0cm','2.2cm','2.5cm'].
+    '''
+    assert len(spacing)==5, 'Spacing must have 4 string elements.'
+    obs_latex = create_array_text(data.Obs)
+    mean_latex = create_array_text(data.Mean)
+    trt_effect1_latex = create_array_text(data.TreatmentEffect1)
+    trt_effect2_latex = create_array_text(data.TreatmentEffect2)
+    residual_latex = create_array_text(data.Residual)
+    display(Math(fr'\text{{Variable: {data.Variable}}}'))
+    display(Math(f'{obs_latex}'
+                 ' = '
+                 f'{mean_latex}'
+                 ' + '
+                 f'{trt_effect1_latex}'
+                 ' + '
+                 f'{trt_effect2_latex}'
+                 ' + '
+                 f'{residual_latex}'
+                 ))
+    display(Math(fr'\hspace{{ {spacing[0]} }}\text{{(observation)}}'
+                 fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
+                 fr'\hspace{{ {spacing[2]} }}\text{{(treatment 1 effect)}}'
+                 fr'\hspace{{ {spacing[3]} }}\text{{(treatment 2 effect)}}'
+                 fr'\hspace{{ {spacing[4]} }}\text{{(residual)}}'))
 
 def compute_manova_ss_matrices(a1: np.ndarray, a2: np.ndarray) -> np.ndarray:
     r'''
@@ -220,7 +476,7 @@ def compute_manova_ss_matrices(a1: np.ndarray, a2: np.ndarray) -> np.ndarray:
     Y = np.tensordot(X, X, axes=([1, 2], [1, 2]))
     return Y
 
-def diplay_manova_table(B: np.ndarray, W: np.ndarray, T: np.ndarray, nl: list[int], g: int) -> None:
+def diplay_1way_manova_table(B: np.ndarray, W: np.ndarray, T: np.ndarray, nl: list[int], g: int) -> None:
     '''
     Display the MANOVA table.
     Args:
@@ -246,5 +502,37 @@ def diplay_manova_table(B: np.ndarray, W: np.ndarray, T: np.ndarray, nl: list[in
              r'\text{Total (corrected)} & '
              f'{create_array_text(T)} & '
              f'{(n - 1)}'
+             r'\end{array}'
+             ))
+    
+def diplay_2way_manova_table(B1: np.ndarray, B2: np.ndarray, W: np.ndarray, T: np.ndarray, nl: list[int], g: int, b: int) -> None:
+    '''
+    Display the 2-Way MANOVA table. NO REPLICATION!
+    Args:
+        B (np.ndarray): Between sample sum of squares and cross-product matrix.
+        W (np.ndarray): Within sum of squares and cross-products matrix.
+        T (np.ndarray): The total(corrected) sum of squares and cross-products matrix.
+        nl (list[int]): List containing the number of observations in each group.
+        g (int): The number of groups.
+    '''
+    n = sum(nl)
+    # assert len(nl) == g, f'Number of treatment 1 levels ({g}) and length of nl ({len(nl)}) differ.'
+    display(Math(r'\begin{array}{lll}'
+             r'\text{Source} & \text{Matrix of sum of squares} &  \\'
+             r'\text{of variation} & \text{and cross products} & \text{Degrees of freedom} \\'
+             r'\hline \\'
+             r'\text{Treatment 1} & '
+             f'{create_array_text(B1)} & '
+             fr'{g} - 1 = {g - 1} \\ \\'
+             r'\text{Treatment 2} & '
+             f'{create_array_text(B2)} & '
+             fr'{b} - 1 = {b - 1} \\ \\'
+             r'\text{Residual} & '
+             f'{create_array_text(W)} &'
+             fr'({g} - {1})({b} - {1}) = {(g-1)*(b-1)} \\ \\'
+             r'\hline \\'
+             r'\text{Total (corrected)} & '
+             f'{create_array_text(T)} & '
+             f'{g}({b}) - {1} = {g*b - 1}'
              r'\end{array}'
              ))
