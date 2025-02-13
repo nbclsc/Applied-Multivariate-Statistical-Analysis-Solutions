@@ -114,7 +114,7 @@ class TwoWayManovaEffectTests(object):
         added_text = r'\textbf{0}'
         for i in range(self.g):
             for j in range(self.b):
-                interaction_params.append(fr' \bm{{ \gamma }}_{{ {i},{j} }} ')
+                interaction_params.append(fr' \bm{{ \gamma }}_{{ {i+1},{j} }} ')
         interaction_params.append(added_text)
 
         # interaction_params = '='.join(interaction_params_list)
@@ -149,7 +149,7 @@ class TwoWayManovaEffectTests(object):
             params = parameter_text._asdict().get(group)
             
             display(Math(fr'\textrm{{Test for {group}: }}'))
-            display(Math(r'\qquad\qquad\Lambda_{1}^{\star}'
+            display(Math(fr'\qquad\qquad\Lambda_{{ {index} }}^{{\star}}'
                  '='
                  fr'\frac{{\left| \text{{SSP}}_{{\text{{res}}}} \right|}}{{\left| \text{{SSP}}_{{\text{{ {label} }}}} + \text{{SSP}}_{{\text{{res}}}} \right|}}'
                  '='
