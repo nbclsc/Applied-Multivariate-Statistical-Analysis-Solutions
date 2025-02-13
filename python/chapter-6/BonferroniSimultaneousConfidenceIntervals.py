@@ -52,30 +52,30 @@ class BonferroniSimultaneousConfidenceIntervals(object):
         p = self._design.metadata.p
         n = self._design.metadata.n
 
-        def _compute_bonf_ci(trt_levels1: int, trt_levels2: int, factor: np.ndarray) -> list[np.ndarray]:
+        def _compute_bonf_ci(target_levels: int, other_levels: int, factor: np.ndarray) -> list[np.ndarray]:
             ci_dict = {}
-            v = trt_levels1 * trt_levels2 * (n - 1)
-            t_val = stats.t.ppf(1-(self.alpha/(2*p*trt_levels1*(trt_levels1-1))), df=v)
-            pairs, C = self._create_contrast_matrix(trt_levels1)
+            v = target_levels * other_levels * (n - 1)
+            t_val = stats.t.ppf(1-(self.alpha/(p*target_levels*(target_levels-1))), df=v)
+            pairs, C = self._create_contrast_matrix(target_levels)
             ci_dict.update({'pairs': pairs})
-            tau_diff_matrix = C @ factor.T
-            E = np.diag(self.manova.manova.W)*np.ones((trt_levels1-1,p))
+            diff_matrix = C @ factor.T
+            E = np.diag(self.manova.manova.W)*np.ones((target_levels-1,p))
 
             # Loop through each of the p variables and compute the CI.
-            for i in range(tau_diff_matrix.shape[1]):
-                height = tau_diff_matrix[:, i].shape[0]
-                tau_diff = tau_diff_matrix[:, i].reshape(height,1)
+            for i in range(diff_matrix.shape[1]):
+                height = diff_matrix[:, i].shape[0]
+                tau_diff = diff_matrix[:, i].reshape(height,1)
                 E_ii = E[0,i] * np.ones((height,1))
-                ci = tau_diff + np.array([-1, 1]) * t_val * np.sqrt(E_ii * 1/v * 2/(trt_levels2*n))
+                ci = tau_diff + np.array([-1, 1]) * t_val * np.sqrt(E_ii * 1/v * 2/(other_levels*n))
                 ci_dict.update({f'x{i+1}': ci})
             return ci_dict
     
         BonferroniCI = namedtuple('BonferroniCI', ['Factor1', 'Factor2'])
         return BonferroniCI(
             # All columns are the same for factor1, so pick first column.
-            Factor1=_compute_bonf_ci(g, b, self.manova.x_breakdown.anova_values.Trt1Effect[:,:,0]),
+            Factor1=_compute_bonf_ci(g, b, self.manova.x_breakdown.anova_values.Factor1Effect[:,:,0]),
             # All rows are the same for factor2, so pick first row.
-            Factor2=_compute_bonf_ci(b, g, self.manova.x_breakdown.anova_values.Trt2Effect[:,0,:])
+            Factor2=_compute_bonf_ci(b, g, self.manova.x_breakdown.anova_values.Factor2Effect[:,0,:])
             )
 
     def display_two_way_manova_bonf(self) -> None:
