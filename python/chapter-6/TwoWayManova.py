@@ -57,9 +57,9 @@ class ObsBreakdownTwoWayManova(object):
     def comp_means(self) -> namedtuple:
         MeansTwoWayANOVA = namedtuple('MeansTwoWayANOVA',
                                       ['GlobalMean',
-                                       'Trt1Mean',
-                                       'Trt2Mean',
-                                       'Trt1Trt2Mean'])
+                                       'Factor1Mean',
+                                       'Factor2Mean',
+                                       'Factor1Factor2Mean'])
 
         xbars = self._design.df[self._design.variable_names].mean()
         global_xbar_a = np.stack([ xbar * np.ones([self._design.metadata.g, self._design.metadata.b])
@@ -78,43 +78,43 @@ class ObsBreakdownTwoWayManova(object):
             .reshape((self._design.metadata.p, self._design.metadata.g, self._design.metadata.b))
         
         return MeansTwoWayANOVA(GlobalMean=global_xbar_a,
-                                Trt1Mean=xbar_ell_a,
-                                Trt2Mean=xbar_k_a,
-                                Trt1Trt2Mean=xbar_ell_k_a
+                                Factor1Mean=xbar_ell_a,
+                                Factor2Mean=xbar_k_a,
+                                Factor1Factor2Mean=xbar_ell_k_a
                                 )
 
     def comp_two_way_anova(self) -> namedtuple:
         ANOVAPieces = namedtuple('ANOVAPieces', ['Mean',
-                                                 'Trt1Effect',
-                                                 'Trt2Effect',
+                                                 'Factor1Effect',
+                                                 'Factor2Effect',
                                                  'Interaction'])
         a = self.means
-        trt1_effect_a = a.Trt1Mean - a.GlobalMean
-        trt2_effect_a = a.Trt2Mean - a.GlobalMean
-        interaction_a = a.Trt1Trt2Mean - a.Trt1Mean - a.Trt2Mean + a.GlobalMean
+        trt1_effect_a = a.Factor1Mean - a.GlobalMean
+        trt2_effect_a = a.Factor2Mean - a.GlobalMean
+        interaction_a = a.Factor1Factor2Mean - a.Factor1Mean - a.Factor2Mean + a.GlobalMean
 
         return ANOVAPieces(Mean=a.GlobalMean,
-                           Trt1Effect=trt1_effect_a,
-                           Trt2Effect=trt2_effect_a,
+                           Factor1Effect=trt1_effect_a,
+                           Factor2Effect=trt2_effect_a,
                            Interaction=interaction_a)
 
     def obs_single_rep(self) -> namedtuple:
         '''
-        Breakdown observations for an input variable into mean, treatment, maybe interaction (if there are replications), and residual components.
+        Breakdown observations for an input variable into mean, factor, maybe interaction (if there are replications), and residual components.
         Args:
             df (pd.DataFrame): Input data with a column for treatments and columns for each variable.
-            trt1_col (str): The column with the treatment one (groups).
-            trt2_col (str): The column with the treatment two (groups).
+            trt1_col (str): The column with the factor one (groups).
+            trt2_col (str): The column with the factor two (groups).
             var_col (str): The variable breakdown. Only one!
         Return:
-            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'TreatmentEffect1', 'TreatmentEffect2', 'Residual'.
+            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'FactorEffect1', 'FactorEffect2', 'Residual'.
         '''
         # Store the output for the observations breakdown for a given variable.
         tuple_values = ['Variable',
                         'Obs',
                         'Mean',
-                        'TreatmentEffect1',
-                        'TreatmentEffect2',
+                        'FactorEffect1',
+                        'FactorEffect2',
                         'Residual']
         ObsBreakdown = namedtuple('ObsBreakdown', tuple_values)
 
@@ -125,29 +125,29 @@ class ObsBreakdownTwoWayManova(object):
         return ObsBreakdown(Variable=self._design.variable_names,
                             Obs=obs_a,
                             Mean=self.anova_values.Mean,
-                            TreatmentEffect1=self.anova_values.Trt1Effect,
-                            TreatmentEffect2=self.anova_values.Trt2Effect,
+                            FactorEffect1=self.anova_values.Factor1Effect,
+                            FactorEffect2=self.anova_values.Factor2Effect,
                             Residual=self.anova_values.Interaction)
 
     def obs_multi_rep(self) ->list[namedtuple]:
         '''
-        Breakdown observations for an input variable into mean, treatment, interaction, and residual components.
+        Breakdown observations for an input variable into mean, factor, interaction, and residual components.
         Args:
             df (pd.DataFrame): Input data with a column for treatments and columns for each variable.
-            trt1_col (str): The column with the treatment one (groups).
-            trt2_col (str): The column with the treatment two (groups).
+            trt1_col (str): The column with the factor one (groups).
+            trt2_col (str): The column with the factor two (groups).
             var_col (str): The variable breakdown. Only one!
             rep_col (str): Optional parameter for the replication column. Only include if there are replications for treatment combinations.
         Return:
-            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'TreatmentEffect1', 'TreatmentEffect2', 'Interaction',
+            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'FactorEffect1', 'FactorEffect2', 'Interaction',
             'Residual'.
         '''
         # Store the output for the observations breakdown for a given variable.
         tuple_values = ['Replication',
                         'Obs',
                         'Mean',
-                        'TreatmentEffect1',
-                        'TreatmentEffect2',
+                        'FactorEffect1',
+                        'FactorEffect2',
                         'Interaction',
                         'Residual']
 
@@ -165,12 +165,12 @@ class ObsBreakdownTwoWayManova(object):
                                        values=v).to_numpy() for v in self._design.variable_names])
             
             # Compute the breakdown.
-            residual_a = obs_a - self.means.Trt1Trt2Mean
+            residual_a = obs_a - self.means.Factor1Factor2Mean
             obs = ObsBreakdown(Replication=i,
                                 Obs=obs_a,
                                 Mean=self.anova_values.Mean,
-                                TreatmentEffect1=self.anova_values.Trt1Effect,
-                                TreatmentEffect2=self.anova_values.Trt2Effect,
+                                FactorEffect1=self.anova_values.Factor1Effect,
+                                FactorEffect2=self.anova_values.Factor2Effect,
                                 Interaction=self.anova_values.Interaction,
                                 Residual=residual_a)
             obs_list.append(obs)
@@ -179,14 +179,8 @@ class ObsBreakdownTwoWayManova(object):
     def comp_obs_breakdown(self) ->list[namedtuple]:
         '''
         Breakdown observations for an input variable into mean, treatment, and residual components. In this case there are no replications, so the interaction term from the replication case becomes the residual.
-        Args:
-            df (pd.DataFrame): Input data with a column for treatments and columns for each variable.
-            trt1_col (str): The column with the treatment one (groups).
-            trt2_col (str): The column with the treatment two (groups).
-            var_col (str): The variable breakdown. Only one!
-            rep_col (str): Optional parameter for the replication column. Only include if there are replications for treatment combinations.
         Return:
-            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'TreatmentEffect1', 'TreatmentEffect2',
+            namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'FactorEffect1', 'FactorEffect2',
             'Residual'.
         '''
         # Store the output for the observations breakdown for a given variable.
@@ -216,8 +210,8 @@ class ObsBreakdownTwoWayManova(object):
                 data = obs
                 obs_latex = create_array_text(data.Obs[i])
                 mean_latex = create_array_text(data.Mean[i])
-                trt_effect1_latex = create_array_text(data.TreatmentEffect1[i])
-                trt_effect2_latex = create_array_text(data.TreatmentEffect2[i])
+                trt_effect1_latex = create_array_text(data.FactorEffect1[i])
+                trt_effect2_latex = create_array_text(data.FactorEffect2[i])
                 interaction_latex = create_array_text(data.Interaction[i])
                 residual_latex = create_array_text(data.Residual[i])
 
@@ -230,8 +224,8 @@ class ObsBreakdownTwoWayManova(object):
                 display(Math(latex_str))
                 display(Math(fr'\hspace{{ {spacing[0]} }}\text{{(observation)}}'
                         fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
-                        fr'\hspace{{ {spacing[2]} }}\text{{(treatment 1 effect)}}'
-                        fr'\hspace{{ {spacing[3]} }}\text{{(treatment 2 effect)}}'
+                        fr'\hspace{{ {spacing[2]} }}\text{{(factor 1 effect)}}'
+                        fr'\hspace{{ {spacing[3]} }}\text{{(factor 2 effect)}}'
                         fr'\hspace{{ {spacing[4]} }}\text{{(interaction)}}'
                         fr'\hspace{{ {spacing[5]} }}\text{{(residual)}}'))
             
@@ -239,8 +233,8 @@ class ObsBreakdownTwoWayManova(object):
         data = self.obs_breakdown
         obs_latex = create_array_text(data.Obs)
         mean_latex = create_array_text(data.Mean)
-        trt_effect1_latex = create_array_text(data.TreatmentEffect1)
-        trt_effect2_latex = create_array_text(data.TreatmentEffect2)
+        trt_effect1_latex = create_array_text(data.FactorEffect1)
+        trt_effect2_latex = create_array_text(data.FactorEffect2)
         residual_latex = create_array_text(data.Residual)
         
         assert len(spacing)==5, 'Spacing must have 4 string elements.'
@@ -252,8 +246,8 @@ class ObsBreakdownTwoWayManova(object):
         display(Math(latex_str))
         display(Math(fr'\hspace{{ {spacing[0]} }}\text{{(observation)}}'
                     fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
-                    fr'\hspace{{ {spacing[2]} }}\text{{(treatment 1 effect)}}'
-                    fr'\hspace{{ {spacing[3]} }}\text{{(treatment 2 effect)}}'
+                    fr'\hspace{{ {spacing[2]} }}\text{{(factor 1 effect)}}'
+                    fr'\hspace{{ {spacing[3]} }}\text{{(factor 2 effect)}}'
                     fr'\hspace{{ {spacing[4]} }}\text{{(residual)}}'))
             
 class TwoWayManova(object):
@@ -269,8 +263,8 @@ class TwoWayManova(object):
         MANOVA = namedtuple('MANOVA', ['B1','B2','I','W','T'])
         B1, B2, I, W, T = 0, 0, 0, 0, 0
         for obs in self.x_breakdown.obs_breakdown:
-            B1 += compute_manova_ss_matrices(obs.TreatmentEffect1)
-            B2 += compute_manova_ss_matrices(obs.TreatmentEffect2)
+            B1 += compute_manova_ss_matrices(obs.FactorEffect1)
+            B2 += compute_manova_ss_matrices(obs.FactorEffect2)
             I  += compute_manova_ss_matrices(obs.Interaction)
             W  += compute_manova_ss_matrices(obs.Residual)
             T  += compute_manova_ss_matrices(obs.Obs) - compute_manova_ss_matrices(obs.Mean)
@@ -292,10 +286,10 @@ class TwoWayManova(object):
                 r'\text{Source} & \text{Matrix of sum of squares} &  \\'
                 r'\text{of variation} & \text{and cross products} & \text{Degrees of freedom} \\'
                 r'\hline \\'
-                r'\text{Treatment 1} & '
+                r'\text{Factor 1} & '
                 f'{create_array_text(self.manova.B1)} & '
                 fr'{g} - 1 = {g - 1} \\ \\'
-                r'\text{Treatment 2} & '
+                r'\text{Factor 2} & '
                 f'{create_array_text(self.manova.B2)} & '
                 fr'{b} - 1 = {b - 1} \\ \\'
                 r'\text{Interaction} & '
