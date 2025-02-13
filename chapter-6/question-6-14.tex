@@ -136,13 +136,1452 @@ A \textit{replicate} of the experiment in Exercise 6.13 yields the following dat
         )
     \]
     where $\bar{x}$ is the overall average, $\bar{x}_{\ell \cdot}$ is the average for the $\ell$th
-level of factor 1, and $\bar{x}_{\cdot k}$ is the average for the $k$th level of factor 2. Form the corresponding arrays for each of the two responses.
+    level of factor 1, and $\bar{x}_{\cdot k}$ is the average for the $k$th level of factor 2. Form the corresponding arrays for each of the two responses.
+    \[
+        \bar{\textbf{x}}
+        =
+        \bar{\textbf{x}}_{\cdot\cdot}
+        =
+        \begin{bNiceArray}{c}
+            2 \\
+            4
+        \end{bNiceArray}
+    \]
+    
+    \[
+        \bar{\textbf{X}}_{\text{Factor 1}}
+        =
+        \begin{bNiceArray}{c}
+            \bar{\textbf{x}}_{1 \cdot}^{\prime} \\
+            \bar{\textbf{x}}_{2 \cdot}^{\prime} \\
+            \bar{\textbf{x}}_{3 \cdot}^{\prime}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}[margin]
+             8 & 5 \\
+             1 & 7 \\
+            -3 & 0
+        \end{bNiceArray}
+        \hspace{0.2cm}
+        \text{and}
+        \hspace{0.2cm}
+        \bar{\textbf{X}}_{\text{Factor 2}}
+        =
+        \begin{bNiceArray}{c}
+            \bar{\textbf{x}}_{\cdot 1}^{\prime} \\
+            \bar{\textbf{x}}_{\cdot 2}^{\prime} \\
+            \bar{\textbf{x}}_{\cdot 3}^{\prime} \\
+            \bar{\textbf{x}}_{\cdot 4}^{\prime}
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}[margin]
+            4 & 5 \\
+            1 & 4 \\
+            2 & 5 \\
+            1 & 2
+        \end{bNiceArray}
+    \]
+    \[
+        \bar{\textbf{X}}_{\ell k}
+        =
+        \begin{bNiceArray}{ccc}
+            \bar{\textbf{x}}_{11} & \bar{\textbf{x}}_{12} & \bar{\textbf{x}}_{13} \\
+            \bar{\textbf{x}}_{21} & \bar{\textbf{x}}_{22} & \bar{\textbf{x}}_{23} \\
+            \bar{\textbf{x}}_{31} & \bar{\textbf{x}}_{32} & \bar{\textbf{x}}_{33}
+        \end{bNiceArray}
+        =
+        \begin{bNiceMatrix}[margin]
+            10 &  5 &  8 &  9 \\
+             8 &  4 &  7 &  1 \\
+             \\
+             2 &  1 &  2 & -1 \\
+             7 &  7 &  9 &  5 \\
+             \\
+             0 & -3 & -4 & -5 \\
+             0 &  1 & -1 &  0
+            \CodeAfter
+             \SubMatrix[{1-1}{2-1}]
+             \SubMatrix[{1-2}{2-2}]
+             \SubMatrix[{1-3}{2-3}]
+             \SubMatrix[{1-4}{2-4}]
+             \SubMatrix[{4-1}{5-1}]
+             \SubMatrix[{4-2}{5-2}]
+             \SubMatrix[{4-3}{5-3}]
+             \SubMatrix[{4-4}{5-4}]
+             \SubMatrix[{7-1}{8-1}]
+             \SubMatrix[{7-2}{8-2}]
+             \SubMatrix[{7-3}{8-3}]
+             \SubMatrix[{7-4}{8-4}]
+        \end{bNiceMatrix}
+    \]
+       
+    \underline{Observation 1, variable 1:}
+    \begin{multline*}
+        \underset{\text{(observation)}}{
+            \left[
+                \begin{array}{rrrr}
+                    6 &  4 & 8 &  2 \\
+                    3 & -3 & 4 & -4 \\
+                    -3 & -4 & 3 & -4
+                \end{array}
+            \right]
+        }
+        =
+        \\
+        \underset{\text{(mean)}}{
+            \left[
+                \begin{array}{rrrr}
+                    2 & 2 & 2 & 2 \\
+                    2 & 2 & 2 & 2 \\
+                    2 & 2 & 2 & 2
+                \end{array}
+            \right]
+        }
+        +
+        \underset{\text{(treatment 1 effect)}}{
+            \left[
+                \begin{array}{rrrr}
+                     6 &  6 &  6 &  6 \\
+                    -1 & -1 & -1 & -1 \\
+                    -5 & -5 & -5 & -5
+                \end{array}
+            \right]
+        }
+        \\
+        +
+        \underset{\text{(treatment 2 effect)}}{
+            \left[
+                \begin{array}{rrrr}
+                    2 & -1 & 0 & -1 \\
+                    2 & -1 & 0 & -1 \\
+                    2 & -1 & 0 & -1
+                \end{array}
+            \right]
+        }
+        +
+        \underset{\text{(interaction)}}{
+            \left[
+                \begin{array}{rrrr}
+                     0 & -2 &  0 &  2 \\
+                    -1 &  1 &  1 & -1 \\
+                     1 &  1 & -1 & -1
+                \end{array}
+            \right]
+        }
+        \\
+        +
+        \underset{\text{(residual)}}{
+            \left[
+                \begin{array}{rrrr}
+                    -4 & -1 &  0 & -7 \\
+                     1 & -4 &  2 & -3 \\
+                    -3 & -1 &  7 &  1
+                \end{array}
+            \right]
+        }
+    \end{multline*}
+
+    \underline{Observation 1, variable 2:}
+    \begin{multline*}
+        \underset{\text{(observation)}}{
+            \left[
+                \begin{array}{rrrr}
+                    8 &  6 & 12 &  6 \\
+                    8 &  2 &  3 &  3 \\
+                    2 & -5 & -3 & -6
+                \end{array}
+            \right]
+        }
+        \\
+        =
+        \underset{\text{(mean)}}{
+            \left[
+                \begin{array}{rrrr}
+                    4 & 4 & 4 & 4 \\
+                    4 & 4 & 4 & 4 \\
+                    4 & 4 & 4 & 4
+                \end{array}
+            \right]
+        }
+        +
+        \underset{\text{(treatment 1 effect)}}{
+            \left[
+                \begin{array}{rrrr}
+                     1 &  1 &  1 &  1 \\
+                     3 &  3 &  3 &  3 \\
+                    -4 & -4 & -4 & -4
+                \end{array}
+            \right]
+        }
+        \\
+        +
+        \underset{\text{(treatment 2 effect)}}{
+            \left[
+                \begin{array}{rrrr}
+                    1 &  0 & 1 & -2 \\
+                    1 &  0 & 1 & -2 \\
+                    1 &  0 & 1 & -2
+                \end{array}
+            \right]
+        }
+        +
+        \underset{\text{(interaction)}}{
+            \left[
+                \begin{array}{rrrr}
+                     2 & -1 &  1 & -2 \\
+                    -1 &  0 &  1 &  0 \\
+                    -1 &  1 & -2 &  2
+                \end{array}
+            \right]
+        }
+        \\
+        +
+        \underset{\text{(residual)}}{
+            \left[
+                \begin{array}{rrrr}
+                     0 &  2 &  5 &  5 \\
+                     1 & -5 & -6 & -2 \\
+                     2 & -6 & -2 & -6
+                \end{array}
+            \right]
+        }
+    \end{multline*}
+
+    \underline{Observation 2, variable 1:}
+    \begin{multline*}
+        \underset{\text{(observation)}}{
+            \left[
+                \begin{array}{rrrr}
+                    14 &  6 &   8 & 16 \\
+                     1 &  5 &   0 &  2 \\
+                     3 & -2 & -11 & -6
+                \end{array}
+            \right]
+        }
+        \\
+        =
+        \underset{\text{(mean)}}{
+            \left[
+                \begin{array}{rrrr}
+                    2 & 2 & 2 & 2 \\
+                    2 & 2 & 2 & 2 \\
+                    2 & 2 & 2 & 2
+                \end{array}
+            \right]
+        }
+        +
+        \underset{\text{(treatment 1 effect)}}{
+            \left[
+                \begin{array}{rrrr}
+                     6 &  6 &  6 &  6 \\
+                    -1 & -1 & -1 & -1 \\
+                    -5 & -5 & -5 & -5 
+                \end{array}
+            \right]
+        }
+        \\
+        +
+        \underset{\text{(treatment 2 effect)}}{
+            \left[
+                \begin{array}{rrrr}
+                    2 & -1 & 0 & -1 \\
+                    2 & -1 & 0 & -1 \\
+                    2 & -1 & 0 & -1
+                \end{array}
+            \right]
+        }
+        +
+        \underset{\text{(interaction)}}{
+            \left[
+                \begin{array}{rrrr}
+                     0 & -2 &  0 &  2 \\
+                    -1 &  1 &  1 & -1 \\
+                     1 &  1 & -1 & -1
+                \end{array}
+            \right]
+        }
+        \\
+        +
+        \underset{\text{(residual)}}{
+            \left[
+                \begin{array}{rrrr}
+                     4 &  1 &  0 &  7 \\
+                    -1 &  4 & -2 &  3 \\
+                     3 &  1 & -7 & -1
+                \end{array}
+            \right]
+        }
+    \end{multline*}
+    
+    \underline{Observation 2, variable 2:}
+    \begin{multline*}
+        \underset{\text{(observation)}}{
+            \left[
+                \begin{array}{rrrr}
+                     8 &  2 &   2 & -4 \\
+                     6 & 12 &  15 &  7 \\
+                    -2 &  7 &   1 &  6
+                \end{array}
+            \right]
+        }
+        \\
+        =
+        \underset{\text{(mean)}}{
+            \left[
+                \begin{array}{rrrr}
+                    4 & 4 & 4 & 4 \\
+                    4 & 4 & 4 & 4 \\
+                    4 & 4 & 4 & 4
+                \end{array}
+            \right]
+        }
+        +
+        \underset{\text{(treatment 1 effect)}}{
+            \left[
+                \begin{array}{rrrr}
+                     1 &  1 &  1 &  1 \\
+                     3 &  3 &  3 &  3 \\
+                    -4 & -4 & -4 & -4 
+                \end{array}
+            \right]
+        }
+        \\
+        +
+        \underset{\text{(treatment 2 effect)}}{
+            \left[
+                \begin{array}{rrrr}
+                    1 & 0 & 1 & -2 \\
+                    1 & 0 & 1 & -2 \\
+                    1 & 0 & 1 & -2
+                \end{array}
+            \right]
+        }
+        +
+        \underset{\text{(interaction)}}{
+            \left[
+                \begin{array}{rrrr}
+                     2 & -1 &  1 & -2 \\
+                    -1 &  0 &  1 &  0 \\
+                    -1 &  1 & -2 &  2
+                \end{array}
+            \right]
+        }
+        \\
+        +
+        \underset{\text{(residual)}}{
+            \left[
+                \begin{array}{rrrr}
+                     0 & -2 & -5 & -5 \\
+                    -1 &  5 &  6 &  2 \\
+                    -2 &  6 &  2 &  6
+                \end{array}
+            \right]
+        }
+    \end{multline*}
+
     \item Combine the preceding data with the data in Exercise 6.13 and carry out the necessary
     calculations to complete the general two-way MANOVA table.
+
+    What they're saying here is to apply the Vec operator to the matrices and take the dot product to complete the computations, but instead, I'm just going use the formula summarized in the solution to Exercise 6.8 to do this.
+    That is applying the formula below to our matrices
+    \[
+        \left[
+            \begin{array}{cc}
+                \text{sum}(\textbf{A}_{1} \circ \textbf{A}_{1}) & \text{sum}(\textbf{A}_{1} \circ \textbf{A}_{2}) \\
+                \text{sum}(\textbf{A}_{2} \circ \textbf{A}_{1}) & \text{sum}(\textbf{A}_{2} \circ \textbf{A}_{2})
+            \end{array}
+        \right]
+        =
+        \left[
+            \begin{array}{cc}
+                \text{tr}(\textbf{A}_{1} \textbf{A}_{1}^{\prime}) & \text{tr}(\textbf{A}_{1} \textbf{A}_{2}^{\prime}) \\
+                \text{tr}(\textbf{A}_{2} \textbf{A}_{1}^{\prime}) & \text{tr}(\textbf{A}_{2} \textbf{A}_{2}^{\prime})
+            \end{array}
+        \right]
+    \]
+
+    \begin{align*}
+        \text{tr}(\textbf{T}_{11} \textbf{T}_{11}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                 6 &  6 &  6 &  6 \\
+                -1 & -1 & -1 & -1 \\
+                -5 & -5 & -5 & -5
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                6 & -1 & -5 \\
+                6 & -1 & -5 \\
+                6 & -1 & -5 \\
+                6 & -1 & -5
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                 144 & -24 & -120 \\
+                -24  &   4 &   20 \\
+                -120 &  20 &  100
+            \end{bNiceArray}
+        \right) \\
+        & =
+        248
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{T}_{11} \textbf{T}_{21}^{\prime})
+        & =
+        \text{tr}(\textbf{T}_{21} \textbf{T}_{11}^{\prime}) \\
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                 6 &  6 &  6 &  6 \\
+                -1 & -1 & -1 & -1 \\
+                -5 & -5 & -5 & -5
+            \end{bNiceArray}
+           \begin{bNiceArray}{rrr}
+               1 & 3 & -4 \\
+               1 & 3 & -4 \\
+               1 & 3 & -4 \\
+               1 & 3 & -4
+           \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                 24 &  72 & -96 \\
+                 -4 & -12 &  16 \\
+                -20 & -60 &  80
+            \end{bNiceArray}
+        \right) \\
+        & =
+        92
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{T}_{21} \textbf{T}_{21}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                1 &  1 &  1 &  1 \\
+                3 &  3 &  3 &  3 \\
+               -4 & -4 & -4 & -4
+           \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+               1 & 3 & -4 \\
+               1 & 3 & -4 \\
+               1 & 3 & -4 \\
+               1 & 3 & -4
+           \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                  4 &  12 & -16 \\
+                 12 &  36 & -48 \\
+                -16 & -48 &  64
+            \end{bNiceArray}
+        \right) \\
+        & =
+        104
+    \end{align*}
+
+    \begin{align*}
+        \textbf{SSP}_{\text{fac 1}}
+        & =
+        \textbf{B}_{1}
+        =
+        \begin{bNiceArray}{cc}
+            \text{tr}(\textbf{T}_{11} \textbf{T}_{11}^{\prime}) & \text{tr}(\textbf{T}_{11} \textbf{T}_{21}^{\prime}) \\
+            \text{tr}(\textbf{T}_{21} \textbf{T}_{11}^{\prime}) & \text{tr}(\textbf{T}_{21} \textbf{T}_{21}^{\prime})
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{cc}
+            n*248 &  n*92 \\
+             n*92 & n*104
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            2*248 &  2*92 \\
+             2*92 & 2*104
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{cc}
+            496 & 184 \\
+            184 & 208
+        \end{bNiceArray}
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{T}_{12} \textbf{T}_{12}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                2 & -1 & 0 & -1 \\
+                2 & -1 & 0 & -1 \\
+                2 & -1 & 0 & -1
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                 2 &  2 &  2 \\
+                -1 & -1 & -1 \\
+                 0 &  0 &  0 \\
+                -1 & -1 & -1
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                6 & 6 & 6 \\
+                6 & 6 & 6 \\
+                6 & 6 & 6
+            \end{bNiceArray}
+        \right) \\
+        & =
+        18
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{T}_{12} \textbf{T}_{22}^{\prime})
+        & =
+        \text{tr}(\textbf{T}_{22} \textbf{T}_{12}^{\prime}) \\
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                2 & -1 & 0 & -1 \\
+                2 & -1 & 0 & -1 \\
+                2 & -1 & 0 & -1
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                 1 &  1 &  1 \\
+                 0 &  0 &  0 \\
+                 1 &  1 &  1 \\
+                -2 & -2 & -2
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                4 & 4 & 4 \\
+                4 & 4 & 4 \\
+                4 & 4 & 4
+            \end{bNiceArray}
+        \right) \\
+        & =
+        12
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{T}_{22} \textbf{T}_{22}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                1 & 0 & 1 & -2 \\
+                1 & 0 & 1 & -2 \\
+                1 & 0 & 1 & -2
+            \end{bNiceArray}
+             \begin{bNiceArray}{rrr}
+                 1 &  1 &  1 \\
+                 0 &  0 &  0 \\
+                 1 &  1 &  1 \\
+                -2 & -2 & -2
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                6 & 6 & 6 \\
+                6 & 6 & 6 \\
+                6 & 6 & 6
+            \end{bNiceArray}
+        \right) \\
+        & =
+        18
+    \end{align*}
+
+    \begin{align*}
+        \textbf{SSP}_{\text{fac 2}}
+        & =
+        \textbf{B}_{2}
+        =
+        \begin{bNiceArray}{cc}
+            \text{tr}(\textbf{T}_{12} \textbf{T}_{12}^{\prime}) & \text{tr}(\textbf{T}_{12} \textbf{T}_{22}^{\prime}) \\
+            \text{tr}(\textbf{T}_{22} \textbf{T}_{12}^{\prime}) & \text{tr}(\textbf{T}_{22} \textbf{T}_{22}^{\prime})
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{cc}
+            n*18 & n*12 \\
+            n*12 & n*18
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            2*18 & 2*12 \\
+            2*12 & 2*18
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{cc}
+            36 & 24 \\
+            24 & 36
+        \end{bNiceArray}
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{I}_{1} \textbf{I}_{1}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                 0 & -2 &  0 &  2 \\
+                -1 &  1 &  1 & -1 \\
+                 1 &  1 & -1 & -1
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                 0 & -1 &  1 \\
+                -2 &  1 &  1 \\
+                 0 &  1 & -1 \\
+                 2 & -1 & -1
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                 8 & -4 & -4 \\
+                -4 &  4 &  0 \\
+                -4 &  0 &  4
+            \end{bNiceArray}
+        \right) \\
+        & =
+        16
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{I}_{1} \textbf{I}_{2}^{\prime})
+        & =
+        \text{tr}(\textbf{I}_{2} \textbf{I}_{1}^{\prime}) \\
+        & =
+        \text{tr}
+        \left(
+             \begin{bNiceArray}{rrrr}
+                 0 & -2 &  0 &  2 \\
+                -1 &  1 &  1 & -1 \\
+                 1 &  1 & -1 & -1
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                 2 & -1 & -1 \\
+                -1 &  0 &  1 \\
+                 1 &  1 & -2 \\
+                -2 &  0 &  2
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                -2 &  0 &  2 \\
+                 0 &  2 & -2 \\
+                 2 & -2 &  0
+            \end{bNiceArray}
+        \right) \\
+        & =
+        0
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{I}_{2} \textbf{I}_{2}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                 2 & -1 &  1 & -2 \\
+                -1 &  0 &  1 &  0 \\
+                -1 &  1 & -2 &  2
+            \end{bNiceArray}
+             \begin{bNiceArray}{rrr}
+                 2 & -1 & -1 \\
+                -1 &  0 &  1 \\
+                 1 &  1 & -2 \\
+                -2 &  0 &  2
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                10 & -1 & -9 \\
+                -1 &  2 & -1 \\
+                -9 & -1 & 10
+            \end{bNiceArray}
+        \right) \\
+        & =
+        22
+    \end{align*}
+
+    \begin{align*}
+        \textbf{SSP}_{\text{interaction}}
+        & =
+        \textbf{I}
+        =
+        \begin{bNiceArray}{cc}
+            \text{tr}(\textbf{I}_{1} \textbf{I}_{1}^{\prime}) & \text{tr}(\textbf{I}_{1} \textbf{I}_{2}^{\prime}) \\
+            \text{tr}(\textbf{I}_{2} \textbf{I}_{1}^{\prime}) & \text{tr}(\textbf{I}_{2} \textbf{I}_{2}^{\prime})
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{cc}
+            n*16 & n*0 \\
+            n*0 & n*22
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            2*16 & 2*0 \\
+            2*0 & 2*22
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{cc}
+            32 &  0 \\
+             0 & 44
+        \end{bNiceArray}
+    \end{align*}
+
+  For the residuals, we can see above that the residuals for observation two are negative of the residuals for observation one. Taking the trace of the product will be the same no matter which observation we chose to compute the within SS and cross-products for, so I'm using observation one.
+
+    \begin{align*}
+        \text{tr}(\textbf{E}_{1} \textbf{E}_{1}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                -4 & -1 &  0 & -7 \\
+                 1 & -4 &  2 & -3 \\
+                -3 & -1 &  7 &  1
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                -4 &  1 & -3 \\
+                -1 & -4 & -1 \\
+                 0 &  2 &  7 \\
+                -7 & -3 &  1
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                66 & 21 &  6 \\
+                21 & 30 & 12 \\
+                 6 & 12 & 60
+            \end{bNiceArray}
+        \right) \\
+        & =
+        156
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{E}_{1} \textbf{E}_{2}^{\prime})
+        & =
+        \text{tr}(\textbf{E}_{2} \textbf{E}_{1}^{\prime}) \\
+        & =
+        \text{tr}
+        \left(
+             \begin{bNiceArray}{rrrr}
+                -4 & -1 &  0 & -7 \\
+                 1 & -4 &  2 & -3 \\
+                -3 & -1 &  7 &  1
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                0 &  1 &  2 \\
+                2 & -5 & -6 \\
+                5 & -6 & -2 \\
+                5 & -2 & -6
+           \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                -37 &  15 &  40 \\
+                -13 &  15 &  40 \\
+                 38 & -42 & -20
+            \end{bNiceArray}
+        \right) \\
+        & =
+        -42
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{E}_{2} \textbf{E}_{2}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                0 &  2 &  5 &  5 \\
+                1 & -5 & -6 & -2 \\
+                2 & -6 & -2 & -6
+           \end{bNiceArray}
+             \begin{bNiceArray}{rrr}
+                0 &  1 &  2 \\
+                2 & -5 & -6 \\
+                5 & -6 & -2 \\
+                5 & -2 & -6
+           \end{bNiceArray}
+     \right)
+     \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                 54 & -50 & -52 \\
+                -50 &  66 &  56 \\
+                -52 &  56 &  80
+            \end{bNiceArray}
+        \right) \\
+        & =
+        200
+    \end{align*}
+
+    \begin{align*}
+        \textbf{SSP}_{\text{res}}
+        &
+        =
+        \textbf{W}
+        =
+        \begin{bNiceArray}{cc}
+            \text{tr}(\textbf{E}_{1} \textbf{E}_{1}^{\prime}) & \text{tr}(\textbf{E}_{1} \textbf{E}_{2}^{\prime}) \\
+            \text{tr}(\textbf{E}_{2} \textbf{E}_{1}^{\prime}) & \text{tr}(\textbf{E}_{2} \textbf{E}_{2}^{\prime})
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{cc}
+            n*156 & n*(-42) \\
+            n*(-42) & n*200
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{cc}
+            2*156 & 2*(-42) \\
+            2*(-42) & 2*200
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{cc}
+            312 & -84 \\
+            -84 & 400
+        \end{bNiceArray}
+    \end{align*}
+
+
+To compute the $\textbf{SSP}_{\text{cor}}$, we need the observations and mean sum of squares and sum of cross-product matrices.
+The observation matrix is computed as
+
+    \underline{Observation 1:}
+    \begin{align*}
+        \text{tr}(\textbf{O}_{11} \textbf{O}_{11}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                 6 &  4 & 8 &  2 \\
+                 3 & -3 & 4 & -4 \\
+                -3 & -4 & 3 & -4
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                6 &  3 & -3 \\
+                4 & -3 & -4 \\
+                8 &  4 &  3 \\
+                2 & -4 &  4
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                120 & 30 & -18 \\
+                 30 & 50 &  31 \\
+                -18 & 31 &  50
+            \end{bNiceArray}
+        \right) \\
+        & =
+        220
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{O}_{11} \textbf{O}_{12}^{\prime})
+        & =
+        \text{tr}(\textbf{O}_{12} \textbf{O}_{11}^{\prime}) \\
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                6 &  4 & 8 &  2 \\
+                3 & -3 & 4 & -4 \\
+               -3 & -4 & 3 & -4
+           \end{bNiceArray}
+           \begin{bNiceArray}{rrr}
+                8 & 8 &  2 \\
+                6 & 2 & -5 \\
+               12 & 3 & -3 \\
+                6 & 3 & -6
+           \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                180 &  86 & -44 \\
+                 30 &  18 &  33 \\
+                -36 & -35 &  29
+            \end{bNiceArray}
+        \right) \\
+        & =
+        227
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{O}_{12} \textbf{O}_{12}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                8 &  6 & 12 &  6 \\
+                8 &  2 &  3 &  3 \\
+                2 & -5 & -3 & -6
+           \end{bNiceArray}
+           \begin{bNiceArray}{rrr}
+                8 & 8 &  2 \\
+                6 & 2 & -5 \\
+               12 & 3 & -3 \\
+                6 & 3 & -6
+           \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                280 & 130 & -86 \\
+                130 &  86 & -21 \\
+                -86 & -21 &  74
+            \end{bNiceArray}
+        \right) \\
+        & =
+        440
+    \end{align*}
+
+    \underline{Observation 2:}
+    \begin{align*}
+        \text{tr}(\textbf{O}_{21} \textbf{O}_{21}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                14 &  6 &   8 & 16 \\
+                 1 &  5 &   0 &  2 \\
+                 3 & -2 & -11 & -6
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                14 &  1 &   3 \\
+                 6 &  5 &  -2 \\
+                 8 &  0 & -11 \\
+                16 &  2 &  -6
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                 552 &  76 & -154 \\
+                  76 &  30 &  -19 \\
+                -154 & -19 &  170
+            \end{bNiceArray}
+        \right) \\
+        & =
+        752
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{O}_{21} \textbf{O}_{22}^{\prime})
+        & =
+        \text{tr}(\textbf{O}_{22} \textbf{O}_{21}^{\prime}) \\
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                14 &  6 &   8 & 16 \\
+                 1 &  5 &   0 &  2 \\
+                 3 & -2 & -11 & -6
+            \end{bNiceArray}
+           \begin{bNiceArray}{rrr}
+                 8 &  6 & -2 \\
+                 2 & 12 &  7 \\
+                 2 & 15 &  1 \\
+                -4 &  7 &  6
+           \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                76 &  388 & 118 \\
+                10 &   80 &  45 \\
+                22 & -213 & -67
+            \end{bNiceArray}
+        \right) \\
+        & =
+        89
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{O}_{22} \textbf{O}_{22}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                 8 &  2 &  2 & -4 \\
+                 6 & 12 & 15 &  7 \\
+                -2 &  7 &  1 &  6
+           \end{bNiceArray}
+           \begin{bNiceArray}{rrr}
+                 8 &  6 & -2 \\
+                 2 & 12 &  7 \\
+                 2 & 15 &  1 \\
+                -4 &  7 &  6
+           \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                 88 &  74 & -24 \\
+                 74 & 454 & 129 \\
+                -24 & 129 &  90
+            \end{bNiceArray}
+        \right) \\
+        & =
+        632
+    \end{align*}
+
+    \begin{align*}
+        \textbf{SSP}_{\text{obs}}
+        & =
+        \begin{bNiceArray}{cc}
+            \sum_{r=1}^{2}\text{tr}(\textbf{O}_{r1} \textbf{O}_{r1}^{\prime}) & \sum_{r=1}^{2}\text{tr}(\textbf{O}_{r1} \textbf{O}_{r2}^{\prime}) \\
+            \sum_{r=1}^{2}\text{tr}(\textbf{O}_{r2} \textbf{O}_{r1}^{\prime}) & \sum_{r=1}^{2}\text{tr}(\textbf{O}_{r2} \textbf{O}_{r2}^{\prime})
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{rr}
+            220+752 & 227+89 \\
+            227+89 & 440+632
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}
+            972 &  316 \\
+            316 & 1072
+        \end{bNiceArray}
+    \end{align*}
+
+    The mean matrix is computed as
+    \begin{align*}
+        \text{tr}(\textbf{M}_{1} \textbf{M}_{1}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                2 & 2 & 2 & 2 \\
+                2 & 2 & 2 & 2 \\
+                2 & 2 & 2 & 2
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                2 & 2 & 2 \\
+                2 & 2 & 2 \\
+                2 & 2 & 2 \\
+                2 & 2 & 2
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                16 & 16 & 16 \\
+                16 & 16 & 16 \\
+                16 & 16 & 16
+            \end{bNiceArray}
+        \right) \\
+        & =
+        48
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{M}_{1} \textbf{M}_{2}^{\prime})
+        & =
+        \text{tr}(\textbf{M}_{2} \textbf{M}_{1}^{\prime}) \\
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                2 & 2 & 2 & 2 \\
+                2 & 2 & 2 & 2 \\
+                2 & 2 & 2 & 2
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                4 & 4 & 4 \\
+                4 & 4 & 4 \\
+                4 & 4 & 4 \\
+                4 & 4 & 4
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                32 & 32 & 32 \\
+                32 & 32 & 32 \\
+                32 & 32 & 32
+            \end{bNiceArray}
+        \right) \\
+        & =
+        96
+    \end{align*}
+
+    \begin{align*}
+        \text{tr}(\textbf{M}_{2} \textbf{M}_{2}^{\prime})
+        & =
+        \text{tr}
+        \left(
+            \begin{bNiceArray}{rrrr}
+                4 & 4 & 4 & 4 \\
+                4 & 4 & 4 & 4 \\
+                4 & 4 & 4 & 4
+            \end{bNiceArray}
+            \begin{bNiceArray}{rrr}
+                4 & 4 & 4 \\
+                4 & 4 & 4 \\
+                4 & 4 & 4 \\
+                4 & 4 & 4
+            \end{bNiceArray}
+    \right) \\
+    & =
+    \text{tr}
+        \left(
+            \begin{bNiceArray}{rrr}
+                64 & 64 & 64 \\
+                64 & 64 & 64 \\
+                64 & 64 & 64
+            \end{bNiceArray}
+        \right) \\
+        & =
+        192
+    \end{align*}
+
+    \begin{align*}
+        \textbf{SSP}_{\text{mean}}
+        & =
+        \begin{bNiceArray}{cc}
+            \text{tr}(\textbf{M}_{1} \textbf{M}_{1}^{\prime}) & \text{tr}(\textbf{M}_{1} \textbf{M}_{2}^{\prime}) \\
+            \text{tr}(\textbf{M}_{2} \textbf{M}_{1}^{\prime}) & \text{tr}(\textbf{M}_{2} \textbf{M}_{2}^{\prime})
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{rr}
+            n \times 48 & n \times 96  \\
+            n \times 96 & n \times 192
+        \end{bNiceArray}
+        =
+        \begin{bNiceArray}{rr}
+            2 \times 48 & 2 \times 96  \\
+            2 \times 96 & 2 \times 192
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{rr}
+             96 & 192  \\
+            192 & 384
+        \end{bNiceArray}
+    \end{align*}
+
+    \begin{align*}
+        \textbf{SSP}_{\text{cor}}
+        & =
+        \textbf{SSP}_{\text{obs}}
+        -
+        \textbf{SSP}_{\text{mean}}
+        \\
+        & =
+        \begin{bNiceArray}{rr}
+            972 &  316 \\
+            316 & 1072
+        \end{bNiceArray}
+        -
+        \begin{bNiceArray}{rr}
+             96 & 192  \\
+            192 & 384
+        \end{bNiceArray}
+        \\
+        & =
+        \begin{bNiceArray}{rr}
+            876 & 124 \\
+            124 & 688
+        \end{bNiceArray}
+    \end{align*}
+    Finally putting all this together for the MANOVA table
+    \[
+    \begin{array}{lll}
+        \text{Source} & \text{Matrix of sum of squares} & \\
+        \text{of variation} & \text{and cross products} & \text{Degrees of freedom} \\
+        \hline \\
+        \text{Factor 1}
+        &
+        \begin{bNiceArray}{rr}
+            496 & 184 \\
+            184 & 208
+        \end{bNiceArray}
+        &
+        3 - 1 = 2
+        \\
+        \text{Factor 2}
+        &
+        \begin{bNiceArray}{rr}
+            36 & 24 \\
+            24 & 36
+        \end{bNiceArray}
+        &
+         4 - 1 = 3
+        \\
+        \text{Interaction}
+        &
+        \begin{bNiceArray}{rr}
+            32 &  0 \\
+             0 & 44
+        \end{bNiceArray}
+        &
+        (3-1)(4-1) = 6
+        \\
+        \text{Residual}
+        &
+        \begin{bNiceArray}{rr}
+            312 & -84 \\
+            -84 & 400
+        \end{bNiceArray}
+        &
+        3(4)(2-1) = 12
+        \\
+        \hline \\
+        \text{Total (corrected)}
+        &
+        \begin{bNiceArray}{rr}
+            876 & 124 \\
+            124 & 688
+        \end{bNiceArray}
+        &
+        3(4)(2) - 1 = 23
+    \end{array}
+    \]
     \item Given the results in Part b, test for interactions, and if the interactions do not
     exist, test for factor 1 and factor 2 main effects. Use the likelihood ratio test with
     $\alpha= .05$.
+    \begin{align*}
+        \bm{\Lambda}^{\star} = \frac{|\text{SSP}_{res}|}{|\text{SSP}_{int} + \text{SSP}_{res}|}
+        & =
+        \frac{117744}{145680}
+        =
+        0.8082
+    \end{align*}
+    \begin{align*}
+        \nu_{1}
+        & =
+        |(g-1)(b-1) - p| + 1 = |2(3) - 2| + 1 = 5
+    \end{align*}
+    \begin{align*}
+        \nu_{2}
+        & =
+        gb(n-1) - p + 1 = 3(4)(1) - 2 + 1 = 11
+    \end{align*}
+    \begin{align*}
+        F
+        & =
+        \left(\frac{1 - \bm{\Lambda}^{\star}}{\bm{\Lambda^{\star}}}\right)\frac{\nu_{2}/2}{\nu_{1}/2}
+        =
+        \left(\frac{1 - 0.8082}{0.8082}\right)\frac{5.5}{2.5}
+        =
+        0.52
+    \end{align*}
+    \begin{align*}
+        F_{\nu_{1}, \nu_{2}}(\alpha)
+        =
+        F_{5, 11}(0.05)
+        =
+        3.20
+    \end{align*}
+    We have that $F = 0.52 < F_{\text{crit}} = F_{5, 11}(0.05) = 3.20$, so we would fail to reject the null hypothesis that $\bm{\gamma}_{1,1}=\bm{\gamma}_{1,2}=\bm{\gamma}_{1,3}=\bm{\gamma}_{1,4}=\bm{\gamma}_{2,1}=\bm{\gamma}_{2,2}=\bm{\gamma}_{2,3}=\bm{\gamma}_{2,4}=\bm{\gamma}_{3,1}=\bm{\gamma}_{3,2}=\bm{\gamma}_{3,3}=\bm{\gamma}_{3,4}=\textbf{0}$. Okay, it doesn't look like we have interaction, so it's safe to test for main effects.
+    \begin{align*}
+        \bm{\Lambda}_{1}^{\star} = \frac{|\text{SSP}_{res}|}{|\text{SSP}_{fac1} + \text{SSP}_{res}|}
+        & =
+        \frac{117744}{481264}
+        =
+        0.2447
+    \end{align*}
+    \begin{align*}
+        \nu_{1}
+        & =
+        |(g-1) - p| + 1 = |2 - 2| + 1 = 1
+    \end{align*}
+    \begin{align*}
+        \nu_{2}
+        & =
+        gb(n-1) - p + 1 = 3(4)(1) - 2 + 1 = 11
+    \end{align*}
+    \begin{align*}
+        F_{1}
+        & =
+        \left(\frac{1 - \bm{\Lambda}_{1}^{\star}}{\bm{\Lambda_{1}^{\star}}}\right)\frac{\nu_{2}/2}{\nu_{1}/2}
+        =
+        \left(\frac{1 - 0.2447}{0.2447}\right)\frac{5.5}{0.5}
+        =
+        33.96
+    \end{align*}
+    \begin{align*}
+        F_{\nu_{1}, \nu_{2}}(\alpha)
+        =
+        F_{1, 11}(0.05)
+        =
+        4.84
+    \end{align*}
+    We have that $F_{1} = 33.96 > F_{\text{crit}} = F_{1, 11}(0.05) = 4.84$, so we would reject the null hypothesis that $\bm{\tau}_{1}=\bm{\tau}_{2}=\bm{\tau}_{3}=\textbf{0}$, and conclude there are effects for Factor 1.
+    \begin{align*}
+        \bm{\Lambda}_{2}^{\star} = \frac{|\text{SSP}_{res}|}{|\text{SSP}_{fac2} + \text{SSP}_{res}|}
+        & =
+        \frac{117744}{148128}
+        =
+        0.7949
+    \end{align*}
+    \begin{align*}
+        \nu_{1}
+        & =
+        |(b-1) - p| + 1 = |3 - 2| + 1 = 2
+    \end{align*}
+    \begin{align*}
+        \nu_{2}
+        & =
+        gb(n-1) - p + 1 = 3(4)(1) - 2 + 1 = 11
+    \end{align*}
+    \begin{align*}
+        F_{1}
+        & =
+        \left(\frac{1 - \bm{\Lambda}_{2}^{\star}}{\bm{\Lambda_{2}^{\star}}}\right)\frac{\nu_{2}/2}{\nu_{1}/2}
+        =
+        \left(\frac{1 - 0.7949}{0.7949}\right)\frac{5.5}{1.0}
+        =
+        1.42
+    \end{align*}
+    \begin{align*}
+        F_{\nu_{1}, \nu_{2}}(\alpha)
+        =
+        F_{2, 11}(0.05)
+        =
+        3.98
+    \end{align*}
+    We have that $F_{1} = 1.42 < F_{\text{crit}} = F_{2, 11}(0.05) = 3.98$, so we would fail to reject the null hypothesis that $\bm{\beta}_{1}=\bm{\beta}_{2}=\bm{\beta}_{3}=\bm{\beta}_{4}=\textbf{0}$, and conclude there are no effects for Factor 2.
+
     \item If main effects, but no interactions, exist, examine the nature of the main effects by
     constructing Bonferroni simultaneous 95\% confidence intervals for differences of
     the components of the factor effect parameters.
+
+    Only Factor 1 was significant, so here, I created the Bonferroni CI's only for Factor 1. 
+    The Factor 2 CI's all contained zero anyway. We can see that for variable 1, the diffrence between treatment 1 and treatment 3 is the only difference that does not contain zero. It's positive, so treatment 1 is larger than treatment 2 and the difference is somewhere between 2.96 and 19.04.
+
+    \begin{align*}
+        \nu = gb(n-1) & = 3(4)(2-1) = 12
+    \end{align*}
+
+    \begin{align*}
+        t_{\nu} \left( \frac{\alpha}{pg(g-1)} \right)
+        & =
+        t_{12} \left( \frac{0.05}{2(3)(3-1)} \right)
+        \\
+        & =
+        t_{12} \left( \frac{0.05}{12} \right)
+        \\
+        & =
+        3.152681
+    \end{align*}
+
+    \begin{align*}
+        t_{\nu} \left( \frac{\alpha}{pb(b-1)} \right)
+        & =
+        t_{12} \left( \frac{0.05}{2(4)(4-1)} \right)
+        \\
+        & =
+        t_{12} \left( \frac{0.05}{24} \right)
+        \\
+        & =
+        3.527352
+    \end{align*}
+
+    \[
+        E_{11} = 312
+        \hspace{0.20cm}
+        \text{and}
+        \hspace{0.20cm}
+        E_{22} = 400
+    \]
+
+    \underline{Variable 1:}
+    \begin{align*}
+        \ell=1, m=2, i=1
+        &
+        \\
+        \tau_{11} - \tau_{21} \pm t_{\nu} \left( \frac{\alpha}{pg(g-1)} \right) \sqrt{\frac{E_{11}}{\nu}\frac{2}{bn}}
+        & = [-1.0378, 15.0378]
+    \end{align*}
+    \begin{align*}
+        \ell=1, m=3, i=1
+        &
+        \\
+        \tau_{11} - \tau_{31} \pm t_{\nu} \left( \frac{\alpha}{pg(g-1)} \right) \sqrt{\frac{E_{11}}{\nu}\frac{2}{bn}}
+        & = [2.9622, 19.0378]
+    \end{align*}
+    \begin{align*}
+        \ell=2, m=3, i=1
+        &
+        \\
+        \tau_{21} - \tau_{31} \pm t_{\nu} \left( \frac{\alpha}{pg(g-1)} \right) \sqrt{\frac{E_{11}}{\nu}\frac{2}{bn}}
+        & = [-4.0378, 12.0378]
+    \end{align*}
+
+    \underline{Variable 2:}
+    \begin{align*}
+        \ell=1, m=2, i=2
+        &
+        \\
+        \tau_{11} - \tau_{21} \pm t_{\nu} \left( \frac{\alpha}{pg(g-1)} \right) \sqrt{\frac{E_{22}}{\nu}\frac{2}{bn}}
+        & = [-11.1010, 7.1010]
+    \end{align*}
+    \begin{align*}
+        \ell=1, m=3, i=2
+        &
+        \\
+        \tau_{11} - \tau_{21} \pm t_{\nu} \left( \frac{\alpha}{pg(g-1)} \right) \sqrt{\frac{E_{22}}{\nu}\frac{2}{bn}}
+        & = [-4.1010, 14.1010]
+    \end{align*}
+    \begin{align*}
+        \ell=2, m=2, i=2
+        &
+        \\
+        \tau_{11} - \tau_{21} \pm t_{\nu} \left( \frac{\alpha}{pg(g-1)} \right) \sqrt{\frac{E_{22}}{\nu}\frac{2}{bn}}
+        & = [-2.1010, 16.1010]
+    \end{align*}
 \end{enumerate}
