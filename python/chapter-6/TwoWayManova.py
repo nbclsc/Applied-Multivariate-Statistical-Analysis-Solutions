@@ -98,9 +98,9 @@ class ObsBreakdownTwoWayManova(object):
                            Factor2Effect=trt2_effect_a,
                            Interaction=interaction_a)
 
-    def obs_single_rep(self) -> namedtuple:
+    def _obs_single_rep(self) -> namedtuple:
         '''
-        Breakdown observations for an input variable into mean, factor, maybe interaction (if there are replications), and residual components.
+        Breakdown observations for an input variable into mean, factor, and residual components. For the single replication case, there is no interaction term. The computation for the interaction term is used for the residual. This is because, if we have a single replication, the residual term using the multi-replication computation will result in a zero matrix.
         Args:
             df (pd.DataFrame): Input data with a column for treatments and columns for each variable.
             trt1_col (str): The column with the factor one (groups).
@@ -110,26 +110,33 @@ class ObsBreakdownTwoWayManova(object):
             namedtuple: The named tuple has elements: 'Variable', 'Obs', 'Mean', 'FactorEffect1', 'FactorEffect2', 'Residual'.
         '''
         # Store the output for the observations breakdown for a given variable.
-        tuple_values = ['Variable',
+        tuple_values = ['Replication',
                         'Obs',
                         'Mean',
                         'FactorEffect1',
                         'FactorEffect2',
                         'Residual']
+        
         ObsBreakdown = namedtuple('ObsBreakdown', tuple_values)
+        obs_list = []
 
-        obs_a = pd.pivot(self._design.df,
-                         index=self._design.factor1_name,
-                         columns=self._design.factor2_name,
-                         values=self._design.variable_names).to_numpy()
-        return ObsBreakdown(Variable=self._design.variable_names,
-                            Obs=obs_a,
-                            Mean=self.anova_values.Mean,
-                            FactorEffect1=self.anova_values.Factor1Effect,
-                            FactorEffect2=self.anova_values.Factor2Effect,
-                            Residual=self.anova_values.Interaction)
+        for i in self._design.df.RepCol.unique():
+            subset_df = self._design.df[self._design.df.RepCol.eq(i)].copy()
+            obs_a = np.stack([pd.pivot(subset_df,
+                                       index=self._design.factor1_name,
+                                       columns=self._design.factor2_name,
+                                       values=v).to_numpy() for v in self._design.variable_names
+                                       ])
+            obs = ObsBreakdown(Replication=i,
+                               Obs=obs_a,
+                               Mean=self.anova_values.Mean,
+                               FactorEffect1=self.anova_values.Factor1Effect,
+                               FactorEffect2=self.anova_values.Factor2Effect,
+                               Residual=self.anova_values.Interaction)
+            obs_list.append(obs)
+        return obs_list
 
-    def obs_multi_rep(self) ->list[namedtuple]:
+    def _obs_multi_rep(self) ->list[namedtuple]:
         '''
         Breakdown observations for an input variable into mean, factor, interaction, and residual components.
         Args:
@@ -152,7 +159,6 @@ class ObsBreakdownTwoWayManova(object):
                         'Residual']
 
         ObsBreakdown = namedtuple('ObsBreakdown', tuple_values)
-        
         obs_list = list()
 
         for i in self._design.df.RepCol.unique():
@@ -185,9 +191,10 @@ class ObsBreakdownTwoWayManova(object):
         '''
         # Store the output for the observations breakdown for a given variable.
         if self._design.metadata.n == 1:
-            return self.obs_single_rep()
+            return self._obs_single_rep()
+            # return self.obs_multi_rep()
         else:
-            return self.obs_multi_rep()
+            return self._obs_multi_rep()
     
     def display_obs_breakdown(self, spacing: list[str]) -> None:
         '''
@@ -199,11 +206,36 @@ class ObsBreakdownTwoWayManova(object):
             Something like, ['0.5cm','2.0cm','2.2cm','2.5cm'].
         '''
         if self._design.metadata.n == 1:
-            self.display_obs_breakdown_one_rep(spacing)
+            self._display_obs_breakdown_one_rep(spacing)
+            # self.display_obs_breakdown_multi_rep(spacing)
         else:
-            self.display_obs_breakdown_multi_rep(spacing)
+            self._display_obs_breakdown_multi_rep(spacing)
     
-    def display_obs_breakdown_multi_rep(self, spacing: list[str]) -> None:
+    def _display_obs_breakdown_one_rep(self, spacing: list[str]) -> None:
+        for obs in self.obs_breakdown:
+            # Loop through all variables.
+            for i, var in enumerate(self._design.variable_names):
+                data = obs
+                obs_latex = create_array_text(data.Obs[i])
+                mean_latex = create_array_text(data.Mean[i])
+                trt_effect1_latex = create_array_text(data.FactorEffect1[i])
+                trt_effect2_latex = create_array_text(data.FactorEffect2[i])
+                residual_latex = create_array_text(data.Residual[i])
+
+                assert len(spacing)==5, 'Spacing must have 4 string elements.'
+                text_list = [mean_latex, trt_effect1_latex, trt_effect2_latex, residual_latex]
+                latex_str = obs_latex + ' = '
+                latex_str += ' + '.join(text_list)
+
+                display(Math(fr'\text{{Variable: {var}}}'))
+                display(Math(latex_str))
+                display(Math(fr'\hspace{{ {spacing[0]} }}\text{{(observation)}}'
+                        fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
+                        fr'\hspace{{ {spacing[2]} }}\text{{(factor 1 effect)}}'
+                        fr'\hspace{{ {spacing[3]} }}\text{{(factor 2 effect)}}'
+                        fr'\hspace{{ {spacing[4]} }}\text{{(residual)}}'))
+            
+    def _display_obs_breakdown_multi_rep(self, spacing: list[str]) -> None:
         for obs in self.obs_breakdown:
             # Loop through all variables.
             for i, var in enumerate(self._design.variable_names):
@@ -228,28 +260,7 @@ class ObsBreakdownTwoWayManova(object):
                         fr'\hspace{{ {spacing[3]} }}\text{{(factor 2 effect)}}'
                         fr'\hspace{{ {spacing[4]} }}\text{{(interaction)}}'
                         fr'\hspace{{ {spacing[5]} }}\text{{(residual)}}'))
-            
-    def display_obs_breakdown_one_rep(self, spacing: list[str]) -> None:
-        data = self.obs_breakdown
-        obs_latex = create_array_text(data.Obs)
-        mean_latex = create_array_text(data.Mean)
-        trt_effect1_latex = create_array_text(data.FactorEffect1)
-        trt_effect2_latex = create_array_text(data.FactorEffect2)
-        residual_latex = create_array_text(data.Residual)
-        
-        assert len(spacing)==5, 'Spacing must have 4 string elements.'
-        text_list = [mean_latex, trt_effect1_latex, trt_effect2_latex, residual_latex]
-        latex_str = obs_latex + ' = '
-        latex_str += ' + '.join(text_list)
 
-        display(Math(fr'\text{{Variable: {data.Variable}}}'))
-        display(Math(latex_str))
-        display(Math(fr'\hspace{{ {spacing[0]} }}\text{{(observation)}}'
-                    fr'\hspace{{ {spacing[1]} }}\text{{(mean)}}'
-                    fr'\hspace{{ {spacing[2]} }}\text{{(factor 1 effect)}}'
-                    fr'\hspace{{ {spacing[3]} }}\text{{(factor 2 effect)}}'
-                    fr'\hspace{{ {spacing[4]} }}\text{{(residual)}}'))
-            
 class TwoWayManova(object):
     def __init__(self, df: pd.DataFrame, factor1_col: str, factor2_col: str, var_cols: list[str]):
         self._design = TwoWayDesignMatrix(df=df,
@@ -260,6 +271,26 @@ class TwoWayManova(object):
         self.manova = self._compute_manova_table()
 
     def _compute_manova_table(self):
+        if self._design.metadata.n == 1:
+            return self._compute_manova_table_one_rep()
+        else:
+            return self._compute_manova_table_multi_rep()
+    
+    def _compute_manova_table_one_rep(self):
+        MANOVA = namedtuple('MANOVA', ['B1','B2','W','T'])
+        B1, B2, I, W, T = 0, 0, 0, 0, 0
+        for obs in self.x_breakdown.obs_breakdown:
+            B1 += compute_manova_ss_matrices(obs.FactorEffect1)
+            B2 += compute_manova_ss_matrices(obs.FactorEffect2)
+            W  += compute_manova_ss_matrices(obs.Residual)
+            T  += compute_manova_ss_matrices(obs.Obs) - compute_manova_ss_matrices(obs.Mean)
+
+        return MANOVA(B1=B1,
+                      B2=B2,
+                      W=W,
+                      T=T)
+
+    def _compute_manova_table_multi_rep(self):
         MANOVA = namedtuple('MANOVA', ['B1','B2','I','W','T'])
         B1, B2, I, W, T = 0, 0, 0, 0, 0
         for obs in self.x_breakdown.obs_breakdown:
@@ -276,8 +307,42 @@ class TwoWayManova(object):
                       T=T)
     
     def display_manova_table(self) -> None:
+        if self._design.metadata.n == 1:
+            return self.display_manova_table_one_rep()
+        else:
+            return self.display_manova_table_multi_rep()
+
+    def display_manova_table_one_rep(self) -> None:
         '''
-        Display the 2-Way MANOVA table.
+        Display the 2-Way MANOVA table when there are multiple replications.
+        '''
+        g = self._design.metadata.g
+        b = self._design.metadata.b
+        n = self._design.metadata.n
+        display(Math(r'\begin{array}{lll}'
+                r'\text{Source} & \text{Matrix of sum of squares} &  \\'
+                r'\text{of variation} & \text{and cross products} & \text{Degrees of freedom} \\'
+                r'\hline \\'
+                r'\text{Factor 1} & '
+                f'{create_array_text(self.manova.B1)} & '
+                fr'{g} - 1 = {g - 1} \\ \\'
+                r'\text{Factor 2} & '
+                f'{create_array_text(self.manova.B2)} & '
+                fr'{b} - 1 = {b - 1} \\ \\'
+                r'\text{Residual} & '
+                f'{create_array_text(self.manova.W)} &'
+                fr'({g} - {1})({b} - {1}) = {(g - 1)*(b - 1)} \\ \\'
+                r'\hline \\'
+                r'\text{Total (corrected)} & '
+                f'{create_array_text(self.manova.T)} & '
+                f'{g}({b})({n}) - {1} = {g*b*n - 1}'
+                r'\end{array}'
+                ))
+
+
+    def display_manova_table_multi_rep(self) -> None:
+        '''
+        Display the 2-Way MANOVA table when there are multiple replications.
         '''
         g = self._design.metadata.g
         b = self._design.metadata.b
