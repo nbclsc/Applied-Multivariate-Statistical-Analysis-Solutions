@@ -27,7 +27,7 @@ class TwoWayDesignMatrix:
     def _subset_df(self) -> pd.DataFrame:
         keep_cols =  [self.factor1_name, self.factor2_name] + self.variable_names
         df = self.df[keep_cols].copy()
-        df['RepCol'] = df.groupby(['Factor1', 'Factor2']).cumcount()
+        df['RepCol'] = df.groupby([self.factor1_name, self.factor2_name], observed=False).cumcount()
         return df
 
     def _compute_metadata(self) -> Metadata:
@@ -65,15 +65,15 @@ class ObsBreakdownTwoWayManova(object):
         global_xbar_a = np.stack([ xbar * np.ones([self._design.metadata.g, self._design.metadata.b])
                                   for xbar in xbars])
 
-        xbar_ell = self._design.df.groupby(self._design.factor1_name)[self._design.variable_names].mean().to_numpy()
+        xbar_ell = self._design.df.groupby(self._design.factor1_name, observed=False)[self._design.variable_names].mean().to_numpy()
         xbar_ell_a = np.stack([np.repeat(xbar_ell[:, i:i+1], self._design.metadata.b, axis=1)
                                for i in range(self._design.metadata.p)])
 
-        xbar_k = self._design.df.groupby(self._design.factor2_name)[self._design.variable_names].mean().to_numpy()
+        xbar_k = self._design.df.groupby(self._design.factor2_name, observed=False)[self._design.variable_names].mean().to_numpy()
         xbar_k_a = np.stack([np.repeat(xbar_k[:, i:i+1].T, self._design.metadata.g, axis=0)
                              for i in range(self._design.metadata.p)])
 
-        xbar_ell_k_a = self._design.df.groupby([self._design.factor1_name, self._design.factor2_name])[self._design.variable_names]\
+        xbar_ell_k_a = self._design.df.groupby([self._design.factor1_name, self._design.factor2_name], observed=False)[self._design.variable_names]\
             .mean().to_numpy().T\
             .reshape((self._design.metadata.p, self._design.metadata.g, self._design.metadata.b))
         
