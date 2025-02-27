@@ -1,0 +1,168 @@
+Refer to Example 6.13.
+\begin{enumerate}[label= (\alph*)]
+    \item Carry out approximate chi-square (likelihood ratio) tests for the factor 1 and factor 2
+    effects. Set $\alpha = .05$. Compare these results with the results for the exact $F$-tests given
+    in the example. Explain any differences.
+    \item Using (6--70), construct simultaneous 95\% confidence intervals for differences in the
+    factor 1 effect parameters for \textit{pairs} of the three responses. Interpret these intervals.
+    Repeat these calculations for factor 2 effect parameters.
+
+    Factor 1, change in rate of extrusion low (-10\%) - high (10\%) for tear resistence \newline
+    $\tau_{11} - \tau_{21}\text{ belongs to}$
+    \begin{align*}
+        \phantom{=}
+        \hat{\tau}_{11} - \hat{\tau}_{21}
+        & \pm
+        t_{16}(0.00833)
+        \sqrt{\frac{E_{11}}{\nu}\frac{2}{bn}}
+        \\
+        =
+        -0.590
+        & \pm
+        2.67(0.14849)
+        \\
+        =
+        -0.590
+        & \pm
+        0.397
+        \\
+        \phantom{\pm 0.590}
+        &
+        \text{or }
+        (-0.987, -0.193)
+    \end{align*}
+    
+    Factor 1, change in rate of extrusion low (-10\%) - high (10\%) for gloss \newline
+    $\tau_{12} - \tau_{22}\text{ belongs to}$
+    \begin{align*}
+        \phantom{=}
+        \hat{\tau}_{12} - \hat{\tau}_{22}
+        & \pm
+        t_{16}(0.00833)
+        \sqrt{\frac{E_{22}}{\nu}\frac{2}{bn}}
+        \\
+        =
+        0.510
+        & \pm
+        2.67(0.18125)
+        \\
+        =
+        0.510
+        & \pm
+        0.484
+        \\
+        \phantom{\pm 0.590}
+        &
+        \text{or }
+        (0.026, 0.994)
+    \end{align*}
+
+    We are 95\% confident that the mean gloss for a -10\% change in rate of extrusion is betweeen 0.026 and 0.994 units higher than the mean gloss for a 10\% change in rate of extrusion.
+    
+    Factor 1, change in rate of extrusion low (-10\%) - high (10\%) for opacity \newline
+    $\tau_{13} - \tau_{23}\text{ belongs to}$
+    \begin{align*}
+        \phantom{=}
+        \hat{\tau}_{13} - \hat{\tau}_{23}
+        & \pm
+        t_{16}(0.00833)
+        \sqrt{\frac{E_{33}}{\nu}\frac{2}{bn}}
+        \\
+        =
+        -0.290
+        & \pm
+        2.67(0.90086)
+        \\
+        =
+        -0.290
+        & \pm
+        2.408
+        \\
+        \phantom{\pm 0.590}
+        &
+        \text{or }
+        (-2.698, 2.118)
+    \end{align*}
+    
+    Our confidence interval contains zero, so we can conclude there is no significant difference between mean opacity for a -10\% change in rate of change in extrusion and a 10\% change in rate of extrusion.
+
+
+    Factor 2, amount of additive low (1\%) - high (1.5\%) for tear resistence \newline
+    $\beta_{11} - \beta_{21}\text{ belongs to}$
+    \begin{align*}
+        \phantom{=}
+        \hat{\beta}_{11} - \hat{\beta}_{21}
+        & \pm
+        t_{16}(0.00833)
+        \sqrt{\frac{E_{11}}{\nu}\frac{2}{gn}}
+        \\
+        =
+        -0.390
+        & \pm
+        2.67(0.14849)
+        \\
+        =
+        -0.390
+        & \pm
+        0.397
+        \\
+        \phantom{\pm 0.590}
+        &
+        \text{or }
+        (-0.787, 0.007)
+    \end{align*}
+    
+    Factor 2, amount of additive low (1\%) - high (1.5\%) for gloss \newline
+    $\beta_{12} - \beta_{22}\text{ belongs to}$
+    \begin{align*}
+        \phantom{=}
+        \hat{\beta}_{12} - \hat{\beta}_{22}
+        & \pm
+        t_{16}(0.00833)
+        \sqrt{\frac{E_{22}}{\nu}\frac{2}{gn}}
+        \\
+        =
+        -0.350
+        & \pm
+        2.67(0.18128)
+        \\
+        =
+        -0.350
+        & \pm
+        0.484
+        \\
+        \phantom{\pm 0.590}
+        &
+        \text{or }
+        (-0.834, 0.134)
+    \end{align*}
+    
+    Factor 2, amount of additive low (1\%) - high (1.5\%) for opacity \newline
+    $\beta_{11} - \beta_{21}\text{ belongs to}$
+    \begin{align*}
+        \phantom{=}
+        \hat{\beta}_{13} - \hat{\beta}_{23}
+        & \pm
+        t_{16}(0.00833)
+        \sqrt{\frac{E_{33}}{\nu}\frac{2}{gn}}
+        \\
+        =
+        -0.990
+        & \pm
+        2.67(0.90086)
+        \\
+        =
+        -0.990
+        & \pm
+        2.408
+        \\
+        \phantom{\pm 0.590}
+        &
+        \text{or }
+        (-3.398, 1.418)
+    \end{align*}
+
+    For our second factor, the amount of additive, it looks like all these intervals contain 0. This may be due to the Bonferroni adjustment we're doing here for the pairwise comparisons that make the intervals a bit wider.
+
+
+\end{enumerate}
