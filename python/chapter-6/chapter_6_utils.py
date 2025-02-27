@@ -137,9 +137,9 @@ def create_array_text(a: np.ndarray) -> str:
     '''
     def latex_cell_value(v: float) -> str:
         if v < 0:
-            return str(int(v))
+            return str(round(v,4))
         else:
-            return r'\phantom{-} ' + str(int(v))
+            return r'\phantom{-} ' + str(round(v,4))
     g, n = a.shape
     array_col_num = 'r' * n
     start_array_latex = fr'\left[\begin{{array}}{{ {array_col_num} }}'
