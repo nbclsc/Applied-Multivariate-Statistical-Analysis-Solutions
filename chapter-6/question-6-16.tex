@@ -1,0 +1,101 @@
+Four measures of the response stiffness on each of 30 boards are listed in Table 4.3 (see Example 4.14).
+The measures, on a given board, are repeated in the sense that they were
+made one after another.
+Assuming that the measures of stiffness arise from four treatments, test for the equality of treatments in a repeated measures design context.
+Set  $\alpha = .05$.
+Construct a 95\% (simultaneous) confidence interval for a contrast in the
+mean levels representing a comparison of the dynamic measurements with the static measurements.
+
+\[
+    \bar{\textbf{x}}
+    =
+    \begin{bNiceArray}{r}
+        -1906.1    \\ 
+        -1749.5333 \\
+        -1509.1333 \\
+        -1724.9667
+    \end{bNiceArray}
+\]
+\[
+    \textbf{S}
+    =
+    \begin{bNiceArray}{rrrr}
+        105616.300 &  94613.531 & 87289.7103 & 94230.7276  \\
+        94613.5310 & 101510.119 & 76137.0989 & 81064.3632  \\
+        87289.7103 &  76137.098 & 91917.0851 & 90352.3839  \\
+        94230.7276 &  81064.363 & 90352.3839 & 104227.9644
+    \end{bNiceArray}
+\]
+\[
+    \textbf{C}
+    =
+    \begin{bNiceArray}{rrrr}
+        1 & -1 &  0 &  0 \\
+        0 &  1 & -1 &  0 \\
+        0 &  0 &  1 & -1
+    \end{bNiceArray}
+\]
+From 6.2, the test for equality of treatments in a repeated measure design (page 280), we have formula (6--16). Replacing $q$ with $p$, we can plug-in all the bits
+\[
+    T^{2}
+    =
+    n
+    {\left(\textbf{C}\bar{\textbf{x}}\right)}^{\prime}
+    {\left(\textbf{C}\textbf{S}\textbf{C}^{\prime}\right)}^{-1}
+    {\left(\textbf{C}\bar{\textbf{x}}\right)}
+    =
+    254.7212
+\]
+\begin{align*}
+    f_{\text{crit}}
+    & =
+    \frac{(n-1)(p-1)}{n-p+1}
+    F_{p-1, n-p+1}
+    (\alpha)
+    \\
+    & =
+    \frac{(30-1)(4-1)}{30-4+1}
+    F_{4-1, 30-4+1}
+    (0.05)
+    \\
+    & =
+    3.2222 \times 2.9604
+    \\
+    & =
+    9.5389
+\end{align*}
+We have that $T^{2} = 254.7212 > f_{\text{crit}} = 9.5389$, so we would reject the null hypothesis that $\textbf{C}\bm{\mu} = \textbf{0}$, so there are differences among the means.
+
+To compute the 95\% simultaneous confidence intervals, we use the formula (6-18) on page 281.
+
+\[
+    \textbf{c}
+    =
+    \begin{bNiceArray}{r}
+         1 \\
+         1 \\
+        -1 \\
+        -1 \\
+    \end{bNiceArray}
+\]
+
+\begin{align*}
+    \textbf{c}^{\prime}\bm{\mu}
+    & :
+    \textbf{c}^{\prime}\hat{\textbf{x}}
+    \pm
+    \sqrt{\frac{(n-1)(p-1)}{n-q+1} F_{p-1, n-p+1} (\alpha)}
+    \sqrt{\frac{\textbf{c}^{\prime}\textbf{S}\textbf{c}}{n}}
+    \\
+    & \Rightarrow
+    421.53 \pm \sqrt{3.2222 \times 2.9604}\sqrt{3191.9833}
+    \\
+    & \Rightarrow
+    421.53 \pm \sqrt{9.5389}\sqrt{3191.9833}
+    \\
+    & \Rightarrow
+    421.53 \pm 174.4937 
+    \\
+    & \Rightarrow
+    (247.0397, 596.0270) 
+\end{align*}
