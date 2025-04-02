@@ -3,6 +3,121 @@ Refer to Example 6.13.
     \item Carry out approximate chi-square (likelihood ratio) tests for the factor 1 and factor 2
     effects. Set $\alpha = .05$. Compare these results with the results for the exact $F$-tests given
     in the example. Explain any differences.
+
+    \begin{align*}
+        \textbf{W}
+        & =
+        \begin{bNiceArray}{rrr}
+             1.764 &  0.02  & -3.07 \\
+             0.02  &  2.628 & -0.552 \\
+            -3.07  & -0.552 & 3.9605
+        \end{bNiceArray}
+    \end{align*}
+
+    \begin{align*}
+        \textbf{B}_{1}
+        & =
+        \begin{bNiceArray}{rrr}
+             1.7405 & -1.5045 &  0.8555 \\
+            -1.5045 &  1.3005 & -0.7395 \\ 
+             0.8555 & -0.7395 &  0.4205
+        \end{bNiceArray}
+    \end{align*}
+
+    \begin{align*}
+        \textbf{B}_{2}
+        & =
+        \begin{bNiceArray}{rrr}
+            0.7605 & 0.6825 & 1.9305 \\
+            0.6825 & 0.6125 & 1.7325 \\
+            1.9305 & 1.7325 & 4.9005
+        \end{bNiceArray}
+    \end{align*}
+
+    Starting with the likelihood ratio test for factor 1:
+    \begin{align*}
+        \Lambda_{1}^{\star}
+        & =
+        \frac{|\textbf{W}|}{|\textbf{W} + \textbf{B}_{1}|}
+        \\
+        & =
+        \frac{275.7098}{722.0212}
+        \\
+        & =
+        0.3819
+    \end{align*}
+
+    \begin{align*}
+        X_{1}^{2 \star}
+        & =
+        -\left[ gb(n-1) - \frac{p+1-(g-1)}{2} \right] \ln \Lambda_{1}^{\star}
+        \\
+        & =
+        -\left[ 4(4) - \frac{4-1}{2} \right] \ln \Lambda_{1}^{\star}
+        \\
+        & =
+        (-14.5)(-0.9627)
+        \\
+        & =
+        13.959
+    \end{align*}
+
+    \begin{align*}
+        X_{\text{crit}}^{2}
+        & =
+        \chi_{(g-1)p}^{2}(\alpha)
+        \\
+        & =
+        \chi_{3}^{2}(0.05)
+        \\
+        & =
+        7.815
+    \end{align*}
+
+    We have that $X_{1}^{2 \star} = 13.96 > X_{\text{crit}}^{2} = 7.82$, so we would reject the null hypothesis that $\bm{\tau}_{1} = \bm{\tau}_{2} = \textbf{0}$.
+
+    The likelihood ratio test for factor 2:
+    \begin{align*}
+        \Lambda_{2}^{\star}
+        & =
+        \frac{|\textbf{W}|}{|\textbf{W} + \textbf{B}_{2}|}
+        \\
+        & =
+        \frac{275.7098}{527.134696}
+        \\
+        & =
+        0.5230
+    \end{align*}
+
+    \begin{align*}
+        X_{1}^{2 \star}
+        & =
+        -\left[ gb(n-1) - \frac{p+1-(b-1)}{2} \right] \ln \Lambda_{2}^{\star}
+        \\
+        & =
+        -\left[ 4(4) - \frac{4-1}{2} \right] \ln \Lambda_{1}^{\star}
+        \\
+        & =
+        (-14.5)(-0.6481)
+        \\
+        & =
+        9.3976
+    \end{align*}
+
+    \begin{align*}
+        X_{\text{crit}}^{2}
+        & =
+        \chi_{(b-1)p}^{2}(\alpha)
+        \\
+        & =
+        \chi_{3}^{2}(0.05)
+        \\
+        & =
+        7.815
+    \end{align*}
+
+    We have that $X_{2}^{2 \star} = 9.40 > X_{\text{crit}}^{2} = 7.82$, so we would reject the null hypothesis that $\bm{\beta}_{1} = \bm{\beta}_{2} = \textbf{0}$.
+
     \item Using (6--70), construct simultaneous 95\% confidence intervals for differences in the
     factor 1 effect parameters for \textit{pairs} of the three responses. Interpret these intervals.
     Repeat these calculations for factor 2 effect parameters.
